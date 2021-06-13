@@ -22,8 +22,6 @@ Contents
 
    install
    settings
-   management_commands
-   settings
    overview
    meta
    roadmap

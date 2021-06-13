@@ -1,32 +1,34 @@
-Revamped GRANSO's documentation!
+Revamped GRANSO's documentation
 =======================================
 
-A simple example
+Toward a user-friendly and scalable numerical package for nonsmooth, nonconvex, constrained optimization
+
+Overall Goal
 -----------------
 
-You can see a `basic version <https://sunju.org/>`_ running for my personal site. It is super barebones, but it should give you an idea of what exactly is possible.
+1. Build scalable and user-friendly numerical optimization packages for solving general nonconvex, nonsmooth, constrained optimization problems.  
 
-Get the code
+2. Perform a computational and theoretical study of constrained deep learning.
+
+Get the Code
 -------------
 
-The `source <https://sunju.org/>`_ is available on Github. 
+The `source <https://github.com/sun-umn>`_ is available on Github. 
 
-The mailing list for the project is located at google groups: https://sunju.org/
 
 Contents
 --------
 
 .. toctree::
    :maxdepth: 100
-   :glob:
-
+   
+   intro
    install
    settings
-   overview
-   meta
-   roadmap
+   examples
 
-What's with the name?
+Contact
 ----------------------
 
-TODO
+Created by Buyun Liang [liang664@umn.edu] - feel free to contact me if you have any questions!
+

@@ -1,7 +1,7 @@
 Installation
 ============
 
-Installing GRANSO is simple. Here is a step by step plan on how to do it.
+Installing PyGRANSO is simple. Here is a step by step plan on how to do it.
 
 .. note::
     TODO
@@ -23,7 +23,7 @@ Once you have these, run::
     pip install XXX
     mkdir XXX
 
-Installing revamped GRANSO
+Installing revamped PyGRANSO
 -----------------
 TODO
     

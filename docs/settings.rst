@@ -1,7 +1,7 @@
 Settings
 ========
 
-GRANSO has a number of settings that will effect its behavior. 
+PyGRANSO has a number of settings that will effect its behavior. 
 
 
 quadprog_opts.QPsolver

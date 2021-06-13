@@ -1,4 +1,4 @@
-# GRANSO-DOC
+# PyGRANSO
 This is the website for documentation of our revamped GRANSO:
 https://granso-documentation.readthedocs.io/en/latest/index.html
 

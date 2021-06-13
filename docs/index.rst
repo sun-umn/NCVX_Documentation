@@ -17,7 +17,7 @@ Contents
 --------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 100
    :glob:
 
    install

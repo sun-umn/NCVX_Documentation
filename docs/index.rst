@@ -21,6 +21,7 @@ Contents
    :glob:
 
    install
+   settings
    management_commands
    settings
    overview

@@ -20,10 +20,10 @@ Dictionary Learning
 TODO
 
 
-One More Deep Learning Problem
+Constrained Deep Learning
 -----------------
 
-TODO
+DL with manifold constrains on the weights that have shown better empirical properties than without
 
 .. math::
 

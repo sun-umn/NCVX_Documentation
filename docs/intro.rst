@@ -9,4 +9,8 @@ TODO
 Our Contribution
 ------------------
 
-TODO
+Good step size.
+
+High-precision solution.
+
+General method for nonsmooth, nonconvex problems.

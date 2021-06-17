@@ -19,7 +19,7 @@ H0
 
 Initial value of the (approx) Hessian inverse
 
-NOTE
+Note
 
 To restart GRANSO, we need to set the above three parameters as the final values from previous run.
 

@@ -23,7 +23,7 @@ Once you have these, run::
     pip install XXX
     mkdir XXX
 
-Installing revamped PyGRANSO
+Installing PyGRANSO
 -----------------
 TODO
     

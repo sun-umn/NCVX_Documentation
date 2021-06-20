@@ -1,6 +1,10 @@
 PyGRANSO's documentation
 =======================================
 
+.. warning::
+   The software is under development.
+
+
 Toward a user-friendly and scalable numerical package for nonsmooth, nonconvex, constrained optimization
 
 Overall Goal

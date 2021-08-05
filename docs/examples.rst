@@ -27,12 +27,12 @@ The required input for ``pygranso()`` is ``vars``, ``parameters`` (optional) and
    
    In the example, we set dimension::
 
-   n = 30.
+      n = 30.
    
    ``vars`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
    Since ``q`` is a vector here, we set the dimension to ``(n,1)``::
 
-   vars = {"q": (n,1)}
+      vars = {"q": (n,1)}
 
 2. ``parameters``
 
@@ -63,6 +63,7 @@ The required input for ``pygranso()`` is ``vars``, ``parameters`` (optional) and
       opts = Options()
 
    Then define the options::
+   
       opts.QPsolver = 'osqp' 
       opts.maxit = 10000
       # User defined initialization. 

@@ -24,7 +24,7 @@ Contents
 --------
 
 .. toctree::
-   :maxdepth: 100
+   :maxdepth: 5
    
    intro
    install

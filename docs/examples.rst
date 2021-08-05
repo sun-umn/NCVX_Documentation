@@ -1,6 +1,11 @@
 Examples
 ========
 
+There are two required input files to use PyGRANSO, runExample.py and combinedFunction.py. 
+Please do not change the name of two required files as it was used in the main algorithm.
+
+The required input for pygranso is vars, parameters (optional) and opts (optional)
+
 Dictionary Learning
 -----------------
 
@@ -10,6 +15,10 @@ This example is based on Bai, Yu, Qijia Jiang, and Ju Sun. "Subgradient descent 
    :width: 600
 
 where q is a n by 1 vector, Y is a n by m matrix. m = 10*n^2.
+
+In the given exampple, we set dimension n = 30.
+
+The 
 
 LASSO
 ---------------
@@ -26,7 +35,7 @@ TODO
 Constrained Deep Learning
 -----------------
 
-DL with manifold constrains on the weights that have shown better empirical properties than without
+TODO
 
 .. math::
 

@@ -42,12 +42,12 @@ The required input for ``pygranso()`` is ``vars``, ``parameters`` (optional) and
    .. warning::
       All non-scalar parameters should be Pytorch tensor
    
-      First initialize a structure for parameters::
+   First initialize a structure for parameters::
 
       from pygransoStruct import Parameters
       parameters = Parameters()
 
-      Then define the parameters::
+   Then define the parameters::
 
       m = 10*n**2   # sample complexity
       theta = 0.3   # sparsity level
@@ -55,8 +55,28 @@ The required input for ``pygranso()`` is ``vars``, ``parameters`` (optional) and
       parameters.Y = torch.from_numpy(Y) 
       parameters.m = m
 
+3. ``opts``
 
+   User-provided options. First initialize a structure for options::
 
+      from pygransoStruct import Options
+      opts = Options()
+
+   Then define the options::
+      opts.QPsolver = 'osqp' 
+      opts.maxit = 10000
+      # User defined initialization. 
+      np.random.seed(1)
+      x0 = norm.ppf(np.random.rand(n,1))
+      x0 /= la.norm(x0,2)
+      opts.x0 = x0
+      opts.opt_tol = 1e-6
+      opts.fvalquit = 1e-6
+      opts.print_level = 1
+      opts.print_frequency = 10
+
+   See for more information.
+   
 LASSO
 ---------------
 

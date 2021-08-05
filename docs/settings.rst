@@ -65,9 +65,13 @@ print_level
 Integer in {0,1,2,3}. Default value 1
 
 Level of detail printed to console regarding optimization progress:
+
 0 - no printing whatsoever
+
 1 - prints info for each iteration  
+
 2 - adds additional info about BFGS updates and line searches (TODO)
+
 3 - adds info on any errors that are encountered (TODO)
 
 print_frequency      

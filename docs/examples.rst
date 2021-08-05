@@ -11,7 +11,7 @@ Dictionary Learning
 
 This example is based on Bai, Yu, Qijia Jiang, and Ju Sun. "Subgradient descent learns orthogonal dictionaries." arXiv preprint arXiv:1810.10702 (2018).
 
-.. image:: images/dictL.png
+.. image:: images/DictL.png
    :width: 600
 
 where q is a n by 1 vector, Y is a n by m matrix. m = 10*n^2.

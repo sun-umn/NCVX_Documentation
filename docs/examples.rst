@@ -75,8 +75,8 @@ The required input for ``pygranso()`` is ``vars``, ``parameters`` (optional) and
       opts.print_level = 1
       opts.print_frequency = 10
 
-   See for more information.
-   
+   See :ref:`settings<Settings>` for more information.
+
 LASSO
 ---------------
 

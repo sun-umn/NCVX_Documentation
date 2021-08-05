@@ -1,37 +1,46 @@
 Settings
 ========
 
-PyGRANSO has a number of settings that will effect its behavior. 
+Below listed the key options. For more options, please check the documentation of pygransoOptions.py and pygransoOptionsAdvanced.py
 
 x0
 ----------------
 
-Initial point
+n by 1 real numpy array. Default value: rng.standard_normal(size=(n,1))
+
+Initial starting point.  One should pick x0 such that the objective
+and constraint functions are smooth at and about x0.  If this is
+difficult to ascertain, it is generally recommended to initialize
+PyGRANSO at randomly-generated starting points.
 
 mu0
 ----------------
+real, positive value. Default value: 1
 
-Initial penalty parameter value
+Initial value of the penalty parameter. 
+NOTE: irrelevant for unconstrained optimization problems.
 
 
 H0
 ----------------
 
-Initial value of the (approx) Hessian inverse
+n by n real numpy array. Default value: scipy.sparse.eye(n).toarray()
 
-Note
-
-To restart GRANSO, we need to set the above three parameters as the final values from previous run.
+Initial inverse Hessian approximation.  In full-memory mode, and 
+if opts.checkH0 is true, PyGRANSO will numerically assert that this
+matrix is positive definite.
 
 checkH0
 ----------------
 
-The user-provided H0 may fail PyGRANSO's initial check to assess whether or not the H0 is positive definite. If it fails this test, the test may be disabled by setting checkH0 to ``false``.
+Boolean value. Default value: True
 
-scaleH0
-----------------
-
-If one desires to restart PyGRANSO as if it had never stopped (e.g. to continue optimization after it hit its maxit limit), then one must also disable scaling the initial BFGS inverse Hessian approximation on the very first iterate by setting scaleH0 to ``false``. 
+By default, PyGRANSO will check whether or not H0 is numerically
+positive definite (by checking whether or not chol() succeeds).
+However, when restarting PyGRANSO from the last iterate of an earlier
+run, using soln.H_final (the last BFGS approximation to the inverse
+Hessian), soln.H_final may sometimes fail this check.  Set this
+option to False to disable it.
 
 
 maxit

@@ -1,7 +1,7 @@
 Examples
 ========
 
-There are two required input files to use PyGRANSO, ``runExample.py`` and ``combinedFunction.py.``
+There are two required input files to use PyGRANSO, ``runExample.py`` and ``combinedFunction.py``
 Please do not change the name of two required files as it was used in the main algorithm.
 
 
@@ -63,7 +63,7 @@ The required input for ``pygranso()`` is ``vars``, ``parameters`` (optional) and
       opts = Options()
 
    Then define the options::
-   
+
       opts.QPsolver = 'osqp' 
       opts.maxit = 10000
       # User defined initialization. 
@@ -78,40 +78,11 @@ The required input for ``pygranso()`` is ``vars``, ``parameters`` (optional) and
 
    See :ref:`settings<Settings>` for more information.
 
-LASSO
----------------
+After specify all three values (``parameters`` and ``opts`` are optional), call the main function::
 
-TODO
+   soln = pygranso(vars,parameters,opts)
 
-
-Robust PCA
------------------
-
-TODO
+combinedFunction.py
+============================
 
 
-Constrained Deep Learning
------------------
-
-TODO
-
-.. math::
-
-   (a + b)^2  &=  (a + b)(a + b) \\
-              &=  a^2 + 2ab + b^2
-             
- 
-.. math::
-   :nowrap:
-
-   \begin{eqnarray}
-      y    & = & ax^2 + bx + c \\
-      f(x) & = & x^2 + 2xy + y^2
-   \end{eqnarray}
-   
-   
-.. math:: e^{i\pi} + 1 = 0
-   :label: euler
-
-Euler's identity, equation :eq:`euler`, was elected one of the most
-beautiful mathematical formulas.

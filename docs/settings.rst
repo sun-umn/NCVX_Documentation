@@ -15,7 +15,7 @@ PyGRANSO at randomly-generated starting points.
 
 mu0
 ----------------
-real, positive value. Default value: 1
+Positive real value. Default value: 1
 
 Initial value of the penalty parameter. 
 NOTE: irrelevant for unconstrained optimization problems.
@@ -42,25 +42,59 @@ run, using soln.H_final (the last BFGS approximation to the inverse
 Hessian), soln.H_final may sometimes fail this check.  Set this
 option to False to disable it.
 
+opt_tol     
+----------------        
+
+Positive real value. Default value: 1e-8
+
+Tolerance for reaching (approximate) optimality/stationarity.
+See opts.ngrad, opts.evaldist, and the description of PyGRANSO's 
+output argument soln, specifically the subsubfield .dnorm for more
+information.
+
+fvalquit
+----------------
+Positive real value. Default value: -Inf
+
+Quit if objective function drops below this value at a feasible 
+iterate (that is, satisfying feasibility tolerances 
+opts.viol_ineq_tol and opts.viol_eq_tol).
+
+print_level     
+----------------
+Integer in {0,1,2,3}. Default value 1
+
+Level of detail printed to console regarding optimization progress:
+0 - no printing whatsoever
+1 - prints info for each iteration  
+2 - adds additional info about BFGS updates and line searches (TODO)
+3 - adds info on any errors that are encountered (TODO)
+
+print_frequency      
+----------------          
+
+Positive integer. Default value 1
+
+Sets how often the iterations are printed.  When set to 1, every
+iteration is printed; when set to 10, only every 10th iteration is
+printed.  When set to Inf, no iterations are printed, except for
+at x0.  Note that this only affects .print_level == 1 printing;
+all messages from higher values of .print_level will still be
+printed no matter what iteration they occurred on.
 
 maxit
 ----------------
 
-Setting the number of maximum iterations performed in GRANSO.
+Positive integer. Default value 1000
 
-quadprog_opts.QPsolver
+Max number of iterations.
+
+QPsolver
 ------------------
 
-Default: quadprog
+String in {'osqp', 'gurobi'}. Default: 'osqp'
 
-You can set it to be ``quadprog``, ``qpalm``, or ``gurobi``
+Select the QP solver used in the steering strategy and termination condition.
 
-
-quadprog_opts.verbose
----------------------
-
-Default: False
-
-When ``False``, the output of QPALM is suppressed
 
 

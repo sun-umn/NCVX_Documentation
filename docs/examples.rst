@@ -92,30 +92,30 @@ Notice that we have auto-differentiation feature implemented, so the analytical 
 
 1. Obtain the (pytorch) tensor form gradients from structure ``X``. And require gradient for the autodiff::
 
-   q = X.q
-   q.requires_grad_(True)
+      q = X.q
+      q.requires_grad_(True)
 
 2. Obtain parameters from ``runExample.py``::
 
-   m = parameters.m
-   Y = parameters.Y
+      m = parameters.m
+      Y = parameters.Y
 
 3. Define objective function. Notice that we must use pytorch function::
 
-   qtY = q.t() @ Y
-   f = 1/m * torch.norm(qtY, p = 1)
+      qtY = q.t() @ Y
+      f = 1/m * torch.norm(qtY, p = 1)
 
 4. Since no inequality constraint required in this problem, we set ``ci`` to ``None``::
 
-   ci = None
+      ci = None   
 
 5. Define the equality constraint function. We must initialize ``ce`` as a struct, 
    then assign different as ``ce.c1``, ``ce.c2``, ``ce.c3``...::
 
-   from pygransoStruct import general_struct
-   ce = general_struct()
-   ce.c1 = q.t() @ q - 1
+      from pygransoStruct import general_struct
+      ce = general_struct()
+      ce.c1 = q.t() @ q - 1
 
 6. Return user-defined results::
 
-   return [f,ci,ce]
+     return [f,ci,ce]

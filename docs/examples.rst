@@ -1,10 +1,10 @@
 Examples
 ========
 
-There are two required input files to use PyGRANSO, runExample.py and combinedFunction.py. 
+There are two required input files to use PyGRANSO, ``runExample.py`` and ``combinedFunction.py. ``
 Please do not change the name of two required files as it was used in the main algorithm.
 
-The required input for pygranso is vars, parameters (optional) and opts (optional)
+
 
 Dictionary Learning
 -----------------
@@ -18,7 +18,10 @@ where q is a n by 1 vector, Y is a n by m matrix. m = 10*n^2.
 
 In the given exampple, we set dimension n = 30.
 
-The 
+runExample.py
+============================
+
+The required input for pygranso is vars, parameters (optional) and opts (optional)
 
 LASSO
 ---------------

@@ -21,7 +21,20 @@ In the given exampple, we set dimension n = 30.
 runExample.py
 ============================
 
-The required input for pygranso is vars, parameters (optional) and opts (optional)
+The required input for ``pygranso()`` is ``vars``, ``parameters`` (optional) and ``opts`` (optional)
+
+1. ``vars``
+   
+   In the example, we set dimentsion::
+   n = 30.
+   
+   ``vars`` is a python dictionary used for indicate variable name and corresponding matrix dimension::
+   
+   vars = {"q": (n,1)}
+
+
+   
+
 
 LASSO
 ---------------

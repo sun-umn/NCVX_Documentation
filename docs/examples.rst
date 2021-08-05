@@ -1,7 +1,7 @@
 Examples
 ========
 
-There are two required input files to use PyGRANSO, ``runExample.py`` and ``combinedFunction.py. ``
+There are two required input files to use PyGRANSO, ``runExample.py`` and ``combinedFunction.py.``
 Please do not change the name of two required files as it was used in the main algorithm.
 
 
@@ -25,15 +25,36 @@ The required input for ``pygranso()`` is ``vars``, ``parameters`` (optional) and
 
 1. ``vars``
    
-   In the example, we set dimentsion::
+   In the example, we set dimension::
+
    n = 30.
    
-   ``vars`` is a python dictionary used for indicate variable name and corresponding matrix dimension::
-   
+   ``vars`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
+   Since ``q`` is a vector here, we set the dimension to ``(n,1)``::
+
    vars = {"q": (n,1)}
 
+2. ``parameters``
 
+   To save the computational sources, we recommend to generate all the required paramters in the ``runExample.py`` and 
+   pass it to ``combinedFunction.py.`` through function ``pygranso()``.
+
+   .. warning::
+      All non-scalar parameters should be Pytorch tensor
    
+      First initialize a structure for parameters::
+
+      from pygransoStruct import Parameters
+      parameters = Parameters()
+
+      Then define the parameters::
+
+      m = 10*n**2   # sample complexity
+      theta = 0.3   # sparsity level
+      Y = norm.ppf(np.random.rand(n,m)) * (norm.ppf(np.random.rand(n,m)) <= theta)  # Bernoulli-Gaussian model
+      parameters.Y = torch.from_numpy(Y) 
+      parameters.m = m
+
 
 
 LASSO

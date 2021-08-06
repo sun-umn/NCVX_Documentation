@@ -4,7 +4,7 @@ Robust PCA
 This example is based on Bai, Yu, Qijia Jiang, and Ju Sun. "Subgradient descent learns orthogonal dictionaries." arXiv preprint arXiv:1810.10702 (2018).
 
 
-.. image:: images/DictL.png
+.. image:: images/robustPCA.png
    :width: 600
 
 
@@ -15,14 +15,12 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 
 1. ``var_in``
    
-   In the example, we set dimension::
+  ``var_in`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
+   Since ``M`` and ``S`` are two matrices here, we set both of their dimension to ``(d1,d2)``::
 
-      n = 30.
-   
-   ``var_in`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
-   Since ``q`` is a vector here, we set the dimension to ``(n,1)``::
-
-      var_in = {"q": (n,1)}
+      d1 = 7
+      d2 = 8
+      var_in = {"M": (d1,d2),"S": (d1,d2)}
 
 2. ``parameters``
 
@@ -39,11 +37,9 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 
    Then define the parameters::
 
-      m = 10*n**2   # sample complexity
-      theta = 0.3   # sparsity level
-      Y = norm.ppf(np.random.rand(n,m)) * (norm.ppf(np.random.rand(n,m)) <= theta)  # Bernoulli-Gaussian model
-      parameters.Y = torch.from_numpy(Y) 
-      parameters.m = m
+      torch.manual_seed(1)
+      parameters.eta = .5
+      parameters.Y = torch.randn(d1,d2)
 
 3. ``opts``
 
@@ -53,18 +49,8 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
       opts = Options()
 
    Then define the options::
-
-      opts.QPsolver = 'osqp' 
-      opts.maxit = 10000
-      # User defined initialization. 
-      np.random.seed(1)
-      x0 = norm.ppf(np.random.rand(n,1))
-      x0 /= la.norm(x0,2)
-      opts.x0 = x0
-      opts.opt_tol = 1e-6
-      opts.fvalquit = 1e-6
-      opts.print_level = 1
-      opts.print_frequency = 10
+      
+      opts.x0 = np.ones((2*d1*d2,1))
 
    See :ref:`settings<settings>` for more information.
 
@@ -82,18 +68,19 @@ Notice that we have auto-differentiation feature implemented, so the analytical 
 
 1. Obtain the (pytorch) tensor form variables from structure ``X_struct``. And require gradient for the autodiff::
 
-      q = X_struct.q
-      q.requires_grad_(True)
+      M = X_struct.M
+      S = X_struct.S
+      M.requires_grad_(True)
+      S.requires_grad_(True)
 
 2. Obtain parameters from ``runExample.py``::
 
-      m = parameters.m
+      eta = parameters.eta
       Y = parameters.Y
 
 3. Define objective function. Notice that we must use pytorch function::
 
-      qtY = q.t() @ Y
-      f = 1/m * torch.norm(qtY, p = 1)
+      f = torch.norm(M, p = 'nuc') + eta * torch.norm(S, p = 1)
 
 4. Since no inequality constraint required in this problem, we set ``ci`` to ``None``::
 
@@ -104,7 +91,7 @@ Notice that we have auto-differentiation feature implemented, so the analytical 
 
       from pygransoStruct import general_struct
       ce = general_struct()
-      ce.c1 = q.t() @ q - 1
+      ce.c1 = M + S - Y
 
 6. Return user-defined results::
 

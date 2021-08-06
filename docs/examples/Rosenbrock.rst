@@ -6,7 +6,8 @@ Modified based on GRANSO's example.
 2-variable nonsmooth Rosenbrock objective function, subject to simple bound constraints
 
 Reference: Curtis, Frank E., Tim Mitchell, and Michael L. Overton. "A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles." Optimization Methods and Software 32.1 (2017): 148-181.
-.. image:: images/Rosenbrock.png
+
+.. image:: images/rosenbrock.png
    :width: 600
 
 
@@ -17,7 +18,7 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 
 1. ``var_in``
 
-   ``vars`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
+   ``var_in`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
    Since ``x1`` and ``x2`` are two scalars here, we set both of their dimensions to ``(1,1)``::
 
       var_in = {"x1": (1,1), "x2": (1,1)}

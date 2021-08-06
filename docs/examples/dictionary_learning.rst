@@ -19,7 +19,7 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 
       n = 30.
    
-   ``vars`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
+   ``var_in`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
    Since ``q`` is a vector here, we set the dimension to ``(n,1)``::
 
       var_in = {"q": (n,1)}
@@ -70,7 +70,7 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 
 After specify all three values (``parameters`` and ``opts`` are optional), call the main function::
 
-   soln = pygranso(vars,parameters,opts)
+   soln = pygranso(var_in,parameters,opts)
 
 combinedFunction.py
 -----------------

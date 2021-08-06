@@ -28,7 +28,7 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 
 1. ``var_in``
 
-   ``vars`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
+   ``var_in`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
    Since ``X`` is a matrix here, we set the dimension to ``(p,m)``::
 
       var_in = {"X": (p,m) }
@@ -73,7 +73,7 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 
 After specify all three values (``parameters`` and ``opts`` are optional), call the main function::
 
-   soln = pygranso(vars,parameters,opts)
+   soln = pygranso(var_in,parameters,opts)
 
 combinedFunction.py
 -----------------

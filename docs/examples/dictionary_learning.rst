@@ -66,7 +66,7 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
       opts.print_level = 1
       opts.print_frequency = 10
 
-   See :ref:`settings<Settings>` for more information.
+   See :ref:`settings<settings>` for more information.
 
 After specify all three values (``parameters`` and ``opts`` are optional), call the main function::
 

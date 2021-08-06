@@ -48,11 +48,11 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 
    Then define the parameters::
 
-      m = 10*n**2   # sample complexity
-      theta = 0.3   # sparsity level
-      Y = norm.ppf(np.random.rand(n,m)) * (norm.ppf(np.random.rand(n,m)) <= theta)  # Bernoulli-Gaussian model
-      parameters.Y = torch.from_numpy(Y) 
-      parameters.m = m
+     parameters = Parameters()
+     parameters.A = A
+     parameters.B = B
+     parameters.C = C
+     parameters.stability_margin = 1
 
 3. ``opts``
 
@@ -63,19 +63,13 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 
    Then define the options::
 
-      opts.QPsolver = 'osqp' 
-      opts.maxit = 10000
-      # User defined initialization. 
-      np.random.seed(1)
-      x0 = norm.ppf(np.random.rand(n,1))
-      x0 /= la.norm(x0,2)
-      opts.x0 = x0
-      opts.opt_tol = 1e-6
-      opts.fvalquit = 1e-6
-      opts.print_level = 1
-      opts.print_frequency = 10
+     opts.QPsolver = 'osqp' 
+     opts.maxit = 200
+     opts.x0 = np.zeros((p*m,1))
+     opts.print_level = 1
+     opts.print_frequency = 1
 
-   See :ref:`settings<Settings>` for more information.
+   See :ref:`settings<settings>` for more information.
 
 After specify all three values (``parameters`` and ``opts`` are optional), call the main function::
 

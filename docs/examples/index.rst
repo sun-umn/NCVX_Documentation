@@ -15,4 +15,5 @@ Examples
     dictionary_learning
     spectral_radius_opt
     Rosenbrock
+    robustPCA
     tv_denoising

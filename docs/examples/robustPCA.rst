@@ -1,11 +1,10 @@
-Generalized LASSO
+Robust PCA
 ========
 
-Generalized LASSO: total variation denoising
+This example is based on Bai, Yu, Qijia Jiang, and Ju Sun. "Subgradient descent learns orthogonal dictionaries." arXiv preprint arXiv:1810.10702 (2018).
 
-Reference: Boyd, Stephen, Neal Parikh, and Eric Chu. Distributed optimization and statistical learning via the alternating direction method of multipliers. Now Publishers Inc, 2011.
 
-.. image:: images/tvDenoising.png
+.. image:: images/DictL.png
    :width: 600
 
 
@@ -16,11 +15,14 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 
 1. ``var_in``
    
+   In the example, we set dimension::
+
+      n = 30.
+   
    ``var_in`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
    Since ``q`` is a vector here, we set the dimension to ``(n,1)``::
 
-      n = 80
-      var_in = {"x": (n,1)}
+      var_in = {"q": (n,1)}
 
 2. ``parameters``
 
@@ -37,17 +39,11 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 
    Then define the parameters::
 
-      eta = 0.5 # parameter for penalty term
-      torch.manual_seed(1)
-      b = torch.rand(n,1)
-      pos_one = torch.ones(n-1)
-      neg_one = -torch.ones(n-1)
-      F = torch.zeros(n-1,n)
-      F[:,0:n-1] += torch.diag(neg_one,0) 
-      F[:,1:n] += torch.diag(pos_one,0)
-      parameters.F = F.double()  # double precision requireed in torch operations 
-      parameters.b = b
-      parameters.eta = np.double(eta) # double precision requireed in torch operations 
+      m = 10*n**2   # sample complexity
+      theta = 0.3   # sparsity level
+      Y = norm.ppf(np.random.rand(n,m)) * (norm.ppf(np.random.rand(n,m)) <= theta)  # Bernoulli-Gaussian model
+      parameters.Y = torch.from_numpy(Y) 
+      parameters.m = m
 
 3. ``opts``
 
@@ -59,8 +55,14 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
    Then define the options::
 
       opts.QPsolver = 'osqp' 
-      opts.maxit = 1000
-      opts.x0 = np.ones((n,1))
+      opts.maxit = 10000
+      # User defined initialization. 
+      np.random.seed(1)
+      x0 = norm.ppf(np.random.rand(n,1))
+      x0 /= la.norm(x0,2)
+      opts.x0 = x0
+      opts.opt_tol = 1e-6
+      opts.fvalquit = 1e-6
       opts.print_level = 1
       opts.print_frequency = 10
 
@@ -80,26 +82,29 @@ Notice that we have auto-differentiation feature implemented, so the analytical 
 
 1. Obtain the (pytorch) tensor form variables from structure ``X_struct``. And require gradient for the autodiff::
 
-      x = X_struct.x
-      x.requires_grad_(True)
+      q = X_struct.q
+      q.requires_grad_(True)
 
 2. Obtain parameters from ``runExample.py``::
 
-      b = parameters.b
-      F = parameters.F
-      eta = parameters.eta
+      m = parameters.m
+      Y = parameters.Y
 
 3. Define objective function. Notice that we must use pytorch function::
 
-      f = (x-b).t() @ (x-b)  + eta * torch.norm( F@x, p = 1)
+      qtY = q.t() @ Y
+      f = 1/m * torch.norm(qtY, p = 1)
 
-4. Since no equality constraint required in this problem, we set ``ci`` to ``None``::
+4. Since no inequality constraint required in this problem, we set ``ci`` to ``None``::
 
       ci = None   
 
-5. Since no inequality constraint required in this problem, we set ``ci`` to ``None``::
+5. Define the equality constraint function. We must initialize ``ce`` as a struct, 
+   then assign different constraints as ``ce.c1``, ``ce.c2``, ``ce.c3``...::
 
-      ce = None
+      from pygransoStruct import general_struct
+      ce = general_struct()
+      ce.c1 = q.t() @ q - 1
 
 6. Return user-defined results::
 

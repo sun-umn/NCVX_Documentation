@@ -80,7 +80,7 @@ inequality constraint function ``ci`` and equality constraint function ``ce``.
 
 Notice that we have auto-differentiation feature implemented, so the analytical gradients are not needed.
 
-1. Obtain the (pytorch) tensor form gradients from structure ``X_struct``. And require gradient for the autodiff::
+1. Obtain the (pytorch) tensor form variables from structure ``X_struct``. And require gradient for the autodiff::
 
       q = X_struct.q
       q.requires_grad_(True)

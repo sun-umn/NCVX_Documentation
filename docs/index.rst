@@ -29,7 +29,7 @@ Contents
    intro
    install
    settings
-   examples
+   examples/index
 
 Contact
 ----------------------

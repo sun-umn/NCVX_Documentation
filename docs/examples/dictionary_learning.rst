@@ -7,9 +7,6 @@ This example is based on Bai, Yu, Qijia Jiang, and Ju Sun. "Subgradient descent 
 .. image:: images/DictL.png
    :width: 600
 
-where q is a n by 1 vector, Y is a n by m matrix. m = 10*n^2.
-
-In the given exampple, we set dimension n = 30.
 
 runExample.py
 -----------------

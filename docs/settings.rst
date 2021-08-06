@@ -1,7 +1,8 @@
 Settings
 ========
 
-Below listed the key options. For more options, please check the documentation of pygransoOptions.py and pygransoOptionsAdvanced.py
+Below listed the key options. For more options, please check the documentation of pygransoOptions.py and 
+pygransoOptionsAdvanced.py in the source code.
 
 x0
 ----------------

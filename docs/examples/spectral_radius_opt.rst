@@ -1,15 +1,12 @@
 Spectral Radius Optimization
 ========
 
-This example is based on Bai, Yu, Qijia Jiang, and Ju Sun. "Subgradient descent learns orthogonal dictionaries." arXiv preprint arXiv:1810.10702 (2018).
+This example is from Curtis, Frank E., Tim Mitchell, and Michael L. Overton. "A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles." Optimization Methods and Software 32.1 (2017): 148-181.
 
 
-.. image:: images/DictL.png
+.. image:: images/specR.png
    :width: 600
 
-where q is a n by 1 vector, Y is a n by m matrix. m = 10*n^2.
-
-In the given exampple, we set dimension n = 30.
 
 runExample.py
 -----------------

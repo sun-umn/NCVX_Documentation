@@ -17,7 +17,7 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 1. ``var_in``
    
    ``var_in`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
-   Since ``q`` is a vector here, we set the dimension to ``(n,1)``::
+   Since ``x`` is a vector here, we set the dimension to ``(n,1)``::
 
       n = 80
       var_in = {"x": (n,1)}

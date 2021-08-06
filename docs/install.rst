@@ -1,7 +1,12 @@
 Installation
 ============
 
-Installing PyGRANSO is simple. Here is a step by step plan on how to do it.
+Installing PyGRANSO is simple. Here is a step by step plan on how to do it::
+    conda install -c oxfordcontrol osqp
+
+    conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
+
+    pip install gurobipy
 
 .. note::
     TODO
@@ -9,22 +14,16 @@ Installing PyGRANSO is simple. Here is a step by step plan on how to do it.
 Dependencies
 -----------------
 
-First, obtain quadprog_ and QPALM_ if you do not already have them. You will also need Git_ in order to
-clone the repository.
+osqp-0.6.2
 
-.. _quadprog: https://www.mathworks.com/help/optim/ug/quadprog.html
-.. _QPALM: https://github.com/Benny44/QPALM_vLADEL
-.. _Git: http://git-scm.com/
+Python-3.9.6
 
-Once you have these, run::
+numpy-1.21.1
 
-    git clone XXX
-    cd XXX
-    pip install XXX
-    mkdir XXX
+scipy-1.7.0
 
-Installing PyGRANSO
------------------
-TODO
+pytorch-1.9.0
+
+gurobipy-9.1.2
     
 

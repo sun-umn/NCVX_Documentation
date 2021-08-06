@@ -11,9 +11,9 @@ This example is based on Bai, Yu, Qijia Jiang, and Ju Sun. "Subgradient descent 
 runExample.py
 -----------------
 
-The required input for ``pygranso()`` is ``vars``, ``parameters`` (optional) and ``opts`` (optional)
+The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) and ``opts`` (optional)
 
-1. ``vars``
+1. ``var_in``
    
    In the example, we set dimension::
 
@@ -22,7 +22,7 @@ The required input for ``pygranso()`` is ``vars``, ``parameters`` (optional) and
    ``vars`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
    Since ``q`` is a vector here, we set the dimension to ``(n,1)``::
 
-      vars = {"q": (n,1)}
+      var_in = {"q": (n,1)}
 
 2. ``parameters``
 

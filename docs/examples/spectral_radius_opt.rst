@@ -11,18 +11,27 @@ This example is from Curtis, Frank E., Tim Mitchell, and Michael L. Overton. "A 
 runExample.py
 -----------------
 
-The required input for ``pygranso()`` is ``vars``, ``parameters`` (optional) and ``opts`` (optional)
+First read the prepared input data from a Matlab file::
 
-1. ``vars``
-   
-   In the example, we set dimension::
+    currentdir = os.path.dirname(os.path.realpath(__file__))
+    file = currentdir + "/spec_radius_opt_data.mat"
+    mat = scipy.io.loadmat(file)
+    mat_struct = mat['sys']
+    mat_struct = mat_struct[0,0]
+    A = torch.from_numpy(mat_struct['A'])
+    B = torch.from_numpy(mat_struct['B'])
+    C = torch.from_numpy(mat_struct['C'])
+    p = B.shape[1]
+    m = C.shape[0]
 
-      n = 30.
-   
+The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) and ``opts`` (optional)
+
+1. ``var_in``
+
    ``vars`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
-   Since ``q`` is a vector here, we set the dimension to ``(n,1)``::
+   Since ``X`` is a matrix here, we set the dimension to ``(p,m)``::
 
-      vars = {"q": (n,1)}
+      var_in = {"X": (p,m) }
 
 2. ``parameters``
 

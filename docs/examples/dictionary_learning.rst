@@ -100,7 +100,7 @@ Notice that we have auto-differentiation feature implemented, so the analytical 
       ci = None   
 
 5. Define the equality constraint function. We must initialize ``ce`` as a struct, 
-   then assign different as ``ce.c1``, ``ce.c2``, ``ce.c3``...::
+   then assign different constraints as ``ce.c1``, ``ce.c2``, ``ce.c3``...::
 
       from pygransoStruct import general_struct
       ce = general_struct()

@@ -1,7 +1,7 @@
 Robust PCA
 ========
 
-This example is based on Bai, Yu, Qijia Jiang, and Ju Sun. "Subgradient descent learns orthogonal dictionaries." arXiv preprint arXiv:1810.10702 (2018).
+This example is based on Reference: Yi, Xinyang, et al. "Fast algorithms for robust PCA via gradient descent." Advances in neural information processing systems. 2016.
 
 
 .. image:: images/robustPCA.png

@@ -63,7 +63,7 @@ opts.viol_ineq_tol and opts.viol_eq_tol).
 
 print_level     
 ----------------
-Integer in {0,1,2,3}. Default value 1
+Integer in {0,1,2,3}. Default value: 1
 
 Level of detail printed to console regarding optimization progress:
 
@@ -78,7 +78,7 @@ Level of detail printed to console regarding optimization progress:
 print_frequency      
 ----------------          
 
-Positive integer. Default value 1
+Positive integer. Default value: 1
 
 Sets how often the iterations are printed.  When set to 1, every
 iteration is printed; when set to 10, only every 10th iteration is
@@ -87,17 +87,27 @@ at x0.  Note that this only affects .print_level == 1 printing;
 all messages from higher values of .print_level will still be
 printed no matter what iteration they occurred on.
 
+print_print_ascii     
+----------------          
+
+Boolean value. Default value: False
+
+By default, PyGRANSO's printed output uses the extended character map, 
+so nice looking tables can be made.  But if you need to record the output, 
+you can restrict the printed output 
+to only use the basic ASCII character map
+
 maxit
 ----------------
 
-Positive integer. Default value 1000
+Positive integer. Default value: 1000
 
 Max number of iterations.
 
 QPsolver
 ------------------
 
-String in {'osqp', 'gurobi'}. Default: 'osqp'
+String in {'osqp', 'gurobi'}. Default value: 'osqp'
 
 Select the QP solver used in the steering strategy and termination condition.
 

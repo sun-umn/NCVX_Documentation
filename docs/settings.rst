@@ -104,12 +104,93 @@ Positive integer. Default value: 1000
 
 Max number of iterations.
 
+halt_on_linesearch_bracket     
+----------------          
+
+Boolean value. Default value: True
+
+If the line search brackets a minimizer but fails to satisfy the 
+weak Wolfe conditions (necessary for a step to be accepted), PyGRANSO 
+will terminate at this iterate when this option is set to true 
+(default).  For unconstrained nonsmooth problems, it has been 
+observed that this type of line search failure is often an 
+indication that a stationarity has in fact been reached.  By 
+setting this parameter to false, PyGRANSO will instead first attempt 
+alternative optimization strategies (if available) to see if
+further progress can be made before terminating.   See
+gransoOptionsAdvanced for more details on PyGRANSO's available 
+fallback optimization strategies and how they can be configured. Recommend setting False in deep learning problem.
+
+max_fallback_level     
+----------------        
+
+Positive integer. Default value: 4
+
+Max number of strategy to be employed (>= min_fallback_level)
+NOTE: fallback levels 0 and 1 are only relevant for constrained problems. 
+
+        SEARCH DIRECTION STRATEGIES
+        If a step cannot be taken with the current search direction (e.g.
+        computed an invalid search direction or the line search failed on a
+        valid search direction), PyGRANSO may attempt up to four optional 
+        fallback strategies to try to continue making progress from the current
+        iterate.  The strategies are as follows and are attempted in order:
+            
+            0. BFGS-SQP steering 
+                - default for constrained problems
+                - irrelevant for unconstrained problems
+            1. BFGS-SQP steering with BFGS's inverse Hessian approximation
+                replaced by the identity. If strategy #0 failed because quadprog
+                failed on the QPs, this "steepest descent" version of the 
+                steering QPs may be easier to solve.
+                - irrelevant for unconstrained problems
+            2. Standard BFGS update on penalty/objective function, no steering
+                - default for unconstrained problems
+            3. Steepest descent on penalty/objective function, no steering
+            4. Randomly generated search direction 
+
 QPsolver
 ------------------
 
 String in {'osqp', 'gurobi'}. Default value: 'osqp'
 
 Select the QP solver used in the steering strategy and termination condition.
+
+init_step_size     
+----------------        
+
+Positive real value. Default value: 1
+
+Initial step size t in line search method. Recommend using small value (e.g., 1e-2) for deep learning problem.
+
+init_step_size     
+----------------        
+
+Positive integer. Default value: inf
+
+Max number of iterations in line search method. Recommend using small value (e.g., 25) for deep learning problem.
+
+is_backtrack_linesearch     
+----------------          
+
+Boolean value. Default value: False
+
+By default, PyGRANSO will use Weak-Wolfe line search method. By enabling this method, the second wolfe condition will be disabled.
+
+searching_direction_rescaling     
+----------------          
+
+Boolean value. Default value: False
+
+Rescale the norm of searching direction to be 1. Recommend setting True in deep learning problem.
+
+disable_terminationcode_6     
+----------------          
+
+Boolean value. Default value: False
+
+Disable termination code 6 to ensure pygranso can always make a movement even if the line search failed. Recommend setting True in deep learning problem.
+
 
 
 

@@ -2,7 +2,7 @@ PyGRANSO's documentation
 =======================================
 
 .. warning::
-   The software is under development.
+   The software is under development. Use it at your own risk, and please send your feedback to Buyun Liang via liang664@umn.edu.
 
 
 Toward a user-friendly and scalable numerical package for nonsmooth, nonconvex, constrained optimization

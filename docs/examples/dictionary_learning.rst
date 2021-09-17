@@ -32,8 +32,7 @@ The arguments for ``pygranso()`` is ``var_dim_map`` (if specify it, please leave
 
 3. ``user_data``
 
-   To save the computational sources, we recommend to generate all the required data in the ``runExample.py`` and 
-   pass it to ``combinedFunction.py.`` through function ``pygranso()``.
+   To save the computational sources, we recommend to generate all the required data in the ``runExample.py``.
 
    .. warning::
       All non-scalar parameters should be in Pytorch tensor form

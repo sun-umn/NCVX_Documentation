@@ -11,9 +11,9 @@ This example is based on Reference: Yi, Xinyang, et al. "Fast algorithms for rob
 runExample.py
 -----------------
 
-The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) and ``opts`` (optional)
+The arguments for ``pygranso()`` is ``var_dim_map`` (if specify it, please leave nn_model as default None), ``nn_model`` (only used in deep learning problem. If specify it, please leave var_dim_map as default None), ``torch_device`` (optional, default torch.device('cpu')), ``user_data`` (optional) and ``user_opts`` (optional).
 
-1. ``var_in``
+1. ``var_dim_map``
    
   ``var_in`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
    Since ``M`` and ``S`` are two matrices here, we set both of their dimension to ``(d1,d2)``::
@@ -22,26 +22,30 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
       d2 = 8
       var_in = {"M": (d1,d2),"S": (d1,d2)}
 
-2. ``parameters``
+2. ``torch_device``
+   In the example, we will use cpu. (recommend cpu for small scale problem)::
 
-   To save the computational sources, we recommend to generate all the required paramters in the ``runExample.py`` and 
-   pass it to ``combinedFunction.py.`` through function ``pygranso()``.
+      device = torch.device('cpu')
+
+3. ``user_data``
+
+   To save the computational sources, we recommend to generate all the required paramters in the ``runExample.py``.
 
    .. warning::
       All non-scalar parameters should be Pytorch tensor
    
-   First initialize a structure for parameters::
+   First initialize a structure for Data::
 
-      from pygransoStruct import Parameters
-      parameters = Parameters()
+      from pygransoStruct import Data
+      parameters = Data()
 
    Then define the parameters::
 
       torch.manual_seed(1)
       parameters.eta = .5
-      parameters.Y = torch.randn(d1,d2)
+      data_in.Y = torch.randn(d1,d2).to(device=device, dtype=torch.double)
 
-3. ``opts``
+4. ``user_opts``
 
    User-provided options. First initialize a structure for options::
 
@@ -50,18 +54,18 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 
    Then define the options::
       
-      opts.x0 = np.ones((2*d1*d2,1))
+      opts.x0 = .2 * torch.ones((2*d1*d2,1)).to(device=device, dtype=torch.double)
 
    See :ref:`settings<settings>` for more information.
 
 After specify all three values (``parameters`` and ``opts`` are optional), call the main function::
 
-   soln = pygranso(var_in,parameters,opts)
+   soln = pygranso(var_dim_map = var_in, torch_device=device, user_data = data_in, user_opts = opts)
 
 combinedFunction.py
 -----------------
 
-The ``combinedFunction.py`` is used to generate user defined objection function ``f``, 
+In ``combinedFunction.py`` , ``combinedFunction(X_struct, data_in = None)`` is used to generate user defined objection function ``f``, 
 inequality constraint function ``ci`` and equality constraint function ``ce``.
 
 Notice that we have auto-differentiation feature implemented, so the analytical gradients are not needed.
@@ -96,3 +100,5 @@ Notice that we have auto-differentiation feature implemented, so the analytical 
 6. Return user-defined results::
 
      return [f,ci,ce]
+
+``eval_obj(X_struct,data_in = None)`` is similar to ``combinedFunction()`` described above. The only difference is that this function is only used to generate objective value. 

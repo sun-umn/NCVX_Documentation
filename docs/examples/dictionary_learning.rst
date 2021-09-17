@@ -11,31 +11,37 @@ This example is based on Bai, Yu, Qijia Jiang, and Ju Sun. "Subgradient descent 
 runExample.py
 -----------------
 
-The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) and ``opts`` (optional)
+The arguments for ``pygranso()`` is ``var_dim_map`` (if specify it, please leave nn_model as default None), ``nn_model`` (only used in deep learning problem. If specify it, please leave var_dim_map as default None), ``torch_device`` (optional, default torch.device('cpu')), ``user_data`` (optional) and ``user_opts`` (optional).
 
-1. ``var_in``
+1. ``var_dim_map``
    
    In the example, we set dimension::
 
-      n = 30.
+      n = 30
    
    ``var_in`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
    Since ``q`` is a vector here, we set the dimension to ``(n,1)``::
 
       var_in = {"q": (n,1)}
 
-2. ``parameters``
+2. ``torch_device``
+   In the example, we will use cuda. (If cuda is not available, please use cpu instead)::
 
-   To save the computational sources, we recommend to generate all the required paramters in the ``runExample.py`` and 
+      device = torch.device('cuda')
+   
+
+3. ``user_data``
+
+   To save the computational sources, we recommend to generate all the required data in the ``runExample.py`` and 
    pass it to ``combinedFunction.py.`` through function ``pygranso()``.
 
    .. warning::
-      All non-scalar parameters should be Pytorch tensor
+      All non-scalar parameters should be in Pytorch tensor form
    
    First initialize a structure for parameters::
 
-      from pygransoStruct import Parameters
-      parameters = Parameters()
+      from pygransoStruct import Data
+      data_in = Data()
 
    Then define the parameters::
 
@@ -45,7 +51,7 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
       parameters.Y = torch.from_numpy(Y) 
       parameters.m = m
 
-3. ``opts``
+4. ``user_opts``
 
    User-provided options. First initialize a structure for options::
 
@@ -55,27 +61,27 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
    Then define the options::
 
       opts.QPsolver = 'osqp' 
-      opts.maxit = 10000
-      # User defined initialization. 
-      np.random.seed(1)
+      opts.maxit = 500
       x0 = norm.ppf(np.random.rand(n,1))
       x0 /= la.norm(x0,2)
+      x0 = torch.from_numpy(x0).to(device=device, dtype=torch.double)
       opts.x0 = x0
       opts.opt_tol = 1e-6
       opts.fvalquit = 1e-6
       opts.print_level = 1
       opts.print_frequency = 10
+      opts.print_ascii = True
 
    See :ref:`settings<settings>` for more information.
 
-After specify all three values (``parameters`` and ``opts`` are optional), call the main function::
+Call the main function::
 
-   soln = pygranso(var_in,parameters,opts)
+   soln = pygranso(var_dim_map = var_in, torch_device = device, user_data = data_in, user_opts = opts)
 
 combinedFunction.py
 -----------------
 
-The ``combinedFunction.py`` is used to generate user defined objection function ``f``, 
+In ``combinedFunction.py`` , ``combinedFunction(X_struct, data_in = None)`` is used to generate user defined objection function ``f``, 
 inequality constraint function ``ci`` and equality constraint function ``ce``.
 
 Notice that we have auto-differentiation feature implemented, so the analytical gradients are not needed.
@@ -109,3 +115,5 @@ Notice that we have auto-differentiation feature implemented, so the analytical 
 6. Return user-defined results::
 
      return [f,ci,ce]
+
+``eval_obj(X_struct,data_in = None)`` is similar to ``combinedFunction()`` described above. The only difference is that this function is only used to generate objective value. 

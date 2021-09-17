@@ -38,7 +38,7 @@ The arguments for ``pygranso()`` is ``var_dim_map`` (if specify it, please leave
    First initialize a structure for Data::
 
       from pygransoStruct import Data
-      parameters = Data()
+      data_in = Data()
 
    Then define the parameters::
 
@@ -59,9 +59,9 @@ The arguments for ``pygranso()`` is ``var_dim_map`` (if specify it, please leave
 
    See :ref:`settings<settings>` for more information.
 
-After specify all three values (``parameters`` and ``opts`` are optional), call the main function::
+Call the main function::
 
-   soln = pygranso(var_dim_map = var_in, torch_device=device, user_data = data_in, user_opts = opts)
+   soln = pygranso(var_dim_map = var_in, torch_device = device, user_data = data_in, user_opts = opts)
 
 combinedFunction.py
 -----------------

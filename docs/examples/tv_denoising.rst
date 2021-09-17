@@ -12,9 +12,9 @@ Reference: Boyd, Stephen, Neal Parikh, and Eric Chu. Distributed optimization an
 runExample.py
 -----------------
 
-The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) and ``opts`` (optional)
+The arguments for ``pygranso()`` is ``var_dim_map`` (if specify it, please leave nn_model as default None), ``nn_model`` (only used in deep learning problem. If specify it, please leave var_dim_map as default None), ``torch_device`` (optional, default torch.device('cpu')), ``user_data`` (optional) and ``user_opts`` (optional).
 
-1. ``var_in``
+1. ``var_dim_map``
    
    ``var_in`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
    Since ``x`` is a vector here, we set the dimension to ``(n,1)``::
@@ -22,7 +22,13 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
       n = 80
       var_in = {"x": (n,1)}
 
-2. ``parameters``
+2. ``torch_device``
+   
+   In the example, we will use cpu. (recommend cpu for small scale problem)::
+
+      device = torch.device('cpu')
+      
+3. ``user_data``
 
    To save the computational sources, we recommend to generate all the required paramters in the ``runExample.py`` and 
    pass it to ``combinedFunction.py.`` through function ``pygranso()``.
@@ -30,10 +36,10 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
    .. warning::
       All non-scalar parameters should be Pytorch tensor
    
-   First initialize a structure for parameters::
+   First initialize a structure for data::
 
-      from pygransoStruct import Parameters
-      parameters = Parameters()
+      from pygransoStruct import Data
+      data_in = Data()
 
    Then define the parameters::
 
@@ -45,11 +51,11 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
       F = torch.zeros(n-1,n)
       F[:,0:n-1] += torch.diag(neg_one,0) 
       F[:,1:n] += torch.diag(pos_one,0)
-      parameters.F = F.double()  # double precision requireed in torch operations 
-      parameters.b = b
-      parameters.eta = np.double(eta) # double precision requireed in torch operations 
+      data_in.F = F.to(device=device, dtype=torch.double)  # double precision requireed in torch operations 
+      data_in.b = b.to(device=device, dtype=torch.double)
+      data_in.eta = np.double(eta) # double precision requireed in torch operations 
 
-3. ``opts``
+4. ``user_opts``
 
    User-provided options. First initialize a structure for options::
 
@@ -60,20 +66,20 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 
       opts.QPsolver = 'osqp' 
       opts.maxit = 1000
-      opts.x0 = np.ones((n,1))
+      opts.x0 = torch.ones((n,1)).to(device=device, dtype=torch.double)
       opts.print_level = 1
       opts.print_frequency = 10
 
    See :ref:`settings<settings>` for more information.
 
-After specify all three values (``parameters`` and ``opts`` are optional), call the main function::
+Call the main function::
 
-   soln = pygranso(var_in,parameters,opts)
+   soln = pygranso(var_dim_map = var_in, torch_device = device, user_data = data_in, user_opts = opts)
 
 combinedFunction.py
 -----------------
 
-The ``combinedFunction.py`` is used to generate user defined objection function ``f``, 
+In ``combinedFunction.py`` , ``combinedFunction(X_struct, data_in = None)`` is used to generate user defined objection function ``f``, 
 inequality constraint function ``ci`` and equality constraint function ``ce``.
 
 Notice that we have auto-differentiation feature implemented, so the analytical gradients are not needed.
@@ -83,11 +89,11 @@ Notice that we have auto-differentiation feature implemented, so the analytical 
       x = X_struct.x
       x.requires_grad_(True)
 
-2. Obtain parameters from ``runExample.py``::
+2. Obtain data from ``runExample.py``::
 
-      b = parameters.b
-      F = parameters.F
-      eta = parameters.eta
+       b = data_in.b
+       F = data_in.F
+       eta = data_in.eta
 
 3. Define objective function. Notice that we must use pytorch function::
 
@@ -104,3 +110,5 @@ Notice that we have auto-differentiation feature implemented, so the analytical 
 6. Return user-defined results::
 
      return [f,ci,ce]
+
+``eval_obj(X_struct,data_in = None)`` is similar to ``combinedFunction()`` described above. The only difference is that this function is only used to generate objective value. 

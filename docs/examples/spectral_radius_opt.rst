@@ -55,7 +55,7 @@ The arguments for ``pygranso()`` is ``var_dim_map`` (if specify it, please leave
    First initialize a structure for data::
 
       from pygransoStruct import Data
-      parameters = Data()
+      data_in = Data()
 
    Then define the parameters::
 

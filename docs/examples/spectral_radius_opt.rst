@@ -13,27 +13,38 @@ runExample.py
 
 First read the prepared input data from a Matlab file::
 
-    currentdir = os.path.dirname(os.path.realpath(__file__))
-    file = currentdir + "/spec_radius_opt_data.mat"
-    mat = scipy.io.loadmat(file)
-    mat_struct = mat['sys']
-    mat_struct = mat_struct[0,0]
-    A = torch.from_numpy(mat_struct['A'])
-    B = torch.from_numpy(mat_struct['B'])
-    C = torch.from_numpy(mat_struct['C'])
-    p = B.shape[1]
-    m = C.shape[0]
+      # device = torch.device('cuda' )
+      device = torch.device('cpu' )
+      print('Using device:', device)
 
-The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) and ``opts`` (optional)
+      # read input data from matlab file
+      currentdir = os.path.dirname(os.path.realpath(__file__))
+      file = currentdir + "/spec_radius_opt_data.mat"
+      mat = scipy.io.loadmat(file)
+      mat_struct = mat['sys']
+      mat_struct = mat_struct[0,0]
+      A = torch.from_numpy(mat_struct['A']).to(device=device, dtype=torch.double)
+      B = torch.from_numpy(mat_struct['B']).to(device=device, dtype=torch.double)
+      C = torch.from_numpy(mat_struct['C']).to(device=device, dtype=torch.double)
+      p = B.shape[1]
+      m = C.shape[0]
 
-1. ``var_in``
+The arguments for ``pygranso()`` is ``var_dim_map`` (if specify it, please leave nn_model as default None), ``nn_model`` (only used in deep learning problem. If specify it, please leave var_dim_map as default None), ``torch_device`` (optional, default torch.device('cpu')), ``user_data`` (optional) and ``user_opts`` (optional).
+
+1. ``var_dim_map``
 
    ``var_in`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
    Since ``X`` is a matrix here, we set the dimension to ``(p,m)``::
 
       var_in = {"X": (p,m) }
 
-2. ``parameters``
+2. ``torch_device``
+   
+   In the example, we will use cpu. (recommend cpu for small scale problem)::
+
+      device = torch.device('cpu')
+
+3. ``user_data``
 
    To save the computational sources, we recommend to generate all the required paramters in the ``runExample.py`` and 
    pass it to ``combinedFunction.py.`` through function ``pygranso()``.
@@ -41,20 +52,20 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
    .. warning::
       All non-scalar parameters should be Pytorch tensor
    
-   First initialize a structure for parameters::
+   First initialize a structure for data::
 
-      from pygransoStruct import Parameters
-      parameters = Parameters()
+      from pygransoStruct import Data
+      parameters = Data()
 
    Then define the parameters::
 
-     parameters = Parameters()
-     parameters.A = A
-     parameters.B = B
-     parameters.C = C
-     parameters.stability_margin = 1
+      data_in = Data()
+      data_in.A = A
+      data_in.B = B
+      data_in.C = C
+      data_in.stability_margin = 1
 
-3. ``opts``
+4. ``user_opts``
 
    User-provided options. First initialize a structure for options::
 
@@ -63,22 +74,22 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 
    Then define the options::
 
-     opts.QPsolver = 'osqp' 
-     opts.maxit = 200
-     opts.x0 = np.zeros((p*m,1))
-     opts.print_level = 1
-     opts.print_frequency = 1
+      opts.QPsolver = 'osqp' 
+      opts.maxit = 200
+      opts.x0 = torch.zeros(p*m,1).to(device=device, dtype=torch.double)
+      opts.print_level = 1
+      opts.print_frequency = 1
 
    See :ref:`settings<settings>` for more information.
 
-After specify all three values (``parameters`` and ``opts`` are optional), call the main function::
+Call the main function::
 
-   soln = pygranso(var_in,parameters,opts)
+   soln = pygranso(var_dim_map = var_in, torch_device = device, user_data = data_in, user_opts = opts)
 
 combinedFunction.py
 -----------------
 
-The ``combinedFunction.py`` is used to generate user defined objection function ``f``, 
+In ``combinedFunction.py`` , ``combinedFunction(X_struct, data_in = None)`` is used to generate user defined objection function ``f``, 
 inequality constraint function ``ci`` and equality constraint function ``ce``.
 
 Notice that we have auto-differentiation feature implemented, so the analytical gradients are not needed.
@@ -88,12 +99,12 @@ Notice that we have auto-differentiation feature implemented, so the analytical 
       X = X_struct.X
       X.requires_grad_(True)
 
-2. Obtain parameters from ``runExample.py``::
+2. Obtain data from ``runExample.py``::
 
-      A = parameters.A
-      B = parameters.B
-      C = parameters.C
-      stability_margin = parameters.stability_margin
+      A = data_in.A
+      B = data_in.B
+      C = data_in.C
+      stability_margin = data_in.stability_margin
 
 3. Define objective function. Notice that we must use pytorch function::
 
@@ -114,3 +125,5 @@ Notice that we have auto-differentiation feature implemented, so the analytical 
 6. Return user-defined results::
 
      return [f,ci,ce]
+
+``eval_obj(X_struct,data_in = None)`` is similar to ``combinedFunction()`` described above. The only difference is that this function is only used to generate objective value. 

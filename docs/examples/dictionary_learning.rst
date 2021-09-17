@@ -25,6 +25,7 @@ The arguments for ``pygranso()`` is ``var_dim_map`` (if specify it, please leave
       var_in = {"q": (n,1)}
 
 2. ``torch_device``
+   
    In the example, we will use cuda. (If cuda is not available, please use cpu instead)::
 
       device = torch.device('cuda')
@@ -90,10 +91,10 @@ Notice that we have auto-differentiation feature implemented, so the analytical 
       q = X_struct.q
       q.requires_grad_(True)
 
-2. Obtain parameters from ``runExample.py``::
+2. Obtain data from ``runExample.py``::
 
-      m = parameters.m
-      Y = parameters.Y
+       m = data_in.m
+       Y = data_in.Y
 
 3. Define objective function. Notice that we must use pytorch function::
 

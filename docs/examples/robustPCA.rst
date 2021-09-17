@@ -23,6 +23,7 @@ The arguments for ``pygranso()`` is ``var_dim_map`` (if specify it, please leave
       var_in = {"M": (d1,d2),"S": (d1,d2)}
 
 2. ``torch_device``
+   
    In the example, we will use cpu. (recommend cpu for small scale problem)::
 
       device = torch.device('cpu')
@@ -77,10 +78,10 @@ Notice that we have auto-differentiation feature implemented, so the analytical 
       M.requires_grad_(True)
       S.requires_grad_(True)
 
-2. Obtain parameters from ``runExample.py``::
+2. Obtain data from ``runExample.py``::
 
-      eta = parameters.eta
-      Y = parameters.Y
+       eta = data_in.eta
+       Y = data_in.Y
 
 3. Define objective function. Notice that we must use pytorch function::
 

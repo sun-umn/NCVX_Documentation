@@ -14,20 +14,26 @@ Reference: Curtis, Frank E., Tim Mitchell, and Michael L. Overton. "A BFGS-SQP m
 runExample.py
 -----------------
 
-The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) and ``opts`` (optional)
+The arguments for ``pygranso()`` is ``var_dim_map`` (if specify it, please leave nn_model as default None), ``nn_model`` (only used in deep learning problem. If specify it, please leave var_dim_map as default None), ``torch_device`` (optional, default torch.device('cpu')), ``user_data`` (optional) and ``user_opts`` (optional).
 
-1. ``var_in``
+1. ``var_dim_map``
 
    ``var_in`` is a python dictionary used for indicate variable name and corresponding matrix dimension. 
    Since ``x1`` and ``x2`` are two scalars here, we set both of their dimensions to ``(1,1)``::
 
       var_in = {"x1": (1,1), "x2": (1,1)}
 
-2. ``parameters``
+2. ``torch_device``
+   
+   In the example, we will use cpu. (recommend cpu for small scale problem)::
 
-   Parameter is not used in this problem.
+      device = torch.device('cpu')
 
-3. ``opts``
+3. ``user_data``
+
+   user_data is not used in this problem.
+
+4. ``user_opts``
 
    User-provided options. First initialize a structure for options::
 
@@ -36,22 +42,22 @@ The required input for ``pygranso()`` is ``var_in``, ``parameters`` (optional) a
 
    Then define the options::
 
-     opts.QPsolver = 'osqp'
-     opts.maxit = 100
-     opts.print_level = 1
-     opts.print_frequency = 1
-     opts.x0 = np.ones((2,1))
+      opts.QPsolver = 'osqp'
+      opts.maxit = 1000
+      opts.print_level = 1
+      opts.print_frequency = 1
+      opts.x0 = torch.ones((2,1), device=device, dtype=torch.double)
 
    See :ref:`settings<settings>` for more information.
 
 After specify two values (``parameters`` and ``opts`` are optional), call the main function::
 
-   soln = pygranso(var_in, user_opts = opts)
+   soln = pygranso(var_dim_map = var_in, torch_device=device, user_opts = opts)
 
 combinedFunction.py
 -----------------
 
-The ``combinedFunction.py`` is used to generate user defined objection function ``f``, 
+In ``combinedFunction.py`` , ``combinedFunction(X_struct, data_in = None)`` is used to generate user defined objection function ``f``, 
 inequality constraint function ``ci`` and equality constraint function ``ce``.
 
 Notice that we have auto-differentiation feature implemented, so the analytical gradients are not needed.
@@ -63,7 +69,7 @@ Notice that we have auto-differentiation feature implemented, so the analytical 
         x1.requires_grad_(True)
         x2.requires_grad_(True)
 
-2. Obtain parameters from ``runExample.py``: skip
+2. Obtain data from ``runExample.py``: skip
 
 3. Define objective function. Notice that we must use pytorch function::
 
@@ -84,3 +90,5 @@ Notice that we have auto-differentiation feature implemented, so the analytical 
 6. Return user-defined results::
 
      return [f,ci,ce]
+
+``eval_obj(X_struct,data_in = None)`` is similar to ``combinedFunction()`` described above. The only difference is that this function is only used to generate objective value. 

@@ -16,30 +16,30 @@ The arguments for ``pygranso()`` is ``var_dim_map`` (if specify it, please leave
 
 1. ``nn_model``
 
-   Check Reference for the setting of neural network in PyTorch
+   Check Reference for the setting of neural network in PyTorch::
    
         class Net(nn.Module):
-                def __init__(self):
-                        super().__init__()
-                        self.conv1 = nn.Conv2d(3, 6, 5)
-                        self.conv1_bn = nn.BatchNorm2d(6)
-                        self.pool = nn.MaxPool2d(2, 2)
-                        self.conv2 = nn.Conv2d(6, 8, 9)
-                        self.conv2_bn = nn.BatchNorm2d(8)
-                        self.fc1 = nn.Linear(8 * 3 * 3, 30)
-                        self.fc1_bn = nn.BatchNorm1d(30)
-                        self.fc2 = nn.Linear(30, 20)
-                        self.fc2_bn = nn.BatchNorm1d(20)
-                        self.fc3 = nn.Linear(20, 10)
+             def __init__(self):
+                     super().__init__()
+                     self.conv1 = nn.Conv2d(3, 6, 5)
+                     self.conv1_bn = nn.BatchNorm2d(6)
+                     self.pool = nn.MaxPool2d(2, 2)
+                     self.conv2 = nn.Conv2d(6, 8, 9)
+                     self.conv2_bn = nn.BatchNorm2d(8)
+                     self.fc1 = nn.Linear(8 * 3 * 3, 30)
+                     self.fc1_bn = nn.BatchNorm1d(30)
+                     self.fc2 = nn.Linear(30, 20)
+                     self.fc2_bn = nn.BatchNorm1d(20)
+                     self.fc3 = nn.Linear(20, 10)
 
-                def forward(self, x):
-                        x = self.pool(F.elu( self.conv1_bn(self.conv1(x))  ))
-                        x = self.pool(F.elu( self.conv2_bn(self.conv2(x))  ))
-                        x = torch.flatten(x, 1) # flatten all dimensions except batch
-                        x = F.elu( self.fc1_bn(self.fc1(x)) )
-                        x = F.elu( self.fc2_bn(self.fc2(x)) )
-                        x = self.fc3(x)
-                        return x
+             def forward(self, x):
+                     x = self.pool(F.elu( self.conv1_bn(self.conv1(x))  ))
+                     x = self.pool(F.elu( self.conv2_bn(self.conv2(x))  ))
+                     x = torch.flatten(x, 1) # flatten all dimensions except batch
+                     x = F.elu( self.fc1_bn(self.fc1(x)) )
+                     x = F.elu( self.fc2_bn(self.fc2(x)) )
+                     x = self.fc3(x)
+                     return x
 
         torch.manual_seed(0)
         # setting device on GPU if available, else CPU

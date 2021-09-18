@@ -16,7 +16,7 @@ The arguments for ``pygranso()`` is ``var_dim_map`` (if specify it, please leave
 
 1. ``nn_model``
 
-   Check Reference for the setting of neural network in PyTorch::
+   Check Reference for the initialization of neural network in PyTorch::
    
         class Net(nn.Module):
              def __init__(self):

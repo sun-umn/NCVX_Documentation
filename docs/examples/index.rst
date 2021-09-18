@@ -12,8 +12,10 @@ Examples
     :maxdepth: 100
     :hidden:
  
+    unconstrained_deep_learning
     dictionary_learning
     spectral_radius_opt
     Rosenbrock
     robustPCA
     tv_denoising
+    

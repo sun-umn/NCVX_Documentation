@@ -17,8 +17,8 @@ and practical problems are becoming increasingly more complex and large-scale th
 software packages can handle. 
 
 The GRANSO package (http://www.timmitchell.com/software/GRANSO/) is the first numerical optimization package that can handle general nonconvex, 
-nonsmooth, constrained optimization problems based on MATLAB. The package is very stable and 
-produces meaningful results when other carefully crafted solvers fail [4]. However, several 
+nonsmooth, constrained optimization problems based on MATLAB  (Curtis et al., 2017). The package is very stable and 
+produces meaningful results when other carefully crafted solvers fail. However, several 
 limitations of GRANSO preclude its potential broad deployment by general users:  
 
 1. It only allows vector variables but not matrices or tensors, while the latter two are common 
@@ -64,10 +64,13 @@ Main improvements includes:
 4. Enabling PyGRANSO to solve small scale unconstrained deep learning problems. The new version that could 
    handle constrained deep learning problem will be released soon.  
 
-5. 
+5. Added several new user options to solve common numerical issues in deep learning: linesearch_maxit, linesearch_step_size, 
+   is_backtrack_linesearch, searching_direction_rescaling, disable_terminationcode_6. Check the settings page for more information.
 
 References
 -----------------
+
+Frank E. Curtis, Tim Mitchell, and Michael L. Overton. "A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles." Optimization Methods and Software 32.1 (2017): 148-181.
 
 Stephen Boyd, Stephen P Boyd, and Lieven Vandenberghe.Convex optimization. Cambridge university press, 2004
 

@@ -13,7 +13,7 @@ Installing PyGRANSO is simple. Here is a step by step plan on how to do it:
 
      conda install -c oxfordcontrol osqp
 
-     conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
+     conda install pytorch torchvision torchaudio cudatoolkit=11 -c pytorch
 
 4. Check the examples page in the documentation and example codes in PyGRANSO package for detailed instruction.
 

@@ -2,13 +2,20 @@ Installation
 ============
 
 Installing PyGRANSO is simple. Here is a step by step plan on how to do it::
+
+    1. Download the latest version of PyGRANSO on GitHub (https://github.com/sun-umn/PyGRANSO)
     
-    conda install -c oxfordcontrol osqp
+    2. We recommend creating a new conda environment to manage PyGRANSO dependencies.
+   
+        In new conda environment, run::
 
-    conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
+            conda install -c oxfordcontrol osqp
 
-.. note::
-    TODO
+            conda install pytorch torchvision torchaudio cudatoolkit=10.2 -c pytorch
+
+    3. Check the examples page in the documentation and example codes in PyGRANSO package for detailed instruction.
+
+    4. Modify the working directory used in example codes.
     
 Dependencies
 -----------------

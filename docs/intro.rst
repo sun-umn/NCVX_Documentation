@@ -34,7 +34,7 @@ is challenging and even infeasible, especially in deep learning.
 license fees for researchers and developers. 
 
 
-Our Contribution
+Our Contributions
 ------------------
 
 By revamping several key components of GRANSO, we built a scalable and user-friendly python numerical optimization 

@@ -1,0 +1,178 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Steering Parameters &#8212; PyGRANSO  documentation</title>
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="QP Parameters" href="qp_parameters.html" />
+    <link rel="prev" title="Searching Direction Strategies" href="searching_direction.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="steering-parameters">
+<h1>Steering Parameters<a class="headerlink" href="#steering-parameters" title="Permalink to this headline">¶</a></h1>
+<p>This part only relevant for constrained problems</p>
+<section id="steering-l1-model">
+<h2>steering_l1_model<a class="headerlink" href="#steering-l1-model" title="Permalink to this headline">¶</a></h2>
+<p>Boolean value. Default value: True</p>
+<p>Determines whether or not the one norm (the standard choice) or the
+infinity norm is used for the total violation measure in steering,
+which in turn affects the predicted violation reduction.</p>
+</section>
+<section id="steering-ineq-margin">
+<h2>steering_ineq_margin<a class="headerlink" href="#steering-ineq-margin" title="Permalink to this headline">¶</a></h2>
+<p>Non-negative real value. Default value: 1e-6</p>
+<p>Sets the margin of feasibility for problems that only have
+inequality constraints.  For such problems, steering can be
+adaptively enabled instead of applied at every iteration.  When
+the inequality constraints are all at least steering_ineq_margin
+away from being active, steering will be disabled.  Setting
+steering_ineq_margin to zero means that steering will only be
+applied when one or more inequality constraints are active ( &gt;= 0)
+while setting steering_ineq_margin to inf means that steering will
+be applied on every iteration.
+NOTE: this parameter has no effect if equality constraints are
+present and steering will always be enabled every iteration.</p>
+</section>
+<section id="steering-maxit">
+<h2>steering_maxit<a class="headerlink" href="#steering-maxit" title="Permalink to this headline">¶</a></h2>
+<p>Positive integer. Default value: 10</p>
+<p>If the default steering direction is not predicted to adequately
+promote progress towards feasibility, steering_maxit is the max
+number of times to iteratively lower the penalty parameter and
+recompute a hopefully better search direction which does adequately
+promote progress towards feasibility.  Setting this to higher
+values may more aggressively lower the penalty parameter per
+PyGRANSO iteration.</p>
+</section>
+<section id="steering-c-viol">
+<h2>steering_c_viol<a class="headerlink" href="#steering-c-viol" title="Permalink to this headline">¶</a></h2>
+<p>real value in (0,1). Default value: 0.1</p>
+<p>Determines the fraction of predicted violation reduction for a
+search direction to be considered as adequately promoting progress
+towards feasibility.  If a search direction’s predicted violation
+reduction does not meet this target, the penalty parameter will be
+lowered and a new search direction will be computed.  Setting this
+to higher values may more aggressively lower the penalty parameter
+per PyGRANSO iteration.</p>
+</section>
+<section id="steering-c-mu">
+<h2>steering_c_mu<a class="headerlink" href="#steering-c-mu" title="Permalink to this headline">¶</a></h2>
+<p>real value in (0,1). Default value: 0.9</p>
+<p>When steering lowers the penalty parameter in order to compute a
+a search direction which promotes progress towards feasibility, it
+does by progessively lowering the penalty parameter by factors of
+steering_c_mu.  For any given PyGRANSO iteration, the penalty
+parameter can be shrunk up to a factor of steering_c_mu to the
+power of steering_maxit.  Setting this to lower values may more
+aggressively lower the penalty parameter per PyGRANSO iteration.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">PyGRANSO</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Settings</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="standard_parameters.html">Standard Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="searching_direction.html">Searching Direction Strategies</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Steering Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="qp_parameters.html">QP Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="line_search.html">Line Search Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="new_para.html">New Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../examples/index.html">Examples</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  <li><a href="index.html">Settings</a><ul>
+      <li>Previous: <a href="searching_direction.html" title="previous chapter">Searching Direction Strategies</a></li>
+      <li>Next: <a href="qp_parameters.html" title="next chapter">QP Parameters</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Buyun Liang.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/settings/steering_strategy.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

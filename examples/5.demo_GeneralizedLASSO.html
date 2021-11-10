@@ -8,7 +8,7 @@
 
     <title>Generalized LASSO &#8212; PyGRANSO  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/haiku.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -19,23 +19,26 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Perceptual Attack" href="6.demo_PerceptualAttack.html" />
-    <link rel="prev" title="Robust PCA" href="4.demo_RobustPCA.html" />
-   
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+    <link rel="prev" title="Robust PCA" href="4.demo_RobustPCA.html" /> 
   </head><body>
-  
+      <div class="header" role="banner"><img class="rightlogo" src="../_static/PyGRANSO_logo1.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
+          <span>PyGRANSO  documentation</span></a></h1>
+        <h2 class="heading"><span>Generalized LASSO</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="4.demo_RobustPCA.html">Robust PCA</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="6.demo_PerceptualAttack.html">Perceptual Attack</a>&#160;&#160;»
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
-
-          <div class="body" role="main">
-            
+      </div>
+      <div class="content" role="main">
+        
+        
   
 <style>
 /* CSS for nbsphinx extension */
@@ -286,10 +289,15 @@ div.rendered_html tbody tr:hover {
 </style>
 <section id="Generalized-LASSO">
 <h1>Generalized LASSO<a class="headerlink" href="#Generalized-LASSO" title="Permalink to this headline">¶</a></h1>
-<section id="Getting-started-with-Generalized-LASSO">
-<h2>Getting started with Generalized LASSO<a class="headerlink" href="#Getting-started-with-Generalized-LASSO" title="Permalink to this headline">¶</a></h2>
 <p>This notebook contains examples of how to solve total variation denoising problem.</p>
-<p>For more details, please check the documentation website <a class="reference external" href="https://pygranso.readthedocs.io/en/latest/">https://pygranso.readthedocs.io/en/latest/</a></p>
+<p>Reference: Boyd, Stephen, Neal Parikh, and Eric Chu. Distributed optimization and statistical learning via the alternating direction method of multipliers. Now Publishers Inc, 2011.</p>
+<section id="Problem-Definition">
+<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\min \frac{1}{2} ||Ax-b||_2^2+\lambda||Fx||_1,\]</div>
+<p>where <span class="math notranslate nohighlight">\(A\)</span> is an indentity matrix and <span class="math notranslate nohighlight">\(F\)</span> is a the difference matrix, in which case the above form reduces to</p>
+<div class="math notranslate nohighlight">
+\[\min_x \frac{1}{2}||x-b||_2^2+\lambda\sum_{i=1}^{n-1}|x_{i+1}-x_i|\]</div>
 </section>
 <section id="Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
 <h2>Import all necessary modules and add PyGRANSO src folder to system path.<a class="headerlink" href="#Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path." title="Permalink to this headline">¶</a></h2>
@@ -502,85 +510,22 @@ Total Wall Time: 2.4120285511016846s
 </section>
 
 
-          </div>
-          
-        </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../index.html">PyGRANSO</a></h1>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="4.demo_RobustPCA.html">Robust PCA</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="6.demo_PerceptualAttack.html">Perceptual Attack</a>&#160;&#160;»
+        </p>
 
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../settings/index.html">Settings</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="1.demo_Rosenbrock.html">Rosenbrock</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.demo_SpectralRadiusOpt.html">Spectral Radius Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.demo_DictLearning.html">Dictionary Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.demo_RobustPCA.html">Robust PCA</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Generalized LASSO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.demo_PerceptualAttack.html">Perceptual Attack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.demo_OrthogonalRNN.html">Orthogonal RNN</a></li>
-</ul>
-</li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="index.html">Examples</a><ul>
-      <li>Previous: <a href="4.demo_RobustPCA.html" title="previous chapter">Robust PCA</a></li>
-      <li>Next: <a href="6.demo_PerceptualAttack.html" title="next chapter">Perceptual Attack</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
-        </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2021, Buyun Liang.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="../_sources/examples/5.demo_GeneralizedLASSO.ipynb.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
-
-    
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Buyun Liang.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+    </div>
   </body>
 </html>

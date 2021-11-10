@@ -8,7 +8,7 @@
 
     <title>Dictionary Learning &#8212; PyGRANSO  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/haiku.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -19,23 +19,26 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Robust PCA" href="4.demo_RobustPCA.html" />
-    <link rel="prev" title="Spectral Radius Optimization" href="2.demo_SpectralRadiusOpt.html" />
-   
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+    <link rel="prev" title="Spectral Radius Optimization" href="2.demo_SpectralRadiusOpt.html" /> 
   </head><body>
-  
+      <div class="header" role="banner"><img class="rightlogo" src="../_static/PyGRANSO_logo1.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
+          <span>PyGRANSO  documentation</span></a></h1>
+        <h2 class="heading"><span>Dictionary Learning</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="2.demo_SpectralRadiusOpt.html">Spectral Radius Optimization</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="4.demo_RobustPCA.html">Robust PCA</a>&#160;&#160;»
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
-
-          <div class="body" role="main">
-            
+      </div>
+      <div class="content" role="main">
+        
+        
   
 <style>
 /* CSS for nbsphinx extension */
@@ -286,10 +289,17 @@ div.rendered_html tbody tr:hover {
 </style>
 <section id="Dictionary-Learning">
 <h1>Dictionary Learning<a class="headerlink" href="#Dictionary-Learning" title="Permalink to this headline">¶</a></h1>
-<section id="Getting-started-with-Dictionary-Learning">
-<h2>Getting started with Dictionary Learning<a class="headerlink" href="#Getting-started-with-Dictionary-Learning" title="Permalink to this headline">¶</a></h2>
 <p>This notebook contains examples of how to solve orthogonal dictionary learning problem.</p>
-<p>For more details, please check the documentation website <a class="reference external" href="https://pygranso.readthedocs.io/en/latest/">https://pygranso.readthedocs.io/en/latest/</a></p>
+<p>Reference: Bai, Yu, Qijia Jiang, and Ju Sun. “Subgradient descent learns orthogonal dictionaries.” arXiv preprint arXiv:1810.10702 (2018).</p>
+<section id="Problem-Definition">
+<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
+<p>given data <span class="math notranslate nohighlight">\(\{y_i \}_{i \in[m]}\)</span> generated as <span class="math notranslate nohighlight">\(y_i = A x_i\)</span>, where <span class="math notranslate nohighlight">\(A \in R^{n \times n}\)</span> is a fixed unknown orthogonal matrix and each <span class="math notranslate nohighlight">\(x_i \in R^n\)</span> is an iid Bernoulli-Gaussian random vector with parameter <span class="math notranslate nohighlight">\(\theta \in (0,1)\)</span>, recover <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<p>Write <span class="math notranslate nohighlight">\(Y \doteq [y_1,...,y_m]\)</span> and <span class="math notranslate nohighlight">\(X \doteq [vx_1,...,x_m]\)</span>. Nonconvex due to constraint, nonsmooth due to objective:</p>
+<div class="math notranslate nohighlight">
+\[\min_{q \in R^n} f(q) \doteq \frac{1}{m} ||q^T Y||_{1} = \frac{1}{m} \sum_{i=1}^m |q^T y_i|,\]</div>
+<div class="math notranslate nohighlight">
+\[\text{s.t.} ||q||_2 = 1,\]</div>
+<p>Based on above statistical model, <span class="math notranslate nohighlight">\(q^T Y = q^T A X\)</span> has the highest sparsity when <span class="math notranslate nohighlight">\(q\)</span> is a column of <span class="math notranslate nohighlight">\(A\)</span> (up to sign) so that <span class="math notranslate nohighlight">\(q^T A\)</span> is 1-sparse.</p>
 </section>
 <section id="Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
 <h2>Import all necessary modules and add PyGRANSO src folder to system path.<a class="headerlink" href="#Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path." title="Permalink to this headline">¶</a></h2>
@@ -469,13 +479,13 @@ Iterations:              191                                                    
 Function evaluations:    806                                                                                     ║
 PyGRANSO termination code: 0 --- converged to stationarity and feasibility tolerances.                           ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 3.0814859867095947s
+Total Wall Time: 3.733818292617798s
 tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 </pre></div></div>
 </div>
 </section>
-<section id="Advanced-Tutorial">
-<h2>Advanced Tutorial<a class="headerlink" href="#Advanced-Tutorial" title="Permalink to this headline">¶</a></h2>
+<section id="Advanced-Tutorial:-try-various-user-options">
+<h2>Advanced Tutorial: try various user options<a class="headerlink" href="#Advanced-Tutorial:-try-various-user-options" title="Permalink to this headline">¶</a></h2>
 <p>Set fvalquit. Quit if objective function drops below this value at a feasible iterate (that is, satisfying feasibility tolerances opts.viol_ineq_tol and opts.viol_eq_tol)</p>
 <p>In the example below, we get termination code 2 since the target objective reached at point feasible to tolerances</p>
 <div class="nbinput docutils container">
@@ -628,7 +638,7 @@ tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 <p>import pygransoOptionsAdvanced</p>
 <p>help(pygransoOptionsAdvanced)</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -747,85 +757,22 @@ tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 </section>
 
 
-          </div>
-          
-        </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../index.html">PyGRANSO</a></h1>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="2.demo_SpectralRadiusOpt.html">Spectral Radius Optimization</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="4.demo_RobustPCA.html">Robust PCA</a>&#160;&#160;»
+        </p>
 
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../settings/index.html">Settings</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="1.demo_Rosenbrock.html">Rosenbrock</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.demo_SpectralRadiusOpt.html">Spectral Radius Optimization</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Dictionary Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.demo_RobustPCA.html">Robust PCA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.demo_GeneralizedLASSO.html">Generalized LASSO</a></li>
-<li class="toctree-l2"><a class="reference internal" href="6.demo_PerceptualAttack.html">Perceptual Attack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.demo_OrthogonalRNN.html">Orthogonal RNN</a></li>
-</ul>
-</li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="index.html">Examples</a><ul>
-      <li>Previous: <a href="2.demo_SpectralRadiusOpt.html" title="previous chapter">Spectral Radius Optimization</a></li>
-      <li>Next: <a href="4.demo_RobustPCA.html" title="next chapter">Robust PCA</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
-        </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2021, Buyun Liang.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="../_sources/examples/3.demo_DictLearning.ipynb.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
-
-    
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Buyun Liang.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+    </div>
   </body>
 </html>

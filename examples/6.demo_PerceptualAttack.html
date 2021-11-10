@@ -8,7 +8,7 @@
 
     <title>Perceptual Attack &#8212; PyGRANSO  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/haiku.css" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
@@ -19,23 +19,26 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Orthogonal RNN" href="7.demo_OrthogonalRNN.html" />
-    <link rel="prev" title="Generalized LASSO" href="5.demo_GeneralizedLASSO.html" />
-   
-  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
-  
-  
-  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
-
+    <link rel="prev" title="Generalized LASSO" href="5.demo_GeneralizedLASSO.html" /> 
   </head><body>
-  
+      <div class="header" role="banner"><img class="rightlogo" src="../_static/PyGRANSO_logo1.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
+          <span>PyGRANSO  documentation</span></a></h1>
+        <h2 class="heading"><span>Perceptual Attack</span></h2>
+      </div>
+      <div class="topnav" role="navigation" aria-label="top navigation">
+      
+        <p>
+        «&#160;&#160;<a href="5.demo_GeneralizedLASSO.html">Generalized LASSO</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="7.demo_OrthogonalRNN.html">Orthogonal RNN</a>&#160;&#160;»
+        </p>
 
-    <div class="document">
-      <div class="documentwrapper">
-        <div class="bodywrapper">
-          
-
-          <div class="body" role="main">
-            
+      </div>
+      <div class="content" role="main">
+        
+        
   
 <style>
 /* CSS for nbsphinx extension */
@@ -286,10 +289,19 @@ div.rendered_html tbody tr:hover {
 </style>
 <section id="Perceptual-Attack">
 <h1>Perceptual Attack<a class="headerlink" href="#Perceptual-Attack" title="Permalink to this headline">¶</a></h1>
-<section id="Getting-started-with-Perceptual-Attack">
-<h2>Getting started with Perceptual Attack<a class="headerlink" href="#Getting-started-with-Perceptual-Attack" title="Permalink to this headline">¶</a></h2>
 <p>This notebook contains examples of how to solve perceptual attack problems</p>
-<p>For more details, please check the documentation website <a class="reference external" href="https://pygranso.readthedocs.io/en/latest/">https://pygranso.readthedocs.io/en/latest/</a></p>
+<p>Reference: Laidlaw, Cassidy, Sahil Singla, and Soheil Feizi. “Perceptual adversarial robustness: Defense against unseen threat models.” arXiv preprint arXiv:2006.12655 (2020).</p>
+<section id="Problem-Definition">
+<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
+<p>Given classifier <span class="math notranslate nohighlight">\(f\)</span> which could map input image <span class="math notranslate nohighlight">\(x \in X\)</span> to labels $y = f(x) <span class="math">\in `Y$0. The goal of neural perceptual attack is to find an input :math:</span>tilde{x}` that is perceptually similar to the original input <span class="math notranslate nohighlight">\(x\)</span> but can fool the classifier <span class="math notranslate nohighlight">\(f\)</span>, which can be formulated as:</p>
+<div class="math notranslate nohighlight">
+\[\max_{\tilde{x}} L (f(\tilde{x}),y),\]</div>
+<div class="math notranslate nohighlight">
+\[\text{s.t.}\;\; d(x,\tilde{x}) = ||\phi(x) - \phi (\tilde{x}) ||_{2} \leq \epsilon\]</div>
+<p>Here</p>
+<div class="math notranslate nohighlight">
+\[L (f({x}),y) = \max_{i\neq y} (z_i(x) - z_y(x) ),\]</div>
+<p>where <span class="math notranslate nohighlight">\(z_i(x)\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>-th logit output of <span class="math notranslate nohighlight">\(f(x)\)</span>, and <span class="math notranslate nohighlight">\(\phi(\cdot)\)</span> is a function that could map the input <span class="math notranslate nohighlight">\(x\)</span> to normalized, flattened activations</p>
 </section>
 <section id="Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
 <h2>Import all necessary modules and add PyGRANSO src folder to system path.<a class="headerlink" href="#Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path." title="Permalink to this headline">¶</a></h2>
@@ -756,85 +768,22 @@ Average run time of PyGRANSO = 4.13142683506012s, mean f_eval = 32.0 iters
 </section>
 
 
-          </div>
-          
-        </div>
       </div>
-      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
-        <div class="sphinxsidebarwrapper">
-<h1 class="logo"><a href="../index.html">PyGRANSO</a></h1>
+      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
+      
+        <p>
+        «&#160;&#160;<a href="5.demo_GeneralizedLASSO.html">Generalized LASSO</a>
+        &#160;&#160;::&#160;&#160;
+        <a class="uplink" href="../index.html">Contents</a>
+        &#160;&#160;::&#160;&#160;
+        <a href="7.demo_OrthogonalRNN.html">Orthogonal RNN</a>&#160;&#160;»
+        </p>
 
-
-
-
-
-
-
-
-<h3>Navigation</h3>
-<ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../install.html">Installation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../settings/index.html">Settings</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Examples</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="1.demo_Rosenbrock.html">Rosenbrock</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2.demo_SpectralRadiusOpt.html">Spectral Radius Optimization</a></li>
-<li class="toctree-l2"><a class="reference internal" href="3.demo_DictLearning.html">Dictionary Learning</a></li>
-<li class="toctree-l2"><a class="reference internal" href="4.demo_RobustPCA.html">Robust PCA</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5.demo_GeneralizedLASSO.html">Generalized LASSO</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Perceptual Attack</a></li>
-<li class="toctree-l2"><a class="reference internal" href="7.demo_OrthogonalRNN.html">Orthogonal RNN</a></li>
-</ul>
-</li>
-</ul>
-
-<div class="relations">
-<h3>Related Topics</h3>
-<ul>
-  <li><a href="../index.html">Documentation overview</a><ul>
-  <li><a href="index.html">Examples</a><ul>
-      <li>Previous: <a href="5.demo_GeneralizedLASSO.html" title="previous chapter">Generalized LASSO</a></li>
-      <li>Next: <a href="7.demo_OrthogonalRNN.html" title="next chapter">Orthogonal RNN</a></li>
-  </ul></li>
-  </ul></li>
-</ul>
-</div>
-<div id="searchbox" style="display: none" role="search">
-  <h3 id="searchlabel">Quick search</h3>
-    <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
-      <input type="submit" value="Go" />
-    </form>
-    </div>
-</div>
-<script>$('#searchbox').show(0);</script>
-
-
-
-
-
-
-
-
-        </div>
       </div>
-      <div class="clearer"></div>
-    </div>
-    <div class="footer">
-      &copy;2021, Buyun Liang.
-      
-      |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.2.0</a>
-      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
-      
-      |
-      <a href="../_sources/examples/6.demo_PerceptualAttack.ipynb.txt"
-          rel="nofollow">Page source</a>
-    </div>
 
-    
-
-    
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2021, Buyun Liang.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+    </div>
   </body>
 </html>

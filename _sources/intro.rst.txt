@@ -21,56 +21,45 @@ nonsmooth, constrained optimization problems based on MATLAB  (Curtis et al., 20
 produces meaningful results when other carefully crafted solvers fail. However, several 
 limitations of GRANSO preclude its potential broad deployment by general users:  
 
-1. It only allows vector variables but not matrices or tensors, while the latter two are common 
-computational units in modern optimization problems such as machine/deep learning.   
+	1. It only allows vector variables but not matrices or tensors, while the latter two are common 
+	computational units in modern optimization problems such as machine/deep learning.   
 
-2. The default MATLAB quadratic programming solver struggles to scale up to medium- to large-scale 
-problems, which is a bottleneck for scalability. 
+	2. The default MATLAB quadratic programming solver struggles to scale up to medium- to large-scale 
+	problems, which is a bottleneck for scalability. 
 
-3. GRANSO requires deriving analytic subgradients for the objective and constraint functions, which 
-is challenging and even infeasible, especially in deep learning.  
+	3. GRANSO requires deriving analytic subgradients for the objective and constraint functions, which 
+	is challenging and even infeasible, especially in deep learning.  
 
-4. MATLAB that GRANSO is written in is a proprietary programming language and entails considerable 
-license fees for researchers and developers. 
+	4. MATLAB that GRANSO is written in is a proprietary programming language and entails considerable 
+	license fees for researchers and developers. 
 
+	5. GRANSO is not able to take the full advantage of modern massively parallel hardware.
 
-Our Contributions
+Thus, we tackled the severe limitations of GRANSO, and built a user-friendly and scalable python numerical optimization package called \texttt{PyGRANSO} by revamping several key components of GRANSO and translating it into Python. Our main contributions are described in the following sections. 
+
+Key Features
 ------------------
 
-By revamping several key components of GRANSO, we built a scalable and user-friendly python numerical optimization 
-packages called PyGRANSO for solving general nonconvex, nonsmooth, constrained optimization problems. 
+Below are the key features that makes the PyGRANSO package scalable and user-friendly:
 
-Main improvements includes:
+	**Tensor Input** PyGRANSO allows the usage of tensor optimization variables, which is represented in a dictionary structure, where the the key is the name of variables (e.g., x_0,x_1), and the corresponding values are the dimension of tensors (e.g., $[3,32,32],[2,2]$).  
 
-1. Revamping GRANSO and translating it into Python (PyGRANSO) for following advantages:
-   
-   1) Autodifferentiation. Pytorch provide first-rate autodifferentiation capabilities, 
-      removing the pain of deriving analytic subgradients. Powerful matrix/tensor 
-      computation and autodifferentiation will substantially boost the usability and 
-      scalability of GRANSO for non-experts, and turn the impossible, e.g., constrained deep 
-      learning, into possible.
+	**QP solvers** We replaced the MATLAB builtin quadratic solver with the OSQP package. The OSQP package is a great alternative to MATLAB’s slow quadratic solver,  and has consistently and significantly outperformed popular commercial solvers in terms of speed and scalability. 
 
-   2) GPU support. Pytorch is a modern Python computational frameworks, which enables highly optimized 
-      and parallelizable matrix/tensor computations that take the full advantage of modern massively 
-      parallel hardware, e.g., GPUs.
 
-2. Allowing matrix and tensor optimization variables in PyGRANSO.
+	**Automatic Differentiation** We built the package based on PyTorch which allow automated differentiation. This could remove the pain of deriving analytic subgradients and avoid potential calculation and implementation mistakes. 
 
-3. Replacing the current MATLAB builtin quadratic solver with the osqp package (https://osqp.org/docs/index.html). 
-   The osqp package is a great alternative to MATLAB’s slow quadratic solver, 
-   and has consistently and significantly outperformed popular commercial solvers 
-   in terms of speed and scalability. 
 
-4. Enabling PyGRANSO to solve small scale unconstrained deep learning problems. The new version that could 
-   handle constrained deep learning problem will be released soon.  
+	**GPU acceleration** PyGRANSO enables highly optimized and parallelizable matrix/tensor computations that take the full advantage of modern massively parallel hardware, e.g., GPUs, by using PyTorch Framework.
 
-5. Added several new user options to solve common numerical issues in deep learning: linesearch_maxit, linesearch_step_size, 
-   is_backtrack_linesearch, searching_direction_rescaling, disable_terminationcode_6. Check the settings page for more information.
+
+	**Modified Core Algorithms** We modified the BFGS-SQP algorithm by enabling re-scaling searching direction and backtracking line search method, which are commonly used in solving deep learning problems.
 
 Current Limitations
 ----------------------------------
+1. Stochastic algorithm not allowed.
 
-1. No validators for some user provided inputs, such as LBFGS settings, nn_model and device.
+2. No validators for some user provided inputs, such as LBFGS settings, nn_model and device.
 
 Update Logs
 -----------------

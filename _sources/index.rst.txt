@@ -1,8 +1,8 @@
-Home Page
+Home
 =======================================
 
 .. image:: examples/images/PyGRANSO_logo.png
-   :width: 600
+   :width: 1000
 
 
 .. warning::

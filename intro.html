@@ -17,7 +17,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Installation" href="install.html" />
-    <link rel="prev" title="Home Page" href="index.html" /> 
+    <link rel="prev" title="Home" href="index.html" /> 
   </head><body>
       <div class="header" role="banner"><img class="rightlogo" src="_static/PyGRANSO_logo1.png" alt="Logo"/><h1 class="heading"><a href="index.html">
           <span>PyGRANSO  documentation</span></a></h1>
@@ -26,7 +26,7 @@
       <div class="topnav" role="navigation" aria-label="top navigation">
       
         <p>
-        «&#160;&#160;<a href="index.html">Home Page</a>
+        «&#160;&#160;<a href="index.html">Home</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         &#160;&#160;::&#160;&#160;
@@ -56,7 +56,8 @@ software packages can handle.</p>
 nonsmooth, constrained optimization problems based on MATLAB  (Curtis et al., 2017). The package is very stable and
 produces meaningful results when other carefully crafted solvers fail. However, several
 limitations of GRANSO preclude its potential broad deployment by general users:</p>
-<p>1. It only allows vector variables but not matrices or tensors, while the latter two are common
+<blockquote>
+<div><p>1. It only allows vector variables but not matrices or tensors, while the latter two are common
 computational units in modern optimization problems such as machine/deep learning.</p>
 <p>2. The default MATLAB quadratic programming solver struggles to scale up to medium- to large-scale
 problems, which is a bottleneck for scalability.</p>
@@ -64,39 +65,27 @@ problems, which is a bottleneck for scalability.</p>
 is challenging and even infeasible, especially in deep learning.</p>
 <p>4. MATLAB that GRANSO is written in is a proprietary programming language and entails considerable
 license fees for researchers and developers.</p>
+<ol class="arabic simple" start="5">
+<li><p>GRANSO is not able to take the full advantage of modern massively parallel hardware.</p></li>
+</ol>
+</div></blockquote>
+<p>Thus, we tackled the severe limitations of GRANSO, and built a user-friendly and scalable python numerical optimization package called texttt{PyGRANSO} by revamping several key components of GRANSO and translating it into Python. Our main contributions are described in the following sections.</p>
 </section>
-<section id="our-contributions">
-<h2>Our Contributions<a class="headerlink" href="#our-contributions" title="Permalink to this headline">¶</a></h2>
-<p>By revamping several key components of GRANSO, we built a scalable and user-friendly python numerical optimization
-packages called PyGRANSO for solving general nonconvex, nonsmooth, constrained optimization problems.</p>
-<p>Main improvements includes:</p>
-<ol class="arabic simple">
-<li><p>Revamping GRANSO and translating it into Python (PyGRANSO) for following advantages:</p>
-<ol class="arabic simple">
-<li><p>Autodifferentiation. Pytorch provide first-rate autodifferentiation capabilities,
-removing the pain of deriving analytic subgradients. Powerful matrix/tensor
-computation and autodifferentiation will substantially boost the usability and
-scalability of GRANSO for non-experts, and turn the impossible, e.g., constrained deep
-learning, into possible.</p></li>
-<li><p>GPU support. Pytorch is a modern Python computational frameworks, which enables highly optimized
-and parallelizable matrix/tensor computations that take the full advantage of modern massively
-parallel hardware, e.g., GPUs.</p></li>
-</ol>
-</li>
-<li><p>Allowing matrix and tensor optimization variables in PyGRANSO.</p></li>
-<li><p>Replacing the current MATLAB builtin quadratic solver with the osqp package (<a class="reference external" href="https://osqp.org/docs/index.html">https://osqp.org/docs/index.html</a>).
-The osqp package is a great alternative to MATLAB’s slow quadratic solver,
-and has consistently and significantly outperformed popular commercial solvers
-in terms of speed and scalability.</p></li>
-<li><p>Enabling PyGRANSO to solve small scale unconstrained deep learning problems. The new version that could
-handle constrained deep learning problem will be released soon.</p></li>
-<li><p>Added several new user options to solve common numerical issues in deep learning: linesearch_maxit, linesearch_step_size,
-is_backtrack_linesearch, searching_direction_rescaling, disable_terminationcode_6. Check the settings page for more information.</p></li>
-</ol>
+<section id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
+<p>Below are the key features that makes the PyGRANSO package scalable and user-friendly:</p>
+<blockquote>
+<div><p><strong>Tensor Input</strong> PyGRANSO allows the usage of tensor optimization variables, which is represented in a dictionary structure, where the the key is the name of variables (e.g., x_0,x_1), and the corresponding values are the dimension of tensors (e.g., $[3,32,32],[2,2]$).</p>
+<p><strong>QP solvers</strong> We replaced the MATLAB builtin quadratic solver with the OSQP package. The OSQP package is a great alternative to MATLAB’s slow quadratic solver,  and has consistently and significantly outperformed popular commercial solvers in terms of speed and scalability.</p>
+<p><strong>Automatic Differentiation</strong> We built the package based on PyTorch which allow automated differentiation. This could remove the pain of deriving analytic subgradients and avoid potential calculation and implementation mistakes.</p>
+<p><strong>GPU acceleration</strong> PyGRANSO enables highly optimized and parallelizable matrix/tensor computations that take the full advantage of modern massively parallel hardware, e.g., GPUs, by using PyTorch Framework.</p>
+<p><strong>Modified Core Algorithms</strong> We modified the BFGS-SQP algorithm by enabling re-scaling searching direction and backtracking line search method, which are commonly used in solving deep learning problems.</p>
+</div></blockquote>
 </section>
 <section id="current-limitations">
 <h2>Current Limitations<a class="headerlink" href="#current-limitations" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
+<li><p>Stochastic algorithm not allowed.</p></li>
 <li><p>No validators for some user provided inputs, such as LBFGS settings, nn_model and device.</p></li>
 </ol>
 </section>
@@ -121,7 +110,7 @@ is_backtrack_linesearch, searching_direction_rescaling, disable_terminationcode_
       <div class="bottomnav" role="navigation" aria-label="bottom navigation">
       
         <p>
-        «&#160;&#160;<a href="index.html">Home Page</a>
+        «&#160;&#160;<a href="index.html">Home</a>
         &#160;&#160;::&#160;&#160;
         <a class="uplink" href="index.html">Contents</a>
         &#160;&#160;::&#160;&#160;

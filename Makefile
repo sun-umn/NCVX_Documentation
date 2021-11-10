@@ -23,3 +23,5 @@ help:
 
 clean:
 	rm -r docs
+	mkdir docs
+	cp .nojekyll docs

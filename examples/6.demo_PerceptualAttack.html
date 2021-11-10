@@ -4,41 +4,286 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Perceptual Attack &#8212; PyGRANSO  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Orthogonal RNN" href="7.demo_OrthogonalRNN.html" />
-    <link rel="prev" title="Generalized LASSO" href="5.demo_GeneralizedLASSO.html" /> 
-  </head><body>
-      <div class="header" role="banner"><img class="rightlogo" src="../_static/PyGRANSO_logo1.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
-          <span>PyGRANSO  documentation</span></a></h1>
-        <h2 class="heading"><span>Perceptual Attack</span></h2>
-      </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
-      
-        <p>
-        «&#160;&#160;<a href="5.demo_GeneralizedLASSO.html">Generalized LASSO</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="7.demo_OrthogonalRNN.html">Orthogonal RNN</a>&#160;&#160;»
-        </p>
+    <link rel="prev" title="Generalized LASSO" href="5.demo_GeneralizedLASSO.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
 
-      </div>
-      <div class="content" role="main">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
+      
+      
+      <img src="../_static/PyGRANSO_logo1.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">PyGRANSO  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../install.html">
+   Installation
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../settings/index.html">
+   Settings
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/standard_parameters.html">
+     Standard Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/searching_direction.html">
+     Searching Direction Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/steering_strategy.html">
+     Steering Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/qp_parameters.html">
+     QP Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/line_search.html">
+     Line Search Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/new_para.html">
+     New Parameters
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Examples
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.demo_Rosenbrock.html">
+     Rosenbrock
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2.demo_SpectralRadiusOpt.html">
+     Spectral Radius Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3.demo_DictLearning.html">
+     Dictionary Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4.demo_RobustPCA.html">
+     Robust PCA
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5.demo_GeneralizedLASSO.html">
+     Generalized LASSO
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Perceptual Attack
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.demo_OrthogonalRNN.html">
+     Orthogonal RNN
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/examples/6.demo_PerceptualAttack.ipynb.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Problem-Definition">
+   Problem Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
+   Import all necessary modules and add PyGRANSO src folder to system path.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Specify-torch-device,-neural-network-architecture,-and-generate-data.">
+   Specify torch device, neural network architecture, and generate data.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Spceify-optimization-variables-and-corresponding-objective-and-constrained-function.">
+   Spceify optimization variables and corresponding objective and constrained function.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Specify-user-defined-options-for-PyGRANSO-algorithm">
+   Specify user-defined options for PyGRANSO algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Run-main-algorithm">
+   Run main algorithm
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
   
 <style>
 /* CSS for nbsphinx extension */
@@ -287,11 +532,11 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<section id="Perceptual-Attack">
+<div class="section" id="Perceptual-Attack">
 <h1>Perceptual Attack<a class="headerlink" href="#Perceptual-Attack" title="Permalink to this headline">¶</a></h1>
 <p>This notebook contains examples of how to solve perceptual attack problems</p>
 <p>Reference: Laidlaw, Cassidy, Sahil Singla, and Soheil Feizi. “Perceptual adversarial robustness: Defense against unseen threat models.” arXiv preprint arXiv:2006.12655 (2020).</p>
-<section id="Problem-Definition">
+<div class="section" id="Problem-Definition">
 <h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
 <p>Given classifier <span class="math notranslate nohighlight">\(f\)</span> which could map input image <span class="math notranslate nohighlight">\(x \in X\)</span> to labels $y = f(x) <span class="math">\in `Y$0. The goal of neural perceptual attack is to find an input :math:</span>tilde{x}` that is perceptually similar to the original input <span class="math notranslate nohighlight">\(x\)</span> but can fool the classifier <span class="math notranslate nohighlight">\(f\)</span>, which can be formulated as:</p>
 <div class="math notranslate nohighlight">
@@ -302,8 +547,8 @@ div.rendered_html tbody tr:hover {
 <div class="math notranslate nohighlight">
 \[L (f({x}),y) = \max_{i\neq y} (z_i(x) - z_y(x) ),\]</div>
 <p>where <span class="math notranslate nohighlight">\(z_i(x)\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>-th logit output of <span class="math notranslate nohighlight">\(f(x)\)</span>, and <span class="math notranslate nohighlight">\(\phi(\cdot)\)</span> is a function that could map the input <span class="math notranslate nohighlight">\(x\)</span> to normalized, flattened activations</p>
-</section>
-<section id="Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
+</div>
+<div class="section" id="Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
 <h2>Import all necessary modules and add PyGRANSO src folder to system path.<a class="headerlink" href="#Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path." title="Permalink to this headline">¶</a></h2>
 <p>NOTE: perceptual advex source code (<a class="reference external" href="https://github.com/cassidylaidlaw/perceptual-advex.git">https://github.com/cassidylaidlaw/perceptual-advex.git</a>) are required to calculate the lpips distance</p>
 <div class="nbinput nblast docutils container">
@@ -327,8 +572,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Specify-torch-device,-neural-network-architecture,-and-generate-data.">
+</div>
+<div class="section" id="Specify-torch-device,-neural-network-architecture,-and-generate-data.">
 <h2>Specify torch device, neural network architecture, and generate data.<a class="headerlink" href="#Specify-torch-device,-neural-network-architecture,-and-generate-data." title="Permalink to this headline">¶</a></h2>
 <p>NOTE: please specify path for downloading data</p>
 <div class="nbinput docutils container">
@@ -369,8 +614,8 @@ div.rendered_html tbody tr:hover {
 Files already downloaded and verified
 </pre></div></div>
 </div>
-</section>
-<section id="Spceify-optimization-variables-and-corresponding-objective-and-constrained-function.">
+</div>
+<div class="section" id="Spceify-optimization-variables-and-corresponding-objective-and-constrained-function.">
 <h2>Spceify optimization variables and corresponding objective and constrained function.<a class="headerlink" href="#Spceify-optimization-variables-and-corresponding-objective-and-constrained-function." title="Permalink to this headline">¶</a></h2>
 <p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the PyGRANSO main algortihm. <em>X_struct</em> and <em>data_in</em> are always required.</p>
 <div class="nbinput nblast docutils container">
@@ -443,8 +688,8 @@ Files already downloaded and verified
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Specify-user-defined-options-for-PyGRANSO-algorithm">
+</div>
+<div class="section" id="Specify-user-defined-options-for-PyGRANSO-algorithm">
 <h2>Specify user-defined options for PyGRANSO algorithm<a class="headerlink" href="#Specify-user-defined-options-for-PyGRANSO-algorithm" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -462,8 +707,8 @@ Files already downloaded and verified
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Run-main-algorithm">
+</div>
+<div class="section" id="Run-main-algorithm">
 <h2>Run main algorithm<a class="headerlink" href="#Run-main-algorithm" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
@@ -764,26 +1009,60 @@ Average distance between attacked image and original image = 0.49303066117796535
 Average run time of PyGRANSO = 4.13142683506012s, mean f_eval = 32.0 iters
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
-      </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
-      
-        <p>
-        «&#160;&#160;<a href="5.demo_GeneralizedLASSO.html">Generalized LASSO</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="7.demo_OrthogonalRNN.html">Orthogonal RNN</a>&#160;&#160;»
-        </p>
+              </div>
+              
+        
+            
 
-      </div>
 
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Buyun Liang.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="5.demo_GeneralizedLASSO.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Generalized LASSO</p>
+            </div>
+        </a>
     </div>
+     <div id="next">
+        <a class="right-next" href="7.demo_OrthogonalRNN.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Orthogonal RNN</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Buyun Liang<br/>
+        
+            &copy; Copyright 2021, Buyun Liang.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
   </body>
 </html>

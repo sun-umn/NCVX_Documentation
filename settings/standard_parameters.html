@@ -4,56 +4,416 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Standard Parameters &#8212; PyGRANSO  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Searching Direction Strategies" href="searching_direction.html" />
-    <link rel="prev" title="Settings" href="index.html" /> 
-  </head><body>
-      <div class="header" role="banner"><img class="rightlogo" src="../_static/PyGRANSO_logo1.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
-          <span>PyGRANSO  documentation</span></a></h1>
-        <h2 class="heading"><span>Standard Parameters</span></h2>
-      </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
-      
-        <p>
-        «&#160;&#160;<a href="index.html">Settings</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="searching_direction.html">Searching Direction Strategies</a>&#160;&#160;»
-        </p>
+    <link rel="prev" title="Settings" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
 
-      </div>
-      <div class="content" role="main">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
+      
+      
+      <img src="../_static/PyGRANSO_logo1.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">PyGRANSO  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../install.html">
+   Installation
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Settings
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Standard Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="searching_direction.html">
+     Searching Direction Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="steering_strategy.html">
+     Steering Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="qp_parameters.html">
+     QP Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="line_search.html">
+     Line Search Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="new_para.html">
+     New Parameters
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/1.demo_Rosenbrock.html">
+     Rosenbrock
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/2.demo_SpectralRadiusOpt.html">
+     Spectral Radius Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/3.demo_DictLearning.html">
+     Dictionary Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/4.demo_RobustPCA.html">
+     Robust PCA
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/5.demo_GeneralizedLASSO.html">
+     Generalized LASSO
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/6.demo_PerceptualAttack.html">
+     Perceptual Attack
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../examples/7.demo_OrthogonalRNN.html">
+     Orthogonal RNN
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
-  <section id="standard-parameters">
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/settings/standard_parameters.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#x0">
+   x0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mu0">
+   mu0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#h0">
+   H0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#checkh0">
+   checkH0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scaleh0">
+   scaleH0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#bfgs-damping">
+   bfgs_damping
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limited-mem-size">
+   limited_mem_size
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limited-mem-fixed-scaling">
+   limited_mem_fixed_scaling
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#limited-mem-warm-start">
+   limited_mem_warm_start
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prescaling-threshold">
+   prescaling_threshold
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prescaling-info-msg">
+   prescaling_info_msg
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#opt-tol">
+   opt_tol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rel-tol">
+   rel_tol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#step-tol">
+   step_tol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#viol-ineq-tol">
+   viol_ineq_tol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#viol-eq-tol">
+   viol_eq_tol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ngrad">
+   ngrad
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaldist">
+   evaldist
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maxit">
+   maxit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#maxclocktime">
+   maxclocktime
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fvalquit">
+   fvalquit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#halt-on-linesearch-bracket">
+   halt_on_linesearch_bracket
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quadprog-info-msg">
+   quadprog_info_msg
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#print-level">
+   print_level
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#print-frequency">
+   print_frequency
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#print-width">
+   print_width
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#print-print-ascii">
+   print_print_ascii
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#print-use-orange">
+   print_use_orange
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#halt-log-fn">
+   halt_log_fn
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="standard-parameters">
 <h1>Standard Parameters<a class="headerlink" href="#standard-parameters" title="Permalink to this headline">¶</a></h1>
-<section id="x0">
+<div class="section" id="x0">
 <h2>x0<a class="headerlink" href="#x0" title="Permalink to this headline">¶</a></h2>
 <p>n by 1 double precision torch tensor. Default value: torch.randn(n,1).to(device=torch_device, dtype=torch.double)</p>
 <p>Initial starting point. One should pick x0 such that the objective
 and constraint functions are smooth at and about x0. If this is
 difficult to ascertain, it is generally recommended to initialize
 PyGRANSO at randomly-generated starting points.</p>
-</section>
-<section id="mu0">
+</div>
+<div class="section" id="mu0">
 <h2>mu0<a class="headerlink" href="#mu0" title="Permalink to this headline">¶</a></h2>
 <p>Positive real value. Default value: 1</p>
 <p>Initial value of the penalty parameter.
 NOTE: irrelevant for unconstrained optimization problems.</p>
-</section>
-<section id="h0">
+</div>
+<div class="section" id="h0">
 <h2>H0<a class="headerlink" href="#h0" title="Permalink to this headline">¶</a></h2>
 <p>n by n double precision torch tensor. Default value: torch.eye(n,device=torch_device, dtype=torch.double)</p>
 <p>Initial inverse Hessian approximation.  In full-memory mode, and
@@ -61,8 +421,8 @@ if opts.checkH0 is true, PyGRANSO will numerically assert that this
 matrix is positive definite. In limited-memory mode, that is, if
 opts.limited_mem_size &gt; 0, no numerical checks are done but this
 matrix must be a sparse matrix.</p>
-</section>
-<section id="checkh0">
+</div>
+<div class="section" id="checkh0">
 <h2>checkH0<a class="headerlink" href="#checkh0" title="Permalink to this headline">¶</a></h2>
 <p>Boolean value. Default value: True</p>
 <p>By default, PyGRANSO will check whether or not H0 is numerically
@@ -72,8 +432,8 @@ run, using soln.H_final (the last BFGS approximation to the inverse
 Hessian), soln.H_final may sometimes fail this check.  Set this
 option to False to disable it. No positive definite check is done
 when limited-memory mode is enabled.</p>
-</section>
-<section id="scaleh0">
+</div>
+<div class="section" id="scaleh0">
 <h2>scaleH0<a class="headerlink" href="#scaleh0" title="Permalink to this headline">¶</a></h2>
 <p>Boolean value. Default value: True</p>
 <p>Scale H0 during BFGS/L-BFGS updates.  For full-memory BFGS, scaling
@@ -81,8 +441,8 @@ is only applied on the first iteration only, and is generally only
 recommended when H0 is the identity (which is PyGRANSO’s default).
 For limited-memory BFGS, H0 is scaled on every update.  For more
 details, see opts.limited_mem_fixed_scaling.</p>
-</section>
-<section id="bfgs-damping">
+</div>
+<div class="section" id="bfgs-damping">
 <h2>bfgs_damping<a class="headerlink" href="#bfgs-damping" title="Permalink to this headline">¶</a></h2>
 <p>Real value in [0,1]. Default value: 1e-4</p>
 <p>This feature will adaptively damp potentially problematic BFGS
@@ -91,8 +451,8 @@ approximation always remains positive definite numerically.  The
 closer this value is to one, the more frequently and aggressively
 damping will be applied to (L)BFGS updates.  Setting this value to
 zero completely disables damping.</p>
-</section>
-<section id="limited-mem-size">
+</div>
+<div class="section" id="limited-mem-size">
 <h2>limited_mem_size<a class="headerlink" href="#limited-mem-size" title="Permalink to this headline">¶</a></h2>
 <p>Non-negative integer. Default value: 0</p>
 <p>By default, PyGRANSO uses full-memory BFGS updating.  For nonsmooth
@@ -100,8 +460,8 @@ problems, full-memory BFGS is generally recommended.  However, if
 this is not feasible, one may optionally enable limited-memory BFGS
 updating by setting opts.limited_mem_size to a positive integer
 (significantly) less than the number of variables.</p>
-</section>
-<section id="limited-mem-fixed-scaling">
+</div>
+<div class="section" id="limited-mem-fixed-scaling">
 <h2>limited_mem_fixed_scaling<a class="headerlink" href="#limited-mem-fixed-scaling" title="Permalink to this headline">¶</a></h2>
 <p>Boolean value. Default value: True</p>
 <p>In contrast to full-memory BFGS updating, limited-memory BFGS
@@ -111,16 +471,16 @@ very first iteration for all subsequent iterations as well.  Set
 this option to False to force PyGRANSO to calculate a new scaling
 parameter on every iteration.  Note that opts.scaleH0 has no effect
 when opts.limited_mem_fixed_scaling is set to True.</p>
-</section>
-<section id="limited-mem-warm-start">
+</div>
+<div class="section" id="limited-mem-warm-start">
 <h2>limited_mem_warm_start<a class="headerlink" href="#limited-mem-warm-start" title="Permalink to this headline">¶</a></h2>
 <p>Python dictionary with key to be ‘S’, ‘Y’, ‘rho’ and ‘gamma’. Default value: None</p>
 <p>If one is restarting PyGRANSO, the previous L-BFGS information can be
 recycled by setting opts.limited_mem_warm_start = soln.H_final,
 where soln is PyGRANSO’s output struct from a previous run.  Note
 that one can either reuse the previous H0 or set a new one.</p>
-</section>
-<section id="prescaling-threshold">
+</div>
+<div class="section" id="prescaling-threshold">
 <h2>prescaling_threshold<a class="headerlink" href="#prescaling-threshold" title="Permalink to this headline">¶</a></h2>
 <p>Positive real value. Default value: Inf</p>
 <p>Pre-scales objective/constraint functions such that the norms of
@@ -133,24 +493,24 @@ whether an alterative formulation of the optimization problem with
 better inherent scaling is possible.
 NOTE: solutions obtained for a pre-scaled problem MAY NOT BE a
 solutions for the originally specified problem.</p>
-</section>
-<section id="prescaling-info-msg">
+</div>
+<div class="section" id="prescaling-info-msg">
 <h2>prescaling_info_msg<a class="headerlink" href="#prescaling-info-msg" title="Permalink to this headline">¶</a></h2>
 <p>Boolean value. Default value: True</p>
 <p>Prints a notice that PyGRANSO has either automatically pre-scaled at
 least one of the objective or constraint functions or it has
 deteced that the optimization problem may be poorly scaled.  For
 more details, see opts.prescaling_threshold.</p>
-</section>
-<section id="opt-tol">
+</div>
+<div class="section" id="opt-tol">
 <h2>opt_tol<a class="headerlink" href="#opt-tol" title="Permalink to this headline">¶</a></h2>
 <p>Positive real value. Default value: 1e-8</p>
 <p>Tolerance for reaching (approximate) optimality/stationarity.
 See opts.ngrad, opts.evaldist, and the description of PyGRANSO’s
 output argument soln, specifically the subsubfield .dnorm for more
 information.</p>
-</section>
-<section id="rel-tol">
+</div>
+<div class="section" id="rel-tol">
 <h2>rel_tol<a class="headerlink" href="#rel-tol" title="Permalink to this headline">¶</a></h2>
 <p>Non-negative real value. Default value: 0</p>
 <p>Tolerance for determining when the relative decrease in the penalty
@@ -160,24 +520,24 @@ tolerance and the current iterate is feasible to tolerances.
 Generally, we don’t recommend using this feature since small steps
 are not necessarily indicative of being near a stationary point,
 particularly for nonsmooth problems.</p>
-</section>
-<section id="step-tol">
+</div>
+<div class="section" id="step-tol">
 <h2>step_tol<a class="headerlink" href="#step-tol" title="Permalink to this headline">¶</a></h2>
 <p>Positive real value. Default value: 1e-12</p>
 <p>Tolerance for how small of a step the line search will attempt
 before terminating.</p>
-</section>
-<section id="viol-ineq-tol">
+</div>
+<div class="section" id="viol-ineq-tol">
 <h2>viol_ineq_tol<a class="headerlink" href="#viol-ineq-tol" title="Permalink to this headline">¶</a></h2>
 <p>Non-negative real value. Default value: 0</p>
 <p>Acceptable total violation tolerance of the inequality constraints.</p>
-</section>
-<section id="viol-eq-tol">
+</div>
+<div class="section" id="viol-eq-tol">
 <h2>viol_eq_tol<a class="headerlink" href="#viol-eq-tol" title="Permalink to this headline">¶</a></h2>
 <p>Non-negative real value. Default value: 1e-6</p>
 <p>Acceptable total violation tolerance of the equality constraints.</p>
-</section>
-<section id="ngrad">
+</div>
+<div class="section" id="ngrad">
 <h2>ngrad<a class="headerlink" href="#ngrad" title="Permalink to this headline">¶</a></h2>
 <p>Positive integer. Default value: min([100, 2*n, n+10])</p>
 <p>Max number of previous gradients to be cached.  The QP defining
@@ -190,8 +550,8 @@ is unconstrained and the objective is known to be smooth.  See
 opts.opt_tol, opts.evaldist, and the description of PyGRANSO’s output
 argument soln, specifically the subsubfield .dnorm for more
 information.</p>
-</section>
-<section id="evaldist">
+</div>
+<div class="section" id="evaldist">
 <h2>evaldist<a class="headerlink" href="#evaldist" title="Permalink to this headline">¶</a></h2>
 <p>Positive real value. Default value: 1e-4</p>
 <p>Previously evaluated gradients are only used in the stationarity
@@ -199,25 +559,25 @@ test if they were evaluated at points that are within distance
 evaldist of the current iterate x.  See opts.opt_tol, opts.ngrad,
 and the description of PyGRANSO’s output argument soln, specifically
 the subsubfield .dnorm for more information.</p>
-</section>
-<section id="maxit">
+</div>
+<div class="section" id="maxit">
 <h2>maxit<a class="headerlink" href="#maxit" title="Permalink to this headline">¶</a></h2>
 <p>Positive integer. Default value: 1000</p>
 <p>Max number of iterations.</p>
-</section>
-<section id="maxclocktime">
+</div>
+<div class="section" id="maxclocktime">
 <h2>maxclocktime<a class="headerlink" href="#maxclocktime" title="Permalink to this headline">¶</a></h2>
 <p>Positive real number Default value: Inf</p>
 <p>Quit if the elapsed clock time in seconds exceeds this.</p>
-</section>
-<section id="fvalquit">
+</div>
+<div class="section" id="fvalquit">
 <h2>fvalquit<a class="headerlink" href="#fvalquit" title="Permalink to this headline">¶</a></h2>
 <p>Positive real value. Default value: -Inf</p>
 <p>Quit if objective function drops below this value at a feasible
 iterate (that is, satisfying feasibility tolerances
 opts.viol_ineq_tol and opts.viol_eq_tol).</p>
-</section>
-<section id="halt-on-linesearch-bracket">
+</div>
+<div class="section" id="halt-on-linesearch-bracket">
 <h2>halt_on_linesearch_bracket<a class="headerlink" href="#halt-on-linesearch-bracket" title="Permalink to this headline">¶</a></h2>
 <p>Boolean value. Default value: True</p>
 <p>If the line search brackets a minimizer but fails to satisfy the
@@ -231,22 +591,22 @@ alternative optimization strategies (if available) to see if
 further progress can be made before terminating.   See
 gransoOptionsAdvanced for more details on PyGRANSO’s available
 fallback optimization strategies and how they can be configured.</p>
-</section>
-<section id="quadprog-info-msg">
+</div>
+<div class="section" id="quadprog-info-msg">
 <h2>quadprog_info_msg<a class="headerlink" href="#quadprog-info-msg" title="Permalink to this headline">¶</a></h2>
 <p>Boolean value. Default value: True</p>
 <p>Prints a notice that PyGRANSO’s requires a quadprog-compatible QP
 solver and that the choice of QP solver may affect PyGRANSO’s quality
 of performance, in terms of efficiency and level of optimization.</p>
-</section>
-<section id="print-level">
+</div>
+<div class="section" id="print-level">
 <h2>print_level<a class="headerlink" href="#print-level" title="Permalink to this headline">¶</a></h2>
 <p>Integer in {0,1}. Default value: 1</p>
 <p>Level of detail printed to console regarding optimization progress:</p>
 <p>0 - no printing whatsoever</p>
 <p>1 - prints info for each iteration</p>
-</section>
-<section id="print-frequency">
+</div>
+<div class="section" id="print-frequency">
 <h2>print_frequency<a class="headerlink" href="#print-frequency" title="Permalink to this headline">¶</a></h2>
 <p>Positive integer. Default value: 1</p>
 <p>Sets how often the iterations are printed.  When set to 1, every
@@ -255,55 +615,89 @@ printed.  When set to Inf, no iterations are printed, except for
 at x0.  Note that this only affects .print_level == 1 printing;
 all messages from higher values of .print_level will still be
 printed no matter what iteration they occurred on.</p>
-</section>
-<section id="print-width">
+</div>
+<div class="section" id="print-width">
 <h2>print_width<a class="headerlink" href="#print-width" title="Permalink to this headline">¶</a></h2>
 <p>Integer in [9,23]. Default value: 14</p>
 <p>Number of characters wide to print values for the penalty function,
 the objective function, and the total violations of the inequality
 and equality constraints.</p>
-</section>
-<section id="print-print-ascii">
+</div>
+<div class="section" id="print-print-ascii">
 <h2>print_print_ascii<a class="headerlink" href="#print-print-ascii" title="Permalink to this headline">¶</a></h2>
 <p>Boolean value. Default value: False</p>
 <p>By default, PyGRANSO’s printed output uses the extended character map,
 so nice looking tables can be made.  But if you need to record the output,
 you can restrict the printed output to only use the basic ASCII character map</p>
-</section>
-<section id="print-use-orange">
+</div>
+<div class="section" id="print-use-orange">
 <h2>print_use_orange<a class="headerlink" href="#print-use-orange" title="Permalink to this headline">¶</a></h2>
 <p>Boolean value. Default value: True</p>
 <p>PyGRANSO’s uses orange
 printing to highlight pertinent information.  However, the user
 is the given option to disable it if they need to record the output</p>
-</section>
-<section id="halt-log-fn">
+</div>
+<div class="section" id="halt-log-fn">
 <h2>halt_log_fn<a class="headerlink" href="#halt-log-fn" title="Permalink to this headline">¶</a></h2>
 <p>Lambda Function. Default value: None</p>
 <p>A user-provided function handle that is called on every iteration
 to allow the user to signal to PyGRANSO for it to halt at that
 iteration and/or create historical logs of the progress of the
 algorithm.</p>
-</section>
-</section>
+</div>
+</div>
 
 
-      </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
-      
-        <p>
-        «&#160;&#160;<a href="index.html">Settings</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="searching_direction.html">Searching Direction Strategies</a>&#160;&#160;»
-        </p>
+              </div>
+              
+        
+            
 
-      </div>
 
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Buyun Liang.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="index.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Settings</p>
+            </div>
+        </a>
     </div>
+     <div id="next">
+        <a class="right-next" href="searching_direction.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Searching Direction Strategies</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Buyun Liang<br/>
+        
+            &copy; Copyright 2021, Buyun Liang.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
   </body>
 </html>

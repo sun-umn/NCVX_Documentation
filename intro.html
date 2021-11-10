@@ -4,42 +4,282 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Introduction &#8212; PyGRANSO  documentation</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Installation" href="install.html" />
-    <link rel="prev" title="Home" href="index.html" /> 
-  </head><body>
-      <div class="header" role="banner"><img class="rightlogo" src="_static/PyGRANSO_logo1.png" alt="Logo"/><h1 class="heading"><a href="index.html">
-          <span>PyGRANSO  documentation</span></a></h1>
-        <h2 class="heading"><span>Introduction</span></h2>
-      </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
-      
-        <p>
-        «&#160;&#160;<a href="index.html">Home</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="install.html">Installation</a>&#160;&#160;»
-        </p>
+    <link rel="prev" title="Home" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
 
-      </div>
-      <div class="content" role="main">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
+      
+      
+      <img src="_static/PyGRANSO_logo1.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">PyGRANSO  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="install.html">
+   Installation
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="settings/index.html">
+   Settings
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="settings/standard_parameters.html">
+     Standard Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="settings/searching_direction.html">
+     Searching Direction Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="settings/steering_strategy.html">
+     Steering Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="settings/qp_parameters.html">
+     QP Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="settings/line_search.html">
+     Line Search Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="settings/new_para.html">
+     New Parameters
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/1.demo_Rosenbrock.html">
+     Rosenbrock
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/2.demo_SpectralRadiusOpt.html">
+     Spectral Radius Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/3.demo_DictLearning.html">
+     Dictionary Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/4.demo_RobustPCA.html">
+     Robust PCA
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/5.demo_GeneralizedLASSO.html">
+     Generalized LASSO
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/6.demo_PerceptualAttack.html">
+     Perceptual Attack
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/7.demo_OrthogonalRNN.html">
+     Orthogonal RNN
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
-  <section id="introduction">
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/intro.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivation-and-background">
+   Motivation and Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#key-features">
+   Key Features
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#current-limitations">
+   Current Limitations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#update-logs">
+   Update Logs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<section id="motivation-and-background">
+<div class="section" id="motivation-and-background">
 <h2>Motivation and Background<a class="headerlink" href="#motivation-and-background" title="Permalink to this headline">¶</a></h2>
 <p>Mathematical optimization is an indispensable modeling and computational tool for all science and
 engineering fields. Over the past decades, researchers have developed numerous foolproof techniques
@@ -70,8 +310,8 @@ license fees for researchers and developers.</p>
 </ol>
 </div></blockquote>
 <p>Thus, we tackled the severe limitations of GRANSO, and built a user-friendly and scalable python numerical optimization package called texttt{PyGRANSO} by revamping several key components of GRANSO and translating it into Python. Our main contributions are described in the following sections.</p>
-</section>
-<section id="key-features">
+</div>
+<div class="section" id="key-features">
 <h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
 <p>Below are the key features that makes the PyGRANSO package scalable and user-friendly:</p>
 <blockquote>
@@ -81,47 +321,81 @@ license fees for researchers and developers.</p>
 <p><strong>GPU acceleration</strong> PyGRANSO enables highly optimized and parallelizable matrix/tensor computations that take the full advantage of modern massively parallel hardware, e.g., GPUs, by using PyTorch Framework.</p>
 <p><strong>Modified Core Algorithms</strong> We modified the BFGS-SQP algorithm by enabling re-scaling searching direction and backtracking line search method, which are commonly used in solving deep learning problems.</p>
 </div></blockquote>
-</section>
-<section id="current-limitations">
+</div>
+<div class="section" id="current-limitations">
 <h2>Current Limitations<a class="headerlink" href="#current-limitations" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Stochastic algorithm not allowed.</p></li>
 <li><p>No validators for some user provided inputs, such as LBFGS settings, nn_model and device.</p></li>
 </ol>
-</section>
-<section id="update-logs">
+</div>
+<div class="section" id="update-logs">
 <h2>Update Logs<a class="headerlink" href="#update-logs" title="Permalink to this headline">¶</a></h2>
 <p>v1.1.0-alpha: Cleaned code, added L-BFGS, updated tutorials and documentation.</p>
 <p>v1.0.2-alpha: Updated installation guides for Linux and windows users.</p>
 <p>v1.0.1-alpha: Updated contirbutions, limitations and acknowledgement sections in docs.</p>
 <p>v1.0.0-alpha: Initial release of pygranso. Main features: Python translation, autodifferentiation, GPU-support with PyTorch, matrix/tensor inputs, more powerful solver and several new settings to avoid numerical issues in deep learning problem.</p>
-</section>
-<section id="references">
+</div>
+<div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Frank E. Curtis, Tim Mitchell, and Michael L. Overton. “A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles.” Optimization Methods and Software 32.1 (2017): 148-181.</p>
 <p>Stephen Boyd, Stephen P Boyd, and Lieven Vandenberghe.Convex optimization. Cambridge university press, 2004</p>
 <p>Michael Grant, Stephen Boyd, and Yinyu Ye. Cvx:  Matlab software for disciplined convex programming, 2008</p>
 <p>Adil Bagirov, Napsu Karmitsa, and Marko M M ̈akel ̈a.Introduction to Nonsmooth Optimization: theory, practice and software. Springer, 2014</p>
-</section>
-</section>
+</div>
+</div>
 
 
-      </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
-      
-        <p>
-        «&#160;&#160;<a href="index.html">Home</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="install.html">Installation</a>&#160;&#160;»
-        </p>
+              </div>
+              
+        
+            
 
-      </div>
 
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Buyun Liang.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="index.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Home</p>
+            </div>
+        </a>
     </div>
+     <div id="next">
+        <a class="right-next" href="install.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Installation</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Buyun Liang<br/>
+        
+            &copy; Copyright 2021, Buyun Liang.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
   </body>
 </html>

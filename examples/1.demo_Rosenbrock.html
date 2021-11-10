@@ -4,41 +4,301 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rosenbrock &#8212; PyGRANSO  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/haiku.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Spectral Radius Optimization" href="2.demo_SpectralRadiusOpt.html" />
-    <link rel="prev" title="Examples" href="index.html" /> 
-  </head><body>
-      <div class="header" role="banner"><img class="rightlogo" src="../_static/PyGRANSO_logo1.png" alt="Logo"/><h1 class="heading"><a href="../index.html">
-          <span>PyGRANSO  documentation</span></a></h1>
-        <h2 class="heading"><span>Rosenbrock</span></h2>
-      </div>
-      <div class="topnav" role="navigation" aria-label="top navigation">
-      
-        <p>
-        «&#160;&#160;<a href="index.html">Examples</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="2.demo_SpectralRadiusOpt.html">Spectral Radius Optimization</a>&#160;&#160;»
-        </p>
+    <link rel="prev" title="Examples" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
 
-      </div>
-      <div class="content" role="main">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
         
+      
+      
+      <img src="../_static/PyGRANSO_logo1.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">PyGRANSO  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../install.html">
+   Installation
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../settings/index.html">
+   Settings
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/standard_parameters.html">
+     Standard Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/searching_direction.html">
+     Searching Direction Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/steering_strategy.html">
+     Steering Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/qp_parameters.html">
+     QP Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/line_search.html">
+     Line Search Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/new_para.html">
+     New Parameters
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Examples
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Rosenbrock
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2.demo_SpectralRadiusOpt.html">
+     Spectral Radius Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3.demo_DictLearning.html">
+     Dictionary Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4.demo_RobustPCA.html">
+     Robust PCA
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5.demo_GeneralizedLASSO.html">
+     Generalized LASSO
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6.demo_PerceptualAttack.html">
+     Perceptual Attack
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.demo_OrthogonalRNN.html">
+     Orthogonal RNN
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
         
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/examples/1.demo_Rosenbrock.ipynb.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Problem-Definition">
+   Problem Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
+   Import all necessary modules and add PyGRANSO src folder to system path.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Spceify-torch-device,-optimization-variables,-and-corresponding-objective-and-constrained-function.">
+   Spceify torch device, optimization variables, and corresponding objective and constrained function.
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Specify-user-defined-options-for-PyGRANSO-algorithm">
+   Specify user-defined options for PyGRANSO algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Run-main-algorithm">
+   Run main algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Advanced-Tutorial:-Restart-PyGRANSO">
+   Advanced Tutorial: Restart PyGRANSO
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Let’s-restart-PyGRANSO-from-the-last-iterate-of-the-previous-run">
+   Let’s restart PyGRANSO from the last iterate of the previous run
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Advanced-Tutorial:-Log-Results">
+   Advanced Tutorial: Log Results
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Advanced-Tutorial:-Restart-PyGRANSO-in-Limited-Memory-Mode">
+   Advanced Tutorial: Restart PyGRANSO in Limited Memory Mode
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
   
 <style>
 /* CSS for nbsphinx extension */
@@ -287,19 +547,19 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<section id="Rosenbrock">
+<div class="section" id="Rosenbrock">
 <h1>Rosenbrock<a class="headerlink" href="#Rosenbrock" title="Permalink to this headline">¶</a></h1>
 <p>This notebook contains examples of solving optimization problem with 2-variable nonsmooth Rosenbrock objective function, which subject to simple bound constraints.</p>
 <p>Reference: Curtis, Frank E., Tim Mitchell, and Michael L. Overton. “A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles.” Optimization Methods and Software 32.1 (2017): 148-181.</p>
-<section id="Problem-Definition">
+<div class="section" id="Problem-Definition">
 <h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[\min_{x_1,x_2} w|x_1^2-x_2|+(1-x_1)^2,\]</div>
 <div class="math notranslate nohighlight">
 \[\text{s.t. }c_1(x_1,x_2) = \sqrt{2}x_1-1 \leq 0, c_(x_1,x_2)=2x_2-1\leq0,\]</div>
 <p>where <span class="math notranslate nohighlight">\(w\)</span> is a constant (e.g., <span class="math notranslate nohighlight">\(w=8\)</span>)</p>
-</section>
-<section id="Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
+</div>
+<div class="section" id="Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
 <h2>Import all necessary modules and add PyGRANSO src folder to system path.<a class="headerlink" href="#Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path." title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -316,8 +576,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Spceify-torch-device,-optimization-variables,-and-corresponding-objective-and-constrained-function.">
+</div>
+<div class="section" id="Spceify-torch-device,-optimization-variables,-and-corresponding-objective-and-constrained-function.">
 <h2>Spceify torch device, optimization variables, and corresponding objective and constrained function.<a class="headerlink" href="#Spceify-torch-device,-optimization-variables,-and-corresponding-objective-and-constrained-function." title="Permalink to this headline">¶</a></h2>
 <p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the PyGRANSO main algortihm.</p>
 <div class="nbinput nblast docutils container">
@@ -366,8 +626,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Specify-user-defined-options-for-PyGRANSO-algorithm">
+</div>
+<div class="section" id="Specify-user-defined-options-for-PyGRANSO-algorithm">
 <h2>Specify user-defined options for PyGRANSO algorithm<a class="headerlink" href="#Specify-user-defined-options-for-PyGRANSO-algorithm" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -383,8 +643,8 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 </div>
-</section>
-<section id="Run-main-algorithm">
+</div>
+<div class="section" id="Run-main-algorithm">
 <h2>Run main algorithm<a class="headerlink" href="#Run-main-algorithm" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -479,8 +739,8 @@ tensor([[0.7071],
         [0.5000]], dtype=torch.float64)
 </pre></div></div>
 </div>
-</section>
-<section id="Advanced-Tutorial:-Restart-PyGRANSO">
+</div>
+<div class="section" id="Advanced-Tutorial:-Restart-PyGRANSO">
 <h2>Advanced Tutorial: Restart PyGRANSO<a class="headerlink" href="#Advanced-Tutorial:-Restart-PyGRANSO" title="Permalink to this headline">¶</a></h2>
 <p>the following example shows how to set PyGRANSO options and how to restart PyGRASNO</p>
 <div class="nbinput docutils container">
@@ -563,8 +823,8 @@ PyGRANSO termination code: 4 --- max iterations reached.                        
 ==================================================================================================================
 </pre></div></div>
 </div>
-</section>
-<section id="Let’s-restart-PyGRANSO-from-the-last-iterate-of-the-previous-run">
+</div>
+<div class="section" id="Let’s-restart-PyGRANSO-from-the-last-iterate-of-the-previous-run">
 <h2>Let’s restart PyGRANSO from the last iterate of the previous run<a class="headerlink" href="#Let’s-restart-PyGRANSO-from-the-last-iterate-of-the-previous-run" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
@@ -714,8 +974,8 @@ tensor([[0.7071],
         [0.5000]], dtype=torch.float64)
 </pre></div></div>
 </div>
-</section>
-<section id="Advanced-Tutorial:-Log-Results">
+</div>
+<div class="section" id="Advanced-Tutorial:-Log-Results">
 <h2>Advanced Tutorial: Log Results<a class="headerlink" href="#Advanced-Tutorial:-Log-Results" title="Permalink to this headline">¶</a></h2>
 <p>opts below shows the importance of using an initial point that is neither near nor on a nonsmooth manifold, that is, the functions (objective and constraints) should be smooth at and <em>about</em> the initial point.</p>
 <div class="nbinput nblast docutils container">
@@ -1006,8 +1266,8 @@ PyGRANSO termination code: 0 --- converged to stationarity and feasibility toler
         [ 0.2671]], dtype=torch.float64)]
 </pre></div></div>
 </div>
-</section>
-<section id="Advanced-Tutorial:-Restart-PyGRANSO-in-Limited-Memory-Mode">
+</div>
+<div class="section" id="Advanced-Tutorial:-Restart-PyGRANSO-in-Limited-Memory-Mode">
 <h2>Advanced Tutorial: Restart PyGRANSO in Limited Memory Mode<a class="headerlink" href="#Advanced-Tutorial:-Restart-PyGRANSO-in-Limited-Memory-Mode" title="Permalink to this headline">¶</a></h2>
 <p>(Note that this example problem only has two variables!)</p>
 <p>If PyGRANSO was running in limited-memory mode, that is, if opts.limited_mem_size &gt; 0, then PyGRANSO’s restart procedure is slightly different, as soln.H_final will instead contain the most current L-BFGS state, not a full inverse Hessian approximation.</p>
@@ -1195,26 +1455,60 @@ PyGRANSO termination code: 0 --- converged to stationarity and feasibility toler
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 </pre></div></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
-      </div>
-      <div class="bottomnav" role="navigation" aria-label="bottom navigation">
-      
-        <p>
-        «&#160;&#160;<a href="index.html">Examples</a>
-        &#160;&#160;::&#160;&#160;
-        <a class="uplink" href="../index.html">Contents</a>
-        &#160;&#160;::&#160;&#160;
-        <a href="2.demo_SpectralRadiusOpt.html">Spectral Radius Optimization</a>&#160;&#160;»
-        </p>
+              </div>
+              
+        
+            
 
-      </div>
 
-    <div class="footer" role="contentinfo">
-        &#169; Copyright 2021, Buyun Liang.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 4.2.0.
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="index.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Examples</p>
+            </div>
+        </a>
     </div>
+     <div id="next">
+        <a class="right-next" href="2.demo_SpectralRadiusOpt.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Spectral Radius Optimization</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Buyun Liang<br/>
+        
+            &copy; Copyright 2021, Buyun Liang.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
   </body>
 </html>

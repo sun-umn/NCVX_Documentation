@@ -55,6 +55,8 @@ html_theme = "sphinx_book_theme"
 html_static_path = ['_static']
 
 html_logo = "./PyGRANSO_logo1.png"
-#html_theme_options = {
-#    "full_logo": "false"
-#    }
+html_theme_options = {
+   "repository_url": "https://github.com/sun-umn/PyGRANSO",
+   "use_repository_button": True,
+   "use_issues_button": True,
+   }

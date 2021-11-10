@@ -1,3 +1,3 @@
-Documentation Page: https://sun-umn.github.io/PyGRANSO-Documentation/
+https://sun-umn.github.io/PyGRANSO-Documentation/ (Documentation Page)
 
-Source Code: https://github.com/sun-umn/PyGRANSO
+https://github.com/sun-umn/PyGRANSO (Source Code)

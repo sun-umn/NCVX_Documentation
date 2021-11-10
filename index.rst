@@ -1,7 +1,7 @@
 Home
 =======================================
 
-.. image:: examples/images/PyGRANSO_logo.png
+.. image:: PyGRANSO_logo.png
    :width: 1000
 
 

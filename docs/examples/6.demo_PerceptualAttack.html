@@ -766,21 +766,21 @@ Problem specifications:                                                         
 Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  ║ SD │ Evals │     t    ║ Grads │    Value   ║
 ═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
    0 ║ 1.000000 │  0.50909392739 ║  0.50909392739 ║ 0.000000 │   -  ║ -  │     1 │ 0.000000 ║     1 │ 0.752374   ║
-  10 ║ 1.000000 │ -0.55110318737 ║ -0.89901601712 ║ 0.347913 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.500435   ║
-  20 ║ 1.000000 │ -0.96465293547 ║ -0.97820945369 ║ 0.013557 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 1.115001   ║
+  10 ║ 1.000000 │ -0.50872108700 ║ -0.88639971711 ║ 0.377679 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.548706   ║
+  20 ║ 1.000000 │ -0.96019197251 ║ -0.98795223931 ║ 0.027760 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 1.182802   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-Optimization results:                                                                                            ║
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
+Optimization results:                                                                                            ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
    F ║          │                ║ -1.00000000000 ║ 0.000000 │   -  ║    │       │          ║       │            ║
    B ║          │                ║ -1.00000000000 ║ 0.000000 │   -  ║    │       │          ║       │            ║
   MF ║          │                ║ -1.00000000000 ║ 0.000000 │   -  ║    │       │          ║       │            ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-Iterations:              22                                                                                      ║
+Iterations:              23                                                                                      ║
 Function evaluations:    32                                                                                      ║
 PyGRANSO termination code: 0 --- converged to stationarity and feasibility tolerances.                           ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 4.704223394393921s
+Total Wall Time: 5.117218732833862s
 </pre></div></div>
 </div>
 </div>
@@ -954,6 +954,16 @@ i = 5
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
 [W pthreadpool-cpp.cc:90] Warning: Leaking Caffe2 thread-pool after fork. (function pthreadpool)
+Traceback (most recent call last):
+  File &#34;/home/buyun/anaconda3/envs/cuosqp_pygranso/lib/python3.9/multiprocessing/queues.py&#34;, line 251, in _feed
+    send_bytes(obj)
+  File &#34;/home/buyun/anaconda3/envs/cuosqp_pygranso/lib/python3.9/multiprocessing/connection.py&#34;, line 205, in send_bytes
+    self._send_bytes(m[offset:offset + size])
+  File &#34;/home/buyun/anaconda3/envs/cuosqp_pygranso/lib/python3.9/multiprocessing/connection.py&#34;, line 416, in _send_bytes
+    self._send(header + buf)
+  File &#34;/home/buyun/anaconda3/envs/cuosqp_pygranso/lib/python3.9/multiprocessing/connection.py&#34;, line 373, in _send
+    n = write(self._handle, buf)
+BrokenPipeError: [Errno 32] Broken pipe
 </pre></div></div>
 </div>
 <div class="nboutput docutils container">
@@ -1015,8 +1025,8 @@ i = 9
 
  model train acc on the original image = 1.0
 Success rate of attack = 1.0
-Average distance between attacked image and original image = 0.49303066117796535
-Average run time of PyGRANSO = 4.13142683506012s, mean f_eval = 32.0 iters
+Average distance between attacked image and original image = 0.49303066117796085
+Average run time of PyGRANSO = 4.578636026382446s, mean f_eval = 32.0 iters
 </pre></div></div>
 </div>
 </div>

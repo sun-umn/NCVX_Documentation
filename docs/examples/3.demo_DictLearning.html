@@ -244,38 +244,38 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Problem-Description">
+   Problem Description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Modules-Importing">
+   Modules Importing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Data-Generation">
+   Data Generation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#Problem-Definition">
    Problem Definition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
-   Import all necessary modules and add PyGRANSO src folder to system path.
+  <a class="reference internal nav-link" href="#User-Options">
+   User Options
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Specify-torch-device,-and-generate-data">
-   Specify torch device, and generate data
+  <a class="reference internal nav-link" href="#Main-Algorithm">
+   Main Algorithm
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Spceify-optimization-variables-and-corresponding-objective-and-constrained-function.">
-   Spceify optimization variables and corresponding objective and constrained function.
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Specify-user-defined-options-for-PyGRANSO-algorithm">
-   Specify user-defined options for PyGRANSO algorithm
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Run-main-algorithm">
-   Run main algorithm
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Advanced-Tutorial:-try-various-user-options">
-   Advanced Tutorial: try various user options
+  <a class="reference internal nav-link" href="#Various-Options">
+   Various Options
   </a>
  </li>
 </ul>
@@ -541,8 +541,8 @@ div.rendered_html tbody tr:hover {
 <h1>Dictionary Learning<a class="headerlink" href="#Dictionary-Learning" title="Permalink to this headline">¶</a></h1>
 <p>This notebook contains examples of how to solve orthogonal dictionary learning problem.</p>
 <p>Reference: Bai, Yu, Qijia Jiang, and Ju Sun. “Subgradient descent learns orthogonal dictionaries.” arXiv preprint arXiv:1810.10702 (2018).</p>
-<div class="section" id="Problem-Definition">
-<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Problem-Description">
+<h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
 <p>given data <span class="math notranslate nohighlight">\(\{y_i \}_{i \in[m]}\)</span> generated as <span class="math notranslate nohighlight">\(y_i = A x_i\)</span>, where <span class="math notranslate nohighlight">\(A \in R^{n \times n}\)</span> is a fixed unknown orthogonal matrix and each <span class="math notranslate nohighlight">\(x_i \in R^n\)</span> is an iid Bernoulli-Gaussian random vector with parameter <span class="math notranslate nohighlight">\(\theta \in (0,1)\)</span>, recover <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <p>Write <span class="math notranslate nohighlight">\(Y \doteq [y_1,...,y_m]\)</span> and <span class="math notranslate nohighlight">\(X \doteq [vx_1,...,x_m]\)</span>. Nonconvex due to constraint, nonsmooth due to objective:</p>
 <div class="math notranslate nohighlight">
@@ -551,8 +551,9 @@ div.rendered_html tbody tr:hover {
 \[\text{s.t.} ||q||_2 = 1,\]</div>
 <p>Based on above statistical model, <span class="math notranslate nohighlight">\(q^T Y = q^T A X\)</span> has the highest sparsity when <span class="math notranslate nohighlight">\(q\)</span> is a column of <span class="math notranslate nohighlight">\(A\)</span> (up to sign) so that <span class="math notranslate nohighlight">\(q^T A\)</span> is 1-sparse.</p>
 </div>
-<div class="section" id="Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
-<h2>Import all necessary modules and add PyGRANSO src folder to system path.<a class="headerlink" href="#Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path." title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Modules-Importing">
+<h2>Modules Importing<a class="headerlink" href="#Modules-Importing" title="Permalink to this headline">¶</a></h2>
+<p>Import all necessary modules and add PyGRANSO src folder to system path.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -572,8 +573,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Specify-torch-device,-and-generate-data">
-<h2>Specify torch device, and generate data<a class="headerlink" href="#Specify-torch-device,-and-generate-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Data-Generation">
+<h2>Data Generation<a class="headerlink" href="#Data-Generation" title="Permalink to this headline">¶</a></h2>
+<p>Specify torch device, and generate data</p>
 <p>Use gpu for this problem. If no cuda device available, please set <em>device = torch.device(‘cpu’)</em></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -594,8 +596,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Spceify-optimization-variables-and-corresponding-objective-and-constrained-function.">
-<h2>Spceify optimization variables and corresponding objective and constrained function.<a class="headerlink" href="#Spceify-optimization-variables-and-corresponding-objective-and-constrained-function." title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Problem-Definition">
+<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
+<p>Spceify torch device, optimization variables, and corresponding objective and constrained function.</p>
 <p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the PyGRANSO main algortihm. <em>X_struct</em> and <em>data_in</em> are always required.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -638,8 +641,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Specify-user-defined-options-for-PyGRANSO-algorithm">
-<h2>Specify user-defined options for PyGRANSO algorithm<a class="headerlink" href="#Specify-user-defined-options-for-PyGRANSO-algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="User-Options">
+<h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
+<p>Specify user-defined options for PyGRANSO algorithm</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -657,8 +661,8 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Run-main-algorithm">
-<h2>Run main algorithm<a class="headerlink" href="#Run-main-algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Main-Algorithm">
+<h2>Main Algorithm<a class="headerlink" href="#Main-Algorithm" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
@@ -734,9 +738,9 @@ tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 </pre></div></div>
 </div>
 </div>
-<div class="section" id="Advanced-Tutorial:-try-various-user-options">
-<h2>Advanced Tutorial: try various user options<a class="headerlink" href="#Advanced-Tutorial:-try-various-user-options" title="Permalink to this headline">¶</a></h2>
-<p>Set fvalquit. Quit if objective function drops below this value at a feasible iterate (that is, satisfying feasibility tolerances opts.viol_ineq_tol and opts.viol_eq_tol)</p>
+<div class="section" id="Various-Options">
+<h2>Various Options<a class="headerlink" href="#Various-Options" title="Permalink to this headline">¶</a></h2>
+<p><strong>(Optional)</strong> Set fvalquit. Quit if objective function drops below this value at a feasible iterate (that is, satisfying feasibility tolerances opts.viol_ineq_tol and opts.viol_eq_tol)</p>
 <p>In the example below, we get termination code 2 since the target objective reached at point feasible to tolerances</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:

@@ -244,38 +244,38 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Problem-Description">
+   Problem Description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Modules-Importing">
+   Modules Importing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Data-Generation">
+   Data Generation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#Problem-Definition">
    Problem Definition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
-   Import all necessary modules and add PyGRANSO src folder to system path.
+  <a class="reference internal nav-link" href="#User-Options">
+   User Options
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Specify-torch-device,-and-read-the-data-from-provided-file">
-   Specify torch device, and read the data from provided file
+  <a class="reference internal nav-link" href="#Main-Algorithm">
+   Main Algorithm
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Spceify-optimization-variables-and-corresponding-objective-and-constrained-function.">
-   Spceify optimization variables and corresponding objective and constrained function.
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Specify-user-defined-options-for-PyGRANSO-algorithm">
-   Specify user-defined options for PyGRANSO algorithm
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Run-main-algorithm">
-   Run main algorithm
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Advanced-Tutorial:-LBFGS-and-feasibility-related-options">
-   Advanced Tutorial: LBFGS and feasibility related options
+  <a class="reference internal nav-link" href="#LBFGS">
+   LBFGS
   </a>
  </li>
 </ul>
@@ -541,8 +541,8 @@ div.rendered_html tbody tr:hover {
 <h1>Spectral Radius Optimization<a class="headerlink" href="#Spectral-Radius-Optimization" title="Permalink to this headline">¶</a></h1>
 <p>This notebook contains examples of how to solve Spectral Radius Optimization problem.</p>
 <p>Reference: Curtis, Frank E., Tim Mitchell, and Michael L. Overton. “A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles.” Optimization Methods and Software 32.1 (2017): 148-181.</p>
-<div class="section" id="Problem-Definition">
-<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Problem-Description">
+<h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
 <p>We have <span class="math notranslate nohighlight">\(M=A+BXC\)</span>, where the matirces <span class="math notranslate nohighlight">\(A\in R^{N,N},B\in R^{N,P}\)</span> and <span class="math notranslate nohighlight">\(C\in R^{M,N}\)</span> are given, <span class="math notranslate nohighlight">\(X\in R^{P,M}\)</span> is the matrix form optimization variable.</p>
 <p>We have the nonconvex, nonsmooth, and constrained optimization problem</p>
 <div class="math notranslate nohighlight">
@@ -551,8 +551,9 @@ div.rendered_html tbody tr:hover {
 \[\text{s.t. }\rho_R(A+BXC)+\xi \leq 0,\]</div>
 <p>where <span class="math notranslate nohighlight">\(\xi\)</span> is the stability margin, and <span class="math notranslate nohighlight">\(\rho_I\)</span> and <span class="math notranslate nohighlight">\(\rho_R\)</span> are the maximum imaginary and real part of singular values of <span class="math notranslate nohighlight">\(M\)</span>.</p>
 </div>
-<div class="section" id="Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
-<h2>Import all necessary modules and add PyGRANSO src folder to system path.<a class="headerlink" href="#Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path." title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Modules-Importing">
+<h2>Modules Importing<a class="headerlink" href="#Modules-Importing" title="Permalink to this headline">¶</a></h2>
+<p>Import all necessary modules and add PyGRANSO src folder to system path.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -571,8 +572,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Specify-torch-device,-and-read-the-data-from-provided-file">
-<h2>Specify torch device, and read the data from provided file<a class="headerlink" href="#Specify-torch-device,-and-read-the-data-from-provided-file" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Data-Generation">
+<h2>Data Generation<a class="headerlink" href="#Data-Generation" title="Permalink to this headline">¶</a></h2>
+<p>Specify torch device, and read the data from provided file</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -595,8 +597,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Spceify-optimization-variables-and-corresponding-objective-and-constrained-function.">
-<h2>Spceify optimization variables and corresponding objective and constrained function.<a class="headerlink" href="#Spceify-optimization-variables-and-corresponding-objective-and-constrained-function." title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Problem-Definition">
+<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
+<p>Spceify optimization variables and corresponding objective and constrained function.</p>
 <p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the PyGRANSO main algortihm.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -643,8 +646,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Specify-user-defined-options-for-PyGRANSO-algorithm">
-<h2>Specify user-defined options for PyGRANSO algorithm<a class="headerlink" href="#Specify-user-defined-options-for-PyGRANSO-algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="User-Options">
+<h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
+<p>Specify user-defined options for PyGRANSO algorithm</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -659,8 +663,8 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Run-main-algorithm">
-<h2>Run main algorithm<a class="headerlink" href="#Run-main-algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Main-Algorithm">
+<h2>Main Algorithm<a class="headerlink" href="#Main-Algorithm" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
@@ -739,8 +743,9 @@ Total Wall Time: 70.98906588554382s
 </pre></div></div>
 </div>
 </div>
-<div class="section" id="Advanced-Tutorial:-LBFGS-and-feasibility-related-options">
-<h2>Advanced Tutorial: LBFGS and feasibility related options<a class="headerlink" href="#Advanced-Tutorial:-LBFGS-and-feasibility-related-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="LBFGS">
+<h2>LBFGS<a class="headerlink" href="#LBFGS" title="Permalink to this headline">¶</a></h2>
+<p>(Optional) LBFGS and feasibility related options</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>

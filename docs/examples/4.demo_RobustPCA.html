@@ -244,33 +244,33 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Problem-Description">
+   Problem Description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Modules-Importing">
+   Modules Importing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Data-Generation">
+   Data Generation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#Problem-Definition">
    Problem Definition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
-   Import all necessary modules and add PyGRANSO src folder to system path.
+  <a class="reference internal nav-link" href="#User-Options">
+   User Options
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Specify-torch-device,-and-generate-data">
-   Specify torch device, and generate data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Spceify-optimization-variables-and-corresponding-objective-and-constrained-function.">
-   Spceify optimization variables and corresponding objective and constrained function.
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Specify-user-defined-options-for-PyGRANSO-algorithm">
-   Specify user-defined options for PyGRANSO algorithm
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Run-main-algorithm">
-   Run main algorithm
+  <a class="reference internal nav-link" href="#Main-Algorithm">
+   Main Algorithm
   </a>
  </li>
 </ul>
@@ -536,16 +536,17 @@ div.rendered_html tbody tr:hover {
 <h1>Robust PCA<a class="headerlink" href="#Robust-PCA" title="Permalink to this headline">¶</a></h1>
 <p>This notebook contains examples of how to solve Robust PCA problem.</p>
 <p>Reference: Yi, Xinyang, et al. “Fast algorithms for robust PCA via gradient descent.” Advances in neural information processing systems. 2016.</p>
-<div class="section" id="Problem-Definition">
-<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Problem-Description">
+<h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[\min_{M,S}||M||_{\text{nuc}}+\lambda||S||_1,\]</div>
 <div class="math notranslate nohighlight">
 \[\text{s.t. }Y=M+S,\]</div>
 <p>where <span class="math notranslate nohighlight">\(M,S\in R^{d_1,d_2}\)</span> are matrix form optimization variables, <span class="math notranslate nohighlight">\(Y\in R^{d_1,d_2}\)</span> is a given matrix, and <span class="math notranslate nohighlight">\(||\cdot||_{\text{nuc}}\)</span> denotes the nuclear norm.</p>
 </div>
-<div class="section" id="Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
-<h2>Import all necessary modules and add PyGRANSO src folder to system path.<a class="headerlink" href="#Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path." title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Modules-Importing">
+<h2>Modules Importing<a class="headerlink" href="#Modules-Importing" title="Permalink to this headline">¶</a></h2>
+<p>Import all necessary modules and add PyGRANSO src folder to system path.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -562,8 +563,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Specify-torch-device,-and-generate-data">
-<h2>Specify torch device, and generate data<a class="headerlink" href="#Specify-torch-device,-and-generate-data" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Data-Generation">
+<h2>Data Generation<a class="headerlink" href="#Data-Generation" title="Permalink to this headline">¶</a></h2>
+<p>Specify torch device, and generate data</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -579,8 +581,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Spceify-optimization-variables-and-corresponding-objective-and-constrained-function.">
-<h2>Spceify optimization variables and corresponding objective and constrained function.<a class="headerlink" href="#Spceify-optimization-variables-and-corresponding-objective-and-constrained-function." title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Problem-Definition">
+<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
+<p>Spceify torch device, optimization variables, and corresponding objective and constrained function.</p>
 <p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the PyGRANSO main algortihm. <em>X_struct</em> and <em>data_in</em> are always required.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -624,8 +627,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Specify-user-defined-options-for-PyGRANSO-algorithm">
-<h2>Specify user-defined options for PyGRANSO algorithm<a class="headerlink" href="#Specify-user-defined-options-for-PyGRANSO-algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="User-Options">
+<h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
+<p>Specify user-defined options for PyGRANSO algorithm</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -639,10 +643,10 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Run-main-algorithm">
-<h2>Run main algorithm<a class="headerlink" href="#Run-main-algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Main-Algorithm">
+<h2>Main Algorithm<a class="headerlink" href="#Main-Algorithm" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[ ]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>

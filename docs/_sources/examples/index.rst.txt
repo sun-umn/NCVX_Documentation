@@ -3,9 +3,7 @@
 Examples
 ========
 
-.. warning::
-	There are two required input files to use PyGRANSO, ``runExample.py`` and ``combinedFunction.py``
-	Please do not change the name of two required files as it was used in the main algorithm.
+We provided several tutorials to help users get started with PyGRANSO.
 
 .. toctree::
 	:maxdepth: 1

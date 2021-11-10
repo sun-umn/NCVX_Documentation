@@ -244,48 +244,43 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Problem-Description">
+   Problem Description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Modules-Importing">
+   Modules Importing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#Problem-Definition">
    Problem Definition
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
-   Import all necessary modules and add PyGRANSO src folder to system path.
+  <a class="reference internal nav-link" href="#User-Options">
+   User Options
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Spceify-torch-device,-optimization-variables,-and-corresponding-objective-and-constrained-function.">
-   Spceify torch device, optimization variables, and corresponding objective and constrained function.
+  <a class="reference internal nav-link" href="#Main-Algorithm">
+   Main Algorithm
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Specify-user-defined-options-for-PyGRANSO-algorithm">
-   Specify user-defined options for PyGRANSO algorithm
+  <a class="reference internal nav-link" href="#PyGRANSO-Restarting">
+   PyGRANSO Restarting
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Run-main-algorithm">
-   Run main algorithm
+  <a class="reference internal nav-link" href="#Results-Logs">
+   Results Logs
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Advanced-Tutorial:-Restart-PyGRANSO">
-   Advanced Tutorial: Restart PyGRANSO
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Let’s-restart-PyGRANSO-from-the-last-iterate-of-the-previous-run">
-   Let’s restart PyGRANSO from the last iterate of the previous run
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Advanced-Tutorial:-Log-Results">
-   Advanced Tutorial: Log Results
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Advanced-Tutorial:-Restart-PyGRANSO-in-Limited-Memory-Mode">
-   Advanced Tutorial: Restart PyGRANSO in Limited Memory Mode
+  <a class="reference internal nav-link" href="#LFBGS-Restarting">
+   LFBGS Restarting
   </a>
  </li>
 </ul>
@@ -551,16 +546,17 @@ div.rendered_html tbody tr:hover {
 <h1>Rosenbrock<a class="headerlink" href="#Rosenbrock" title="Permalink to this headline">¶</a></h1>
 <p>This notebook contains examples of solving optimization problem with 2-variable nonsmooth Rosenbrock objective function, which subject to simple bound constraints.</p>
 <p>Reference: Curtis, Frank E., Tim Mitchell, and Michael L. Overton. “A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles.” Optimization Methods and Software 32.1 (2017): 148-181.</p>
-<div class="section" id="Problem-Definition">
-<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Problem-Description">
+<h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
 \[\min_{x_1,x_2} w|x_1^2-x_2|+(1-x_1)^2,\]</div>
 <div class="math notranslate nohighlight">
 \[\text{s.t. }c_1(x_1,x_2) = \sqrt{2}x_1-1 \leq 0, c_(x_1,x_2)=2x_2-1\leq0,\]</div>
 <p>where <span class="math notranslate nohighlight">\(w\)</span> is a constant (e.g., <span class="math notranslate nohighlight">\(w=8\)</span>)</p>
 </div>
-<div class="section" id="Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path.">
-<h2>Import all necessary modules and add PyGRANSO src folder to system path.<a class="headerlink" href="#Import-all-necessary-modules-and-add-PyGRANSO-src-folder-to-system-path." title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Modules-Importing">
+<h2>Modules Importing<a class="headerlink" href="#Modules-Importing" title="Permalink to this headline">¶</a></h2>
+<p>Import all necessary modules and add PyGRANSO src folder to system path.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -577,8 +573,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Spceify-torch-device,-optimization-variables,-and-corresponding-objective-and-constrained-function.">
-<h2>Spceify torch device, optimization variables, and corresponding objective and constrained function.<a class="headerlink" href="#Spceify-torch-device,-optimization-variables,-and-corresponding-objective-and-constrained-function." title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Problem-Definition">
+<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
+<p>Spceify torch device, optimization variables, and corresponding objective and constrained function.</p>
 <p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the PyGRANSO main algortihm.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
@@ -627,8 +624,9 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Specify-user-defined-options-for-PyGRANSO-algorithm">
-<h2>Specify user-defined options for PyGRANSO algorithm<a class="headerlink" href="#Specify-user-defined-options-for-PyGRANSO-algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="User-Options">
+<h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
+<p>Specify user-defined options for PyGRANSO algorithm</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -644,8 +642,8 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Run-main-algorithm">
-<h2>Run main algorithm<a class="headerlink" href="#Run-main-algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Main-Algorithm">
+<h2>Main Algorithm<a class="headerlink" href="#Main-Algorithm" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -740,9 +738,9 @@ tensor([[0.7071],
 </pre></div></div>
 </div>
 </div>
-<div class="section" id="Advanced-Tutorial:-Restart-PyGRANSO">
-<h2>Advanced Tutorial: Restart PyGRANSO<a class="headerlink" href="#Advanced-Tutorial:-Restart-PyGRANSO" title="Permalink to this headline">¶</a></h2>
-<p>the following example shows how to set PyGRANSO options and how to restart PyGRASNO</p>
+<div class="section" id="PyGRANSO-Restarting">
+<h2>PyGRANSO Restarting<a class="headerlink" href="#PyGRANSO-Restarting" title="Permalink to this headline">¶</a></h2>
+<p><strong>(Optional)</strong> The following example shows how to set PyGRANSO options and how to restart PyGRASNO</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
@@ -823,9 +821,7 @@ PyGRANSO termination code: 4 --- max iterations reached.                        
 ==================================================================================================================
 </pre></div></div>
 </div>
-</div>
-<div class="section" id="Let’s-restart-PyGRANSO-from-the-last-iterate-of-the-previous-run">
-<h2>Let’s restart PyGRANSO from the last iterate of the previous run<a class="headerlink" href="#Let’s-restart-PyGRANSO-from-the-last-iterate-of-the-previous-run" title="Permalink to this headline">¶</a></h2>
+<p>Let’s restart PyGRANSO from the last iterate of the previous run</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
@@ -975,9 +971,9 @@ tensor([[0.7071],
 </pre></div></div>
 </div>
 </div>
-<div class="section" id="Advanced-Tutorial:-Log-Results">
-<h2>Advanced Tutorial: Log Results<a class="headerlink" href="#Advanced-Tutorial:-Log-Results" title="Permalink to this headline">¶</a></h2>
-<p>opts below shows the importance of using an initial point that is neither near nor on a nonsmooth manifold, that is, the functions (objective and constraints) should be smooth at and <em>about</em> the initial point.</p>
+<div class="section" id="Results-Logs">
+<h2>Results Logs<a class="headerlink" href="#Results-Logs" title="Permalink to this headline">¶</a></h2>
+<p><strong>(Optional)</strong> opts below shows the importance of using an initial point that is neither near nor on a nonsmooth manifold, that is, the functions (objective and constraints) should be smooth at and <em>about</em> the initial point.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
@@ -1267,8 +1263,9 @@ PyGRANSO termination code: 0 --- converged to stationarity and feasibility toler
 </pre></div></div>
 </div>
 </div>
-<div class="section" id="Advanced-Tutorial:-Restart-PyGRANSO-in-Limited-Memory-Mode">
-<h2>Advanced Tutorial: Restart PyGRANSO in Limited Memory Mode<a class="headerlink" href="#Advanced-Tutorial:-Restart-PyGRANSO-in-Limited-Memory-Mode" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="LFBGS-Restarting">
+<h2>LFBGS Restarting<a class="headerlink" href="#LFBGS-Restarting" title="Permalink to this headline">¶</a></h2>
+<p><strong>(Optional)</strong></p>
 <p>(Note that this example problem only has two variables!)</p>
 <p>If PyGRANSO was running in limited-memory mode, that is, if opts.limited_mem_size &gt; 0, then PyGRANSO’s restart procedure is slightly different, as soln.H_final will instead contain the most current L-BFGS state, not a full inverse Hessian approximation.</p>
 <p>Instead, do the following: 1) If you set a specific H0, you will need to set opts.H0 to whatever you used previously. By default, PyGRANSO uses the identity for H0.</p>

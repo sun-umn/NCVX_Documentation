@@ -52,7 +52,9 @@ coverage.xml
 
 
 # PyBuilder
+examples/.ipynb_checkpoints
 .ipynb_checkpoints
 default-35b79aa5-8147-4833-952a-7322ce45f6d3.ipynb
 default-ff59d6cd-aae5-4d49-8d34-b5165c0f80ad.ipynb
 docs/.doctrees/default-35b79aa5-8147-4833-952a-7322ce45f6d3.doctree
+examples/.ipynb_checkpoints/1.demo_Rosenbrock-checkpoint.ipynb

@@ -2,4 +2,4 @@ Documentation Page: https://sun-umn.github.io/PyGRANSO-Documentation/
 
 Source Code https://github.com/sun-umn/PyGRANSO 
 
-Contact: Buyun Liang [https://buyunliang.org/] liang664@umn.edu
+Contact: Buyun Liang [https://buyunliang.org] liang664@umn.edu

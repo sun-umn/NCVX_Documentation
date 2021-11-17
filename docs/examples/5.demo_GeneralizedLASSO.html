@@ -615,7 +615,7 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="c1"># variables and corresponding dimensions.</span>
 <span class="n">var_in</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">]}</span>
 
-<span class="k">def</span> <span class="nf">evalObjFunction</span><span class="p">(</span><span class="n">X_struct</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">obj_eval_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">X_struct</span><span class="o">.</span><span class="n">x</span>
     <span class="n">x</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
@@ -623,7 +623,7 @@ div.rendered_html tbody tr:hover {
     <span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">t</span><span class="p">()</span> <span class="o">@</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">b</span><span class="p">)</span>  <span class="o">+</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span> <span class="n">F</span><span class="nd">@x</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">f</span>
 
-<span class="k">def</span> <span class="nf">combinedFunction</span><span class="p">(</span><span class="n">X_struct</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">comb_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">X_struct</span><span class="o">.</span><span class="n">x</span>
     <span class="n">x</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
@@ -636,9 +636,6 @@ div.rendered_html tbody tr:hover {
     <span class="n">ce</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">ci</span><span class="p">,</span><span class="n">ce</span><span class="p">]</span>
-
-<span class="n">obj_eval_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">X_struct</span><span class="p">:</span> <span class="n">evalObjFunction</span><span class="p">(</span><span class="n">X_struct</span><span class="p">)</span>
-<span class="n">comb_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">X_struct</span><span class="p">:</span> <span class="n">combinedFunction</span><span class="p">(</span><span class="n">X_struct</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -656,6 +653,10 @@ div.rendered_html tbody tr:hover {
 <span class="n">opts</span><span class="o">.</span><span class="n">x0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 <span class="n">opts</span><span class="o">.</span><span class="n">print_level</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">opts</span><span class="o">.</span><span class="n">print_frequency</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># opts.init_step_size = 1</span>
+<span class="c1"># opts.searching_direction_rescaling = True</span>
+<span class="c1"># opts.is_backtrack_linesearch = True</span>
 </pre></div>
 </div>
 </div>
@@ -768,7 +769,7 @@ Iterations:              495                                                    
 Function evaluations:    2374                                                                 ║
 PyGRANSO termination code: 0 --- converged to stationarity tolerance.                         ║
 ══════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 3.493558645248413s
+Total Wall Time: 2.2543270587921143s
 </pre></div></div>
 </div>
 </div>

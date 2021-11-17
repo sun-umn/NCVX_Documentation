@@ -40,5 +40,5 @@ Buyun Liang was supported by the UMII Seed Grant Program (https://research.umn.e
 Contact
 ----------------------
 
-Created by Buyun Liang [liang664@umn.edu] - feel free to contact me if you have any questions!
+Created by Buyun Liang [https://buyunliang.org] - feel free to contact me [liang664@umn.edu] if you have any questions!
 

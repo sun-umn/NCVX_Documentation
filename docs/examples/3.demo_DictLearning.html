@@ -651,8 +651,6 @@ div.rendered_html tbody tr:hover {
 
     <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">ci</span><span class="p">,</span><span class="n">ce</span><span class="p">]</span>
 
-<span class="c1"># obj_eval_fn = lambda X_struct: evalObjFunction(X_struct)</span>
-<span class="c1"># comb_fn = lambda X_struct: combinedFunction(X_struct)</span>
 </pre></div>
 </div>
 </div>
@@ -672,6 +670,7 @@ div.rendered_html tbody tr:hover {
 <span class="n">x0</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">x0</span> <span class="o">/=</span> <span class="n">la</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">opts</span><span class="o">.</span><span class="n">x0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+
 <span class="n">opts</span><span class="o">.</span><span class="n">print_frequency</span> <span class="o">=</span> <span class="mi">10</span>
 </pre></div>
 </div>
@@ -738,8 +737,8 @@ Iter ║    Mu    │      Value     ║    Objective   ║ Ineq │    Eq    �
  180 ║ 1.000000 │  0.49194210966 ║  0.49194210962 ║   -  │ 3.94e-11 ║ S  │     5 │ 0.062500 ║     1 │ 1.83e-08   ║
  190 ║ 1.000000 │  0.49194210946 ║  0.49194210944 ║   -  │ 1.99e-11 ║ S  │     6 │ 0.031250 ║     1 │ 1.18e-08   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 Optimization results:                                                                                            ║
+F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
    F ║          │                ║  0.49194210943 ║   -  │ 1.93e-11 ║    │       │          ║       │            ║
    B ║          │                ║  0.49194210943 ║   -  │ 1.93e-11 ║    │       │          ║       │            ║
@@ -749,7 +748,7 @@ Iterations:              191                                                    
 Function evaluations:    806                                                                                     ║
 PyGRANSO termination code: 0 --- converged to stationarity and feasibility tolerances.                           ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 3.7354211807250977s
+Total Wall Time: 2.995088577270508s
 tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 </pre></div></div>
 </div>
@@ -815,8 +814,8 @@ Iter |    Mu    |      Value     |    Objective   | Ineq |    Eq    | SD | Evals
   60 | 1.000000 |  0.49212731751 |  0.49208854433 |   -  | 3.88e-05 | S  |     4 | 0.125000 |     1 | 0.051779   |
   70 | 1.000000 |  0.49203371691 |  0.49201049130 |   -  | 2.32e-05 | S  |     4 | 0.125000 |     1 | 0.054529   |
 ==================================================================================================================
-F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   |
 Optimization results:                                                                                            |
+F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   |
 ==================================================================================================================
    F |          |                |  0.49205285240 |   -  | 3.35e-07 |    |       |          |       |            |
    B |          |                |  0.49205285240 |   -  | 3.35e-07 |    |       |          |       |            |
@@ -890,8 +889,8 @@ Iter |    Mu    |      Value     |    Objective   | Ineq |    Eq    | SD | Evals
   90 | 1.000000 |  0.49194701030 |  0.49194698105 |   -  | 2.93e-08 | S  |     5 | 0.062500 |     1 | 3.12e-04   |
  100 | 1.000000 |  0.49194382838 |  0.49194381415 |   -  | 1.42e-08 | S  |     6 | 0.031250 |     1 | 1.60e-04   |
 ==================================================================================================================
-F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   |
 Optimization results:                                                                                            |
+F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   |
 ==================================================================================================================
    F |          |                |  0.49194284486 |   -  | 8.95e-09 |    |       |          |       |            |
    B |          |                |  0.49194284486 |   -  | 8.95e-09 |    |       |          |       |            |
@@ -958,6 +957,10 @@ tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 <span class="c1"># guaranteed (since it is an undocumented feature).</span>
 <span class="c1"># opts.print_use_orange = False</span>
 
+<span class="c1"># opts.init_step_size = 1e-2</span>
+<span class="c1"># opts.searching_direction_rescaling = True</span>
+<span class="c1"># opts.is_backtrack_linesearch = True</span>
+
 <span class="n">soln</span> <span class="o">=</span> <span class="n">pygranso</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span> <span class="n">objEvalFunction</span> <span class="o">=</span> <span class="n">obj_eval_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">final</span><span class="o">.</span><span class="n">x</span><span class="p">)))</span> <span class="c1"># should be close to 1</span>
 </pre></div>
@@ -1009,8 +1012,8 @@ Iter ║    Mu    │      Value     ║    Objective   ║ Ineq │    Eq    �
  180 ║ 1.000000 │  0.49194210966 ║  0.49194210962 ║   -  │ 3.94e-11 ║ S  │     5 │ 0.062500 ║     1 │ 1.83e-08   ║
  190 ║ 1.000000 │  0.49194210946 ║  0.49194210944 ║   -  │ 1.99e-11 ║ S  │     6 │ 0.031250 ║     1 │ 1.18e-08   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 Optimization results:                                                                                            ║
+F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
    F ║          │                ║  0.49194210943 ║   -  │ 1.93e-11 ║    │       │          ║       │            ║
    B ║          │                ║  0.49194210943 ║   -  │ 1.93e-11 ║    │       │          ║       │            ║

@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'PyGRANSO'
+project = 'NCVX'
 copyright = '2021, Buyun Liang'
 author = 'Buyun Liang'
 
@@ -55,9 +55,9 @@ html_theme = "sphinx_book_theme"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-html_logo = "./PyGRANSO_logo1.png"
+html_logo = "./ncvx_logo.png"
 html_theme_options = {
-   "repository_url": "https://github.com/sun-umn/PyGRANSO",
+   "repository_url": "https://github.com/sun-umn/NCVX",
    "use_repository_button": True,
    "use_issues_button": True,
    }

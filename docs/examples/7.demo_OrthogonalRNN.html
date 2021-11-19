@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Orthogonal RNN &#8212; PyGRANSO  documentation</title>
+    <title>Orthogonal RNN &#8212; NCVX  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -61,10 +61,10 @@
         
       
       
-      <img src="../_static/PyGRANSO_logo1.png" class="logo" alt="logo">
+      <img src="../_static/ncvx_logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">PyGRANSO  documentation</h1>
+      <h1 class="site-logo" id="site-title">NCVX  documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -229,11 +229,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/sun-umn/PyGRANSO"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/sun-umn/NCVX"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/sun-umn/PyGRANSO/issues/new?title=Issue%20on%20page%20%2Fexamples/7.demo_OrthogonalRNN.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fexamples/7.demo_OrthogonalRNN.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -572,7 +572,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Modules-Importing">
 <h2>Modules Importing<a class="headerlink" href="#Modules-Importing" title="Permalink to this headline">¶</a></h2>
-<p>Import all necessary modules and add PyGRANSO src folder to system path. PyGRANSO src folder to system path.</p>
+<p>Import all necessary modules and add NCVX src folder to system path. NCVX src folder to system path.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -581,10 +581,10 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="c1">## Adding PyGRANSO directories. Should be modified by user</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/home/buyun/Documents/GitHub/PyGRANSO&#39;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">pygranso</span> <span class="kn">import</span> <span class="n">pygranso</span>
-<span class="kn">from</span> <span class="nn">pygransoStruct</span> <span class="kn">import</span> <span class="n">Options</span><span class="p">,</span> <span class="n">Data</span><span class="p">,</span> <span class="n">GeneralStruct</span>
+<span class="c1">## Adding NCVX directories. Should be modified by user</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/home/buyun/Documents/GitHub/NCVX&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">ncvx</span> <span class="kn">import</span> <span class="n">ncvx</span>
+<span class="kn">from</span> <span class="nn">ncvxStruct</span> <span class="kn">import</span> <span class="n">Options</span><span class="p">,</span> <span class="n">GeneralStruct</span>
 <span class="kn">from</span> <span class="nn">private.getNvar</span> <span class="kn">import</span> <span class="n">getNvarTorch</span>
 <span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
 <span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">datasets</span>
@@ -638,13 +638,13 @@ div.rendered_html tbody tr:hover {
 <span class="n">model</span><span class="o">.</span><span class="n">train</span><span class="p">()</span>
 
 <span class="n">train_data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span>
-    <span class="n">root</span> <span class="o">=</span> <span class="s1">&#39;/home/buyun/Documents/GitHub/PyGRANSO/examples/data/mnist&#39;</span><span class="p">,</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="s1">&#39;/home/buyun/Documents/GitHub/NCVX/examples/data/mnist&#39;</span><span class="p">,</span>
     <span class="n">train</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">transform</span> <span class="o">=</span> <span class="n">ToTensor</span><span class="p">(),</span>
     <span class="n">download</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">)</span>
 <span class="n">test_data</span> <span class="o">=</span> <span class="n">datasets</span><span class="o">.</span><span class="n">MNIST</span><span class="p">(</span>
-    <span class="n">root</span> <span class="o">=</span> <span class="s1">&#39;/home/buyun/Documents/GitHub/PyGRANSO/examples/data/mnist&#39;</span><span class="p">,</span>
+    <span class="n">root</span> <span class="o">=</span> <span class="s1">&#39;/home/buyun/Documents/GitHub/NCVX/examples/data/mnist&#39;</span><span class="p">,</span>
     <span class="n">train</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">transform</span> <span class="o">=</span> <span class="n">ToTensor</span><span class="p">()</span>
 <span class="p">)</span>
@@ -679,7 +679,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Problem-Definition">
 <h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
 <p>Spceify torch device, optimization variables, and corresponding objective and constrained function.</p>
-<p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the PyGRANSO main algortihm. <em>X_struct</em> and <em>data_in</em> are always required.</p>
+<p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the NCVX main algortihm. <em>X_struct</em> and <em>data_in</em> are always required.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -744,7 +744,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="User-Options">
 <h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
-<p>Specify user-defined options for PyGRANSO algorithm</p>
+<p>Specify user-defined options for NCVX algorithm</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -807,7 +807,7 @@ Initial acc = 10.00%
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">soln</span> <span class="o">=</span> <span class="n">pygranso</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span> <span class="n">objEvalFunction</span> <span class="o">=</span> <span class="n">obj_eval_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">nn_model</span><span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">ncvx</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span> <span class="n">objEvalFunction</span> <span class="o">=</span> <span class="n">obj_eval_fn</span><span class="p">,</span> <span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">nn_model</span><span class="o">=</span> <span class="n">model</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Wall Time: </span><span class="si">{}</span><span class="s2">s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 </pre></div>
@@ -820,13 +820,13 @@ Initial acc = 10.00%
 <div class="highlight"><pre>
 
 
-<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════════╗
-</span><span class="ansi-yellow-fg">║  PyGRANSO requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
-</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.                  ║
-</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                                   ║
-</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════════╝
+<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════╗
+</span><span class="ansi-yellow-fg">║  NCVX requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
+</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.              ║
+</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                               ║
+</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════╝
 </span>═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-PyGRANSO: Python numerical package using GRadient-based Algorithm for Non-Smooth Optimization                    ║
+NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning                        ║
 Version 1.1.0                                                                                                    ║
 MIT License Copyright (c) 2021 SUN Group @ UMN                                                                   ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
@@ -850,17 +850,17 @@ Iter ║    Mu    │      Value     ║    Objective   ║ Ineq │    Eq    �
   90 ║ 0.064611 │  94.9408980548 ║  2.17885799309 ║   -  │ 1.000000 ║ <span class="ansi-yellow-fg">SI</span> │    28 │ 0.100000 ║     1 │ 0.590648   ║
  100 ║ 0.064611 │  97.1301479200 ║  2.13822174990 ║   -  │ 1.000000 ║ <span class="ansi-yellow-fg">SI</span> │    28 │ 0.100000 ║     1 │ 5.765487   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-Optimization results:                                                                                            ║
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
+Optimization results:                                                                                            ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
    F ║          │                ║  2.13822174990 ║   -  │ 1.000000 ║    │       │          ║       │            ║
   MF ║          │                ║  2.25739462122 ║   -  │ 1.000000 ║    │       │          ║       │            ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
 Iterations:              100                                                                                     ║
 Function evaluations:    435                                                                                     ║
-PyGRANSO termination code: 4 --- max iterations reached.                                                         ║
+NCVX termination code: 4 --- max iterations reached.                                                             ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 299.2140226364136s
+Total Wall Time: 291.79956436157227s
 </pre></div></div>
 </div>
 </div>

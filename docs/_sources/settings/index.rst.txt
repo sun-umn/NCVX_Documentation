@@ -3,7 +3,7 @@
 Settings
 ========
 
-This pages shows the detailed description of all settings in PyGRANSO. The :ref:`Examples<examples>` section shows the detailed usage of a variety of them.
+This pages shows the detailed description of all settings in NCVX. The :ref:`Examples<examples>` section shows the detailed usage of a variety of them.
 
 .. note::
    The implementation and description of most settings are based on the `GRANSO <http://www.timmitchell.com/software/GRANSO/>`_ package.

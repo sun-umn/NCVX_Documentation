@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dictionary Learning &#8212; PyGRANSO  documentation</title>
+    <title>Dictionary Learning &#8212; NCVX  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -62,10 +62,10 @@
         
       
       
-      <img src="../_static/PyGRANSO_logo1.png" class="logo" alt="logo">
+      <img src="../_static/ncvx_logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">PyGRANSO  documentation</h1>
+      <h1 class="site-logo" id="site-title">NCVX  documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -230,11 +230,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/sun-umn/PyGRANSO"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/sun-umn/NCVX"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/sun-umn/PyGRANSO/issues/new?title=Issue%20on%20page%20%2Fexamples/3.demo_DictLearning.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fexamples/3.demo_DictLearning.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -570,7 +570,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Modules-Importing">
 <h2>Modules Importing<a class="headerlink" href="#Modules-Importing" title="Permalink to this headline">¶</a></h2>
-<p>Import all necessary modules and add PyGRANSO src folder to system path.</p>
+<p>Import all necessary modules and add NCVX src folder to system path.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -582,10 +582,10 @@ div.rendered_html tbody tr:hover {
 <span class="kn">import</span> <span class="nn">numpy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="c1">## Adding PyGRANSO directories. Should be modified by user</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/home/buyun/Documents/GitHub/PyGRANSO&#39;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">pygranso</span> <span class="kn">import</span> <span class="n">pygranso</span>
-<span class="kn">from</span> <span class="nn">pygransoStruct</span> <span class="kn">import</span> <span class="n">Options</span><span class="p">,</span> <span class="n">Data</span><span class="p">,</span> <span class="n">GeneralStruct</span>
+<span class="c1">## Adding NCVX directories. Should be modified by user</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/home/buyun/Documents/GitHub/NCVX&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">ncvx</span> <span class="kn">import</span> <span class="n">ncvx</span>
+<span class="kn">from</span> <span class="nn">ncvxStruct</span> <span class="kn">import</span> <span class="n">Options</span><span class="p">,</span> <span class="n">GeneralStruct</span>
 </pre></div>
 </div>
 </div>
@@ -603,8 +603,6 @@ div.rendered_html tbody tr:hover {
 <span class="n">n</span> <span class="o">=</span> <span class="mi">30</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="c1"># data_in</span>
-<span class="n">data_in</span> <span class="o">=</span> <span class="n">Data</span><span class="p">()</span>
 <span class="n">m</span> <span class="o">=</span> <span class="mi">10</span><span class="o">*</span><span class="n">n</span><span class="o">**</span><span class="mi">2</span>   <span class="c1"># sample complexity</span>
 <span class="n">theta</span> <span class="o">=</span> <span class="mf">0.3</span>   <span class="c1"># sparsity level</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="n">m</span><span class="p">))</span> <span class="o">&lt;=</span> <span class="n">theta</span><span class="p">)</span>  <span class="c1"># Bernoulli-Gaussian model</span>
@@ -616,7 +614,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Problem-Definition">
 <h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
 <p>Spceify torch device, optimization variables, and corresponding objective and constrained function.</p>
-<p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the PyGRANSO main algortihm. <em>X_struct</em> and <em>data_in</em> are always required.</p>
+<p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the NCVX main algortihm. <em>X_struct</em> and <em>data_in</em> are always required.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -626,21 +624,12 @@ div.rendered_html tbody tr:hover {
 <span class="n">var_in</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;q&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">]}</span>
 
 
-<span class="k">def</span> <span class="nf">obj_eval_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">):</span>
-    <span class="n">q</span> <span class="o">=</span> <span class="n">X_struct</span><span class="o">.</span><span class="n">q</span>
-    <span class="n">q</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="c1"># objective function</span>
-    <span class="n">qtY</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">t</span><span class="p">()</span> <span class="o">@</span> <span class="n">Y</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">m</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">qtY</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">f</span>
-
 <span class="k">def</span> <span class="nf">comb_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">):</span>
     <span class="n">q</span> <span class="o">=</span> <span class="n">X_struct</span><span class="o">.</span><span class="n">q</span>
     <span class="n">q</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 
     <span class="c1"># objective function</span>
-    <span class="n">qtY</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">t</span><span class="p">()</span> <span class="o">@</span> <span class="n">Y</span>
+    <span class="n">qtY</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">Y</span>
     <span class="n">f</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">m</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">qtY</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
 
     <span class="c1"># inequality constraint, matrix form</span>
@@ -648,7 +637,7 @@ div.rendered_html tbody tr:hover {
 
     <span class="c1"># equality constraint</span>
     <span class="n">ce</span> <span class="o">=</span> <span class="n">GeneralStruct</span><span class="p">()</span>
-    <span class="n">ce</span><span class="o">.</span><span class="n">c1</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">t</span><span class="p">()</span> <span class="o">@</span> <span class="n">q</span> <span class="o">-</span> <span class="mi">1</span>
+    <span class="n">ce</span><span class="o">.</span><span class="n">c1</span> <span class="o">=</span> <span class="n">q</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">q</span> <span class="o">-</span> <span class="mi">1</span>
 
     <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">ci</span><span class="p">,</span><span class="n">ce</span><span class="p">]</span>
 
@@ -658,7 +647,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="User-Options">
 <h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
-<p>Specify user-defined options for PyGRANSO algorithm</p>
+<p>Specify user-defined options for NCVX algorithm</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -685,7 +674,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">soln</span> <span class="o">=</span> <span class="n">pygranso</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span> <span class="n">objEvalFunction</span> <span class="o">=</span> <span class="n">obj_eval_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">ncvx</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Wall Time: </span><span class="si">{}</span><span class="s2">s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">final</span><span class="o">.</span><span class="n">x</span><span class="p">)))</span> <span class="c1"># should be close to 1</span>
@@ -699,13 +688,13 @@ div.rendered_html tbody tr:hover {
 <div class="highlight"><pre>
 
 
-<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════════╗
-</span><span class="ansi-yellow-fg">║  PyGRANSO requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
-</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.                  ║
-</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                                   ║
-</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════════╝
+<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════╗
+</span><span class="ansi-yellow-fg">║  NCVX requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
+</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.              ║
+</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                               ║
+</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════╝
 </span>═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-PyGRANSO: Python numerical package using GRadient-based Algorithm for Non-Smooth Optimization                    ║
+NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning                        ║
 Version 1.1.0                                                                                                    ║
 MIT License Copyright (c) 2021 SUN Group @ UMN                                                                   ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
@@ -747,9 +736,9 @@ F = final iterate, B = Best (to tolerance), MF = Most Feasible                  
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
 Iterations:              191                                                                                     ║
 Function evaluations:    806                                                                                     ║
-PyGRANSO termination code: 0 --- converged to stationarity and feasibility tolerances.                           ║
+NCVX termination code: 0 --- converged to stationarity and feasibility tolerances.                               ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 2.995088577270508s
+Total Wall Time: 2.8724334239959717s
 tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 </pre></div></div>
 </div>
@@ -776,7 +765,7 @@ tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 
 <span class="n">opts</span><span class="o">.</span><span class="n">fvalquit</span> <span class="o">=</span> <span class="mf">0.4963</span>
 
-<span class="n">soln</span> <span class="o">=</span> <span class="n">pygranso</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span> <span class="n">objEvalFunction</span> <span class="o">=</span> <span class="n">obj_eval_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">ncvx</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">final</span><span class="o">.</span><span class="n">x</span><span class="p">)))</span> <span class="c1"># should be close to 1</span>
 </pre></div>
 </div>
@@ -788,13 +777,13 @@ tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 <div class="highlight"><pre>
 
 
-###### QP SOLVER NOTICE #########################################################################
-#  PyGRANSO requires a quadratic program (QP) solver that has a quadprog-compatible interface,  #
-#  the default is osqp. Users may provide their own wrapper for the QP solver.                  #
-#  To disable this notice, set opts.quadprog_info_msg = False                                   #
-#################################################################################################
+###### QP SOLVER NOTICE #####################################################################
+#  NCVX requires a quadratic program (QP) solver that has a quadprog-compatible interface,  #
+#  the default is osqp. Users may provide their own wrapper for the QP solver.              #
+#  To disable this notice, set opts.quadprog_info_msg = False                               #
+#############################################################################################
 ==================================================================================================================
-PyGRANSO: Python numerical package using GRadient-based Algorithm for Non-Smooth Optimization                    |
+NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning                        |
 Version 1.1.0                                                                                                    |
 MIT License Copyright (c) 2021 SUN Group @ UMN                                                                   |
 ==================================================================================================================
@@ -824,13 +813,13 @@ F = final iterate, B = Best (to tolerance), MF = Most Feasible                  
 ==================================================================================================================
 Iterations:              77                                                                                      |
 Function evaluations:    256                                                                                     |
-PyGRANSO termination code: 2 --- target objective reached at point feasible to tolerances.                       |
+NCVX termination code: 2 --- target objective reached at point feasible to tolerances.                           |
 ==================================================================================================================
 tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 </pre></div></div>
 </div>
-<p>Set opt_tol. Tolerance for reaching (approximate) optimality/stationarity. See opts.ngrad, opts.evaldist, and the description of PyGRANSO’s output argument soln, specifically the subsubfield .dnorm for more information.</p>
-<p>In the result below, PyGRANSO terminated when stationarity is below 1e-4</p>
+<p>Set opt_tol. Tolerance for reaching (approximate) optimality/stationarity. See opts.ngrad, opts.evaldist, and the description of NCVX’s output argument soln, specifically the subsubfield .dnorm for more information.</p>
+<p>In the result below, NCVX terminated when stationarity is below 1e-4</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
@@ -848,7 +837,7 @@ tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 
 <span class="n">opts</span><span class="o">.</span><span class="n">opt_tol</span> <span class="o">=</span> <span class="mf">1e-4</span> <span class="c1"># default 1e-8</span>
 
-<span class="n">soln</span> <span class="o">=</span> <span class="n">pygranso</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span> <span class="n">objEvalFunction</span> <span class="o">=</span> <span class="n">obj_eval_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">ncvx</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span> <span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">final</span><span class="o">.</span><span class="n">x</span><span class="p">)))</span> <span class="c1"># should be close to 1</span>
 </pre></div>
 </div>
@@ -860,13 +849,13 @@ tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 <div class="highlight"><pre>
 
 
-###### QP SOLVER NOTICE #########################################################################
-#  PyGRANSO requires a quadratic program (QP) solver that has a quadprog-compatible interface,  #
-#  the default is osqp. Users may provide their own wrapper for the QP solver.                  #
-#  To disable this notice, set opts.quadprog_info_msg = False                                   #
-#################################################################################################
+###### QP SOLVER NOTICE #####################################################################
+#  NCVX requires a quadratic program (QP) solver that has a quadprog-compatible interface,  #
+#  the default is osqp. Users may provide their own wrapper for the QP solver.              #
+#  To disable this notice, set opts.quadprog_info_msg = False                               #
+#############################################################################################
 ==================================================================================================================
-PyGRANSO: Python numerical package using GRadient-based Algorithm for Non-Smooth Optimization                    |
+NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning                        |
 Version 1.1.0                                                                                                    |
 MIT License Copyright (c) 2021 SUN Group @ UMN                                                                   |
 ==================================================================================================================
@@ -899,14 +888,14 @@ F = final iterate, B = Best (to tolerance), MF = Most Feasible                  
 ==================================================================================================================
 Iterations:              108                                                                                     |
 Function evaluations:    392                                                                                     |
-PyGRANSO termination code: 0 --- converged to stationarity and feasibility tolerances.                           |
+NCVX termination code: 0 --- converged to stationarity and feasibility tolerances.                               |
 ==================================================================================================================
 tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 </pre></div></div>
 </div>
 <p>There are multiple other settings. Please uncomment to try them. Detailed description can be found by typing</p>
-<p>import pygransoOptionsAdvanced</p>
-<p>help(pygransoOptionsAdvanced)</p>
+<p>import ncvxOptionsAdvanced</p>
+<p>help(ncvxOptionsAdvanced)</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
@@ -924,7 +913,7 @@ tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 <span class="c1"># Please uncomment to try different settings</span>
 
 <span class="c1"># Tolerance for determining when the relative decrease in the penalty</span>
-<span class="c1"># function is sufficiently small.  PyGRANSO will terminate if when</span>
+<span class="c1"># function is sufficiently small.  NCVX will terminate if when</span>
 <span class="c1"># the relative decrease in the penalty function is at or below this</span>
 <span class="c1"># tolerance and the current iterate is feasible to tolerances.</span>
 <span class="c1"># Generally, we don&#39;t recommend using this feature since small steps</span>
@@ -952,7 +941,7 @@ tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 <span class="c1"># and equality constraints.</span>
 <span class="c1"># opts.print_width = 9</span>
 
-<span class="c1"># PyGRANSO&#39;s uses orange</span>
+<span class="c1"># NCVX&#39;s uses orange</span>
 <span class="c1"># printing to highlight pertinent information.  However, the user</span>
 <span class="c1"># is the given option to disable it, since support cannot be</span>
 <span class="c1"># guaranteed (since it is an undocumented feature).</span>
@@ -960,9 +949,8 @@ tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 
 <span class="c1"># opts.init_step_size = 1e-2</span>
 <span class="c1"># opts.searching_direction_rescaling = True</span>
-<span class="c1"># opts.is_backtrack_linesearch = True</span>
 
-<span class="n">soln</span> <span class="o">=</span> <span class="n">pygranso</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span> <span class="n">objEvalFunction</span> <span class="o">=</span> <span class="n">obj_eval_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">ncvx</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">final</span><span class="o">.</span><span class="n">x</span><span class="p">)))</span> <span class="c1"># should be close to 1</span>
 </pre></div>
 </div>
@@ -974,13 +962,13 @@ tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 <div class="highlight"><pre>
 
 
-<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════════╗
-</span><span class="ansi-yellow-fg">║  PyGRANSO requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
-</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.                  ║
-</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                                   ║
-</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════════╝
+<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════╗
+</span><span class="ansi-yellow-fg">║  NCVX requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
+</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.              ║
+</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                               ║
+</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════╝
 </span>═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-PyGRANSO: Python numerical package using GRadient-based Algorithm for Non-Smooth Optimization                    ║
+NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning                        ║
 Version 1.1.0                                                                                                    ║
 MIT License Copyright (c) 2021 SUN Group @ UMN                                                                   ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
@@ -1022,7 +1010,7 @@ F = final iterate, B = Best (to tolerance), MF = Most Feasible                  
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
 Iterations:              191                                                                                     ║
 Function evaluations:    806                                                                                     ║
-PyGRANSO termination code: 0 --- converged to stationarity and feasibility tolerances.                           ║
+NCVX termination code: 0 --- converged to stationarity and feasibility tolerances.                               ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
 tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 </pre></div></div>

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Line Search Parameters &#8212; PyGRANSO  documentation</title>
+    <title>Line Search Parameters &#8212; NCVX  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -60,10 +60,10 @@
         
       
       
-      <img src="../_static/PyGRANSO_logo1.png" class="logo" alt="logo">
+      <img src="../_static/ncvx_logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">PyGRANSO  documentation</h1>
+      <h1 class="site-logo" id="site-title">NCVX  documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -228,11 +228,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/sun-umn/PyGRANSO"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/sun-umn/NCVX"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/sun-umn/PyGRANSO/issues/new?title=Issue%20on%20page%20%2Fsettings/line_search.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fsettings/line_search.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -334,9 +334,9 @@ in calculating whether it truly is a descent direction or not).</p>
 indication that the objective function is unbounded below.  For
 constrained problems, it may be that the objective is only unbouded
 below off the feasible set, in which case lower values of
-the penalty parameter mu may be necessary for PyGRANSO to find the
+the penalty parameter mu may be necessary for NCVX to find the
 feasible region.  For constrained problems, if the line search
-fails to bracket a minimizer, PyGRANSO will reattempt the line search
+fails to bracket a minimizer, NCVX will reattempt the line search
 with progressively lower values of mu, up to linesearch_reattempts
 times.  See opts.linesearch_c_mu, opts.linesearch_reattempts_x0,
 and opts.linesearch_c_mu_x0.

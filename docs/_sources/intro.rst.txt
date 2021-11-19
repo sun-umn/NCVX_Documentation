@@ -35,14 +35,14 @@ limitations of GRANSO preclude its potential broad deployment by general users:
 
 	5. GRANSO is not able to take the full advantage of modern massively parallel hardware.
 
-Thus, we tackled the severe limitations of GRANSO, and built a user-friendly and scalable python numerical optimization package called \texttt{PyGRANSO} by revamping several key components of GRANSO and translating it into Python. Our main contributions are described in the following sections. 
+Thus, we tackled the severe limitations of GRANSO, and built a user-friendly and scalable python numerical optimization package called \texttt{NCVX} by revamping several key components of GRANSO and translating it into Python. Our main contributions are described in the following sections. 
 
 Key Features
 ------------------
 
-Below are the key features that makes the PyGRANSO package scalable and user-friendly:
+Below are the key features that makes the NCVX package scalable and user-friendly:
 
-	**Tensor Input** PyGRANSO allows the usage of tensor optimization variables, which is represented in a dictionary structure, where the the key is the name of variables (e.g., x_0,x_1), and the corresponding values are the dimension of tensors (e.g., $[3,32,32],[2,2]$).  
+	**Tensor Input** NCVX allows the usage of tensor optimization variables, which is represented in a dictionary structure, where the the key is the name of variables (e.g., x_0,x_1), and the corresponding values are the dimension of tensors (e.g., $[3,32,32],[2,2]$).  
 
 	**QP solvers** We replaced the MATLAB builtin quadratic solver with the OSQP package. The OSQP package is a great alternative to MATLAB’s slow quadratic solver,  and has consistently and significantly outperformed popular commercial solvers in terms of speed and scalability. 
 
@@ -50,7 +50,7 @@ Below are the key features that makes the PyGRANSO package scalable and user-fri
 	**Automatic Differentiation** We built the package based on PyTorch which allow automated differentiation. This could remove the pain of deriving analytic subgradients and avoid potential calculation and implementation mistakes. 
 
 
-	**GPU acceleration** PyGRANSO enables highly optimized and parallelizable matrix/tensor computations that take the full advantage of modern massively parallel hardware, e.g., GPUs, by using PyTorch Framework.
+	**GPU acceleration** NCVX enables highly optimized and parallelizable matrix/tensor computations that take the full advantage of modern massively parallel hardware, e.g., GPUs, by using PyTorch Framework.
 
 
 	**Modified Core Algorithms** We modified the BFGS-SQP algorithm by enabling re-scaling searching direction and backtracking line search method, which are commonly used in solving deep learning problems.
@@ -63,13 +63,15 @@ Current Limitations
 
 Update Logs
 -----------------
+v1.1.1-alpha: Rename the package from "PyGRANSO" to "NCVX"
+
 v1.1.0-alpha: Cleaned code, added L-BFGS, updated tutorials and documentation. 
 
 v1.0.2-alpha: Updated installation guides for Linux and windows users.
 
 v1.0.1-alpha: Updated contirbutions, limitations and acknowledgement sections in docs.
 
-v1.0.0-alpha: Initial release of pygranso. Main features: Python translation, autodifferentiation, GPU-support with PyTorch, matrix/tensor inputs, more powerful solver and several new settings to avoid numerical issues in deep learning problem.
+v1.0.0-alpha: Initial release of PyGRANSO. Main features: Python translation, autodifferentiation, GPU-support with PyTorch, matrix/tensor inputs, more powerful solver and several new settings to avoid numerical issues in deep learning problem.
 
 References
 -----------------

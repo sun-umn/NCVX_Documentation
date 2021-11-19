@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction &#8212; PyGRANSO  documentation</title>
+    <title>Introduction &#8212; NCVX  documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -60,10 +60,10 @@
         
       
       
-      <img src="_static/PyGRANSO_logo1.png" class="logo" alt="logo">
+      <img src="_static/ncvx_logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">PyGRANSO  documentation</h1>
+      <h1 class="site-logo" id="site-title">NCVX  documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
@@ -228,11 +228,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/sun-umn/PyGRANSO"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/sun-umn/NCVX"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/sun-umn/PyGRANSO/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -326,16 +326,16 @@ license fees for researchers and developers.</p>
 <li><p>GRANSO is not able to take the full advantage of modern massively parallel hardware.</p></li>
 </ol>
 </div></blockquote>
-<p>Thus, we tackled the severe limitations of GRANSO, and built a user-friendly and scalable python numerical optimization package called texttt{PyGRANSO} by revamping several key components of GRANSO and translating it into Python. Our main contributions are described in the following sections.</p>
+<p>Thus, we tackled the severe limitations of GRANSO, and built a user-friendly and scalable python numerical optimization package called texttt{NCVX} by revamping several key components of GRANSO and translating it into Python. Our main contributions are described in the following sections.</p>
 </div>
 <div class="section" id="key-features">
 <h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
-<p>Below are the key features that makes the PyGRANSO package scalable and user-friendly:</p>
+<p>Below are the key features that makes the NCVX package scalable and user-friendly:</p>
 <blockquote>
-<div><p><strong>Tensor Input</strong> PyGRANSO allows the usage of tensor optimization variables, which is represented in a dictionary structure, where the the key is the name of variables (e.g., x_0,x_1), and the corresponding values are the dimension of tensors (e.g., $[3,32,32],[2,2]$).</p>
+<div><p><strong>Tensor Input</strong> NCVX allows the usage of tensor optimization variables, which is represented in a dictionary structure, where the the key is the name of variables (e.g., x_0,x_1), and the corresponding values are the dimension of tensors (e.g., $[3,32,32],[2,2]$).</p>
 <p><strong>QP solvers</strong> We replaced the MATLAB builtin quadratic solver with the OSQP package. The OSQP package is a great alternative to MATLAB’s slow quadratic solver,  and has consistently and significantly outperformed popular commercial solvers in terms of speed and scalability.</p>
 <p><strong>Automatic Differentiation</strong> We built the package based on PyTorch which allow automated differentiation. This could remove the pain of deriving analytic subgradients and avoid potential calculation and implementation mistakes.</p>
-<p><strong>GPU acceleration</strong> PyGRANSO enables highly optimized and parallelizable matrix/tensor computations that take the full advantage of modern massively parallel hardware, e.g., GPUs, by using PyTorch Framework.</p>
+<p><strong>GPU acceleration</strong> NCVX enables highly optimized and parallelizable matrix/tensor computations that take the full advantage of modern massively parallel hardware, e.g., GPUs, by using PyTorch Framework.</p>
 <p><strong>Modified Core Algorithms</strong> We modified the BFGS-SQP algorithm by enabling re-scaling searching direction and backtracking line search method, which are commonly used in solving deep learning problems.</p>
 </div></blockquote>
 </div>
@@ -348,10 +348,11 @@ license fees for researchers and developers.</p>
 </div>
 <div class="section" id="update-logs">
 <h2>Update Logs<a class="headerlink" href="#update-logs" title="Permalink to this headline">¶</a></h2>
+<p>v1.1.1-alpha: Rename the package from “PyGRANSO” to “NCVX”</p>
 <p>v1.1.0-alpha: Cleaned code, added L-BFGS, updated tutorials and documentation.</p>
 <p>v1.0.2-alpha: Updated installation guides for Linux and windows users.</p>
 <p>v1.0.1-alpha: Updated contirbutions, limitations and acknowledgement sections in docs.</p>
-<p>v1.0.0-alpha: Initial release of pygranso. Main features: Python translation, autodifferentiation, GPU-support with PyTorch, matrix/tensor inputs, more powerful solver and several new settings to avoid numerical issues in deep learning problem.</p>
+<p>v1.0.0-alpha: Initial release of PyGRANSO. Main features: Python translation, autodifferentiation, GPU-support with PyTorch, matrix/tensor inputs, more powerful solver and several new settings to avoid numerical issues in deep learning problem.</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>

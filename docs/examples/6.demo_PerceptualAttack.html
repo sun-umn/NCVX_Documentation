@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Perceptual Attack &#8212; PyGRANSO  documentation</title>
+    <title>Perceptual Attack &#8212; NCVX  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -62,10 +62,10 @@
         
       
       
-      <img src="../_static/PyGRANSO_logo1.png" class="logo" alt="logo">
+      <img src="../_static/ncvx_logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">PyGRANSO  documentation</h1>
+      <h1 class="site-logo" id="site-title">NCVX  documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -230,11 +230,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/sun-umn/PyGRANSO"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/sun-umn/NCVX"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/sun-umn/PyGRANSO/issues/new?title=Issue%20on%20page%20%2Fexamples/6.demo_PerceptualAttack.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fexamples/6.demo_PerceptualAttack.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -572,7 +572,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Modules-Importing">
 <h2>Modules Importing<a class="headerlink" href="#Modules-Importing" title="Permalink to this headline">¶</a></h2>
-<p>Import all necessary modules and add PyGRANSO src folder to system path. PyGRANSO src folder to system path.</p>
+<p>Import all necessary modules and add NCVX src folder to system path. NCVX src folder to system path.</p>
 <p>NOTE: perceptual advex source code (<a class="reference external" href="https://github.com/cassidylaidlaw/perceptual-advex.git">https://github.com/cassidylaidlaw/perceptual-advex.git</a>) are required to calculate the lpips distance</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
@@ -582,10 +582,10 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">sys</span>
-<span class="c1">## Adding PyGRANSO directories. Should be modified by user</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/home/buyun/Documents/GitHub/PyGRANSO&#39;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">pygranso</span> <span class="kn">import</span> <span class="n">pygranso</span>
-<span class="kn">from</span> <span class="nn">pygransoStruct</span> <span class="kn">import</span> <span class="n">Options</span><span class="p">,</span> <span class="n">Data</span><span class="p">,</span> <span class="n">GeneralStruct</span>
+<span class="c1">## Adding NCVX directories. Should be modified by user</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/home/buyun/Documents/GitHub/NCVX&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">ncvx</span> <span class="kn">import</span> <span class="n">ncvx</span>
+<span class="kn">from</span> <span class="nn">ncvxStruct</span> <span class="kn">import</span> <span class="n">Options</span><span class="p">,</span> <span class="n">GeneralStruct</span>
 <span class="kn">from</span> <span class="nn">private.getNvar</span> <span class="kn">import</span> <span class="n">getNvarTorch</span>
 
 <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/home/buyun/Documents/GitHub/perceptual-advex&#39;</span><span class="p">)</span>
@@ -642,7 +642,7 @@ Files already downloaded and verified
 <div class="section" id="Problem-Definition">
 <h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
 <p>Spceify torch device, optimization variables, and corresponding objective and constrained function.</p>
-<p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the PyGRANSO main algortihm. <em>X_struct</em> and <em>data_in</em> are always required.</p>
+<p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the NCVX main algortihm. <em>X_struct</em> and <em>data_in</em> are always required.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -661,16 +661,6 @@ Files already downloaded and verified
     <span class="n">max_incorrect_logits</span> <span class="o">=</span> <span class="n">labels_eq_max</span> <span class="o">*</span> <span class="n">second_max</span> <span class="o">+</span> <span class="n">labels_ne_max</span> <span class="o">*</span> <span class="n">top_max</span>
     <span class="n">loss</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">max_incorrect_logits</span> <span class="o">-</span> <span class="n">correct_logits</span><span class="p">)</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">loss</span>
-
-<span class="k">def</span> <span class="nf">obj_eval_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">):</span>
-    <span class="n">adv_inputs</span> <span class="o">=</span> <span class="n">X_struct</span><span class="o">.</span><span class="n">x_tilde</span>
-    <span class="n">adv_inputs</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="c1"># objective function</span>
-    <span class="n">logits_outputs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">adv_inputs</span><span class="p">)</span>
-
-    <span class="n">f</span> <span class="o">=</span> <span class="n">MarginLoss</span><span class="p">(</span><span class="n">logits_outputs</span><span class="p">,</span><span class="n">labels</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">f</span>
 
 <span class="k">def</span> <span class="nf">comb_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">):</span>
     <span class="n">adv_inputs</span> <span class="o">=</span> <span class="n">X_struct</span><span class="o">.</span><span class="n">x_tilde</span>
@@ -714,7 +704,7 @@ Files already downloaded and verified
 </div>
 <div class="section" id="User-Options">
 <h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
-<p>Specify user-defined options for PyGRANSO algorithm</p>
+<p>Specify user-defined options for NCVX algorithm</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -740,7 +730,7 @@ Files already downloaded and verified
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">soln</span> <span class="o">=</span> <span class="n">pygranso</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span> <span class="n">objEvalFunction</span> <span class="o">=</span> <span class="n">obj_eval_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">ncvx</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Wall Time: </span><span class="si">{}</span><span class="s2">s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 </pre></div>
@@ -762,13 +752,13 @@ Files already downloaded and verified
 <div class="highlight"><pre>
 
 
-<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════════╗
-</span><span class="ansi-yellow-fg">║  PyGRANSO requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
-</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.                  ║
-</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                                   ║
-</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════════╝
+<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════╗
+</span><span class="ansi-yellow-fg">║  NCVX requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
+</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.              ║
+</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                               ║
+</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════╝
 </span>═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-PyGRANSO: Python numerical package using GRadient-based Algorithm for Non-Smooth Optimization                    ║
+NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning                        ║
 Version 1.1.0                                                                                                    ║
 MIT License Copyright (c) 2021 SUN Group @ UMN                                                                   ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
@@ -784,8 +774,8 @@ Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  �
   10 ║ 1.000000 │ -0.50872108700 ║ -0.88639971711 ║ 0.377679 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.548706   ║
   20 ║ 1.000000 │ -0.96019197251 ║ -0.98795223931 ║ 0.027760 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 1.182802   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 Optimization results:                                                                                            ║
+F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
    F ║          │                ║ -1.00000000000 ║ 0.000000 │   -  ║    │       │          ║       │            ║
    B ║          │                ║ -1.00000000000 ║ 0.000000 │   -  ║    │       │          ║       │            ║
@@ -793,9 +783,9 @@ Optimization results:                                                           
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
 Iterations:              23                                                                                      ║
 Function evaluations:    32                                                                                      ║
-PyGRANSO termination code: 0 --- converged to stationarity and feasibility tolerances.                           ║
+NCVX termination code: 0 --- converged to stationarity and feasibility tolerances.                               ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 4.658432245254517s
+Total Wall Time: 4.157378196716309s
 </pre></div></div>
 </div>
 </div>
@@ -834,7 +824,7 @@ Total Wall Time: 4.658432245254517s
         <span class="k">continue</span>
 
     <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-    <span class="n">soln</span> <span class="o">=</span> <span class="n">pygranso</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span> <span class="n">objEvalFunction</span> <span class="o">=</span> <span class="n">obj_eval_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
+    <span class="n">soln</span> <span class="o">=</span> <span class="n">ncvx</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
     <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;i = </span><span class="si">%d</span><span class="s2">&quot;</span><span class="o">%</span><span class="k">i</span>)
 
@@ -860,10 +850,10 @@ Total Wall Time: 4.658432245254517s
 
     <span class="n">total_diff</span> <span class="o">+=</span> <span class="n">diff</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2"> model train acc on the original image = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span> <span class="n">original_count</span><span class="o">/</span><span class="n">total_count</span> <span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n\n\n</span><span class="s2">Model train acc on the original image = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">((</span> <span class="n">original_count</span><span class="o">/</span><span class="n">total_count</span> <span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Success rate of attack = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span> <span class="p">(</span><span class="n">original_count</span><span class="o">-</span><span class="n">attack_count</span><span class="p">)</span><span class="o">/</span><span class="n">original_count</span> <span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average distance between attacked image and original image = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total_diff</span><span class="o">/</span><span class="n">original_count</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average run time of PyGRANSO = </span><span class="si">{}</span><span class="s2">s, mean f_eval = </span><span class="si">{}</span><span class="s2"> iters&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total_time</span><span class="o">/</span><span class="n">original_count</span><span class="p">,</span><span class="n">total_iterations</span><span class="o">/</span><span class="n">original_count</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Average run time of NCVX = </span><span class="si">{}</span><span class="s2">s, mean f_eval = </span><span class="si">{}</span><span class="s2"> iters&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">total_time</span><span class="o">/</span><span class="n">original_count</span><span class="p">,</span><span class="n">total_iterations</span><span class="o">/</span><span class="n">original_count</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1028,10 +1018,10 @@ i = 9
 
 
 
- model train acc on the original image = 1.0
+Model train acc on the original image = 1.0
 Success rate of attack = 1.0
-Average distance between attacked image and original image = 0.49436633238942956
-Average run time of PyGRANSO = 3.666808342933655s, mean f_eval = 32.0 iters
+Average distance between attacked image and original image = 0.4936783046052098
+Average run time of NCVX = 3.5959330797195435s, mean f_eval = 32.0 iters
 </pre></div></div>
 </div>
 </div>

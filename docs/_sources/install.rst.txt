@@ -5,17 +5,17 @@ Steps
 -----------------
 
 .. note::
-	The current version PyGRANSO is tested on Ubuntu 20.04
+	The current version NCVX is tested on Ubuntu 20.04
 
-Installing PyGRANSO is simple. Here is a step by step plan on how to do it:
+Installing NCVX is simple. Here is a step by step plan on how to do it:
 
-1. Download the latest version of PyGRANSO on GitHub (https://github.com/sun-umn/PyGRANSO)
+1. Download the latest version of NCVX on GitHub (https://github.com/sun-umn/NCVX)
 
-2. We recommend creating a new conda environment to manage PyGRANSO dependencies::
+2. We recommend creating a new conda environment to manage NCVX dependencies::
 
-    conda create --name pygranso_env
+    conda create --name ncvx_env
     
-    conda activate pygranso_env
+    conda activate ncvx_env
 
 3. Simply run::
 
@@ -32,7 +32,7 @@ Alternatively, users can also run::
     conda install -c conda-forge notebook
 
 
-4. Check the examples page in the documentation and example codes in PyGRANSO package for detailed instruction.
+4. Check the examples page in the documentation and example codes in NCVX package for detailed instruction.
 
 5. Modify the working directory used in example codes.
     

@@ -8,7 +8,7 @@ n by 1 double precision torch tensor. Default value: torch.randn(n,1).to(device=
 Initial starting point. One should pick x0 such that the objective
 and constraint functions are smooth at and about x0. If this is
 difficult to ascertain, it is generally recommended to initialize
-PyGRANSO at randomly-generated starting points.
+NCVX at randomly-generated starting points.
 
 mu0
 ----------------
@@ -22,7 +22,7 @@ H0
 n by n double precision torch tensor. Default value: torch.eye(n,device=torch_device, dtype=torch.double) 
 
 Initial inverse Hessian approximation.  In full-memory mode, and 
-if opts.checkH0 is true, PyGRANSO will numerically assert that this
+if opts.checkH0 is true, NCVX will numerically assert that this
 matrix is positive definite. In limited-memory mode, that is, if
 opts.limited_mem_size > 0, no numerical checks are done but this 
 matrix must be a sparse matrix.
@@ -31,9 +31,9 @@ checkH0
 ----------------
 Boolean value. Default value: True
 
-By default, PyGRANSO will check whether or not H0 is numerically
+By default, NCVX will check whether or not H0 is numerically
 positive definite (by checking whether or not cholesky() succeeds).
-However, when restarting PyGRANSO from the last iterate of an earlier
+However, when restarting NCVX from the last iterate of an earlier
 run, using soln.H_final (the last BFGS approximation to the inverse
 Hessian), soln.H_final may sometimes fail this check.  Set this
 option to False to disable it. No positive definite check is done
@@ -45,7 +45,7 @@ Boolean value. Default value: True
 
 Scale H0 during BFGS/L-BFGS updates.  For full-memory BFGS, scaling
 is only applied on the first iteration only, and is generally only
-recommended when H0 is the identity (which is PyGRANSO's default).
+recommended when H0 is the identity (which is NCVX's default).
 For limited-memory BFGS, H0 is scaled on every update.  For more
 details, see opts.limited_mem_fixed_scaling.
 
@@ -64,7 +64,7 @@ limited_mem_size
 ----------------
 Non-negative integer. Default value: 0
 
-By default, PyGRANSO uses full-memory BFGS updating.  For nonsmooth
+By default, NCVX uses full-memory BFGS updating.  For nonsmooth
 problems, full-memory BFGS is generally recommended.  However, if
 this is not feasible, one may optionally enable limited-memory BFGS
 updating by setting opts.limited_mem_size to a positive integer
@@ -76,9 +76,9 @@ Boolean value. Default value: True
 
 In contrast to full-memory BFGS updating, limited-memory BFGS
 permits that H0 can be scaled on every iteration.  By default,
-PyGRANSO will reuse the scaling parameter that is calculated on the
+NCVX will reuse the scaling parameter that is calculated on the
 very first iteration for all subsequent iterations as well.  Set
-this option to False to force PyGRANSO to calculate a new scaling
+this option to False to force NCVX to calculate a new scaling
 parameter on every iteration.  Note that opts.scaleH0 has no effect
 when opts.limited_mem_fixed_scaling is set to True.
 
@@ -86,9 +86,9 @@ limited_mem_warm_start
 --------------------------------
 Python dictionary with key to be 'S', 'Y', 'rho' and 'gamma'. Default value: None
        
-If one is restarting PyGRANSO, the previous L-BFGS information can be
+If one is restarting NCVX, the previous L-BFGS information can be
 recycled by setting opts.limited_mem_warm_start = soln.H_final,
-where soln is PyGRANSO's output struct from a previous run.  Note
+where soln is NCVX's output struct from a previous run.  Note
 that one can either reuse the previous H0 or set a new one.
 
 prescaling_threshold
@@ -110,7 +110,7 @@ prescaling_info_msg
 --------------------------------
 Boolean value. Default value: True
 
-Prints a notice that PyGRANSO has either automatically pre-scaled at
+Prints a notice that NCVX has either automatically pre-scaled at
 least one of the objective or constraint functions or it has
 deteced that the optimization problem may be poorly scaled.  For
 more details, see opts.prescaling_threshold.  
@@ -120,7 +120,7 @@ opt_tol
 Positive real value. Default value: 1e-8
 
 Tolerance for reaching (approximate) optimality/stationarity.
-See opts.ngrad, opts.evaldist, and the description of PyGRANSO's 
+See opts.ngrad, opts.evaldist, and the description of NCVX's 
 output argument soln, specifically the subsubfield .dnorm for more
 information.
 
@@ -129,7 +129,7 @@ rel_tol
 Non-negative real value. Default value: 0
 
 Tolerance for determining when the relative decrease in the penalty
-function is sufficiently small.  PyGRANSO will terminate if when 
+function is sufficiently small.  NCVX will terminate if when 
 the relative decrease in the penalty function is at or below this
 tolerance and the current iterate is feasible to tolerances.
 Generally, we don't recommend using this feature since small steps
@@ -160,13 +160,13 @@ ngrad
 Positive integer. Default value: min([100, 2*n, n+10])
                          
 Max number of previous gradients to be cached.  The QP defining 
-PyGRANSO's measure of stationarity requires a history of previous 
+NCVX's measure of stationarity requires a history of previous 
 gradients.  Note that large values of ngrad can make the related QP
 expensive to solve, if a significant fraction of the currently
 cached gradients were evaluated at points within evaldist of the 
 current iterate.  Using 1 is recommended if and only if the problem 
 is unconstrained and the objective is known to be smooth.  See 
-opts.opt_tol, opts.evaldist, and the description of PyGRANSO's output
+opts.opt_tol, opts.evaldist, and the description of NCVX's output
 argument soln, specifically the subsubfield .dnorm for more
 information.
 
@@ -177,7 +177,7 @@ Positive real value. Default value: 1e-4
 Previously evaluated gradients are only used in the stationarity 
 test if they were evaluated at points that are within distance 
 evaldist of the current iterate x.  See opts.opt_tol, opts.ngrad, 
-and the description of PyGRANSO's output argument soln, specifically 
+and the description of NCVX's output argument soln, specifically 
 the subsubfield .dnorm for more information.
 
 maxit
@@ -207,23 +207,23 @@ halt_on_linesearch_bracket
 Boolean value. Default value: True
 
 If the line search brackets a minimizer but fails to satisfy the 
-weak Wolfe conditions (necessary for a step to be accepted), PyGRANSO 
+weak Wolfe conditions (necessary for a step to be accepted), NCVX 
 will terminate at this iterate when this option is set to true 
 (default).  For unconstrained nonsmooth problems, it has been 
 observed that this type of line search failure is often an 
 indication that a stationarity has in fact been reached.  By 
-setting this parameter to False, PyGRANSO will instead first attempt 
+setting this parameter to False, NCVX will instead first attempt 
 alternative optimization strategies (if available) to see if
 further progress can be made before terminating.   See
-gransoOptionsAdvanced for more details on PyGRANSO's available 
+gransoOptionsAdvanced for more details on NCVX's available 
 fallback optimization strategies and how they can be configured. 
 
 quadprog_info_msg
 --------------------------------
 Boolean value. Default value: True
 
-Prints a notice that PyGRANSO's requires a quadprog-compatible QP
-solver and that the choice of QP solver may affect PyGRANSO's quality
+Prints a notice that NCVX's requires a quadprog-compatible QP
+solver and that the choice of QP solver may affect NCVX's quality
 of performance, in terms of efficiency and level of optimization. 
 
 
@@ -260,7 +260,7 @@ print_print_ascii
 --------------------------------          
 Boolean value. Default value: False
 
-By default, PyGRANSO's printed output uses the extended character map, 
+By default, NCVX's printed output uses the extended character map, 
 so nice looking tables can be made.  But if you need to record the output, 
 you can restrict the printed output to only use the basic ASCII character map
 
@@ -269,7 +269,7 @@ print_use_orange
 --------------------------------
 Boolean value. Default value: True
 
-PyGRANSO's uses orange
+NCVX's uses orange
 printing to highlight pertinent information.  However, the user
 is the given option to disable it if they need to record the output
 
@@ -278,7 +278,7 @@ halt_log_fn
 Lambda Function. Default value: None
 
 A user-provided function handle that is called on every iteration
-to allow the user to signal to PyGRANSO for it to halt at that 
+to allow the user to signal to NCVX for it to halt at that 
 iteration and/or create historical logs of the progress of the
 algorithm. 
 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QP Parameters &#8212; PyGRANSO  documentation</title>
+    <title>QP Parameters &#8212; NCVX  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -60,10 +60,10 @@
         
       
       
-      <img src="../_static/PyGRANSO_logo1.png" class="logo" alt="logo">
+      <img src="../_static/ncvx_logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">PyGRANSO  documentation</h1>
+      <h1 class="site-logo" id="site-title">NCVX  documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -228,11 +228,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/sun-umn/PyGRANSO"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/sun-umn/NCVX"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/sun-umn/PyGRANSO/issues/new?title=Issue%20on%20page%20%2Fsettings/qp_parameters.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fsettings/qp_parameters.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -298,7 +298,7 @@ number of H).</p>
 <div class="section" id="regularize-max-eigenvalues">
 <h2>regularize_max_eigenvalues<a class="headerlink" href="#regularize-max-eigenvalues" title="Permalink to this headline">¶</a></h2>
 <p>Boolean value. Default value: False</p>
-<p>If opts.regularize_threshold &lt; inf, then PyGRANSO’s default strategy
+<p>If opts.regularize_threshold &lt; inf, then NCVX’s default strategy
 to regularize the BFGS inverse Hessian approximation H is done by
 raising the smallest magnitude eigenvalues such that the condition
 number of the regularized version of H never exceeds
@@ -307,11 +307,11 @@ help ensure that regularized version of H is numerically positive
 definite, since H may have tiny eigenvalues and in practice, these
 may have the wrong sign numerically (negative), particularly on
 nonsmooth problems.  Alternatively, by setting this option to true,
-PyGRANSO will instead apply regularization by lowering the largest
+NCVX will instead apply regularization by lowering the largest
 eigenvalues of H but note that this mode does not attempt to
 maintain numerical positive definiteness.  Also, if an eigenvalue
 of H is exactly zero, this mode will instead resort to raising the
-smallest eigenvalues of H on that particular iteration of PyGRANSO.</p>
+smallest eigenvalues of H on that particular iteration of NCVX.</p>
 </div>
 </div>
 

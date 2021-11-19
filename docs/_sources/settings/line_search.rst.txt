@@ -34,9 +34,9 @@ If the line search fails to bracket a minimizer, this may be an
 indication that the objective function is unbounded below.  For
 constrained problems, it may be that the objective is only unbouded 
 below off the feasible set, in which case lower values of
-the penalty parameter mu may be necessary for PyGRANSO to find the
+the penalty parameter mu may be necessary for NCVX to find the
 feasible region.  For constrained problems, if the line search 
-fails to bracket a minimizer, PyGRANSO will reattempt the line search 
+fails to bracket a minimizer, NCVX will reattempt the line search 
 with progressively lower values of mu, up to linesearch_reattempts 
 times.  See opts.linesearch_c_mu, opts.linesearch_reattempts_x0, 
 and opts.linesearch_c_mu_x0.

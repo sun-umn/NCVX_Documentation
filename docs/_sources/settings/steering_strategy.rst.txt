@@ -37,7 +37,7 @@ number of times to iteratively lower the penalty parameter and
 recompute a hopefully better search direction which does adequately
 promote progress towards feasibility.  Setting this to higher
 values may more aggressively lower the penalty parameter per 
-PyGRANSO iteration.
+NCVX iteration.
     
 steering_c_viol
 --------------------------------
@@ -49,7 +49,7 @@ towards feasibility.  If a search direction's predicted violation
 reduction does not meet this target, the penalty parameter will be 
 lowered and a new search direction will be computed.  Setting this 
 to higher values may more aggressively lower the penalty parameter 
-per PyGRANSO iteration.
+per NCVX iteration.
 
 steering_c_mu
 --------------------------------
@@ -58,8 +58,8 @@ real value in (0,1). Default value: 0.9
 When steering lowers the penalty parameter in order to compute a 
 a search direction which promotes progress towards feasibility, it 
 does by progessively lowering the penalty parameter by factors of 
-steering_c_mu.  For any given PyGRANSO iteration, the penalty
+steering_c_mu.  For any given NCVX iteration, the penalty
 parameter can be shrunk up to a factor of steering_c_mu to the 
 power of steering_maxit.  Setting this to lower values may more 
-aggressively lower the penalty parameter per PyGRANSO iteration.
+aggressively lower the penalty parameter per NCVX iteration.
 

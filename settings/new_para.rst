@@ -27,7 +27,7 @@ is_backtrack_linesearch
 
 Boolean value. Default value: False
 
-By default, PyGRANSO will use Weak-Wolfe line search method. By enabling this method, the second wolfe condition will be disabled.
+By default, NCVX will use Weak-Wolfe line search method. By enabling this method, the second wolfe condition will be disabled.
 
 searching_direction_rescaling     
 --------------------------------          
@@ -41,7 +41,7 @@ disable_terminationcode_6
 
 Boolean value. Default value: False
 
-Disable termination code 6 to ensure pygranso can always make a movement even if the line search failed. Recommend setting True in deep learning problem.
+Disable termination code 6 to ensure NCVX can always make a movement even if the line search failed. Recommend setting True in deep learning problem.
 
 
 

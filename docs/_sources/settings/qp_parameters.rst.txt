@@ -20,7 +20,7 @@ regularize_max_eigenvalues
 --------------------------------          
 Boolean value. Default value: False
 
-If opts.regularize_threshold < inf, then PyGRANSO's default strategy
+If opts.regularize_threshold < inf, then NCVX's default strategy
 to regularize the BFGS inverse Hessian approximation H is done by 
 raising the smallest magnitude eigenvalues such that the condition 
 number of the regularized version of H never exceeds 
@@ -29,9 +29,9 @@ help ensure that regularized version of H is numerically positive
 definite, since H may have tiny eigenvalues and in practice, these 
 may have the wrong sign numerically (negative), particularly on 
 nonsmooth problems.  Alternatively, by setting this option to true, 
-PyGRANSO will instead apply regularization by lowering the largest 
+NCVX will instead apply regularization by lowering the largest 
 eigenvalues of H but note that this mode does not attempt to 
 maintain numerical positive definiteness.  Also, if an eigenvalue 
 of H is exactly zero, this mode will instead resort to raising the 
-smallest eigenvalues of H on that particular iteration of PyGRANSO.
+smallest eigenvalues of H on that particular iteration of NCVX.
 

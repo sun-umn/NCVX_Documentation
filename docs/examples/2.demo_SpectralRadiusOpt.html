@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spectral Radius Optimization &#8212; PyGRANSO  documentation</title>
+    <title>Spectral Radius Optimization &#8212; NCVX  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -62,10 +62,10 @@
         
       
       
-      <img src="../_static/PyGRANSO_logo1.png" class="logo" alt="logo">
+      <img src="../_static/ncvx_logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">PyGRANSO  documentation</h1>
+      <h1 class="site-logo" id="site-title">NCVX  documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -230,11 +230,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/sun-umn/PyGRANSO"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/sun-umn/NCVX"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/sun-umn/PyGRANSO/issues/new?title=Issue%20on%20page%20%2Fexamples/2.demo_SpectralRadiusOpt.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fexamples/2.demo_SpectralRadiusOpt.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -570,7 +570,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Modules-Importing">
 <h2>Modules Importing<a class="headerlink" href="#Modules-Importing" title="Permalink to this headline">¶</a></h2>
-<p>Import all necessary modules and add PyGRANSO src folder to system path.</p>
+<p>Import all necessary modules and add NCVX src folder to system path.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -579,10 +579,10 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">os</span><span class="o">,</span><span class="nn">sys</span>
-<span class="c1">## Adding PyGRANSO directories. Should be modified by user</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/home/buyun/Documents/GitHub/PyGRANSO&#39;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">pygranso</span> <span class="kn">import</span> <span class="n">pygranso</span>
-<span class="kn">from</span> <span class="nn">pygransoStruct</span> <span class="kn">import</span> <span class="n">Options</span><span class="p">,</span> <span class="n">Data</span><span class="p">,</span> <span class="n">GeneralStruct</span>
+<span class="c1">## Adding NCVX directories. Should be modified by user</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/home/buyun/Documents/GitHub/NCVX&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">ncvx</span> <span class="kn">import</span> <span class="n">ncvx</span>
+<span class="kn">from</span> <span class="nn">ncvxStruct</span> <span class="kn">import</span> <span class="n">Options</span><span class="p">,</span> <span class="n">Data</span><span class="p">,</span> <span class="n">GeneralStruct</span>
 <span class="kn">import</span> <span class="nn">scipy.io</span>
 <span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">linalg</span> <span class="k">as</span> <span class="n">LA</span>
 </pre></div>
@@ -600,7 +600,7 @@ div.rendered_html tbody tr:hover {
 <span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
 
 <span class="c1"># currentdir = os.path.dirname(os.path.realpath(__file__))</span>
-<span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;/home/buyun/Documents/GitHub/PyGRANSO/examples/data/spec_radius_opt_data.mat&quot;</span>
+<span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;/home/buyun/Documents/GitHub/NCVX/examples/data/spec_radius_opt_data.mat&quot;</span>
 <span class="n">mat</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
 <span class="n">mat_struct</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;sys&#39;</span><span class="p">]</span>
 <span class="n">mat_struct</span> <span class="o">=</span> <span class="n">mat_struct</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
@@ -617,7 +617,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Problem-Definition">
 <h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
 <p>Spceify optimization variables and corresponding objective and constrained function.</p>
-<p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the PyGRANSO main algortihm.</p>
+<p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the NCVX main algortihm.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -625,18 +625,6 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># variables and corresponding dimensions.</span>
 <span class="n">var_in</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="p">}</span>
-
-
-<span class="k">def</span> <span class="nf">obj_eval_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">):</span>
-    <span class="c1"># user defined variable, matirx form. torch tensor</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">X_struct</span><span class="o">.</span><span class="n">X</span>
-    <span class="n">X</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-
-    <span class="c1"># objective function</span>
-    <span class="n">M</span>           <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="nd">@X@C</span>
-    <span class="p">[</span><span class="n">D</span><span class="p">,</span><span class="n">_</span><span class="p">]</span>       <span class="o">=</span> <span class="n">LA</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">f</span>
 
 <span class="k">def</span> <span class="nf">comb_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">):</span>
     <span class="c1"># user defined variable, matirx form. torch tensor</span>
@@ -663,7 +651,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="User-Options">
 <h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
-<p>Specify user-defined options for PyGRANSO algorithm</p>
+<p>Specify user-defined options for NCVX algorithm</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -686,7 +674,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">soln</span> <span class="o">=</span> <span class="n">pygranso</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span> <span class="n">objEvalFunction</span> <span class="o">=</span> <span class="n">obj_eval_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">ncvx</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Wall Time: </span><span class="si">{}</span><span class="s2">s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 </pre></div>
@@ -699,13 +687,13 @@ div.rendered_html tbody tr:hover {
 <div class="highlight"><pre>
 
 
-<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════════╗
-</span><span class="ansi-yellow-fg">║  PyGRANSO requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
-</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.                  ║
-</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                                   ║
-</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════════╝
+<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════╗
+</span><span class="ansi-yellow-fg">║  NCVX requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
+</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.              ║
+</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                               ║
+</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════╝
 </span>═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-PyGRANSO: Python numerical package using GRadient-based Algorithm for Non-Smooth Optimization                    ║
+NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning                        ║
 Version 1.1.0                                                                                                    ║
 MIT License Copyright (c) 2021 SUN Group @ UMN                                                                   ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
@@ -721,40 +709,40 @@ Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  �
   10 ║ 1.000000 │  14.3591621233 ║  12.9268286638 ║ 1.432333 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.035476   ║
   20 ║ 1.000000 │  13.7108148212 ║  12.6560766192 ║ 1.054738 │   -  ║ S  │     2 │ 0.500000 ║     1 │ 0.039916   ║
   30 ║ 1.000000 │  12.9781024808 ║  12.2692651748 ║ 0.708837 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.044753   ║
-  40 ║ 1.000000 │  12.7159660800 ║  12.0997226026 ║ 0.616243 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.024262   ║
-  50 ║ 1.000000 │  12.4124519260 ║  11.9469063297 ║ 0.465546 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.075202   ║
-  60 ║ 1.000000 │  12.2512294613 ║  11.8943509437 ║ 0.356879 │   -  ║ S  │     3 │ 0.250000 ║     1 │ 0.019409   ║
-  70 ║ 1.000000 │  12.0659735397 ║  11.7780158966 ║ 0.287958 │   -  ║ S  │    10 │ 0.001953 ║     1 │ 0.070258   ║
-  80 ║ 1.000000 │  11.8824770843 ║  11.7428078737 ║ 0.139669 │   -  ║ S  │     8 │ 0.007812 ║     1 │ 0.175003   ║
-  90 ║ 1.000000 │  11.7399811246 ║  11.6639721195 ║ 0.076009 │   -  ║ S  │     9 │ 0.003906 ║     1 │ 0.053027   ║
- 100 ║ 0.900000 │  10.5003036265 ║  11.6188807579 ║ 0.043311 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.117693   ║
- 110 ║ 0.900000 │  10.4423240046 ║  11.5640106832 ║ 0.034714 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.013470   ║
- 120 ║ 0.900000 │  10.3449841844 ║  11.4944268716 ║ 0.000000 │   -  ║ S  │    13 │ 2.44e-04 ║     1 │ 0.297450   ║
- 130 ║ 0.282430 │  3.23464504014 ║  11.4529276238 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.007147   ║
- 140 ║ 0.282430 │  3.21541990218 ║  11.3832480410 ║ 4.54e-04 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.109621   ║
- 150 ║ 0.282430 │  3.20287358850 ║  11.3404342492 ║ 0.000000 │   -  ║ S  │     2 │ 0.500000 ║     1 │ 0.008929   ║
- 160 ║ 0.282430 │  3.18353433691 ║  11.2719596419 ║ 0.000000 │   -  ║ S  │     9 │ 0.003906 ║     1 │ 0.008847   ║
- 170 ║ 0.282430 │  3.17609093630 ║  11.2456047476 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.006900   ║
- 180 ║ 0.282430 │  3.16722509696 ║  11.2142134156 ║ 0.000000 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.014402   ║
- 190 ║ 0.282430 │  3.15571778554 ║  11.1734694071 ║ 0.000000 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.005126   ║
+  40 ║ 1.000000 │  12.7159660389 ║  12.0997216956 ║ 0.616244 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.024263   ║
+  50 ║ 1.000000 │  12.4124293217 ║  11.9468931061 ║ 0.465536 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.075208   ║
+  60 ║ 1.000000 │  12.2512237865 ║  11.8943474315 ║ 0.356876 │   -  ║ S  │     3 │ 0.250000 ║     1 │ 0.019409   ║
+  70 ║ 1.000000 │  12.0659940928 ║  11.7780281517 ║ 0.287966 │   -  ║ S  │    10 │ 0.001953 ║     1 │ 0.070237   ║
+  80 ║ 1.000000 │  11.8824356896 ║  11.7428667719 ║ 0.139569 │   -  ║ S  │     8 │ 0.007812 ║     1 │ 0.175263   ║
+  90 ║ 1.000000 │  11.7405966631 ║  11.6649752182 ║ 0.075621 │   -  ║ S  │     8 │ 0.007812 ║     1 │ 0.052682   ║
+ 100 ║ 0.900000 │  10.5044468122 ║  11.6275052272 ║ 0.039692 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.115713   ║
+ 110 ║ 0.900000 │  10.4548783361 ║  11.5767182468 ║ 0.035832 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.010560   ║
+ 120 ║ 0.900000 │  10.4144633042 ║  11.5384535462 ║ 0.029855 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.010768   ║
+ 130 ║ 0.900000 │  10.3370769849 ║  11.4775016108 ║ 0.007326 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.021559   ║
+ 140 ║ 0.900000 │  10.2730177199 ║  11.4076576412 ║ 0.006126 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.009997   ║
+ 150 ║ 0.900000 │  10.2290696239 ║  11.3623758118 ║ 0.002931 │   -  ║ S  │     6 │ 0.031250 ║     1 │ 0.016783   ║
+ 160 ║ 0.900000 │  10.1726059870 ║  11.3000586474 ║ 0.002553 │   -  ║ S  │     6 │ 0.031250 ║     1 │ 0.006337   ║
+ 170 ║ 0.900000 │  10.1335049580 ║  11.2557954084 ║ 0.003289 │   -  ║ S  │    11 │ 9.77e-04 ║     1 │ 0.019407   ║
+ 180 ║ 0.900000 │  10.0846318867 ║  11.2051465408 ║ 0.000000 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.012673   ║
+ 190 ║ 0.900000 │  10.0492304839 ║  11.1535017815 ║ 0.011079 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.042759   ║
 ═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
      ║ &lt;--- Penalty Function --&gt; ║                ║ Total Violation ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
 Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  ║ SD │ Evals │     t    ║ Grads │    Value   ║
 ═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
- 200 ║ 0.282430 │  3.14940565815 ║  11.1511200188 ║ 0.000000 │   -  ║ S  │     6 │ 0.031250 ║     1 │ 0.003954   ║
+ 200 ║ 0.900000 │  9.99990375197 ║  11.1110041689 ║ 0.000000 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.027570   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
 Optimization results:                                                                                            ║
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
-   F ║          │                ║  11.1511200188 ║ 0.000000 │   -  ║    │       │          ║       │            ║
-   B ║          │                ║  11.1511200188 ║ 0.000000 │   -  ║    │       │          ║       │            ║
-  MF ║          │                ║  11.1511200188 ║ 0.000000 │   -  ║    │       │          ║       │            ║
+   F ║          │                ║  11.1110041689 ║ 0.000000 │   -  ║    │       │          ║       │            ║
+   B ║          │                ║  11.1110041689 ║ 0.000000 │   -  ║    │       │          ║       │            ║
+  MF ║          │                ║  11.1110041689 ║ 0.000000 │   -  ║    │       │          ║       │            ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
 Iterations:              200                                                                                     ║
-Function evaluations:    983                                                                                     ║
-PyGRANSO termination code: 4 --- max iterations reached.                                                         ║
+Function evaluations:    1046                                                                                    ║
+NCVX termination code: 4 --- max iterations reached.                                                             ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 77.06490159034729s
+Total Wall Time: 76.8049464225769s
 </pre></div></div>
 </div>
 </div>
@@ -780,7 +768,7 @@ Total Wall Time: 77.06490159034729s
 <span class="n">opts</span><span class="o">.</span><span class="n">limited_mem_size</span> <span class="o">=</span> <span class="mi">40</span>
 
 <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">soln</span> <span class="o">=</span> <span class="n">pygranso</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span> <span class="n">objEvalFunction</span> <span class="o">=</span> <span class="n">obj_eval_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">ncvx</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Wall Time: </span><span class="si">{}</span><span class="s2">s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 </pre></div>
@@ -793,13 +781,13 @@ Total Wall Time: 77.06490159034729s
 <div class="highlight"><pre>
 
 
-<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════════╗
-</span><span class="ansi-yellow-fg">║  PyGRANSO requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
-</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.                  ║
-</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                                   ║
-</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════════╝
+<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════╗
+</span><span class="ansi-yellow-fg">║  NCVX requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
+</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.              ║
+</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                               ║
+</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════╝
 </span>═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-PyGRANSO: Python numerical package using GRadient-based Algorithm for Non-Smooth Optimization                    ║
+NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning                        ║
 Version 1.1.0                                                                                                    ║
 MIT License Copyright (c) 2021 SUN Group @ UMN                                                                   ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
@@ -817,55 +805,55 @@ Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  �
 ═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
    0 ║ 1.000000 │  16.2063030241 ║  13.7635444107 ║ 2.442759 │   -  ║ -  │     1 │ 0.000000 ║     1 │ 28.28938   ║
   10 ║ 1.000000 │  14.3591621233 ║  12.9268286638 ║ 1.432333 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.035476   ║
-  20 ║ 1.000000 │  13.7108137724 ║  12.6560780039 ║ 1.054736 │   -  ║ S  │     2 │ 0.500000 ║     1 │ 0.039916   ║
-  30 ║ 1.000000 │  12.9780711910 ║  12.2692695044 ║ 0.708802 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.044759   ║
-  40 ║ 1.000000 │  12.7160199058 ║  12.0996533504 ║ 0.616367 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.024270   ║
-  50 ║ 1.000000 │  12.4443292367 ║  11.9157682655 ║ 0.528561 │   -  ║ S  │     6 │ 0.031250 ║     1 │ 0.085035   ║
-  60 ║ 0.656100 │  8.15167903486 ║  11.9397635494 ║ 0.318000 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.030656   ║
-  70 ║ 0.656100 │  8.01111635961 ║  11.8086375514 ║ 0.263469 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.061949   ║
-  80 ║ 0.348678 │  4.30569381726 ║  11.8446682346 ║ 0.175713 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 1.089313   ║
-  90 ║ 0.185302 │  2.32732233970 ║  11.8130749547 ║ 0.138336 │   -  ║ S  │     3 │ 0.250000 ║     1 │ 0.027386   ║
- 100 ║ 0.121577 │  1.52554830081 ║  11.7686829312 ║ 0.094751 │   -  ║ S  │    13 │ 2.44e-04 ║     1 │ 4.376775   ║
- 110 ║ 0.121577 │  1.50005219665 ║  11.7340639046 ║ 0.073464 │   -  ║ S  │     8 │ 0.007812 ║     1 │ 0.120942   ║
- 120 ║ 0.121577 │  1.47689594144 ║  11.7788919730 ║ 0.044858 │   -  ║ S  │     7 │ 0.015625 ║     1 │ 14.59282   ║
- 130 ║ 0.121577 │  1.45900994502 ║  11.7499506978 ║ 0.030490 │   -  ║ S  │     6 │ 0.031250 ║     1 │ 0.074002   ║
- 140 ║ 0.121577 │  1.42320547727 ║  11.7024732155 ║ 4.58e-04 │   -  ║ S  │    15 │ 0.004211 ║     1 │ 0.114300   ║
- 150 ║ 0.064611 │  0.75449175855 ║  11.6720787481 ║ 3.49e-04 │   -  ║ S  │    15 │ 3.05e-04 ║     1 │ 6.262396   ║
- 160 ║ 0.064611 │  0.75296417793 ║  11.6538404998 ║ 0.000000 │   -  ║ S  │     8 │ 0.007812 ║     1 │ 0.230436   ║
- 170 ║ 0.064611 │  0.75180969410 ║  11.6359722255 ║ 0.000000 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.019451   ║
- 180 ║ 0.064611 │  0.75117768823 ║  11.6217697670 ║ 2.86e-04 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.011475   ║
- 190 ║ 0.038152 │  0.44311376441 ║  11.6144178916 ║ 0.000000 │   -  ║ S  │    11 │ 0.002930 ║     1 │ 0.037283   ║
+  20 ║ 1.000000 │  13.7108148212 ║  12.6560766192 ║ 1.054738 │   -  ║ S  │     2 │ 0.500000 ║     1 │ 0.039916   ║
+  30 ║ 1.000000 │  12.9781024808 ║  12.2692651748 ║ 0.708837 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.044753   ║
+  40 ║ 1.000000 │  12.7159660388 ║  12.0997216956 ║ 0.616244 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.024263   ║
+  50 ║ 1.000000 │  12.4442755783 ║  11.9156895809 ║ 0.528586 │   -  ║ S  │     6 │ 0.031250 ║     1 │ 0.085054   ║
+  60 ║ 1.000000 │  12.2170183895 ║  11.9337373705 ║ 0.283281 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.048213   ║
+  70 ║ 1.000000 │  11.9906227515 ║  11.8153150460 ║ 0.175308 │   -  ║ S  │    14 │ 8.54e-04 ║     1 │ 0.052771   ║
+  80 ║ 0.656100 │  7.85226851944 ║  11.7319888699 ║ 0.154911 │   -  ║ S  │    10 │ 0.001953 ║     1 │ 0.057446   ║
+  90 ║ 0.656100 │  7.80968867721 ║  11.6998905351 ║ 0.133390 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.167545   ║
+ 100 ║ 0.656100 │  7.77376403406 ║  11.6691488327 ║ 0.117635 │   -  ║ S  │    16 │ 1.53e-04 ║     1 │ 0.444730   ║
+ 110 ║ 0.656100 │  7.73801765765 ║  11.6480172819 ║ 0.095754 │   -  ║ S  │    12 │ 4.88e-04 ║     1 │ 0.460158   ║
+ 120 ║ 0.531441 │  6.22730901407 ║  11.6408654060 ║ 0.040876 │   -  ║ S  │    15 │ 6.10e-05 ║     1 │ 0.071221   ║
+ 130 ║ 0.282430 │  3.31212295035 ║  11.6347806242 ║ 0.026117 │   -  ║ S  │    12 │ 0.001465 ║     1 │ 6.154746   ║
+ 140 ║ 0.282430 │  3.28653115869 ║  11.6366411234 ║ 0.000000 │   -  ║ S  │    12 │ 4.88e-04 ║     1 │ 12.81324   ║
+ 150 ║ 0.282430 │  3.27957819359 ║  11.6120227171 ║ 0.000000 │   -  ║ S  │    13 │ 2.44e-04 ║     1 │ 5.308291   ║
+ 160 ║ 0.282430 │  3.27764175149 ║  11.6051311770 ║ 9.93e-06 │   -  ║ S  │    19 │ 1.64e-04 ║     1 │ 0.074702   ║
+ 170 ║ 0.064611 │  0.74917666240 ║  11.5952200459 ║ 0.000000 │   -  ║ S  │     8 │ 0.007812 ║     1 │ 7.676292   ║
+ 180 ║ 0.064611 │  0.74883058727 ║  11.5898637427 ║ 0.000000 │   -  ║ S  │     9 │ 0.003906 ║     1 │ 0.058059   ║
+ 190 ║ 0.014781 │  0.17122338357 ║  11.5841106551 ║ 0.000000 │   -  ║ S  │    12 │ 4.88e-04 ║     1 │ 0.263414   ║
 ═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
      ║ &lt;--- Penalty Function --&gt; ║                ║ Total Violation ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
 Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  ║ SD │ Evals │     t    ║ Grads │    Value   ║
 ═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
- 200 ║ 0.013303 │  0.15443102503 ║  11.6084044774 ║ 6.80e-06 │   -  ║ S  │    14 │ 0.006714 ║     1 │ 0.014708   ║
+ 200 ║ 0.005154 │  0.05967191213 ║  11.5781625660 ║ 6.65e-07 │   -  ║ S  │    11 │ 9.77e-04 ║     1 │ 0.405383   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
 Optimization results:                                                                                            ║
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
-   F ║          │                ║  11.6084044774 ║ 6.80e-06 │   -  ║    │       │          ║       │            ║
-   B ║          │                ║  11.6084224775 ║ 0.000000 │   -  ║    │       │          ║       │            ║
-  MF ║          │                ║  11.6084224775 ║ 0.000000 │   -  ║    │       │          ║       │            ║
+   F ║          │                ║  11.5781625660 ║ 6.65e-07 │   -  ║    │       │          ║       │            ║
+   B ║          │                ║  11.5781625660 ║ 6.65e-07 │   -  ║    │       │          ║       │            ║
+  MF ║          │                ║  11.5812626585 ║ 0.000000 │   -  ║    │       │          ║       │            ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
 Iterations:              200                                                                                     ║
-Function evaluations:    1515                                                                                    ║
-PyGRANSO termination code: 4 --- max iterations reached.                                                         ║
+Function evaluations:    1879                                                                                    ║
+NCVX termination code: 4 --- max iterations reached.                                                             ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 120.34971356391907s
+Total Wall Time: 135.92873454093933s
 </pre></div></div>
 </div>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
-<span></span><span class="c1"># We can also tune PyGRANSO to more aggressively favor satisfying</span>
+<span></span><span class="c1"># We can also tune NCVX to more aggressively favor satisfying</span>
 <span class="c1"># feasibility over minimizing the objective.  Set feasibility_bias to</span>
 <span class="c1"># true to adjust the following three steering parameters away from</span>
 <span class="c1"># their default values.  For more details on these parameters, type</span>
-<span class="c1"># import pygransoOptionsAdvanced</span>
-<span class="c1"># help(pygransoOptionsAdvanced)</span>
+<span class="c1"># import ncvxOptionsAdvanced</span>
+<span class="c1"># help(ncvxOptionsAdvanced)</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">opts</span> <span class="o">=</span> <span class="n">Options</span><span class="p">()</span>
 <span class="n">feasibility_bias</span> <span class="o">=</span> <span class="kc">True</span>
@@ -878,7 +866,7 @@ Total Wall Time: 120.34971356391907s
 </div>
 </div>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -888,7 +876,7 @@ Total Wall Time: 120.34971356391907s
 <span class="n">opts</span><span class="o">.</span><span class="n">print_frequency</span> <span class="o">=</span> <span class="mi">10</span>
 
 <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-<span class="n">soln</span> <span class="o">=</span> <span class="n">pygranso</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span> <span class="n">objEvalFunction</span> <span class="o">=</span> <span class="n">obj_eval_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">ncvx</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Wall Time: </span><span class="si">{}</span><span class="s2">s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
 </pre></div>
@@ -901,13 +889,13 @@ Total Wall Time: 120.34971356391907s
 <div class="highlight"><pre>
 
 
-<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════════╗
-</span><span class="ansi-yellow-fg">║  PyGRANSO requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
-</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.                  ║
-</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                                   ║
-</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════════╝
+<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════╗
+</span><span class="ansi-yellow-fg">║  NCVX requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
+</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.              ║
+</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                               ║
+</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════╝
 </span>═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
-PyGRANSO: Python numerical package using GRadient-based Algorithm for Non-Smooth Optimization                    ║
+NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning                        ║
 Version 1.1.0                                                                                                    ║
 MIT License Copyright (c) 2021 SUN Group @ UMN                                                                   ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
@@ -926,41 +914,41 @@ Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  �
   40 ║ 0.100000 │  1.62760111526 ║  13.0064275307 ║ 0.326958 │   -  ║ S  │     3 │ 0.250000 ║     1 │ 0.009626   ║
   50 ║ 0.100000 │  1.36861864889 ║  12.9968510787 ║ 0.068934 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.006985   ║
   60 ║ 0.100000 │  1.27342223176 ║  12.7342223176 ║ 0.000000 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.002375   ║
-  70 ║ 0.010000 │  0.12640600799 ║  12.6406007991 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.001509   ║
-  80 ║ 0.010000 │  0.12467609278 ║  12.4676092785 ║ 0.000000 │   -  ║ S  │     7 │ 0.015625 ║     1 │ 0.002836   ║
-  90 ║ 0.010000 │  0.12317757357 ║  12.3177573572 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.001483   ║
- 100 ║ 1.00e-06 │  1.2235905e-05 ║  12.2359048221 ║ 0.000000 │   -  ║ S  │    12 │ 320.0000 ║     1 │ 3.89e-07   ║
- 110 ║ 1.00e-07 │  1.2229881e-06 ║  12.2298809846 ║ 0.000000 │   -  ║ S  │     4 │ 8.000000 ║     1 │ 5.73e-07   ║
- 120 ║ 1.00e-07 │  1.2228964e-06 ║  12.2289644426 ║ 0.000000 │   -  ║ S  │     2 │ 2.000000 ║     1 │ 2.87e-08   ║
- 130 ║ 1.00e-07 │  1.2220465e-06 ║  12.2204653607 ║ 0.000000 │   -  ║ S  │     2 │ 0.500000 ║     1 │ 1.14e-05   ║
- 140 ║ 1.00e-07 │  1.2218157e-06 ║  12.2181566141 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 3.82e-05   ║
- 150 ║ 1.00e-07 │  1.2217853e-06 ║  12.2178526662 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 1.76e-06   ║
- 160 ║ 1.00e-07 │  1.2217322e-06 ║  12.2173219832 ║ 0.000000 │   -  ║ S  │     2 │ 2.000000 ║     1 │ 1.30e-06   ║
- 170 ║ 1.00e-07 │  1.2216997e-06 ║  12.2169966324 ║ 0.000000 │   -  ║ S  │     2 │ 2.000000 ║     1 │ 6.23e-08   ║
- 180 ║ 1.00e-07 │  1.2213871e-06 ║  12.2138710337 ║ 0.000000 │   -  ║ S  │     4 │ 3.000000 ║     1 │ 0.001113   ║
- 190 ║ 1.00e-07 │  1.2212788e-06 ║  12.2127884958 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 2.03e-05   ║
+  70 ║ 0.010000 │  0.12640618287 ║  12.6406182870 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.001510   ║
+  80 ║ 0.010000 │  0.12442418253 ║  12.4424182529 ║ 0.000000 │   -  ║ S  │     2 │ 2.000000 ║     1 │ 0.009707   ║
+  90 ║ 0.010000 │  0.12312547496 ║  12.3125474965 ║ 0.000000 │   -  ║ S  │     2 │ 0.500000 ║     1 │ 0.001033   ║
+ 100 ║ 0.010000 │  0.12204068566 ║  12.2040685663 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.001220   ║
+ 110 ║ 0.010000 │  0.12147314504 ║  12.1473145039 ║ 0.000000 │   -  ║ S  │     3 │ 0.250000 ║     1 │ 0.004498   ║
+ 120 ║ 0.010000 │  0.12116039720 ║  12.1160397198 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 3.68e-04   ║
+ 130 ║ 1.00e-05 │  1.2088386e-04 ║  12.0883863215 ║ 0.000000 │   -  ║ S  │    10 │ 512.0000 ║     1 │ 9.04e-07   ║
+ 140 ║ 1.00e-05 │  1.2080078e-04 ║  12.0770953686 ║ 2.98e-08 │   -  ║ <span class="ansi-yellow-fg">SI</span> │     9 │ 0.003906 ║     1 │ 3.57e-05   ║
+ 150 ║ 1.00e-06 │  1.2076011e-05 ║  12.0760111201 ║ 0.000000 │   -  ║ S  │     2 │ 0.500000 ║     1 │ 1.85e-06   ║
+ 160 ║ 1.00e-06 │  1.2073390e-05 ║  12.0733901241 ║ 0.000000 │   -  ║ S  │     3 │ 4.000000 ║     1 │ 1.19e-05   ║
+ 170 ║ 1.00e-06 │  1.2072481e-05 ║  12.0724805053 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 3.66e-07   ║
+ 180 ║ 1.00e-06 │  1.2047149e-05 ║  12.0471492630 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 2.13e-04   ║
+ 190 ║ 1.00e-06 │  1.2029987e-05 ║  12.0299868821 ║ 0.000000 │   -  ║ S  │     2 │ 0.500000 ║     1 │ 28.30672   ║
 ═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
      ║ &lt;--- Penalty Function --&gt; ║                ║ Total Violation ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
 Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  ║ SD │ Evals │     t    ║ Grads │    Value   ║
 ═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
- 200 ║ 1.00e-07 │  1.2212543e-06 ║  12.2125428715 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 1.18e-07   ║
+ 200 ║ 1.00e-06 │  1.2024761e-05 ║  12.0247609034 ║ 0.000000 │   -  ║ S  │     2 │ 2.000000 ║     1 │ 9.37e-06   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
 Optimization results:                                                                                            ║
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
-   F ║          │                ║  12.2125428715 ║ 0.000000 │   -  ║    │       │          ║       │            ║
-   B ║          │                ║  12.2125413288 ║ 4.77e-13 │   -  ║    │       │          ║       │            ║
-  MF ║          │                ║  12.2125428715 ║ 0.000000 │   -  ║    │       │          ║       │            ║
+   F ║          │                ║  12.0247609034 ║ 0.000000 │   -  ║    │       │          ║       │            ║
+   B ║          │                ║  12.0247023983 ║ 0.000000 │   -  ║    │       │          ║       │            ║
+  MF ║          │                ║  12.0247023983 ║ 0.000000 │   -  ║    │       │          ║       │            ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
 Iterations:              200                                                                                     ║
-Function evaluations:    731                                                                                     ║
-PyGRANSO termination code: 4 --- max iterations reached.                                                         ║
+Function evaluations:    736                                                                                     ║
+NCVX termination code: 4 --- max iterations reached.                                                             ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 50.7586395740509s
+Total Wall Time: 52.16447925567627s
 </pre></div></div>
 </div>
-<p>In my testing, with default parameters, PyGRANSO will first obtain a feasible solution at iter ~= 160 and will reduce the objective to 11.60 by the time it attains max iteration count of 200.</p>
-<p>With feasibility_bias = True, in my testing, PyGRANSO will obtain its first feasible solution earlier, at iter ~= 60, but it will ultimately have reduced the objective value less, only to 12.21, by the end of its 200 maximum allowed iterations.</p>
+<p>In my testing, with default parameters, NCVX will first obtain a feasible solution at iter ~= 160 and will reduce the objective to 11.60 by the time it attains max iteration count of 200.</p>
+<p>With feasibility_bias = True, in my testing, NCVX will obtain its first feasible solution earlier, at iter ~= 60, but it will ultimately have reduced the objective value less, only to 12.21, by the end of its 200 maximum allowed iterations.</p>
 </div>
 </div>
 

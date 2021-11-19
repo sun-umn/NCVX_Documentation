@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Steering Parameters &#8212; PyGRANSO  documentation</title>
+    <title>Steering Parameters &#8212; NCVX  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -60,10 +60,10 @@
         
       
       
-      <img src="../_static/PyGRANSO_logo1.png" class="logo" alt="logo">
+      <img src="../_static/ncvx_logo.png" class="logo" alt="logo">
       
       
-      <h1 class="site-logo" id="site-title">PyGRANSO  documentation</h1>
+      <h1 class="site-logo" id="site-title">NCVX  documentation</h1>
       
     </a>
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
@@ -228,11 +228,11 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/sun-umn/PyGRANSO"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/sun-umn/NCVX"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/sun-umn/PyGRANSO/issues/new?title=Issue%20on%20page%20%2Fsettings/steering_strategy.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fsettings/steering_strategy.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -328,7 +328,7 @@ number of times to iteratively lower the penalty parameter and
 recompute a hopefully better search direction which does adequately
 promote progress towards feasibility.  Setting this to higher
 values may more aggressively lower the penalty parameter per
-PyGRANSO iteration.</p>
+NCVX iteration.</p>
 </div>
 <div class="section" id="steering-c-viol">
 <h2>steering_c_viol<a class="headerlink" href="#steering-c-viol" title="Permalink to this headline">¶</a></h2>
@@ -339,7 +339,7 @@ towards feasibility.  If a search direction’s predicted violation
 reduction does not meet this target, the penalty parameter will be
 lowered and a new search direction will be computed.  Setting this
 to higher values may more aggressively lower the penalty parameter
-per PyGRANSO iteration.</p>
+per NCVX iteration.</p>
 </div>
 <div class="section" id="steering-c-mu">
 <h2>steering_c_mu<a class="headerlink" href="#steering-c-mu" title="Permalink to this headline">¶</a></h2>
@@ -347,10 +347,10 @@ per PyGRANSO iteration.</p>
 <p>When steering lowers the penalty parameter in order to compute a
 a search direction which promotes progress towards feasibility, it
 does by progessively lowering the penalty parameter by factors of
-steering_c_mu.  For any given PyGRANSO iteration, the penalty
+steering_c_mu.  For any given NCVX iteration, the penalty
 parameter can be shrunk up to a factor of steering_c_mu to the
 power of steering_maxit.  Setting this to lower values may more
-aggressively lower the penalty parameter per PyGRANSO iteration.</p>
+aggressively lower the penalty parameter per NCVX iteration.</p>
 </div>
 </div>
 

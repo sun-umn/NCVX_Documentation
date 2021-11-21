@@ -15,6 +15,7 @@ We provided several tutorials to help users get started with NCVX.
 	5.demo_GeneralizedLASSO.ipynb
 	6.demo_PerceptualAttack.ipynb
 	7.demo_OrthogonalRNN.ipynb
+	8.demo_UnconstrainedDL.ipynb
 	
 
     

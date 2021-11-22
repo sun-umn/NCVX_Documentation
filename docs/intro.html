@@ -284,8 +284,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#current-limitations">
-   Current Limitations
+  <a class="reference internal nav-link" href="#future-plan">
+   Future Plan
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -329,37 +329,42 @@ nonsmooth, constrained optimization problems based on MATLAB  (Curtis et al., 20
 produces meaningful results when other carefully crafted solvers fail. However, several
 limitations of GRANSO preclude its potential broad deployment by general users:</p>
 <blockquote>
-<div><p>1. It only allows vector variables but not matrices or tensors, while the latter two are common
+<div><p>(1) It only allows vector variables but not matrices or tensors, while the latter two are common
 computational units in modern optimization problems such as machine/deep learning.</p>
-<p>2. The default MATLAB quadratic programming solver struggles to scale up to medium- to large-scale
+<p>(2) The default MATLAB quadratic programming solver struggles to scale up to medium- to large-scale
 problems, which is a bottleneck for scalability.</p>
-<p>3. GRANSO requires deriving analytic subgradients for the objective and constraint functions, which
+<p>(3) GRANSO requires deriving analytic subgradients for the objective and constraint functions, which
 is challenging and even infeasible, especially in deep learning.</p>
-<p>4. MATLAB that GRANSO is written in is a proprietary programming language and entails considerable
+<p>(4) MATLAB that GRANSO is written in is a proprietary programming language and entails considerable
 license fees for researchers and developers.</p>
-<ol class="arabic simple" start="5">
-<li><p>GRANSO is not able to take the full advantage of modern massively parallel hardware.</p></li>
-</ol>
+<p>(5) GRANSO is not able to take the full advantage
+of modern massively parallel hardware.</p>
 </div></blockquote>
-<p>Thus, we tackled the severe limitations of GRANSO, and built a user-friendly and scalable python numerical optimization package called texttt{NCVX} by revamping several key components of GRANSO and translating it into Python. Our main contributions are described in the following sections.</p>
+<p>Thus, we tackled the severe limitations of GRANSO, and built a user-friendly and scalable python package called NCVX by revamping several key components of GRANSO and translating it into Python. Our main contributions are described in the following sections.</p>
 </div>
 <div class="section" id="key-features">
 <h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
 <p>Below are the key features that makes the NCVX package scalable and user-friendly:</p>
 <blockquote>
-<div><p><strong>Tensor Input</strong> NCVX allows the usage of tensor optimization variables, which is represented in a dictionary structure, where the the key is the name of variables (e.g., x_0,x_1), and the corresponding values are the dimension of tensors (e.g., $[3,32,32],[2,2]$).</p>
+<div><p><strong>Tensor Input</strong> NCVX allows the usage of tensor optimization variables, which is represented in a dictionary structure, where the the key is the name of variables (e.g., x,y), and the corresponding values are the dimension of tensors (e.g., [3,32,32],[2,2]).</p>
 <p><strong>QP solvers</strong> We replaced the MATLAB builtin quadratic solver with the OSQP package. The OSQP package is a great alternative to MATLAB’s slow quadratic solver,  and has consistently and significantly outperformed popular commercial solvers in terms of speed and scalability.</p>
-<p><strong>Automatic Differentiation</strong> We built the package based on PyTorch which allow automated differentiation. This could remove the pain of deriving analytic subgradients and avoid potential calculation and implementation mistakes.</p>
+<p><strong>Automatic Differentiation</strong> We build the package based on PyTorch which allow automated differentiation. This could remove the pain of deriving analytic subgradients and avoid potential calculation and implementation mistakes. More importantly,
+the auto-differentiation is crucial when obtaining analytic gradients is almost impossible in deep learning problems with complicated function forms.</p>
 <p><strong>GPU acceleration</strong> NCVX enables highly optimized and parallelizable matrix/tensor computations that take the full advantage of modern massively parallel hardware, e.g., GPUs, by using PyTorch Framework.</p>
-<p><strong>Modified Core Algorithms</strong> We modified the BFGS-SQP algorithm by enabling re-scaling searching direction and backtracking line search method, which are commonly used in solving deep learning problems.</p>
+<p><strong>Dependencies</strong> NCVX itself and its all dependencies are open-source, thus no proprietary software is required to use it.</p>
 </div></blockquote>
 </div>
-<div class="section" id="current-limitations">
-<h2>Current Limitations<a class="headerlink" href="#current-limitations" title="Permalink to this headline">¶</a></h2>
-<ol class="arabic simple">
-<li><p>Stochastic algorithm not allowed.</p></li>
-<li><p>No validators for some user provided inputs, such as LBFGS settings, nn_model and device.</p></li>
+<div class="section" id="future-plan">
+<h2>Future Plan<a class="headerlink" href="#future-plan" title="Permalink to this headline">¶</a></h2>
+<p>Despite NCVX has many powerful features, we would like to further improve it by adding several useful features:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p><strong>SR1</strong> SR1 could help overcome saddle points and condition issues</p></li>
+<li><p><strong>Stochastic Algorithm</strong> A stochastic version algorithm will be used in NCVX for better scalability, since the memory constraint is the bottleneck in solving large scale machine/deep learning problems.</p></li>
+<li><p><strong>Conic Programming</strong> Semidefinite programming (SDP), which is a special case of conic optimization problem, is important for machine learning, kernel-machines and SVMs.</p></li>
+<li><p><strong>Min-Max Optimization</strong> Minimax optimization is an important technique in machine learning problems, such as generative adversarial networks (GAN) and multi-agent reinforce learning.</p></li>
 </ol>
+</div></blockquote>
 </div>
 <div class="section" id="update-logs">
 <h2>Update Logs<a class="headerlink" href="#update-logs" title="Permalink to this headline">¶</a></h2>

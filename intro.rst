@@ -21,45 +21,53 @@ nonsmooth, constrained optimization problems based on MATLAB  (Curtis et al., 20
 produces meaningful results when other carefully crafted solvers fail. However, several 
 limitations of GRANSO preclude its potential broad deployment by general users:  
 
-	1. It only allows vector variables but not matrices or tensors, while the latter two are common 
+	(1) It only allows vector variables but not matrices or tensors, while the latter two are common 
 	computational units in modern optimization problems such as machine/deep learning.   
 
-	2. The default MATLAB quadratic programming solver struggles to scale up to medium- to large-scale 
+	(2) The default MATLAB quadratic programming solver struggles to scale up to medium- to large-scale 
 	problems, which is a bottleneck for scalability. 
 
-	3. GRANSO requires deriving analytic subgradients for the objective and constraint functions, which 
+	(3) GRANSO requires deriving analytic subgradients for the objective and constraint functions, which 
 	is challenging and even infeasible, especially in deep learning.  
 
-	4. MATLAB that GRANSO is written in is a proprietary programming language and entails considerable 
-	license fees for researchers and developers. 
+	(4) MATLAB that GRANSO is written in is a proprietary programming language and entails considerable 
+	license fees for researchers and developers. 	
+	
+	(5) GRANSO is not able to take the full advantage 
+	of modern massively parallel hardware.
 
-	5. GRANSO is not able to take the full advantage of modern massively parallel hardware.
 
-Thus, we tackled the severe limitations of GRANSO, and built a user-friendly and scalable python numerical optimization package called \texttt{NCVX} by revamping several key components of GRANSO and translating it into Python. Our main contributions are described in the following sections. 
+
+Thus, we tackled the severe limitations of GRANSO, and built a user-friendly and scalable python package called NCVX by revamping several key components of GRANSO and translating it into Python. Our main contributions are described in the following sections. 
 
 Key Features
 ------------------
 
 Below are the key features that makes the NCVX package scalable and user-friendly:
 
-	**Tensor Input** NCVX allows the usage of tensor optimization variables, which is represented in a dictionary structure, where the the key is the name of variables (e.g., x_0,x_1), and the corresponding values are the dimension of tensors (e.g., $[3,32,32],[2,2]$).  
+	**Tensor Input** NCVX allows the usage of tensor optimization variables, which is represented in a dictionary structure, where the the key is the name of variables (e.g., x,y), and the corresponding values are the dimension of tensors (e.g., [3,32,32],[2,2]).  
 
 	**QP solvers** We replaced the MATLAB builtin quadratic solver with the OSQP package. The OSQP package is a great alternative to MATLAB’s slow quadratic solver,  and has consistently and significantly outperformed popular commercial solvers in terms of speed and scalability. 
 
-
-	**Automatic Differentiation** We built the package based on PyTorch which allow automated differentiation. This could remove the pain of deriving analytic subgradients and avoid potential calculation and implementation mistakes. 
+	**Automatic Differentiation** We build the package based on PyTorch which allow automated differentiation. This could remove the pain of deriving analytic subgradients and avoid potential calculation and implementation mistakes. More importantly, 
+	the auto-differentiation is crucial when obtaining analytic gradients is almost impossible in deep learning problems with complicated function forms.
 
 
 	**GPU acceleration** NCVX enables highly optimized and parallelizable matrix/tensor computations that take the full advantage of modern massively parallel hardware, e.g., GPUs, by using PyTorch Framework.
 
+	**Dependencies** NCVX itself and its all dependencies are open-source, thus no proprietary software is required to use it.
 
-	**Modified Core Algorithms** We modified the BFGS-SQP algorithm by enabling re-scaling searching direction and backtracking line search method, which are commonly used in solving deep learning problems.
-
-Current Limitations
+Future Plan
 ----------------------------------
-1. Stochastic algorithm not allowed.
+Despite NCVX has many powerful features, we would like to further improve it by adding several useful features:
 
-2. No validators for some user provided inputs, such as LBFGS settings, nn_model and device.
+	1. **SR1** SR1 could help overcome saddle points and condition issues
+
+	2. **Stochastic Algorithm** A stochastic version algorithm will be used in NCVX for better scalability, since the memory constraint is the bottleneck in solving large scale machine/deep learning problems.
+
+	3. **Conic Programming** Semidefinite programming (SDP), which is a special case of conic optimization problem, is important for machine learning, kernel-machines and SVMs.
+
+	4. **Min-Max Optimization** Minimax optimization is an important technique in machine learning problems, such as generative adversarial networks (GAN) and multi-agent reinforce learning.
 
 Update Logs
 -----------------

@@ -2,8 +2,7 @@
 
 Examples
 ========
-\
-\
+
 We provided several tutorials to help users get started with NCVX.
 
 .. toctree::

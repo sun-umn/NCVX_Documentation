@@ -1,7 +1,6 @@
 Line Search Parameters
 ========================
-\
-\
+
 wolfe1
 ----------------
 Real value in (0,0.5]. Default value: 1e-4

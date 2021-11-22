@@ -274,25 +274,19 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
+  <a class="reference internal nav-link" href="#min-fallback-level">
+   min_fallback_level
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#min-fallback-level">
-     min_fallback_level
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#max-fallback-level">
-     max_fallback_level
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#max-random-attempts">
-     max_random_attempts
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#max-fallback-level">
+   max_fallback_level
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#max-random-attempts">
+   max_random_attempts
+  </a>
  </li>
 </ul>
 
@@ -307,8 +301,6 @@
                 
   <div class="section" id="searching-direction-strategies">
 <h1>Searching Direction Strategies<a class="headerlink" href="#searching-direction-strategies" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id1">
-<h2><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>If a step cannot be taken with the current search direction (e.g.
 computed an invalid search direction or the line search failed on a
 valid search direction), NCVX may attempt up to four optional
@@ -329,24 +321,23 @@ steering QPs may be easier to solve.
 <li><p>Randomly generated search direction</p></li>
 </ol>
 <div class="section" id="min-fallback-level">
-<h3>min_fallback_level<a class="headerlink" href="#min-fallback-level" title="Permalink to this headline">¶</a></h3>
+<h2>min_fallback_level<a class="headerlink" href="#min-fallback-level" title="Permalink to this headline">¶</a></h2>
 <p>Integer in [0,4]. Default value: 0</p>
 <p>Min number of strategy to be employed
 NOTE: fallback levels 0 and 1 are only relevant for constrained problems.</p>
 </div>
 <div class="section" id="max-fallback-level">
-<h3>max_fallback_level<a class="headerlink" href="#max-fallback-level" title="Permalink to this headline">¶</a></h3>
+<h2>max_fallback_level<a class="headerlink" href="#max-fallback-level" title="Permalink to this headline">¶</a></h2>
 <p>Integer in [0,4]. Default value: 3</p>
 <p>Max number of strategy to be employed (&gt;= min_fallback_level)
 NOTE: fallback levels 0 and 1 are only relevant for constrained problems.</p>
 </div>
 <div class="section" id="max-random-attempts">
-<h3>max_random_attempts<a class="headerlink" href="#max-random-attempts" title="Permalink to this headline">¶</a></h3>
+<h2>max_random_attempts<a class="headerlink" href="#max-random-attempts" title="Permalink to this headline">¶</a></h2>
 <p>Positive integer. Default value: 5</p>
 <p>If max_fallback_level is 4, this is the number of randomly
 generated directions to attempt if all previous strategies fail on
 any single iteration</p>
-</div>
 </div>
 </div>
 

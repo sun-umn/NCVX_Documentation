@@ -1,7 +1,6 @@
 Introduction
 ==================
-\
-\
+
 Motivation and Background
 ----------------------------------
 

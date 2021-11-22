@@ -274,35 +274,29 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
+  <a class="reference internal nav-link" href="#motivation-and-background">
+   Motivation and Background
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#motivation-and-background">
-     Motivation and Background
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#key-features">
-     Key Features
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#current-limitations">
-     Current Limitations
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#update-logs">
-     Update Logs
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#references">
-     References
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#key-features">
+   Key Features
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#current-limitations">
+   Current Limitations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#update-logs">
+   Update Logs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
  </li>
 </ul>
 
@@ -317,10 +311,8 @@
                 
   <div class="section" id="introduction">
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id1">
-<h2><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="motivation-and-background">
-<h3>Motivation and Background<a class="headerlink" href="#motivation-and-background" title="Permalink to this headline">¶</a></h3>
+<h2>Motivation and Background<a class="headerlink" href="#motivation-and-background" title="Permalink to this headline">¶</a></h2>
 <p>Mathematical optimization is an indispensable modeling and computational tool for all science and
 engineering fields. Over the past decades, researchers have developed numerous foolproof techniques
 and user-friendly software packages to solve convex optimization problems—a subset of optimization
@@ -352,7 +344,7 @@ license fees for researchers and developers.</p>
 <p>Thus, we tackled the severe limitations of GRANSO, and built a user-friendly and scalable python numerical optimization package called texttt{NCVX} by revamping several key components of GRANSO and translating it into Python. Our main contributions are described in the following sections.</p>
 </div>
 <div class="section" id="key-features">
-<h3>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h3>
+<h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
 <p>Below are the key features that makes the NCVX package scalable and user-friendly:</p>
 <blockquote>
 <div><p><strong>Tensor Input</strong> NCVX allows the usage of tensor optimization variables, which is represented in a dictionary structure, where the the key is the name of variables (e.g., x_0,x_1), and the corresponding values are the dimension of tensors (e.g., $[3,32,32],[2,2]$).</p>
@@ -363,14 +355,14 @@ license fees for researchers and developers.</p>
 </div></blockquote>
 </div>
 <div class="section" id="current-limitations">
-<h3>Current Limitations<a class="headerlink" href="#current-limitations" title="Permalink to this headline">¶</a></h3>
+<h2>Current Limitations<a class="headerlink" href="#current-limitations" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p>Stochastic algorithm not allowed.</p></li>
 <li><p>No validators for some user provided inputs, such as LBFGS settings, nn_model and device.</p></li>
 </ol>
 </div>
 <div class="section" id="update-logs">
-<h3>Update Logs<a class="headerlink" href="#update-logs" title="Permalink to this headline">¶</a></h3>
+<h2>Update Logs<a class="headerlink" href="#update-logs" title="Permalink to this headline">¶</a></h2>
 <p>v1.1.1-alpha: Rename the package from “PyGRANSO” to “NCVX”</p>
 <p>v1.1.0-alpha: Cleaned code, added L-BFGS, updated tutorials and documentation.</p>
 <p>v1.0.2-alpha: Updated installation guides for Linux and windows users.</p>
@@ -378,12 +370,11 @@ license fees for researchers and developers.</p>
 <p>v1.0.0-alpha: Initial release of PyGRANSO. Main features: Python translation, autodifferentiation, GPU-support with PyTorch, matrix/tensor inputs, more powerful solver and several new settings to avoid numerical issues in deep learning problem.</p>
 </div>
 <div class="section" id="references">
-<h3>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h3>
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <p>Frank E. Curtis, Tim Mitchell, and Michael L. Overton. “A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles.” Optimization Methods and Software 32.1 (2017): 148-181.</p>
 <p>Stephen Boyd, Stephen P Boyd, and Lieven Vandenberghe.Convex optimization. Cambridge university press, 2004</p>
 <p>Michael Grant, Stephen Boyd, and Yinyu Ye. Cvx:  Matlab software for disciplined convex programming, 2008</p>
 <p>Adil Bagirov, Napsu Karmitsa, and Marko M M ̈akel ̈a.Introduction to Nonsmooth Optimization: theory, practice and software. Springer, 2014</p>
-</div>
 </div>
 </div>
 

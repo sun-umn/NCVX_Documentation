@@ -1,7 +1,6 @@
 Searching Direction Strategies
 ================================================
-\
-\
+
 If a step cannot be taken with the current search direction (e.g.
 computed an invalid search direction or the line search failed on a
 valid search direction), NCVX may attempt up to four optional 

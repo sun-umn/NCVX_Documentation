@@ -2,8 +2,7 @@
 
 Settings
 ========
-\
-\
+
 This pages shows the detailed description of all settings in NCVX. The :ref:`Examples<examples>` section shows the detailed usage of a variety of them.
 
 .. note::

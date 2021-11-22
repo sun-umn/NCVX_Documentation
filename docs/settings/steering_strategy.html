@@ -274,35 +274,29 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
+  <a class="reference internal nav-link" href="#steering-l1-model">
+   steering_l1_model
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#steering-l1-model">
-     steering_l1_model
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#steering-ineq-margin">
-     steering_ineq_margin
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#steering-maxit">
-     steering_maxit
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#steering-c-viol">
-     steering_c_viol
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#steering-c-mu">
-     steering_c_mu
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steering-ineq-margin">
+   steering_ineq_margin
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steering-maxit">
+   steering_maxit
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steering-c-viol">
+   steering_c_viol
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#steering-c-mu">
+   steering_c_mu
+  </a>
  </li>
 </ul>
 
@@ -317,18 +311,16 @@
                 
   <div class="section" id="steering-parameters">
 <h1>Steering Parameters<a class="headerlink" href="#steering-parameters" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="id1">
-<h2><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>This part only relevant for constrained problems</p>
 <div class="section" id="steering-l1-model">
-<h3>steering_l1_model<a class="headerlink" href="#steering-l1-model" title="Permalink to this headline">¶</a></h3>
+<h2>steering_l1_model<a class="headerlink" href="#steering-l1-model" title="Permalink to this headline">¶</a></h2>
 <p>Boolean value. Default value: True</p>
 <p>Determines whether or not the one norm (the standard choice) or the
 infinity norm is used for the total violation measure in steering,
 which in turn affects the predicted violation reduction.</p>
 </div>
 <div class="section" id="steering-ineq-margin">
-<h3>steering_ineq_margin<a class="headerlink" href="#steering-ineq-margin" title="Permalink to this headline">¶</a></h3>
+<h2>steering_ineq_margin<a class="headerlink" href="#steering-ineq-margin" title="Permalink to this headline">¶</a></h2>
 <p>Non-negative real value. Default value: 1e-6</p>
 <p>Sets the margin of feasibility for problems that only have
 inequality constraints.  For such problems, steering can be
@@ -343,7 +335,7 @@ NOTE: this parameter has no effect if equality constraints are
 present and steering will always be enabled every iteration.</p>
 </div>
 <div class="section" id="steering-maxit">
-<h3>steering_maxit<a class="headerlink" href="#steering-maxit" title="Permalink to this headline">¶</a></h3>
+<h2>steering_maxit<a class="headerlink" href="#steering-maxit" title="Permalink to this headline">¶</a></h2>
 <p>Positive integer. Default value: 10</p>
 <p>If the default steering direction is not predicted to adequately
 promote progress towards feasibility, steering_maxit is the max
@@ -354,7 +346,7 @@ values may more aggressively lower the penalty parameter per
 NCVX iteration.</p>
 </div>
 <div class="section" id="steering-c-viol">
-<h3>steering_c_viol<a class="headerlink" href="#steering-c-viol" title="Permalink to this headline">¶</a></h3>
+<h2>steering_c_viol<a class="headerlink" href="#steering-c-viol" title="Permalink to this headline">¶</a></h2>
 <p>real value in (0,1). Default value: 0.1</p>
 <p>Determines the fraction of predicted violation reduction for a
 search direction to be considered as adequately promoting progress
@@ -365,7 +357,7 @@ to higher values may more aggressively lower the penalty parameter
 per NCVX iteration.</p>
 </div>
 <div class="section" id="steering-c-mu">
-<h3>steering_c_mu<a class="headerlink" href="#steering-c-mu" title="Permalink to this headline">¶</a></h3>
+<h2>steering_c_mu<a class="headerlink" href="#steering-c-mu" title="Permalink to this headline">¶</a></h2>
 <p>real value in (0,1). Default value: 0.9</p>
 <p>When steering lowers the penalty parameter in order to compute a
 a search direction which promotes progress towards feasibility, it
@@ -374,7 +366,6 @@ steering_c_mu.  For any given NCVX iteration, the penalty
 parameter can be shrunk up to a factor of steering_c_mu to the
 power of steering_maxit.  Setting this to lower values may more
 aggressively lower the penalty parameter per NCVX iteration.</p>
-</div>
 </div>
 </div>
 

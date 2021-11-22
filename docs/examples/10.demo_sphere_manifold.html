@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Nonlinear Feasibility Problem &#8212; NCVX  documentation</title>
+    <title>Sphere Manifold &#8212; NCVX  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -38,8 +38,7 @@
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Sphere Manifold" href="10.demo_sphere_manifold.html" />
-    <link rel="prev" title="Unconstrained Deep Learning Problem" href="8.demo_UnconstrainedDL.html" />
+    <link rel="prev" title="Nonlinear Feasibility Problem" href="9.demo_nonlinear_feasiblity.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -176,13 +175,13 @@
      Unconstrained Deep Learning Problem
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="9.demo_nonlinear_feasiblity.html">
      Nonlinear Feasibility Problem
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="10.demo_sphere_manifold.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Sphere Manifold
     </a>
    </li>
@@ -229,7 +228,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/examples/9.demo_nonlinear_feasiblity.ipynb.txt"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/examples/10.demo_sphere_manifold.ipynb.txt"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -249,7 +248,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fexamples/9.demo_nonlinear_feasiblity.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fexamples/10.demo_sphere_manifold.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -283,6 +282,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#Modules-Importing">
    Modules Importing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Data-Generation">
+   Data Generation
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -559,19 +563,16 @@ div.rendered_html tbody tr:hover {
   background: rgba(66, 165, 245, 0.2);
 }
 </style>
-<div class="section" id="Nonlinear-Feasibility-Problem">
-<h1>Nonlinear Feasibility Problem<a class="headerlink" href="#Nonlinear-Feasibility-Problem" title="Permalink to this headline">¶</a></h1>
-<p>This notebook contains examples of find a point that satisfies all the constraints in a problem, with no objective function to minimize.</p>
-<p>Reference: <a class="reference external" href="https://www.mathworks.com/help/optim/ug/solve-feasibility-problem.html">https://www.mathworks.com/help/optim/ug/solve-feasibility-problem.html</a></p>
+<div class="section" id="Sphere-Manifold">
+<h1>Sphere Manifold<a class="headerlink" href="#Sphere-Manifold" title="Permalink to this headline">¶</a></h1>
+<p>This notebook contains examples of optimization on a sphere manifold.</p>
+<p>Reference: <a class="reference external" href="https://www.manopt.org/manifold_documentation_sphere.html">https://www.manopt.org/manifold_documentation_sphere.html</a></p>
 <div class="section" id="Problem-Description">
 <h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
-\[(y+x^2)^2+0.1y^2\leq1\]</div>
+\[\min_{x}x^TAx,\]</div>
 <div class="math notranslate nohighlight">
-\[y\leq\exp(-x)-3\]</div>
-<div class="math notranslate nohighlight">
-\[y\leq x-4\]</div>
-<p>Do any points <span class="math notranslate nohighlight">\((x,y)\)</span> satisfy all of the constraints?</p>
+\[\text{s.t. }x^Tx=1,\]</div>
 </div>
 <div class="section" id="Modules-Importing">
 <h2>Modules Importing<a class="headerlink" href="#Modules-Importing" title="Permalink to this headline">¶</a></h2>
@@ -592,37 +593,49 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Problem-Definition">
-<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
-<p>Spceify torch device, optimization variables, and corresponding objective and constrained function.</p>
-<p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the NCVX main algortihm. <em>X_struct</em> is always required.</p>
+<div class="section" id="Data-Generation">
+<h2>Data Generation<a class="headerlink" href="#Data-Generation" title="Permalink to this headline">¶</a></h2>
+<p>Specify torch device, and generate data</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span> <span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
-
-<span class="c1"># variables and corresponding dimensions.</span>
-<span class="n">var_in</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="s2">&quot;y&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]}</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="n">A</span><span class="o">+</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Problem-Definition">
+<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
+<p>Spceify torch device, optimization variables, and corresponding objective and constrained function.</p>
+<p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the NCVX main algortihm. <em>X_struct</em> is always required.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># variables and corresponding dimensions.</span>
+<span class="n">var_in</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">]}</span>
 
 
 <span class="k">def</span> <span class="nf">comb_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">):</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">X_struct</span><span class="o">.</span><span class="n">x</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">X_struct</span><span class="o">.</span><span class="n">y</span>
     <span class="n">x</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-    <span class="n">y</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-    <span class="c1"># constant objective function</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="mi">0</span><span class="o">*</span><span class="n">x</span><span class="o">+</span><span class="mi">0</span><span class="o">*</span><span class="n">y</span>
 
-    <span class="c1"># inequality constraint</span>
-    <span class="n">ci</span> <span class="o">=</span> <span class="n">GeneralStruct</span><span class="p">()</span>
-    <span class="n">ci</span><span class="o">.</span><span class="n">c1</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="o">+</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="mf">0.1</span><span class="o">*</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="o">-</span><span class="mi">1</span>
-    <span class="n">ci</span><span class="o">.</span><span class="n">c2</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">torch</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span>
-    <span class="n">ci</span><span class="o">.</span><span class="n">c3</span> <span class="o">=</span> <span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="o">+</span><span class="mi">4</span>
+    <span class="c1"># objective function</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="nd">@A@x</span>
+
+    <span class="c1"># inequality constraint, matrix form</span>
+    <span class="n">ci</span> <span class="o">=</span> <span class="kc">None</span>
 
     <span class="c1"># equality constraint</span>
-    <span class="n">ce</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">ce</span> <span class="o">=</span> <span class="n">GeneralStruct</span><span class="p">()</span>
+    <span class="n">ce</span><span class="o">.</span><span class="n">c1</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="nd">@x</span><span class="o">-</span><span class="mi">1</span>
 
     <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">ci</span><span class="p">,</span><span class="n">ce</span><span class="p">]</span>
 
@@ -634,14 +647,15 @@ div.rendered_html tbody tr:hover {
 <h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
 <p>Specify user-defined options for NCVX algorithm</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">opts</span> <span class="o">=</span> <span class="n">Options</span><span class="p">()</span>
-<span class="n">opts</span><span class="o">.</span><span class="n">QPsolver</span> <span class="o">=</span> <span class="s1">&#39;osqp&#39;</span>
-<span class="n">opts</span><span class="o">.</span><span class="n">print_frequency</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">opts</span><span class="o">.</span><span class="n">x0</span> <span class="o">=</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">print_frequency</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">x0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">mu0</span> <span class="o">=</span> <span class="mf">0.1</span> <span class="c1"># increase penalty contribution</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">opt_tol</span> <span class="o">=</span> <span class="mf">1e-6</span>
 </pre></div>
 </div>
 </div>
@@ -649,7 +663,7 @@ div.rendered_html tbody tr:hover {
 <div class="section" id="Main-Algorithm">
 <h2>Main Algorithm<a class="headerlink" href="#Main-Algorithm" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -657,7 +671,6 @@ div.rendered_html tbody tr:hover {
 <span class="n">soln</span> <span class="o">=</span> <span class="n">ncvx</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
 <span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Wall Time: </span><span class="si">{}</span><span class="s2">s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NCVX finds a feaible point:(</span><span class="si">%f</span><span class="s2">,</span><span class="si">%f</span><span class="s2">)&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">final</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">soln</span><span class="o">.</span><span class="n">final</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -679,31 +692,54 @@ Version 1.1.0                                                                   
 MIT License Copyright (c) 2021 SUN Group @ UMN                                                                   ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
 Problem specifications:                                                                                          ║
- # of variables                     :   2                                                                        ║
- # of inequality constraints        :   3                                                                        ║
- # of equality constraints          :   0                                                                        ║
+ # of variables                     :   500                                                                      ║
+ # of inequality constraints        :     0                                                                      ║
+ # of equality constraints          :     1                                                                      ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
      ║ &lt;--- Penalty Function --&gt; ║                ║ Total Violation ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
-Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  ║ SD │ Evals │     t    ║ Grads │    Value   ║
+Iter ║    Mu    │      Value     ║    Objective   ║ Ineq │    Eq    ║ SD │ Evals │     t    ║ Grads │    Value   ║
 ═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
-   0 ║ 1.000000 │  4.00000000000 ║  0.00000000000 ║ 4.000000 │   -  ║ -  │     1 │ 0.000000 ║     1 │ 1.414248   ║
-   1 ║ 1.000000 │  3.40243429282 ║  0.00000000000 ║ 3.402434 │   -  ║ S  │     2 │ 2.000000 ║     2 │ 0.245375   ║
-   2 ║ 1.000000 │  0.00923922501 ║  0.00000000000 ║ 0.009239 │   -  ║ S  │     2 │ 2.000000 ║     1 │ 0.006795   ║
-   3 ║ 1.000000 │  0.00000000000 ║  0.00000000000 ║ 0.000000 │   -  ║ S  │     2 │ 2.000000 ║     1 │ 0.000000   ║
+   0 ║ 0.100000 │  478.384855929 ║  239.734202049 ║   -  │ 454.4114 ║ -  │     1 │ 0.000000 ║     1 │ 73.30528   ║
+  10 ║ 0.031381 │  16.1806670301 ║ -6641.92770430 ║   -  │ 224.6114 ║ S  │     1 │ 1.000000 ║     1 │ 0.777491   ║
+  20 ║ 0.031381 │  0.58236199122 ║ -1610.15525675 ║   -  │ 51.11074 ║ S  │     1 │ 1.000000 ║     1 │ 0.174202   ║
+  30 ║ 0.025419 │ -0.74818668310 ║ -30.4506049809 ║   -  │ 0.025827 ║ S  │     1 │ 1.000000 ║     1 │ 0.090876   ║
+  40 ║ 0.025419 │ -0.79792878103 ║ -31.4167836922 ║   -  │ 6.44e-04 ║ S  │     1 │ 1.000000 ║     1 │ 0.016662   ║
+  50 ║ 0.025419 │ -0.79933952970 ║ -31.4488728989 ║   -  │ 4.86e-05 ║ S  │     1 │ 1.000000 ║     1 │ 0.004577   ║
+  60 ║ 0.025419 │ -0.79955254327 ║ -31.4563740807 ║   -  │ 2.63e-05 ║ S  │     1 │ 1.000000 ║     1 │ 0.004087   ║
+  70 ║ 0.025419 │ -0.79964886256 ║ -31.4595787209 ║   -  │ 1.14e-05 ║ S  │     1 │ 1.000000 ║     1 │ 0.002907   ║
+  80 ║ 0.025419 │ -0.79968510705 ║ -31.4607527492 ║   -  │ 5.02e-06 ║ S  │     1 │ 1.000000 ║     1 │ 0.001998   ║
+  90 ║ 0.025419 │ -0.79969928630 ║ -31.4611951908 ║   -  │ 2.08e-06 ║ S  │     1 │ 1.000000 ║     1 │ 0.001324   ║
+ 100 ║ 0.025419 │ -0.79970607464 ║ -31.4614232530 ║   -  │ 1.09e-06 ║ S  │     1 │ 1.000000 ║     1 │ 9.69e-04   ║
+ 110 ║ 0.025419 │ -0.79970908415 ║ -31.4615153362 ║   -  │ 4.23e-07 ║ S  │     1 │ 1.000000 ║     1 │ 6.07e-04   ║
+ 120 ║ 0.025419 │ -0.79971027746 ║ -31.4615522225 ║   -  │ 1.68e-07 ║ S  │     1 │ 1.000000 ║     1 │ 3.82e-04   ║
+ 130 ║ 0.025419 │ -0.79971069279 ║ -31.4615639647 ║   -  │ 5.07e-08 ║ S  │     1 │ 1.000000 ║     1 │ 2.10e-04   ║
+ 140 ║ 0.025419 │ -0.79971081454 ║ -31.4615673607 ║   -  │ 1.53e-08 ║ S  │     1 │ 1.000000 ║     1 │ 1.16e-04   ║
+ 150 ║ 0.025419 │ -0.79971085415 ║ -31.4615685353 ║   -  │ 5.51e-09 ║ S  │     1 │ 1.000000 ║     1 │ 6.99e-05   ║
+ 160 ║ 0.025419 │ -0.79971086872 ║ -31.4615689720 ║   -  │ 2.04e-09 ║ S  │     1 │ 1.000000 ║     1 │ 4.26e-05   ║
+ 170 ║ 0.025419 │ -0.79971087397 ║ -31.4615691269 ║   -  │ 7.21e-10 ║ S  │     1 │ 1.000000 ║     1 │ 2.54e-05   ║
+ 180 ║ 0.025419 │ -0.79971087584 ║ -31.4615691822 ║   -  │ 2.57e-10 ║ S  │     1 │ 1.000000 ║     1 │ 1.52e-05   ║
+ 190 ║ 0.025419 │ -0.79971087649 ║ -31.4615692012 ║   -  │ 8.77e-11 ║ S  │     1 │ 1.000000 ║     1 │ 8.85e-06   ║
+═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
+     ║ &lt;--- Penalty Function --&gt; ║                ║ Total Violation ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
+Iter ║    Mu    │      Value     ║    Objective   ║ Ineq │    Eq    ║ SD │ Evals │     t    ║ Grads │    Value   ║
+═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
+ 200 ║ 0.025419 │ -0.79971087672 ║ -31.4615692077 ║   -  │ 3.01e-11 ║ S  │     1 │ 1.000000 ║     1 │ 5.19e-06   ║
+ 210 ║ 0.025419 │ -0.79971087679 ║ -31.4615692100 ║   -  │ 1.07e-11 ║ S  │     1 │ 1.000000 ║     1 │ 3.10e-06   ║
+ 220 ║ 0.025419 │ -0.79971087682 ║ -31.4615692108 ║   -  │ 3.66e-12 ║ S  │     1 │ 1.000000 ║     1 │ 1.81e-06   ║
+ 230 ║ 0.025419 │ -0.79971087683 ║ -31.4615692110 ║   -  │ 1.30e-12 ║ S  │     1 │ 1.000000 ║     1 │ 1.08e-06   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
 Optimization results:                                                                                            ║
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
-   F ║          │                ║  0.00000000000 ║ 0.000000 │   -  ║    │       │          ║       │            ║
-   B ║          │                ║  0.00000000000 ║ 0.000000 │   -  ║    │       │          ║       │            ║
-  MF ║          │                ║  0.00000000000 ║ 0.000000 │   -  ║    │       │          ║       │            ║
+   F ║          │                ║ -31.4615692111 ║   -  │ 1.06e-12 ║    │       │          ║       │            ║
+   B ║          │                ║ -31.4615692111 ║   -  │ 1.06e-12 ║    │       │          ║       │            ║
+  MF ║          │                ║ -31.4615692111 ║   -  │ 1.06e-12 ║    │       │          ║       │            ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-Iterations:              3                                                                                       ║
-Function evaluations:    7                                                                                       ║
+Iterations:              232                                                                                     ║
+Function evaluations:    239                                                                                     ║
 NCVX termination code: 0 --- converged to stationarity and feasibility tolerances.                               ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 0.6553363800048828s
-NCVX finds a feaible point:(1.653828,-2.355398)
+Total Wall Time: 2.23077130317688s
 </pre></div></div>
 </div>
 </div>
@@ -720,23 +756,14 @@ NCVX finds a feaible point:(1.653828,-2.355398)
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="8.demo_UnconstrainedDL.html" title="previous page">
+        <a class="left-prev" href="9.demo_nonlinear_feasiblity.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Unconstrained Deep Learning Problem</p>
+                <p class="prevnext-title">Nonlinear Feasibility Problem</p>
             </div>
         </a>
     </div>
-     <div id="next">
-        <a class="right-next" href="10.demo_sphere_manifold.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Sphere Manifold</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
 
 </div>
         

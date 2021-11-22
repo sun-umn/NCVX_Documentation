@@ -25,3 +25,4 @@ clean:
 	rm -r docs
 	mkdir docs
 	cp .nojekyll docs
+	cp CNAME docs

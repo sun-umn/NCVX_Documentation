@@ -1,6 +1,7 @@
 QP Parameters
 ========================
-
+\
+\
 regularize_threshold
 --------------------------------
 Real value >= 1. Default value: -Inf

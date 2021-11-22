@@ -24,17 +24,47 @@
 
   
 
-/* body {
+body, h1, h2, h3, h4, h5, h6 {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
 	 			 Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
 				 Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
 				 "Segoe UI Symbol";
 	padding: 0;
 	margin: 0;
+}
+
+a:link {
+	color: #7a0019 !important;
+    /* background-color: #778899; */
+
+}
+
+a:visited {
+	color: #5b0013 !important;
+    /* background-color: #778899; */
+
+}
+
+a:active {
+	color: #ffb71e !important;
+    /* background-color: #778899; */
+
+}
+
+a:hover{
+    /* background-color: #ffcc33; */
+    color: #ffcc33 !important;
+}
+
+/* div.section a:hover,div.section a:visited,div.section a:link {
+	color: #7a0019;
+    text-decoration: none;
+    background-color: #778899;
 } */
 
-/* a:link, a:visited {
-	color: #7a0019;
+/* div.section a:link, .reference.internal a:visited{
+    color: green;
+    background: green;
 } */
 
 /* a.nav-link :link {

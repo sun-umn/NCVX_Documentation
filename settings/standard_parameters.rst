@@ -1,6 +1,7 @@
 Standard Parameters
 ========================
-
+\
+\
 x0
 ----------------
 n by 1 double precision torch tensor. Default value: torch.randn(n,1).to(device=torch_device, dtype=torch.double)

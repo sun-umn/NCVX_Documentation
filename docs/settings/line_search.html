@@ -274,39 +274,45 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wolfe1">
-   wolfe1
+  <a class="reference internal nav-link" href="#id1">
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#wolfe2">
-   wolfe2
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linesearch-nondescent-maxit">
-   linesearch_nondescent_maxit
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linesearch-reattempts">
-   linesearch_reattempts
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linesearch-reattempts-x0">
-   linesearch_reattempts_x0
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linesearch-c-mu">
-   linesearch_c_mu
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linesearch-c-mu-x0">
-   linesearch_c_mu_x0
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wolfe1">
+     wolfe1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#wolfe2">
+     wolfe2
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linesearch-nondescent-maxit">
+     linesearch_nondescent_maxit
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linesearch-reattempts">
+     linesearch_reattempts
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linesearch-reattempts-x0">
+     linesearch_reattempts_x0
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linesearch-c-mu">
+     linesearch_c_mu
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linesearch-c-mu-x0">
+     linesearch_c_mu_x0
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -321,20 +327,22 @@
                 
   <div class="section" id="line-search-parameters">
 <h1>Line Search Parameters<a class="headerlink" href="#line-search-parameters" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2><a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="wolfe1">
-<h2>wolfe1<a class="headerlink" href="#wolfe1" title="Permalink to this headline">¶</a></h2>
+<h3>wolfe1<a class="headerlink" href="#wolfe1" title="Permalink to this headline">¶</a></h3>
 <p>Real value in (0,0.5]. Default value: 1e-4</p>
 <p>First weak Wolfe line search parameter, ensuring sufficient
 decrease of the objective/penalty.</p>
 </div>
 <div class="section" id="wolfe2">
-<h2>wolfe2<a class="headerlink" href="#wolfe2" title="Permalink to this headline">¶</a></h2>
+<h3>wolfe2<a class="headerlink" href="#wolfe2" title="Permalink to this headline">¶</a></h3>
 <p>Real value in [wolfe1,1). Default value: 0.5</p>
 <p>Second weak Wolfe line search parameter, ensuring algebraic
 increase in projected gradient.</p>
 </div>
 <div class="section" id="linesearch-nondescent-maxit">
-<h2>linesearch_nondescent_maxit<a class="headerlink" href="#linesearch-nondescent-maxit" title="Permalink to this headline">¶</a></h2>
+<h3>linesearch_nondescent_maxit<a class="headerlink" href="#linesearch-nondescent-maxit" title="Permalink to this headline">¶</a></h3>
 <p>Non-negative integer. Default value: 0</p>
 <p>If the computed direction is not numerically a descent direction,
 the line search can still be optionally attempted to see if it gets
@@ -343,7 +351,7 @@ the penalty/objective function (since there may be numerical issues
 in calculating whether it truly is a descent direction or not).</p>
 </div>
 <div class="section" id="linesearch-reattempts">
-<h2>linesearch_reattempts<a class="headerlink" href="#linesearch-reattempts" title="Permalink to this headline">¶</a></h2>
+<h3>linesearch_reattempts<a class="headerlink" href="#linesearch-reattempts" title="Permalink to this headline">¶</a></h3>
 <p>Positive integer. Default value: 10</p>
 <p>If the line search fails to bracket a minimizer, this may be an
 indication that the objective function is unbounded below.  For
@@ -358,7 +366,7 @@ and opts.linesearch_c_mu_x0.
 NOTE: this option is irrelevant for unconstrained problems.</p>
 </div>
 <div class="section" id="linesearch-reattempts-x0">
-<h2>linesearch_reattempts_x0<a class="headerlink" href="#linesearch-reattempts-x0" title="Permalink to this headline">¶</a></h2>
+<h3>linesearch_reattempts_x0<a class="headerlink" href="#linesearch-reattempts-x0" title="Permalink to this headline">¶</a></h3>
 <p>Positive integer. Default value: 30</p>
 <p>The same as linesearch_reattempts but applies only to the first
 iteration, where it may beneficial to be more aggressive in
@@ -366,7 +374,7 @@ lowering the penalty parameter for line search reattempts.
 NOTE: this option is irrelevant for unconstrained problems.</p>
 </div>
 <div class="section" id="linesearch-c-mu">
-<h2>linesearch_c_mu<a class="headerlink" href="#linesearch-c-mu" title="Permalink to this headline">¶</a></h2>
+<h3>linesearch_c_mu<a class="headerlink" href="#linesearch-c-mu" title="Permalink to this headline">¶</a></h3>
 <p>Real value in (0,1). Default value: 0.5</p>
 <p>If the line search fails to bracket a minimizer for a constrained
 problem, and linesearch_reattempts &gt; 0, each line search reattempt
@@ -377,12 +385,13 @@ opts.linesearch_c_mu_x0.
 NOTE: this option is irrelevant for unconstrained problems.</p>
 </div>
 <div class="section" id="linesearch-c-mu-x0">
-<h2>linesearch_c_mu_x0<a class="headerlink" href="#linesearch-c-mu-x0" title="Permalink to this headline">¶</a></h2>
+<h3>linesearch_c_mu_x0<a class="headerlink" href="#linesearch-c-mu-x0" title="Permalink to this headline">¶</a></h3>
 <p>Real value in (0,1). Default value: 0.5</p>
 <p>The same as linesearch_c_mu but applies only to the first
 iteration, where it may beneficial to be more aggressive in
 lowering the penalty parameter for line search reattempts.
 NOTE: this option is irrelevant for unconstrained problems.</p>
+</div>
 </div>
 </div>
 

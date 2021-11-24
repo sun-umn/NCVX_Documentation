@@ -121,7 +121,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../settings/new_para.html">
-     New Parameters
+     NCVX New Options
     </a>
    </li>
   </ul>
@@ -187,6 +187,11 @@
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mistakes.html">
+   Tips
+  </a>
  </li>
 </ul>
 
@@ -604,10 +609,10 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span> <span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
-<span class="n">d1</span> <span class="o">=</span> <span class="mi">5</span>
-<span class="n">d2</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">d1</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">eta</span> <span class="o">=</span> <span class="mf">.5</span>
+<span class="n">eta</span> <span class="o">=</span> <span class="mf">.05</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span><span class="n">d2</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -657,9 +662,9 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">opts</span> <span class="o">=</span> <span class="n">Options</span><span class="p">()</span>
-<span class="n">opts</span><span class="o">.</span><span class="n">QPsolver</span> <span class="o">=</span> <span class="s1">&#39;osqp&#39;</span>
 <span class="n">opts</span><span class="o">.</span><span class="n">print_frequency</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">opts</span><span class="o">.</span><span class="n">x0</span> <span class="o">=</span> <span class="mf">.2</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">d1</span><span class="o">*</span><span class="n">d2</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">opt_tol</span> <span class="o">=</span> <span class="mf">1e-6</span>
 </pre></div>
 </div>
 </div>
@@ -696,28 +701,33 @@ Version 1.1.0                                                                   
 MIT License Copyright (c) 2021 SUN Group @ UMN                                                                   ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
 Problem specifications:                                                                                          ║
- # of variables                     :   100                                                                      ║
- # of inequality constraints        :     0                                                                      ║
- # of equality constraints          :    50                                                                      ║
+ # of variables                     :   24                                                                       ║
+ # of inequality constraints        :    0                                                                       ║
+ # of equality constraints          :   12                                                                       ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
      ║ &lt;--- Penalty Function --&gt; ║                ║ Total Violation ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
 Iter ║    Mu    │      Value     ║    Objective   ║ Ineq │    Eq    ║ SD │ Evals │     t    ║ Grads │    Value   ║
 ═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
-   0 ║ 1.000000 │  53.4967399094 ║  6.41421356237 ║   -  │ 3.731154 ║ -  │     1 │ 0.000000 ║     1 │ 5.940511   ║
+   0 ║ 1.000000 │  9.26721133015 ║  0.81282032303 ║   -  │ 1.922768 ║ -  │     1 │ 0.000000 ║     1 │ 2.502220   ║
+  10 ║ 0.228768 │  0.10944851437 ║  0.47842596196 ║   -  │ 8.88e-16 ║ S  │     1 │ 1.000000 ║     1 │ 4.649135   ║
+  20 ║ 0.088629 │  0.02987332406 ║  0.33705892627 ║   -  │ 5.28e-13 ║ S  │     4 │ 0.125000 ║     1 │ 0.013927   ║
+  30 ║ 0.088629 │  0.02961763578 ║  0.33417401065 ║   -  │ 1.15e-13 ║ S  │     3 │ 0.250000 ║     1 │ 0.005520   ║
+  40 ║ 0.088629 │  0.02958952106 ║  0.33385679403 ║   -  │ 5.66e-15 ║ S  │     3 │ 0.250000 ║     1 │ 8.10e-04   ║
+  50 ║ 0.030903 │  0.01031425037 ║  0.33376043889 ║   -  │ 6.94e-16 ║ S  │     4 │ 0.125000 ║     1 │ 50.85003   ║
+  60 ║ 0.004638 │  0.00154806127 ║  0.33374903361 ║   -  │ 1.14e-10 ║ S  │     1 │ 1.000000 ║     1 │ 10.34279   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-Optimization results:                                                                                            ║
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
+Optimization results:                                                                                            ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
-   F ║          │                ║  15.5422141793 ║   -  │ 8.88e-16 ║    │       │          ║       │            ║
-   B ║          │                ║  15.5421684991 ║   -  │ 5.45e-07 ║    │       │          ║       │            ║
-  MF ║          │                ║  15.5422141793 ║   -  │ 8.88e-16 ║    │       │          ║       │            ║
+   F ║          │                ║  0.33374843507 ║   -  │ 3.25e-11 ║    │       │          ║       │            ║
+   B ║          │                ║  0.33374835083 ║   -  │ 4.47e-11 ║    │       │          ║       │            ║
+  MF ║          │                ║  0.33389618278 ║   -  │ 0.000000 ║    │       │          ║       │            ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-Iterations:              9                                                                                       ║
-Function evaluations:    48                                                                                      ║
-NCVX termination code: 6 --- line search bracketed a minimizer but failed to satisfy Wolfe conditions at a       ║
-feasible point (to tolerances).  This may be an indication that approximate stationarity has been attained.      ║
+Iterations:              69                                                                                      ║
+Function evaluations:    215                                                                                     ║
+NCVX termination code: 0 --- converged to stationarity and feasibility tolerances.                               ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 4.147842168807983s
+Total Wall Time: 3.1988086700439453s
 </pre></div></div>
 </div>
 </div>

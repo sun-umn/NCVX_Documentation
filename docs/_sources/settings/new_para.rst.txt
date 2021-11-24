@@ -1,12 +1,12 @@
-New Parameters
+NCVX New Options
 ========================
 
 QPsolver
 ------------------
 
-String in {'osqp', 'gurobi'}. Default value: 'osqp'
+String in {'osqp'}. Default value: 'osqp'
 
-Select the QP solver used in the steering strategy and termination condition.
+Select the QP solver used in the steering strategy and termination condition. Currently only osqp is available.
 
 init_step_size     
 ----------------        

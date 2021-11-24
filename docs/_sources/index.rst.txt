@@ -26,6 +26,7 @@ Contents
    install
    settings/index
    examples/index
+   mistakes
 
 Acknowledgements
 ----------------------

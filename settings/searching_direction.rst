@@ -7,22 +7,24 @@ valid search direction), NCVX may attempt up to four optional
 fallback strategies to try to continue making progress from the current
 iterate.  The strategies are as follows and are attempted in order:
             
-0. BFGS-SQP steering 
-- default for constrained problems
-- irrelevant for unconstrained problems
+    0. BFGS-SQP steering 
+    - default for constrained problems
+    - irrelevant for unconstrained problems
 
-1. BFGS-SQP steering with BFGS's inverse Hessian approximation
-replaced by the identity. If strategy #0 failed because quadprog
-failed on the QPs, this "steepest descent" version of the 
-steering QPs may be easier to solve.
-- irrelevant for unconstrained problems
-            
-2. Standard BFGS update on penalty/objective function, no steering
-- default for unconstrained problems
+    1. BFGS-SQP steering with BFGS's inverse Hessian approximation
+    replaced by the identity. If strategy #0 failed because quadprog
+    failed on the QPs, this "steepest descent" version of the 
+    steering QPs may be easier to solve.
+    - irrelevant for unconstrained problems
+                
+    2. Standard BFGS update on penalty/objective function, no steering
+    - default for unconstrained problems
 
-3. Steepest descent on penalty/objective function, no steering
+    3. Steepest descent on 
+    penalty/objective function, no steering
 
-4. Randomly generated search direction 
+    4. Randomly generated 
+    search direction 
 
 min_fallback_level     
 -------------------------------     

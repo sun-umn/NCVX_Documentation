@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Introduction &#8212; NCVX  documentation</title>
+    <title>NCVX Methods &#8212; NCVX  documentation</title>
     
   <link href="_static/css/theme.css" rel="stylesheet" />
   <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -36,8 +36,7 @@
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Installation" href="install.html" />
-    <link rel="prev" title="Home" href="index.html" />
+    <link rel="prev" title="Tips" href="mistakes.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -72,8 +71,8 @@
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="intro.html">
    Introduction
   </a>
  </li>
@@ -191,8 +190,8 @@
    Tips
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="jusun.html">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
    NCVX Methods
   </a>
  </li>
@@ -237,7 +236,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/intro.rst.txt"><button type="button"
+        <a class="dropdown-buttons" href="_sources/jusun.rst.txt"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.rst</button></a>
         <!-- Download PDF via print -->
@@ -257,7 +256,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fjusun.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -278,39 +277,6 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#motivation-and-background">
-   Motivation and Background
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#key-features">
-   Key Features
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#future-plan">
-   Future Plan
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#update-logs">
-   Update Logs
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#references">
-   References
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -319,78 +285,16 @@
         
               <div>
                 
-  <div class="section" id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="motivation-and-background">
-<h2>Motivation and Background<a class="headerlink" href="#motivation-and-background" title="Permalink to this headline">¶</a></h2>
-<p>Mathematical optimization is an indispensable modeling and computational tool for all science and
-engineering fields. Over the past decades, researchers have developed numerous foolproof techniques
-and user-friendly software packages to solve convex optimization problems—a subset of optimization
-problems with benign global structures (Boyd et al., 2004; Grant et al., 2008). These software
-packages have substantially lowered the barrier for non-expert practitioners to access and deploy
-these advanced techniques. However, practical problems are often nonconvex, nonsmooth, and constrained,
-and hence unamenable to convex optimization techniques. A notable family of examples is deep learning
-problems—which underpins the ongoing revolutions in AI and countless scientific and applied fields.
-Reliably solving such problems often entails substantial optimization expertise  (Bagirov et al., 2014),
-and practical problems are becoming increasingly more complex and large-scale that outpace what the existing
-software packages can handle.</p>
-<p>The GRANSO package (<a class="reference external" href="http://www.timmitchell.com/software/GRANSO/">http://www.timmitchell.com/software/GRANSO/</a>) is the first numerical optimization package that can handle general nonconvex,
-nonsmooth, constrained optimization problems based on MATLAB  (Curtis et al., 2017). The package is very stable and
-produces meaningful results when other carefully crafted solvers fail. However, several
-limitations of GRANSO preclude its potential broad deployment by general users:</p>
-<blockquote>
-<div><p>(1) It only allows vector variables but not matrices or tensors, while the latter two are common
-computational units in modern optimization problems such as machine/deep learning.</p>
-<p>(2) The default MATLAB quadratic programming solver struggles to scale up to medium- to large-scale
-problems, which is a bottleneck for scalability.</p>
-<p>(3) GRANSO requires deriving analytic subgradients for the objective and constraint functions, which
-is challenging and even infeasible, especially in deep learning.</p>
-<p>(4) MATLAB that GRANSO is written in is a proprietary programming language and entails considerable
-license fees for researchers and developers.</p>
-<p>(5) GRANSO is not able to take the full advantage
-of modern massively parallel hardware.</p>
-</div></blockquote>
-<p>Thus, we tackled the severe limitations of GRANSO, and built a user-friendly and scalable python package called NCVX by revamping several key components of GRANSO and translating it into Python. Our main contributions are described in the following sections.</p>
-</div>
-<div class="section" id="key-features">
-<h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
-<p>Below are the key features that makes the NCVX package scalable and user-friendly:</p>
-<blockquote>
-<div><p><strong>Tensor Input</strong> NCVX allows the usage of tensor optimization variables, which is represented in a dictionary structure, where the the key is the name of variables (e.g., x,y), and the corresponding values are the dimension of tensors (e.g., [3,32,32],[2,2]).</p>
-<p><strong>QP solvers</strong> We replaced the MATLAB builtin quadratic solver with the OSQP package. The OSQP package is a great alternative to MATLAB’s slow quadratic solver,  and has consistently and significantly outperformed popular commercial solvers in terms of speed and scalability.</p>
-<p><strong>Automatic Differentiation</strong> We build the package based on PyTorch which allow automated differentiation. This could remove the pain of deriving analytic subgradients and avoid potential calculation and implementation mistakes. More importantly,
-the auto-differentiation is crucial when obtaining analytic gradients is almost impossible in deep learning problems with complicated function forms.</p>
-<p><strong>GPU acceleration</strong> NCVX enables highly optimized and parallelizable matrix/tensor computations that take the full advantage of modern massively parallel hardware, e.g., GPUs, by using PyTorch Framework.</p>
-<p><strong>Dependencies</strong> NCVX itself and its all dependencies are open-source, thus no proprietary software is required to use it.</p>
-</div></blockquote>
-</div>
-<div class="section" id="future-plan">
-<h2>Future Plan<a class="headerlink" href="#future-plan" title="Permalink to this headline">¶</a></h2>
-<p>Despite NCVX has many powerful features, we would like to further improve it by adding several useful features:</p>
-<blockquote>
-<div><ol class="arabic simple">
-<li><p><strong>SR1</strong> SR1 could help overcome saddle points and condition issues</p></li>
-<li><p><strong>Stochastic Algorithm</strong> A stochastic version algorithm will be used in NCVX for better scalability, since the memory constraint is the bottleneck in solving large scale machine/deep learning problems.</p></li>
-<li><p><strong>Conic Programming</strong> Semidefinite programming (SDP), which is a special case of conic optimization problem, is important for machine learning, kernel-machines and SVMs.</p></li>
-<li><p><strong>Min-Max Optimization</strong> Minimax optimization is an important technique in machine learning problems, such as generative adversarial networks (GAN) and multi-agent reinforce learning.</p></li>
-</ol>
-</div></blockquote>
-</div>
-<div class="section" id="update-logs">
-<h2>Update Logs<a class="headerlink" href="#update-logs" title="Permalink to this headline">¶</a></h2>
-<p>v1.1.1-alpha: Rename the package from “PyGRANSO” to “NCVX”</p>
-<p>v1.1.0-alpha: Cleaned code, added L-BFGS, updated tutorials and documentation.</p>
-<p>v1.0.2-alpha: Updated installation guides for Linux and windows users.</p>
-<p>v1.0.1-alpha: Updated contirbutions, limitations and acknowledgement sections in docs.</p>
-<p>v1.0.0-alpha: Initial release of PyGRANSO. Main features: Python translation, autodifferentiation, GPU-support with PyTorch, matrix/tensor inputs, more powerful solver and several new settings to avoid numerical issues in deep learning problem.</p>
-</div>
-<div class="section" id="references">
-<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p>Frank E. Curtis, Tim Mitchell, and Michael L. Overton. “A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles.” Optimization Methods and Software 32.1 (2017): 148-181.</p>
-<p>Stephen Boyd, Stephen P Boyd, and Lieven Vandenberghe.Convex optimization. Cambridge university press, 2004</p>
-<p>Michael Grant, Stephen Boyd, and Yinyu Ye. Cvx:  Matlab software for disciplined convex programming, 2008</p>
-<p>Adil Bagirov, Napsu Karmitsa, and Marko M M ̈akel ̈a.Introduction to Nonsmooth Optimization: theory, practice and software. Springer, 2014</p>
-</div>
+  <div class="section" id="ncvx-methods">
+<h1>NCVX Methods<a class="headerlink" href="#ncvx-methods" title="Permalink to this headline">¶</a></h1>
+<p>General nonconvex optimization is undoubtedly hard — in
+sharp contrast to convex optimization, of which there is
+good separation of problem structure, input data, and
+optimization algorithms. But many nonconvex problems of interest
+become amenable to simple and practical algorithms and rigorous
+analyses once the artificial separation is removed.</p>
+<p>Please visit <a class="reference external" href="https://sunju.org/research/nonconvex/">Prof. Ju Sun’s personal page</a> for
+recent research effort in Provable Nonconvex Methods/Algorithms.</p>
 </div>
 
 
@@ -404,23 +308,14 @@ the auto-differentiation is crucial when obtaining analytic gradients is almost 
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="index.html" title="previous page">
+        <a class="left-prev" href="mistakes.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Home</p>
+                <p class="prevnext-title">Tips</p>
             </div>
         </a>
     </div>
-     <div id="next">
-        <a class="right-next" href="install.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Installation</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
 
 </div>
         

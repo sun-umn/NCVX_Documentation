@@ -27,6 +27,7 @@ Contents
    settings/index
    examples/index
    mistakes
+   jusun
 
 Acknowledgements
 ----------------------

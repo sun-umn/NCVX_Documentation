@@ -167,13 +167,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="7.demo_OrthogonalRNN.html">
-     Orthogonal RNN
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="8.demo_UnconstrainedDL.html">
-     Unconstrained Deep Learning Problem
+     Unconstrained Deep Learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -576,15 +571,15 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Sphere-Manifold">
 <h1>Sphere Manifold<a class="headerlink" href="#Sphere-Manifold" title="Permalink to this headline">¶</a></h1>
-<p>This notebook contains examples of optimization on a sphere manifold.</p>
-<p>Reference: <a class="reference external" href="https://www.manopt.org/manifold_documentation_sphere.html">https://www.manopt.org/manifold_documentation_sphere.html</a></p>
+<p>Optimization on a sphere manifold, taken from: <a class="reference external" href="https://www.manopt.org/manifold_documentation_sphere.html">https://www.manopt.org/manifold_documentation_sphere.html</a></p>
 <div class="section" id="Problem-Description">
 <h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
+<p>Rayleigh quotient problem:</p>
 <div class="math notranslate nohighlight">
 \[\min_{x}x^TAx,\]</div>
 <div class="math notranslate nohighlight">
 \[\text{s.t. }x^Tx=1,\]</div>
-<p>where <span class="math notranslate nohighlight">\(A\in R^{n\times n}\)</span> is a symmetric matrix</p>
+<p>where <span class="math notranslate nohighlight">\(A\in R^{n\times n}\)</span> is a symmetric matrix.</p>
 </div>
 <div class="section" id="Modules-Importing">
 <h2>Modules Importing<a class="headerlink" href="#Modules-Importing" title="Permalink to this headline">¶</a></h2>
@@ -624,8 +619,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Problem-Definition">
 <h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
-<p>Spceify torch device, optimization variables, and corresponding objective and constrained function.</p>
-<p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the NCVX main algortihm. <em>X_struct</em> is always required.</p>
+<p>Specify torch device, optimization variables, and objective and constraint(s).</p>
+<p>Note: please strictly follow the format of comb_fn, which will be used in the NCVX main algortihm.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -657,7 +652,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="User-Options">
 <h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
-<p>Specify user-defined options for NCVX algorithm</p>
+<p>Specify user-defined options for NCVX</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>

@@ -167,13 +167,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="7.demo_OrthogonalRNN.html">
-     Orthogonal RNN
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="8.demo_UnconstrainedDL.html">
-     Unconstrained Deep Learning Problem
+     Unconstrained Deep Learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -581,11 +576,10 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Spectral-Radius-Optimization">
 <h1>Spectral Radius Optimization<a class="headerlink" href="#Spectral-Radius-Optimization" title="Permalink to this headline">¶</a></h1>
-<p>This notebook contains examples of how to solve Spectral Radius Optimization problem.</p>
-<p>Reference: Curtis, Frank E., Tim Mitchell, and Michael L. Overton. “A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles.” Optimization Methods and Software 32.1 (2017): 148-181.</p>
+<p>Optimize spectral radius taken from: Curtis, Frank E., Tim Mitchell, and Michael L. Overton. “A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles.” Optimization Methods and Software 32.1 (2017): 148-181.</p>
 <div class="section" id="Problem-Description">
 <h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
-<p>We have <span class="math notranslate nohighlight">\(M=A+BXC\)</span>, where the matirces <span class="math notranslate nohighlight">\(A\in R^{N,N},B\in R^{N,P}\)</span> and <span class="math notranslate nohighlight">\(C\in R^{M,N}\)</span> are given, <span class="math notranslate nohighlight">\(X\in R^{P,M}\)</span> is the matrix form optimization variable.</p>
+<p>We have <span class="math notranslate nohighlight">\(M=A+BXC\)</span>, where the matrices <span class="math notranslate nohighlight">\(A\in R^{N,N},B\in R^{N,P}\)</span> and <span class="math notranslate nohighlight">\(C\in R^{M,N}\)</span> are given, <span class="math notranslate nohighlight">\(X\in R^{P,M}\)</span> is the matrix form optimization variable.</p>
 <p>We have the nonconvex, nonsmooth, and constrained optimization problem</p>
 <div class="math notranslate nohighlight">
 \[\min_{X}\rho_I(A+BXC),\]</div>
@@ -616,7 +610,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Data-Generation">
 <h2>Data Generation<a class="headerlink" href="#Data-Generation" title="Permalink to this headline">¶</a></h2>
-<p>Specify torch device, and read the data from provided file</p>
+<p>Specify torch device, and read the data from a provided file</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -641,8 +635,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Problem-Definition">
 <h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
-<p>Spceify optimization variables and corresponding objective and constrained function.</p>
-<p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the NCVX main algortihm.</p>
+<p>Specify torch device, optimization variables, and objective and constraint(s).</p>
+<p>Note: please strictly follow the format of comb_fn, which will be used in the NCVX main algortihm.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -676,7 +670,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="User-Options">
 <h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
-<p>Specify user-defined options for NCVX algorithm</p>
+<p>Specify user-defined options for NCVX</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>

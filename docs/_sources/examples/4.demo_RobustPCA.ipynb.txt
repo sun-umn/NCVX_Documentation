@@ -7,9 +7,7 @@
    "source": [
     "# Robust PCA\n",
     "\n",
-    "This notebook contains examples of how to solve Robust PCA problem.\n",
-    "\n",
-    "Reference: Yi, Xinyang, et al. \"Fast algorithms for robust PCA via gradient descent.\" Advances in neural information processing systems. 2016.\n"
+    "Solve the robust PCA problem taken from Yi, Xinyang, et al. \"Fast algorithms for robust PCA via gradient descent.\" Advances in neural information processing systems. 2016.\n"
    ]
   },
   {
@@ -86,9 +84,10 @@
    "source": [
     "## Problem Definition\n",
     "\n",
-    "Spceify torch device, optimization variables, and corresponding objective and constrained function.\n",
     "\n",
-    "Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the NCVX main algortihm. *X_struct* is always required."
+    "Specify torch device, optimization variables, and objective and constraint(s).\n",
+    "\n",
+    "Note: please strictly follow the format of comb_fn, which will be used in the NCVX main algortihm."
    ]
   },
   {
@@ -127,7 +126,7 @@
    "metadata": {},
    "source": [
     "## User Options\n",
-    "Specify user-defined options for NCVX algorithm"
+    "Specify user-defined options for NCVX"
    ]
   },
   {

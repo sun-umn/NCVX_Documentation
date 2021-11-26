@@ -7,9 +7,7 @@
    "source": [
     "# Spectral Radius Optimization\n",
     "\n",
-    "This notebook contains examples of how to solve Spectral Radius Optimization problem.\n",
-    "\n",
-    "Reference: Curtis, Frank E., Tim Mitchell, and Michael L. Overton. \"A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles.\" Optimization Methods and Software 32.1 (2017): 148-181."
+    "Optimize spectral radius taken from: Curtis, Frank E., Tim Mitchell, and Michael L. Overton. \"A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles.\" Optimization Methods and Software 32.1 (2017): 148-181."
    ]
   },
   {
@@ -26,7 +24,7 @@
    "metadata": {},
    "source": [
     "We have $M=A+BXC$,\n",
-    "where the matirces $A\\in R^{N,N},B\\in R^{N,P}$ and $C\\in R^{M,N}$ are given, $X\\in R^{P,M}$ is the matrix form optimization variable.\n",
+    "where the matrices $A\\in R^{N,N},B\\in R^{N,P}$ and $C\\in R^{M,N}$ are given, $X\\in R^{P,M}$ is the matrix form optimization variable.\n",
     "\n",
     "We have the nonconvex, nonsmooth, and constrained optimization problem\n",
     "$$\\min_{X}\\rho_I(A+BXC),$$\n",
@@ -67,7 +65,7 @@
    "metadata": {},
    "source": [
     "## Data Generation \n",
-    "Specify torch device, and read the data from provided file"
+    "Specify torch device, and read the data from a provided file"
    ]
   },
   {
@@ -98,9 +96,9 @@
    "metadata": {},
    "source": [
     "## Problem Definition \n",
-    "Spceify optimization variables and corresponding objective and constrained function.\n",
+    "Specify torch device, optimization variables, and objective and constraint(s).\n",
     "\n",
-    "Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the NCVX main algortihm. "
+    "Note: please strictly follow the format of comb_fn, which will be used in the NCVX main algortihm."
    ]
   },
   {
@@ -139,7 +137,7 @@
    "metadata": {},
    "source": [
     "## User Options\n",
-    "Specify user-defined options for NCVX algorithm"
+    "Specify user-defined options for NCVX"
    ]
   },
   {

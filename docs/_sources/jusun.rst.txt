@@ -8,8 +8,8 @@ optimization algorithms. But many nonconvex problems of interest
 become amenable to simple and practical algorithms and rigorous 
 analyses once the artificial separation is removed. 
 
-Please visit `Prof. Ju Sun's personal page <https://sunju.org/research/nonconvex/>`_ for 
-recent research effort in Provable Nonconvex Methods/Algorithms.
+Please visit Prof. Ju Sun's personal page for 
+recent research effort in `Provable Nonconvex Methods/Algorithms <https://sunju.org/research/nonconvex/>`_.
 
 
 

@@ -7,9 +7,7 @@
    "source": [
     "# Dictionary Learning\n",
     "\n",
-    "This notebook contains examples of how to solve orthogonal dictionary learning problem.\n",
-    "\n",
-    "Reference: Bai, Yu, Qijia Jiang, and Ju Sun. \"Subgradient descent learns orthogonal dictionaries.\" arXiv preprint arXiv:1810.10702 (2018)."
+    "Solve orthogonal dictionary learning problem taken from: Bai, Yu, Qijia Jiang, and Ju Sun. \"Subgradient descent learns orthogonal dictionaries.\" arXiv preprint arXiv:1810.10702 (2018)."
    ]
   },
   {
@@ -25,15 +23,16 @@
    "id": "28993e76",
    "metadata": {},
    "source": [
-    "given data $\\{y_i \\}_{i \\in[m]}$ generated as $y_i = A x_i$, where $A \\in R^{n \\times n}$ is a fixed unknown orthogonal matrix and each $x_i \\in R^n$ is an iid Bernoulli-Gaussian random vector with parameter $\\theta \\in (0,1)$, recover $A$. \n",
+    "Given data $\\{y_i \\}_{i \\in[m]}$ generated as $y_i = A x_i$, where $A \\in R^{n \\times n}$ is a fixed unknown orthogonal matrix and each $x_i \\in R^n$ is an iid Bernoulli-Gaussian random vector with parameter $\\theta \\in (0,1)$, recover $A$. \n",
     "\n",
-    "Write $Y \\doteq [y_1,...,y_m]$ and $X \\doteq [vx_1,...,x_m]$. Nonconvex due to constraint, nonsmooth due to objective:\n",
+    "Write $Y \\doteq [y_1,...,y_m]$ and $X \\doteq [x_1,...,x_m]$. To find the column of $A$, one can perform the following optimization:\n",
     "\n",
     "$$\\min_{q \\in R^n} f(q) \\doteq \\frac{1}{m} ||q^T Y||_{1} = \\frac{1}{m} \\sum_{i=1}^m |q^T y_i|,$$\n",
-    "$$\\text{s.t.} ||q||_2 = 1,$$\n",
+    "$$\\text{s.t.} ||q||_2 = 1$$\n",
     "\n",
+    "This problem is nonconvex due to the constraint and nonsmooth due to the objective.\n",
     "\n",
-    "Based on above statistical model, $q^T Y = q^T A X$ has the highest sparsity when $q$ is a column of $A$ (up to sign) so that $q^T A$ is 1-sparse. "
+    "Based on the above statistical model, $q^T Y = q^T A X$ has the highest sparsity when $q$ is a column of $A$ (up to sign) so that $q^T A$ is 1-sparse. "
    ]
   },
   {
@@ -72,7 +71,7 @@
     "## Data Generation \n",
     "Specify torch device, and generate data\n",
     "\n",
-    "Use gpu for this problem. If no cuda device available, please set *device = torch.device('cpu')*"
+    "Use GPU for this problem. If no cuda device available, please set *device = torch.device('cpu')*"
    ]
   },
   {
@@ -99,9 +98,9 @@
    "source": [
     "## Problem Definition\n",
     "\n",
-    "Spceify torch device, optimization variables, and corresponding objective and constrained function.\n",
+    "Specify torch device, optimization variables, and objective and constraint(s).\n",
     "\n",
-    "Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the NCVX main algortihm. *X_struct* and *data_in* are always required."
+    "Note: please strictly follow the format of comb_fn, which will be used in the NCVX main algortihm."
    ]
   },
   {
@@ -139,7 +138,7 @@
    "metadata": {},
    "source": [
     "## User Options\n",
-    "Specify user-defined options for NCVX algorithm"
+    "Specify user-defined options for NCVX"
    ]
   },
   {
@@ -250,7 +249,7 @@
    "source": [
     "## Various Options\n",
     "\n",
-    "**(Optional)** Set fvalquit. Quit if objective function drops below this value at a feasible \n",
+    "**(Optional)** Set fvalquit. Quit if the objective value drops below this value at a feasible \n",
     "iterate (that is, satisfying feasibility tolerances \n",
     "opts.viol_ineq_tol and opts.viol_eq_tol)\n",
     "\n",

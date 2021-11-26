@@ -165,13 +165,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../examples/7.demo_OrthogonalRNN.html">
-     Orthogonal RNN
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="../examples/8.demo_UnconstrainedDL.html">
-     Unconstrained Deep Learning Problem
+     Unconstrained Deep Learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -294,8 +289,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
-   init_step_size
+  <a class="reference internal nav-link" href="#linesearch-maxit">
+   linesearch_maxit
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -329,32 +324,34 @@
 <div class="section" id="qpsolver">
 <h2>QPsolver<a class="headerlink" href="#qpsolver" title="Permalink to this headline">¶</a></h2>
 <p>String in {‘osqp’}. Default value: ‘osqp’</p>
-<p>Select the QP solver used in the steering strategy and termination condition. Currently only osqp is available.</p>
+<p>Select the QP solver used in the steering strategy and termination condition. Currently only OSQP is supported.</p>
 </div>
 <div class="section" id="init-step-size">
 <h2>init_step_size<a class="headerlink" href="#init-step-size" title="Permalink to this headline">¶</a></h2>
 <p>Positive real value. Default value: 1</p>
-<p>Initial step size t in line search method. Recommend using small value (e.g., 1e-2) for deep learning problem.</p>
+<p>Initial step size t in line search. Recommend using small value (e.g., 1e-2) for deep learning problems.</p>
 </div>
-<div class="section" id="id1">
-<h2>init_step_size<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="linesearch-maxit">
+<h2>linesearch_maxit<a class="headerlink" href="#linesearch-maxit" title="Permalink to this headline">¶</a></h2>
 <p>Positive integer. Default value: inf</p>
-<p>Max number of iterations in line search method. Recommend using small value (e.g., 25) for deep learning problem.</p>
+<p>Max number of iterations in line search. Recommend using small value (e.g., 25) for deep learning problem.</p>
 </div>
 <div class="section" id="is-backtrack-linesearch">
 <h2>is_backtrack_linesearch<a class="headerlink" href="#is-backtrack-linesearch" title="Permalink to this headline">¶</a></h2>
 <p>Boolean value. Default value: False</p>
-<p>By default, NCVX will use Weak-Wolfe line search method. By enabling this method, the second wolfe condition will be disabled.</p>
+<p>By default, NCVX will use Weak-Wolfe line search. By enabling this method, the curvature condition will be disabled.</p>
 </div>
 <div class="section" id="searching-direction-rescaling">
 <h2>searching_direction_rescaling<a class="headerlink" href="#searching-direction-rescaling" title="Permalink to this headline">¶</a></h2>
 <p>Boolean value. Default value: False</p>
-<p>Rescale the norm of searching direction to be 1. Recommend setting True in deep learning problem.</p>
+<p>Rescale the norm of searching direction to be 1. Recommend setting True in deep learning problem.
+Used only when backtracking line search is enabled.</p>
 </div>
 <div class="section" id="disable-terminationcode-6">
 <h2>disable_terminationcode_6<a class="headerlink" href="#disable-terminationcode-6" title="Permalink to this headline">¶</a></h2>
 <p>Boolean value. Default value: False</p>
-<p>Disable termination code 6 to ensure NCVX can always make a movement even if the line search failed. Recommend setting True in deep learning problem.</p>
+<p>Disable termination code 6 to ensure NCVX can always make a movement even if the line search failed.
+Recommend setting True in deep learning problem. Used only when backtracking line search is enabled.</p>
 </div>
 </div>
 

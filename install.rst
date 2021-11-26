@@ -5,33 +5,25 @@ Steps
 -----------------
 
 .. note::
-	The current version NCVX is tested on Ubuntu 20.04
+    Setting: Ubuntu 20.04, NCVX 1.1.1
 
-Installing NCVX is simple. Here is a step by step plan on how to do it:
+Installing NCVX is simple. Here is a step-by-step instruction:
 
 1. Download the latest version of NCVX on GitHub (https://github.com/sun-umn/NCVX)
 
-2. Change the *name* and *prefix* in **environment.yml**. Then simply run::
+2. Change the *name* and *prefix* in **environment.yml**. 
+   
+   (GPU and CPU) Simply run::
 
-    conda env create -f environment.yml
+    conda env create -f environment_cuda.yml
     conda activate ncvx_env
 
-3. Check the examples page in the documentation and example codes in NCVX package for detailed instruction.
+   (CPU only) Simply run::
 
-4. Modify the working directory used in example codes.
+     conda env create -f environment_cpu.yml
+     conda activate ncvx_env
 
-
-(Optional) Alternative method for step 2::
-
-    conda create --name ncvx_env
-    
-    conda activate ncvx_env
-
-    conda install pytorch==1.9.0 torchvision torchaudio cudatoolkit=11.1.1 -c pytorch -c conda-forge
-
-    conda install -c conda-forge osqp
-    
-    conda install -c conda-forge notebook
+3. Check the :ref:`Examples<examples>` section in the documentation to get started.
     
 Dependencies
 -----------------

@@ -38,7 +38,7 @@
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Orthogonal RNN" href="7.demo_OrthogonalRNN.html" />
+    <link rel="next" title="Unconstrained Deep Learning" href="8.demo_UnconstrainedDL.html" />
     <link rel="prev" title="Generalized LASSO" href="5.demo_GeneralizedLASSO.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -167,13 +167,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="7.demo_OrthogonalRNN.html">
-     Orthogonal RNN
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="8.demo_UnconstrainedDL.html">
-     Unconstrained Deep Learning Problem
+     Unconstrained Deep Learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -581,24 +576,23 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Perceptual-Attack">
 <h1>Perceptual Attack<a class="headerlink" href="#Perceptual-Attack" title="Permalink to this headline">¶</a></h1>
-<p>This notebook contains examples of how to solve perceptual attack problems</p>
-<p>Reference: Laidlaw, Cassidy, Sahil Singla, and Soheil Feizi. “Perceptual adversarial robustness: Defense against unseen threat models.” arXiv preprint arXiv:2006.12655 (2020).</p>
+<p>Apply neural perceptual attack to images taken from: Laidlaw, Cassidy, Sahil Singla, and Soheil Feizi. “Perceptual adversarial robustness: Defense against unseen threat models.” arXiv preprint arXiv:2006.12655 (2020).</p>
 <div class="section" id="Problem-Description">
 <h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
-<p>Given classifier <span class="math notranslate nohighlight">\(f\)</span> which could map input image <span class="math notranslate nohighlight">\(x \in X\)</span> to labels $y = f(x) <span class="math">\in `Y$0. The goal of neural perceptual attack is to find an input :math:</span>tilde{x}` that is perceptually similar to the original input <span class="math notranslate nohighlight">\(x\)</span> but can fool the classifier <span class="math notranslate nohighlight">\(f\)</span>, which can be formulated as:</p>
+<p>Given a classifier <span class="math notranslate nohighlight">\(f\)</span> which maps any input image <span class="math notranslate nohighlight">\(x \in X\)</span> to its label <span class="math notranslate nohighlight">\(y = f(x) \in Y\)</span>. The goal of neural perceptual attack is to find an input <span class="math notranslate nohighlight">\(\widetilde{x}\)</span> that is perceptually similar to the original input <span class="math notranslate nohighlight">\(x\)</span> but can fool the classifier <span class="math notranslate nohighlight">\(f\)</span>. This can be formulated as:</p>
 <div class="math notranslate nohighlight">
-\[\max_{\tilde{x}} L (f(\tilde{x}),y),\]</div>
+\[\max_{\widetilde{x}} L (f(\widetilde{x}),y),\]</div>
 <div class="math notranslate nohighlight">
-\[\text{s.t.}\;\; d(x,\tilde{x}) = ||\phi(x) - \phi (\tilde{x}) ||_{2} \leq \epsilon\]</div>
+\[\text{s.t.}\;\; d(x,\widetilde{x}) = ||\phi(x) - \phi (\tilde{x}) ||_{2} \leq \epsilon\]</div>
 <p>Here</p>
 <div class="math notranslate nohighlight">
 \[L (f({x}),y) = \max_{i\neq y} (z_i(x) - z_y(x) ),\]</div>
-<p>where <span class="math notranslate nohighlight">\(z_i(x)\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>-th logit output of <span class="math notranslate nohighlight">\(f(x)\)</span>, and <span class="math notranslate nohighlight">\(\phi(\cdot)\)</span> is a function that could map the input <span class="math notranslate nohighlight">\(x\)</span> to normalized, flattened activations</p>
+<p>where <span class="math notranslate nohighlight">\(z_i(x)\)</span> is the <span class="math notranslate nohighlight">\(i\)</span>-th logit output of <span class="math notranslate nohighlight">\(f(x)\)</span>, and <span class="math notranslate nohighlight">\(\phi(\cdot)\)</span> is a function that maps the input <span class="math notranslate nohighlight">\(x\)</span> to normalized, flattened activations</p>
 </div>
 <div class="section" id="Modules-Importing">
 <h2>Modules Importing<a class="headerlink" href="#Modules-Importing" title="Permalink to this headline">¶</a></h2>
-<p>Import all necessary modules and add NCVX src folder to system path. NCVX src folder to system path.</p>
-<p>NOTE: perceptual advex source code (<a class="reference external" href="https://github.com/cassidylaidlaw/perceptual-advex.git">https://github.com/cassidylaidlaw/perceptual-advex.git</a>) are required to calculate the lpips distance</p>
+<p>Import all necessary modules and add NCVX src folder to system path.</p>
+<p>NOTE: the perceptual advex package (<a class="reference external" href="https://github.com/cassidylaidlaw/perceptual-advex.git">https://github.com/cassidylaidlaw/perceptual-advex.git</a>) is required to calculate the distance</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -666,8 +660,8 @@ Files already downloaded and verified
 </div>
 <div class="section" id="Problem-Definition">
 <h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
-<p>Spceify torch device, optimization variables, and corresponding objective and constrained function.</p>
-<p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the NCVX main algortihm. <em>X_struct</em> and <em>data_in</em> are always required.</p>
+<p>Specify torch device, optimization variables, and objective and constraint(s).</p>
+<p>Note: please strictly follow the format of comb_fn, which will be used in the NCVX main algortihm.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -729,7 +723,7 @@ Files already downloaded and verified
 </div>
 <div class="section" id="User-Options">
 <h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
-<p>Specify user-defined options for NCVX algorithm</p>
+<p>Specify user-defined options for NCVX</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
@@ -816,7 +810,7 @@ Total Wall Time: 4.157378196716309s
 </div>
 <div class="section" id="Batch-Attacks">
 <h2>Batch Attacks<a class="headerlink" href="#Batch-Attacks" title="Permalink to this headline">¶</a></h2>
-<p>Apply attack on multiple images by repeating above steps and calculate the successful rate</p>
+<p>Apply attacks to multiple images by repeating above steps and calculate the success rate</p>
 <div class="nbinput docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
@@ -1072,10 +1066,10 @@ Average run time of NCVX = 3.5959330797195435s, mean f_eval = 32.0 iters
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="7.demo_OrthogonalRNN.html" title="next page">
+        <a class="right-next" href="8.demo_UnconstrainedDL.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Orthogonal RNN</p>
+                <p class="prevnext-title">Unconstrained Deep Learning</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

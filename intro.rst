@@ -4,90 +4,79 @@ Introduction
 Motivation and Background
 ----------------------------------
 
-Mathematical optimization is an indispensable modeling and computational tool for all science and 
-engineering fields. Over the past decades, researchers have developed numerous foolproof techniques 
-and user-friendly software packages to solve convex optimization problems—a subset of optimization 
-problems with benign global structures (Boyd et al., 2004; Grant et al., 2008). These software 
-packages have substantially lowered the barrier for non-expert practitioners to access and deploy 
-these advanced techniques. However, practical problems are often nonconvex, nonsmooth, and constrained, 
-and hence unamenable to convex optimization techniques. A notable family of examples is deep learning 
-problems—which underpins the ongoing revolutions in AI and countless scientific and applied fields. 
-Reliably solving such problems often entails substantial optimization expertise  (Bagirov et al., 2014), 
-and practical problems are becoming increasingly more complex and large-scale that outpace what the existing 
-software packages can handle. 
-
-The GRANSO package (http://www.timmitchell.com/software/GRANSO/) is the first numerical optimization package that can handle general nonconvex, 
-nonsmooth, constrained optimization problems based on MATLAB  (Curtis et al., 2017). The package is very stable and 
-produces meaningful results when other carefully crafted solvers fail. However, several 
-limitations of GRANSO preclude its potential broad deployment by general users:  
-
-	(1) It only allows vector variables but not matrices or tensors, while the latter two are common 
-	computational units in modern optimization problems such as machine/deep learning.   
-
-	(2) The default MATLAB quadratic programming solver struggles to scale up to medium- to large-scale 
-	problems, which is a bottleneck for scalability. 
-
-	(3) GRANSO requires deriving analytic subgradients for the objective and constraint functions, which 
-	is challenging and even infeasible, especially in deep learning.  
-
-	(4) MATLAB that GRANSO is written in is a proprietary programming language and entails considerable 
-	license fees for researchers and developers. 	
-	
-	(5) GRANSO is not able to take the full advantage 
-	of modern massively parallel hardware.
+Optimizing nonconvex (NCVX) problems, especially those nonsmooth and constrained, is an essential part of machine learning and deep learning. But it is hard to reliably solve this type of problems without optimization expertise. Existing general-purpose NCVX optimization packages are powerful, but typically cannot handle nonsmoothness. GRANSO is among the first packages targeting NCVX, nonsmooth, constrained problems. However, it has several limitations such as the lack of auto-differentiation and GPU acceleration, which preclude the potential broad deployment by non-experts. To lower the technical barrier for the machine learning community, we revamp GRANSO into a user-friendly and scalable python package named NCVX, featuring auto-differentiation, GPU acceleration, tensor input, scalable QP solver, and zero dependency on proprietary packages. As a highlight, NCVX can solve general constrained deep learning problems, the first of its kind. 
 
 
-
-Thus, we tackled the severe limitations of GRANSO, and built a user-friendly and scalable python package called NCVX by revamping several key components of GRANSO and translating it into Python. Our main contributions are described in the following sections. 
 
 Key Features
 ------------------
+GRANSO is among the first optimization packages that can handle general NCVX, nonsmooth,
+constrained problems (Curtis et al., 2017):
 
-Below are the key features that makes the NCVX package scalable and user-friendly:
+FORMULA TO BE ADDED
 
-	**Tensor Input** NCVX allows the usage of tensor optimization variables, which is represented in a dictionary structure, where the the key is the name of variables (e.g., x,y), and the corresponding values are the dimension of tensors (e.g., [3,32,32],[2,2]).  
+Here, the objective f and constraint functions ci’s are only required to be almost everywhere continuously differentiable. GRANSO is based on quasi-Newton methods with sequential quadratic programming (BFGS-SQP), and has the following advantages:
 
-	**QP solvers** We replaced the MATLAB builtin quadratic solver with the OSQP package. The OSQP package is a great alternative to MATLAB’s slow quadratic solver,  and has consistently and significantly outperformed popular commercial solvers in terms of speed and scalability. 
+	(1) Unified Treatment of NCVX problems: no need to distinguish CVX vs NCVX and smooth vs
+	nonsmooth problems, similar to typical nonlinear programming packages; 
 
-	**Automatic Differentiation** We build the package based on PyTorch which allow automated differentiation. This could remove the pain of deriving analytic subgradients and avoid potential calculation and implementation mistakes. More importantly, 
-	the auto-differentiation is crucial when obtaining analytic gradients is almost impossible in deep learning problems with complicated function forms.
+	(2) Reliable Step Size Rule: specialized methods for nonsmooth problems, such as subgradient and proximal
+	methods, often entail tricky step size tuning and require the expertise to recognize the
+	structures. By contrast, GRANSO chooses step sizes adaptively via gold
+	standard line search; 
+	
+	(3) Principled Stopping Criterion: GRANSO stops its iteration by
+	checking a theory-grounded stationarity condition for nonsmooth problems, whereas specialized
+	methods are usually stopped when reaching ad-hoc iteration caps.
+
+However, GRANSO suffers from several practicality limitations. To overcome these and
+facilitate practical usage in machine and deep learning, we revamp GRANSO with crucial
+enhancements and turn it into our NCVX package, which is based on PyTorch. The limitations
+and our corresponding enhancements include:
+
+	(1) GRANSO requires analytical subgradients, whereas NCVX removes 
+	this need and performs auto-differentiation; 
+	
+	(2) GRANSO only supports CPU-based computation, whereas NCVX both CPUs and GPUs to allow massively-parallel
+	computation; 
+	
+	(3) GRANSO defaults variables as vectors, while NCVX allows general tensor
+	variables including vectors and matrices; 
+	
+	(4) GRANSO solves two QP instances per iteration
+	and uses MATLAB’s QP solver that hardly scales up. NCVX integrates `OSQP <https://osqp.org/docs/get_started/python.html>`_ that outperforms commercial QP solvers in terms of scalability and speed; 
+	
+	(5) GRANSO is written in MATLAB, which is proprietary software. All the dependencies of NCVX are
+	open-source and non-proprietary. 
+	
+All these enhancements are crucial for machine learning researchers and practitioners to solve large-scale problems.
 
 
-	**GPU acceleration** NCVX enables highly optimized and parallelizable matrix/tensor computations that take the full advantage of modern massively parallel hardware, e.g., GPUs, by using PyTorch Framework.
-
-	**Dependencies** NCVX itself and its all dependencies are open-source, thus no proprietary software is required to use it.
-
-Future Plan
+Road Map
 ----------------------------------
-Despite NCVX has many powerful features, we would like to further improve it by adding several useful features:
 
-	1. **SR1** SR1 could help overcome saddle points and condition issues
+Although NCVX already has many powerful features, we plan to further improve it by adding
+several major components:
 
-	2. **Stochastic Algorithm** A stochastic version algorithm will be used in NCVX for better scalability, since the memory constraint is the bottleneck in solving large scale machine/deep learning problems.
+	(1) Symmetric Rank One (SR1): SR1, another major type
+	of quasi-Newton methods, allows less stringent step size search and tends to help escape
+	from saddle points faster by taking advantage of negative curvature directions;
+	
+	(2) Stochastic Algorithms: in machine learning, computing with large-scale
+	datasets often involves finite sums with huge number of terms, calling for (mini-batch)
+	stochastic algorithms for reduced per-iteration cost and better scalability; 
+	
+	(3) Conic Programming (CP): semidefinite programming and 
+	second-order cone programming, special cases of CP, are abundant in machine learning, e.g., kernel machines;
+	
+	(4) MiniMax Optimization (MMO): MMO is an emerging technique 
+	in modern machine learning, e.g., generative adversarial networks (GANs) and multi-agent reinforcement learning.
 
-	3. **Conic Programming** Semidefinite programming (SDP), which is a special case of conic optimization problem, is important for machine learning, kernel-machines and SVMs.
-
-	4. **Min-Max Optimization** Minimax optimization is an important technique in machine learning problems, such as generative adversarial networks (GAN) and multi-agent reinforce learning.
-
-Update Logs
------------------
-v1.1.1-alpha: Rename the package from "PyGRANSO" to "NCVX"
-
-v1.1.0-alpha: Cleaned code, added L-BFGS, updated tutorials and documentation. 
-
-v1.0.2-alpha: Updated installation guides for Linux and windows users.
-
-v1.0.1-alpha: Updated contirbutions, limitations and acknowledgement sections in docs.
-
-v1.0.0-alpha: Initial release of PyGRANSO. Main features: Python translation, autodifferentiation, GPU-support with PyTorch, matrix/tensor inputs, more powerful solver and several new settings to avoid numerical issues in deep learning problem.
 
 References
 -----------------
 
+Arxiv Preprint TO BE ADDED
+
 Frank E. Curtis, Tim Mitchell, and Michael L. Overton. "A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles." Optimization Methods and Software 32.1 (2017): 148-181.
 
-Stephen Boyd, Stephen P Boyd, and Lieven Vandenberghe.Convex optimization. Cambridge university press, 2004
-
-Michael Grant, Stephen Boyd, and Yinyu Ye. Cvx:  Matlab software for disciplined convex programming, 2008
-
-Adil Bagirov, Napsu Karmitsa, and Marko M M ̈akel ̈a.Introduction to Nonsmooth Optimization: theory, practice and software. Springer, 2014

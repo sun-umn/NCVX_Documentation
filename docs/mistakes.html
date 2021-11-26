@@ -165,13 +165,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/7.demo_OrthogonalRNN.html">
-     Orthogonal RNN
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="examples/8.demo_UnconstrainedDL.html">
-     Unconstrained Deep Learning Problem
+     Unconstrained Deep Learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -289,19 +284,19 @@
   <div class="section" id="tips">
 <h1>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h1>
 <p>1. Always remember to modify the directories
-(e.g., <em>‘/home/buyun/Documents/GitHub/NCVX’</em>) used in tutorials.</p>
-<p>2. Please set <em>device = torch.device(‘cpu’)</em> or
+(e.g., <code class="docutils literal notranslate"><span class="pre">'/home/buyun/Documents/GitHub/NCVX'</span></code>) used in tutorials.</p>
+<p>2. Please set <code class="docutils literal notranslate"><span class="pre">device</span> <span class="pre">=</span> <span class="pre">torch.device('cpu')</span></code> or
 do not specify it (default device is CPU), if your device does not support cuda.</p>
-<p>3. <em>comb_fn</em> and <em>obj_eval_fn</em> have reuired format.
-It only allow 1 input argument (we are using <em>X_struct</em> in tutorials) and must return
-three values (e.g., <em>[f,ci,ce]</em>) for objective value, inequality constraints and equality constraints, respectively.
-If there is no inequality constraints or/and equality constraints, please set <em>ci=None</em> and/or <em>ce=None</em>.</p>
-<p>4. Always remember to set <em>requires_grad_(True)</em> for each individual
+<p>3. <code class="docutils literal notranslate"><span class="pre">comb_fn</span></code> and <code class="docutils literal notranslate"><span class="pre">obj_eval_fn</span></code> have reuired format.
+They only allow 1 input argument (we are using <code class="docutils literal notranslate"><span class="pre">X_struct</span></code> in tutorials) and must return
+three values (e.g., <code class="docutils literal notranslate"><span class="pre">[f,ci,ce]</span></code>) for objective value, inequality constraints and equality constraints, respectively.
+If there are no inequality constraints or/and equality constraints, please set <code class="docutils literal notranslate"><span class="pre">ci=None</span></code> or/and <code class="docutils literal notranslate"><span class="pre">ce=None</span></code>.</p>
+<p>4. Always remember to set <code class="docutils literal notranslate"><span class="pre">requires_grad_(True)</span></code> for each individual
 optimization variable to allow auto-differentiation.</p>
-<p>5. Users should try to avoid the use of option <em>max_it</em>, since
+<p>5. Users should try to avoid the use of option <code class="docutils literal notranslate"><span class="pre">max_it</span></code>, since
 NCVX has a reliable stopping criterion.</p>
 <p>6. All the generated vector/matrix/tensor data must be in torch tensor
-form with double precision.</p>
+form with double precision (PyTorch default is single precision).</p>
 </div>
 
 

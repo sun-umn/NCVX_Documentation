@@ -39,7 +39,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Sphere Manifold" href="10.demo_sphere_manifold.html" />
-    <link rel="prev" title="Unconstrained Deep Learning Problem" href="8.demo_UnconstrainedDL.html" />
+    <link rel="prev" title="Unconstrained Deep Learning" href="8.demo_UnconstrainedDL.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -167,13 +167,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="7.demo_OrthogonalRNN.html">
-     Orthogonal RNN
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="8.demo_UnconstrainedDL.html">
-     Unconstrained Deep Learning Problem
+     Unconstrained Deep Learning
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -571,8 +566,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Nonlinear-Feasibility-Problem">
 <h1>Nonlinear Feasibility Problem<a class="headerlink" href="#Nonlinear-Feasibility-Problem" title="Permalink to this headline">¶</a></h1>
-<p>This notebook contains examples of find a point that satisfies all the constraints in a problem, with no objective function to minimize.</p>
-<p>Reference: <a class="reference external" href="https://www.mathworks.com/help/optim/ug/solve-feasibility-problem.html">https://www.mathworks.com/help/optim/ug/solve-feasibility-problem.html</a></p>
+<p>Find a point that satisfies several nonlinear constraints, taken from: <a class="reference external" href="https://www.mathworks.com/help/optim/ug/solve-feasibility-problem.html">https://www.mathworks.com/help/optim/ug/solve-feasibility-problem.html</a></p>
 <div class="section" id="Problem-Description">
 <h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
@@ -581,7 +575,7 @@ div.rendered_html tbody tr:hover {
 \[y\leq\exp(-x)-3\]</div>
 <div class="math notranslate nohighlight">
 \[y\leq x-4\]</div>
-<p>Do any points <span class="math notranslate nohighlight">\((x,y)\)</span> satisfy all of the constraints?</p>
+<p>Does any point <span class="math notranslate nohighlight">\((x,y)\)</span> satisfy all of the constraints?</p>
 </div>
 <div class="section" id="Modules-Importing">
 <h2>Modules Importing<a class="headerlink" href="#Modules-Importing" title="Permalink to this headline">¶</a></h2>
@@ -604,8 +598,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Problem-Definition">
 <h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
-<p>Spceify torch device, optimization variables, and corresponding objective and constrained function.</p>
-<p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the NCVX main algortihm. <em>X_struct</em> is always required.</p>
+<p>Specify torch device, optimization variables, and objective and constraint(s).</p>
+<p>Note: please strictly follow the format of comb_fn, which will be used in the NCVX main algortihm.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -642,7 +636,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="User-Options">
 <h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
-<p>Specify user-defined options for NCVX algorithm</p>
+<p>Specify user-defined options for NCVX</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -734,7 +728,7 @@ NCVX finds a feaible point:(1.653828,-2.355398)
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Unconstrained Deep Learning Problem</p>
+                <p class="prevnext-title">Unconstrained Deep Learning</p>
             </div>
         </a>
     </div>

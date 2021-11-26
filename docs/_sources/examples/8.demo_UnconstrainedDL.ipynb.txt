@@ -5,11 +5,9 @@
    "id": "5257bb27",
    "metadata": {},
    "source": [
-    "# Unconstrained Deep Learning Problem\n",
+    "# Unconstrained Deep Learning  \n",
     "\n",
-    "This notebook contains examples of how to train unconstrained deep learning (modified LeNet5).\n",
-    "\n",
-    "Reference: https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html"
+    "Train unconstrained deep learning for CIFAR-10 classification using modified LeNet5 based on: https://pytorch.org/tutorials/beginner/blitz/neural_networks_tutorial.html"
    ]
   },
   {
@@ -30,9 +28,7 @@
    "id": "b96269c7",
    "metadata": {},
    "source": [
-    "We have a simple feed-forward network. The input is an image, which is feeded through several layers to obtain the output. And the logit output is used to decide the label of the input image.\n",
-    "\n",
-    "Below is the demo image from pytorch tutorial, we are using a modified version of it:\n",
+    "We have a simple feed-forward network. The input is an image, which is fed through several layers to obtain the output. The logit output is used to decide the label of the input image. Below is a demo image of LeNet5:\n",
     "![image.png](attachment:image.png)"
    ]
   },
@@ -42,7 +38,7 @@
    "metadata": {},
    "source": [
     "## Modules Importing\n",
-    "Import all necessary modules and add NCVX src folder to system path. NCVX src folder to system path."
+    "Import all necessary modules and add NCVX src folder to system path. "
    ]
   },
   {
@@ -144,9 +140,9 @@
    "source": [
     "## Problem Definition\n",
     "\n",
-    "Spceify torch device, optimization variables, and corresponding objective and constrained function.\n",
+    "Specify torch device, optimization variables, and objective and constraint(s).\n",
     "\n",
-    "Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the NCVX main algortihm. *X_struct* and *data_in* are always required."
+    "Note: please strictly follow the format of comb_fn and obj_eval_fn, which will be used in the NCVX main algortihm."
    ]
   },
   {
@@ -207,7 +203,7 @@
    "metadata": {},
    "source": [
     "## User Options\n",
-    "Specify user-defined options for NCVX algorithm"
+    "Specify user-defined options for NCVX "
    ]
   },
   {
@@ -243,7 +239,7 @@
    "metadata": {},
    "source": [
     "## Initial Test \n",
-    "Check initial accuracy of LeNet5 model"
+    "Check initial accuracy of the modified LeNet5 model"
    ]
   },
   {

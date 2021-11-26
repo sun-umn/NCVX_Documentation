@@ -167,13 +167,8 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="7.demo_OrthogonalRNN.html">
-     Orthogonal RNN
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="8.demo_UnconstrainedDL.html">
-     Unconstrained Deep Learning Problem
+     Unconstrained Deep Learning
     </a>
    </li>
    <li class="toctree-l2">
@@ -576,19 +571,18 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Generalized-LASSO">
 <h1>Generalized LASSO<a class="headerlink" href="#Generalized-LASSO" title="Permalink to this headline">¶</a></h1>
-<p>This notebook contains examples of how to solve total variation denoising problem.</p>
-<p>Reference: Boyd, Stephen, Neal Parikh, and Eric Chu. Distributed optimization and statistical learning via the alternating direction method of multipliers. Now Publishers Inc, 2011.</p>
+<p>Solve the total variation denoising problem based on Boyd, Stephen, Neal Parikh, and Eric Chu. Distributed optimization and statistical learning via the alternating direction method of multipliers. Now Publishers Inc, 2011.</p>
 <div class="section" id="Problem-Description">
 <h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
-\[\min \frac{1}{2} ||Ax-b||_2^2+\lambda||Fx||_1,\]</div>
-<p>where <span class="math notranslate nohighlight">\(A\)</span> is an indentity matrix and <span class="math notranslate nohighlight">\(F\)</span> is a the difference matrix, in which case the above form reduces to</p>
+\[\min \frac{1}{2} ||Ax-b||_2^2+\lambda||Fx||_1\]</div>
+<p>Here we consider special case when <span class="math notranslate nohighlight">\(A\)</span> is an indentity matrix and <span class="math notranslate nohighlight">\(F\)</span> is the difference matrix, i.e.,</p>
 <div class="math notranslate nohighlight">
 \[\min_x \frac{1}{2}||x-b||_2^2+\lambda\sum_{i=1}^{n-1}|x_{i+1}-x_i|\]</div>
 </div>
 <div class="section" id="Modules-Importing">
 <h2>Modules Importing<a class="headerlink" href="#Modules-Importing" title="Permalink to this headline">¶</a></h2>
-<p>Import all necessary modules and add NCVX src folder to system path. NCVX src folder to system path.</p>
+<p>Import all necessary modules and add NCVX src folder to system path.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
 </pre></div>
@@ -631,8 +625,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Problem-Definition">
 <h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
-<p>Spceify torch device, optimization variables, and corresponding objective and constrained function.</p>
-<p>Note: please strictly follow the format of evalObjFunction and combinedFunction, which will be used in the NCVX main algortihm. <em>X_struct</em> and <em>data_in</em> are always required.</p>
+<p>Specify torch device, optimization variables, and objective and constraint(s).</p>
+<p>Note: please strictly follow the format of comb_fn, which will be used in the NCVX main algortihm.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
@@ -668,7 +662,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="User-Options">
 <h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
-<p>Specify user-defined options for NCVX algorithm</p>
+<p>Specify user-defined options for NCVX</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>

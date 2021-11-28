@@ -23,7 +23,15 @@ Installing NCVX is simple. Here is a step-by-step instruction:
      conda env create -f environment_cpu.yml
      conda activate ncvx_env
 
-3. Check the :ref:`Examples<examples>` section in the documentation to get started.
+3. (GPU and CPU) Run test to make sure the dependency installation is correct::
+
+      python test_cuda.py
+
+   (CPU only) Run test to make sure the dependency installation is correct::
+    
+      python test_cpu.py
+
+4. Check the :ref:`Examples<examples>` section in the documentation to get started.
     
 Dependencies
 -----------------

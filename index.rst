@@ -35,6 +35,7 @@ Contents
    examples/index
    mistakes
    jusun
+   citation
 
 Acknowledgements
 ----------------------

@@ -34,6 +34,8 @@
     <script src="_static/doctools.js"></script>
     <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Installation" href="install.html" />
@@ -191,6 +193,11 @@
    NCVX Methods
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="citation.html">
+   Citing NCVX
+  </a>
+ </li>
 </ul>
 
     </div>
@@ -319,7 +326,8 @@
 <h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
 <p>GRANSO is among the first optimization packages that can handle general NCVX, nonsmooth,
 constrained problems (Curtis et al., 2017):</p>
-<p>FORMULA TO BE ADDED</p>
+<div class="math notranslate nohighlight">
+\[\min_{\mathbf{x} \in \mathbb{R}^n} f(\mathbf{x}), \text{ s.t. } c_i(\mathbf{x}) \leq 0, \forall i \in \mathcal{I};\ c_i(\mathbf{x}) = 0, \forall i \in \mathcal{E}\]</div>
 <p>Here, the objective f and constraint functions ci’s are only required to be almost everywhere continuously differentiable. GRANSO is based on quasi-Newton methods with sequential quadratic programming (BFGS-SQP), and has the following advantages:</p>
 <blockquote>
 <div><p>(1) Unified Treatment of NCVX problems: no need to distinguish CVX vs NCVX and smooth vs

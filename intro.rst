@@ -13,7 +13,9 @@ Key Features
 GRANSO is among the first optimization packages that can handle general NCVX, nonsmooth,
 constrained problems (Curtis et al., 2017):
 
-FORMULA TO BE ADDED
+.. math::
+
+   \min_{\mathbf{x} \in \mathbb{R}^n} f(\mathbf{x}), \text{ s.t. } c_i(\mathbf{x}) \leq 0, \forall i \in \mathcal{I};\ c_i(\mathbf{x}) = 0, \forall i \in \mathcal{E}
 
 Here, the objective f and constraint functions ci’s are only required to be almost everywhere continuously differentiable. GRANSO is based on quasi-Newton methods with sequential quadratic programming (BFGS-SQP), and has the following advantages:
 

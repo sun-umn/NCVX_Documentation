@@ -14,8 +14,8 @@ Several quick tutorials to help users get started with NCVX.
 	4.demo_RobustPCA.ipynb
 	5.demo_GeneralizedLASSO.ipynb
 	6.demo_PerceptualAttack.ipynb
-	8.demo_UnconstrainedDL.ipynb
-	9.demo_nonlinear_feasiblity.ipynb
-	10.demo_sphere_manifold.ipynb
+	7.demo_UnconstrainedDL.ipynb
+	8.demo_nonlinear_feasiblity.ipynb
+	9.demo_sphere_manifold.ipynb
 
     

@@ -55,7 +55,7 @@ html_theme = "sphinx_book_theme"
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-html_logo = "./ncvx_logo.png"
+html_logo = "./NCVX_logo.png"
 html_theme_options = {
    "repository_url": "https://github.com/sun-umn/NCVX",
    "use_repository_button": True,

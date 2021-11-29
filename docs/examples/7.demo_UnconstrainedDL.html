@@ -38,7 +38,7 @@
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Nonlinear Feasibility Problem" href="9.demo_nonlinear_feasiblity.html" />
+    <link rel="next" title="Nonlinear Feasibility Problem" href="8.demo_nonlinear_feasiblity.html" />
     <link rel="prev" title="Perceptual Attack" href="6.demo_PerceptualAttack.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -62,7 +62,7 @@
         
       
       
-      <img src="../_static/ncvx_logo.png" class="logo" alt="logo">
+      <img src="../_static/NCVX_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">NCVX  documentation</h1>
@@ -172,12 +172,12 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="9.demo_nonlinear_feasiblity.html">
+    <a class="reference internal" href="8.demo_nonlinear_feasiblity.html">
      Nonlinear Feasibility Problem
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="10.demo_sphere_manifold.html">
+    <a class="reference internal" href="9.demo_sphere_manifold.html">
      Sphere Manifold
     </a>
    </li>
@@ -239,7 +239,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/examples/8.demo_UnconstrainedDL.ipynb.txt"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/examples/7.demo_UnconstrainedDL.ipynb.txt"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -259,7 +259,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fexamples/8.demo_UnconstrainedDL.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fexamples/7.demo_UnconstrainedDL.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -804,7 +804,7 @@ Initial acc = 0.102
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/buyun/anaconda3/envs/cuosqp_pygranso/lib/python3.9/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /opt/conda/conda-bld/pytorch_1623448255797/work/c10/core/TensorImpl.h:1156.)
+/home/buyun/anaconda3/envs/ncvx_cuda_env/lib/python3.9/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /opt/conda/conda-bld/pytorch_1623448255797/work/c10/core/TensorImpl.h:1156.)
   return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
 </pre></div></div>
 </div>
@@ -854,23 +854,23 @@ Iter ║ Mu │ Value ║    Objective   ║ Ineq │  Eq  ║ SD │ Evals │ 
   30 ║  - │   -   ║  2.14946733209 ║   -  │   -  ║ QN │     2 │ 0.010000 ║     1 │ 5.10e+06   ║
   40 ║  - │   -   ║  2.10467012518 ║   -  │   -  ║ QN │     2 │ 0.010000 ║     1 │ 1.11e+07   ║
   50 ║  - │   -   ║  2.06110591282 ║   -  │   -  ║ QN │     2 │ 0.010000 ║     1 │ 1.97e+07   ║
-  60 ║  - │   -   ║  2.02044534502 ║   -  │   -  ║ QN │     2 │ 0.010000 ║     1 │ 3.44e+07   ║
-  70 ║  - │   -   ║  1.98459798344 ║   -  │   -  ║ QN │     2 │ 0.010000 ║     1 │ 6.93e+07   ║
-  80 ║  - │   -   ║  1.95391914804 ║   -  │   -  ║ QN │     2 │ 0.010000 ║     1 │ 1.31e+08   ║
-  90 ║  - │   -   ║  1.92816199421 ║   -  │   -  ║ QN │     2 │ 0.010000 ║     1 │ 1.55e+08   ║
- 100 ║  - │   -   ║  1.90350858159 ║   -  │   -  ║ QN │     2 │ 0.010000 ║     1 │ 1.67e+08   ║
+  60 ║  - │   -   ║  2.02044534500 ║   -  │   -  ║ QN │     2 │ 0.010000 ║     1 │ 3.44e+07   ║
+  70 ║  - │   -   ║  1.98459798325 ║   -  │   -  ║ QN │     2 │ 0.010000 ║     1 │ 6.93e+07   ║
+  80 ║  - │   -   ║  1.95391914779 ║   -  │   -  ║ QN │     2 │ 0.010000 ║     1 │ 1.31e+08   ║
+  90 ║  - │   -   ║  1.92816199412 ║   -  │   -  ║ QN │     2 │ 0.010000 ║     1 │ 1.55e+08   ║
+ 100 ║  - │   -   ║  1.90350858117 ║   -  │   -  ║ QN │     2 │ 0.010000 ║     1 │ 1.67e+08   ║
 ═════╩════════════╩════════════════╩═════════════╩═══════════════════════╩════════════════════╣
 Optimization results:                                                                         ║
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                ║
 ═════╦════════════╦════════════════╦═════════════╦═══════════════════════╦════════════════════╣
-   F ║    │       ║  1.90350858159 ║   -  │   -  ║    │       │          ║       │            ║
-   B ║    │       ║  1.90350858159 ║   -  │   -  ║    │       │          ║       │            ║
+   F ║    │       ║  1.90350858117 ║   -  │   -  ║    │       │          ║       │            ║
+   B ║    │       ║  1.90350858117 ║   -  │   -  ║    │       │          ║       │            ║
 ═════╩════════════╩════════════════╩═════════════╩═══════════════════════╩════════════════════╣
 Iterations:              100                                                                  ║
 Function evaluations:    201                                                                  ║
 NCVX termination code: 4 --- max iterations reached.                                          ║
 ══════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 7.330562114715576s
+Total Wall Time: 7.039570569992065s
 </pre></div></div>
 </div>
 </div>
@@ -942,7 +942,7 @@ Test acc = 0.292
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">opts</span><span class="o">.</span><span class="n">print_level</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">30</span><span class="p">):</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span> <span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="c1"># restart</span>
     <span class="n">opts</span><span class="o">.</span><span class="n">x0</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">final</span><span class="o">.</span><span class="n">x</span>
     <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">vector_to_parameters</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">final</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span>
@@ -969,92 +969,32 @@ iter 200:
 Train acc = 0.391
 Test acc = 0.327
 iter 300:
-Train acc = 0.432
-Test acc = 0.335
+Train acc = 0.433
+Test acc = 0.336
 iter 400:
-Train acc = 0.483
-Test acc = 0.331
+Train acc = 0.496
+Test acc = 0.336
 iter 500:
-Train acc = 0.532
-Test acc = 0.354
+Train acc = 0.548
+Test acc = 0.353
 iter 600:
-Train acc = 0.581
-Test acc = 0.361
+Train acc = 0.575
+Test acc = 0.355
 iter 700:
-Train acc = 0.628
-Test acc = 0.326
+Train acc = 0.641
+Test acc = 0.344
 iter 800:
-Train acc = 0.671
-Test acc = 0.319
+Train acc = 0.673
+Test acc = 0.32
 iter 900:
-Train acc = 0.718
-Test acc = 0.325
+Train acc = 0.713
+Test acc = 0.314
 iter 1000:
-Train acc = 0.758
-Test acc = 0.326
+Train acc = 0.741
+Test acc = 0.311
 iter 1100:
 Train acc = 0.783
-Test acc = 0.316
-iter 1200:
-Train acc = 0.823
-Test acc = 0.337
-iter 1300:
-Train acc = 0.856
 Test acc = 0.324
-iter 1400:
-Train acc = 0.865
-Test acc = 0.313
-iter 1500:
-Train acc = 0.901
-Test acc = 0.331
-iter 1600:
-Train acc = 0.92
-Test acc = 0.329
-iter 1700:
-Train acc = 0.946
-Test acc = 0.329
-iter 1800:
-Train acc = 0.955
-Test acc = 0.332
-iter 1900:
-Train acc = 0.971
-Test acc = 0.317
-iter 2000:
-Train acc = 0.986
-Test acc = 0.314
-iter 2100:
-Train acc = 0.99
-Test acc = 0.311
-iter 2200:
-Train acc = 0.997
-Test acc = 0.312
-iter 2300:
-Train acc = 0.997
-Test acc = 0.31
-iter 2400:
-Train acc = 0.998
-Test acc = 0.309
-iter 2500:
-Train acc = 0.998
-Test acc = 0.308
-iter 2600:
-Train acc = 0.999
-Test acc = 0.306
-iter 2700:
-Train acc = 0.999
-Test acc = 0.308
-iter 2800:
-Train acc = 0.999
-Test acc = 0.305
-iter 2900:
-Train acc = 0.999
-Test acc = 0.305
-iter 3000:
-Train acc = 0.999
-Test acc = 0.306
-iter 3100:
-Train acc = 1.0
-Test acc = 0.303
 </pre></div></div>
 </div>
 </div>
@@ -1080,7 +1020,7 @@ Test acc = 0.303
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="9.demo_nonlinear_feasiblity.html" title="next page">
+        <a class="right-next" href="8.demo_nonlinear_feasiblity.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
                 <p class="prevnext-title">Nonlinear Feasibility Problem</p>

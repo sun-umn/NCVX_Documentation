@@ -38,7 +38,7 @@
     <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Unconstrained Deep Learning" href="8.demo_UnconstrainedDL.html" />
+    <link rel="next" title="Unconstrained Deep Learning" href="7.demo_UnconstrainedDL.html" />
     <link rel="prev" title="Generalized LASSO" href="5.demo_GeneralizedLASSO.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -62,7 +62,7 @@
         
       
       
-      <img src="../_static/ncvx_logo.png" class="logo" alt="logo">
+      <img src="../_static/NCVX_logo.png" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">NCVX  documentation</h1>
@@ -167,17 +167,17 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="8.demo_UnconstrainedDL.html">
+    <a class="reference internal" href="7.demo_UnconstrainedDL.html">
      Unconstrained Deep Learning
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="9.demo_nonlinear_feasiblity.html">
+    <a class="reference internal" href="8.demo_nonlinear_feasiblity.html">
      Nonlinear Feasibility Problem
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="10.demo_sphere_manifold.html">
+    <a class="reference internal" href="9.demo_sphere_manifold.html">
      Sphere Manifold
     </a>
    </li>
@@ -603,6 +603,19 @@ div.rendered_html tbody tr:hover {
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># install required package</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">perceptual_advex</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="o">!</span>pip install perceptual-advex
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -625,7 +638,7 @@ div.rendered_html tbody tr:hover {
 <p>Specify torch device, neural network architecture, and generate data.</p>
 <p>NOTE: please specify path for downloading data</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -668,7 +681,7 @@ Files already downloaded and verified
 <p>Specify torch device, optimization variables, and objective and constraint(s).</p>
 <p>Note: please strictly follow the format of comb_fn, which will be used in the NCVX main algortihm.</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -730,7 +743,7 @@ Files already downloaded and verified
 <h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
 <p>Specify user-defined options for NCVX</p>
 <div class="nbinput nblast docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -749,7 +762,7 @@ Files already downloaded and verified
 <div class="section" id="Main-Algorithm">
 <h2>Main Algorithm<a class="headerlink" href="#Main-Algorithm" title="Permalink to this headline">¶</a></h2>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -765,7 +778,7 @@ Files already downloaded and verified
 </div>
 <div class="output_area stderr docutils container">
 <div class="highlight"><pre>
-/home/buyun/anaconda3/envs/cuosqp_pygranso/lib/python3.9/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /opt/conda/conda-bld/pytorch_1623448255797/work/c10/core/TensorImpl.h:1156.)
+/home/buyun/anaconda3/envs/ncvx_cuda_env/lib/python3.9/site-packages/torch/nn/functional.py:718: UserWarning: Named tensors and all their associated APIs are an experimental feature and subject to change. Please do not use them for anything important until they are released as stable. (Triggered internally at  /opt/conda/conda-bld/pytorch_1623448255797/work/c10/core/TensorImpl.h:1156.)
   return torch.max_pool2d(input, kernel_size, stride, padding, dilation, ceil_mode)
 </pre></div></div>
 </div>
@@ -796,10 +809,10 @@ Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  �
 ═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
    0 ║ 1.000000 │  0.50909392739 ║  0.50909392739 ║ 0.000000 │   -  ║ -  │     1 │ 0.000000 ║     1 │ 0.752374   ║
   10 ║ 1.000000 │ -0.50872108700 ║ -0.88639971711 ║ 0.377679 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.548706   ║
-  20 ║ 1.000000 │ -0.96019197251 ║ -0.98795223931 ║ 0.027760 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 1.182802   ║
+  20 ║ 1.000000 │ -0.95891162259 ║ -0.98694891810 ║ 0.028037 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 1.136411   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-Optimization results:                                                                                            ║
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
+Optimization results:                                                                                            ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
    F ║          │                ║ -1.00000000000 ║ 0.000000 │   -  ║    │       │          ║       │            ║
    B ║          │                ║ -1.00000000000 ║ 0.000000 │   -  ║    │       │          ║       │            ║
@@ -809,7 +822,7 @@ Iterations:              23                                                     
 Function evaluations:    32                                                                                      ║
 NCVX termination code: 0 --- converged to stationarity and feasibility tolerances.                               ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 4.33308219909668s
+Total Wall Time: 4.66183614730835s
 </pre></div></div>
 </div>
 </div>
@@ -817,7 +830,7 @@ Total Wall Time: 4.33308219909668s
 <h2>Batch Attacks<a class="headerlink" href="#Batch-Attacks" title="Permalink to this headline">¶</a></h2>
 <p>Apply attacks to multiple images by repeating above steps and calculate the success rate</p>
 <div class="nbinput docutils container">
-<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
 </pre></div>
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
@@ -1044,8 +1057,8 @@ i = 9
 
 Model train acc on the original image = 1.0
 Success rate of attack = 1.0
-Average distance between attacked image and original image = 0.4936783046052072
-Average run time of NCVX = 3.5742825984954836s, mean f_eval = 32.0 iters
+Average distance between attacked image and original image = 0.4936783046052191
+Average run time of NCVX = 3.8924264907836914s, mean f_eval = 32.0 iters
 </pre></div></div>
 </div>
 </div>
@@ -1071,7 +1084,7 @@ Average run time of NCVX = 3.5742825984954836s, mean f_eval = 32.0 iters
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="8.demo_UnconstrainedDL.html" title="next page">
+        <a class="right-next" href="7.demo_UnconstrainedDL.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
                 <p class="prevnext-title">Unconstrained Deep Learning</p>

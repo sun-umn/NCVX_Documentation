@@ -606,7 +606,8 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Data-Generation">
 <h2>Data Generation<a class="headerlink" href="#Data-Generation" title="Permalink to this headline">¶</a></h2>
-<p>Specify torch device, and generate data</p>
+<p>Specify torch device, and generate data.</p>
+<p>Use GPU for this problem. If no cuda device available, please set <em>device = torch.device(‘cpu’)</em></p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
 </pre></div>
@@ -624,7 +625,7 @@ div.rendered_html tbody tr:hover {
 </div>
 <div class="section" id="Problem-Definition">
 <h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
-<p>Specify torch device, optimization variables, and objective and constraint(s).</p>
+<p>Specify optimization variables, and objective and constraint(s).</p>
 <p>Note: please strictly follow the format of comb_fn, which will be used in the NCVX main algortihm.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:

@@ -78,7 +78,7 @@ several major components:
 References
 -----------------
 
-Arxiv Preprint TO BE ADDED
+Buyun Liang, and Ju Sun. "NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning." arXiv preprint arXiv:2111.13984 (2021).
 
 Frank E. Curtis, Tim Mitchell, and Michael L. Overton. "A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles." Optimization Methods and Software 32.1 (2017): 148-181.
 

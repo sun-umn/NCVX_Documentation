@@ -1,7 +1,7 @@
 Citing NCVX
 ============
 
-If you use CVXPY for published work, we encourage you to cite our paper (link to be added). 
+If you use CVXPY for published work, we encourage you to cite our paper (https://arxiv.org/abs/2111.13984). 
 Please use the following BibTex entries:: 
   
   @article{liang2021ncvx,

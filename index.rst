@@ -5,13 +5,15 @@ Home
    The software is under active development. Use it at your own risk, and please send your feedback to Buyun Liang via liang664@umn.edu. We are always looking for contributors and collaborators. 
 
 NCVX (NonConVeX) is a user-friendly and scalable python package for solving general 
-nonconvex, especially nonsmooth and constrained problems. NCVX, `GRANSO <http://www.timmitchell.com/software/GRANSO/>`_ translated and revamped, features auto-differentiation, GPU acceleration, tensor input, scalable QP solver, and zero dependency on proprietary packages. As a highlight, NCVX can solve general constrained deep learning problems, the first of its kind. NCVX is being developed by `GLOVEX <https://sunju.org>`_ at the Department of Computer Science \& Engineering, University of Minnesota, Twin Cities. 
+nonconvex, especially nonsmooth and constrained problems. NCVX, `GRANSO <http://www.timmitchell.com/software/GRANSO/>`_ translated and revamped, features auto-differentiation, GPU acceleration, tensor input, scalable QP solver, and zero dependency on proprietary packages. As a highlight, NCVX can solve general constrained deep learning problems, the first of its kind. NCVX is being developed by `GLOVEX <https://glovex.umn.edu/>`_ at the Department of Computer Science \& Engineering, University of Minnesota, Twin Cities. 
 
+Our paper is available at https://arxiv.org/abs/2111.13984. 
 
 Get the Code
 -------------
 
 The source code is available on `our group Github <https://github.com/sun-umn/NCVX>`_. 
+
 
 
 Update Logs

@@ -1,0 +1,1028 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spectral Radius Optimization &#8212; NCVX  documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Dictionary Learning" href="3.demo_DictLearning.html" />
+    <link rel="prev" title="Rosenbrock" href="1.demo_Rosenbrock.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/NCVX_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">NCVX  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../install.html">
+   Installation
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../settings/index.html">
+   Settings
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/standard_parameters.html">
+     Standard Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/searching_direction.html">
+     Searching Direction Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/steering_strategy.html">
+     Steering Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/qp_parameters.html">
+     QP Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/line_search.html">
+     Line Search Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/new_para.html">
+     NCVX New Options
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Examples
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="1.demo_Rosenbrock.html">
+     Rosenbrock
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Spectral Radius Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3.demo_DictLearning.html">
+     Dictionary Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4.demo_RobustPCA.html">
+     Robust PCA
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="5.demo_GeneralizedLASSO.html">
+     Generalized LASSO
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="6.demo_PerceptualAttack.html">
+     Perceptual Attack
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="7.demo_UnconstrainedDL.html">
+     Unconstrained Deep Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="8.demo_nonlinear_feasiblity.html">
+     Nonlinear Feasibility Problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="9.demo_sphere_manifold.html">
+     Sphere Manifold
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mistakes.html">
+   Tips
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../jusun.html">
+   NCVX Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../citation.html">
+   Citing NCVX
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/examples/2.demo_SpectralRadiusOpt.ipynb.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/sun-umn/NCVX"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fexamples/2.demo_SpectralRadiusOpt.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Problem-Description">
+   Problem Description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Modules-Importing">
+   Modules Importing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Data-Generation">
+   Data Generation
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Problem-Definition">
+   Problem Definition
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#User-Options">
+   User Options
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Main-Algorithm">
+   Main Algorithm
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#LBFGS">
+   LBFGS
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Spectral-Radius-Optimization">
+<h1>Spectral Radius Optimization<a class="headerlink" href="#Spectral-Radius-Optimization" title="Permalink to this headline">¶</a></h1>
+<p>Optimize spectral radius taken from: Curtis, Frank E., Tim Mitchell, and Michael L. Overton. “A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles.” Optimization Methods and Software 32.1 (2017): 148-181.</p>
+<div class="section" id="Problem-Description">
+<h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
+<p>We have <span class="math notranslate nohighlight">\(M=A+BXC\)</span>, where the matrices <span class="math notranslate nohighlight">\(A\in R^{N,N},B\in R^{N,P}\)</span> and <span class="math notranslate nohighlight">\(C\in R^{M,N}\)</span> are given, <span class="math notranslate nohighlight">\(X\in R^{P,M}\)</span> is the matrix form optimization variable.</p>
+<p>We have the nonconvex, nonsmooth, and constrained optimization problem</p>
+<div class="math notranslate nohighlight">
+\[\min_{X}\rho_I(A+BXC),\]</div>
+<div class="math notranslate nohighlight">
+\[\text{s.t. }\rho_R(A+BXC)+\xi \leq 0,\]</div>
+<p>where <span class="math notranslate nohighlight">\(\xi\)</span> is the stability margin, and <span class="math notranslate nohighlight">\(\rho_I\)</span> and <span class="math notranslate nohighlight">\(\rho_R\)</span> are the maximum imaginary and real part of singular values of <span class="math notranslate nohighlight">\(M\)</span>.</p>
+</div>
+<div class="section" id="Modules-Importing">
+<h2>Modules Importing<a class="headerlink" href="#Modules-Importing" title="Permalink to this headline">¶</a></h2>
+<p>Import all necessary modules and add NCVX src folder to system path.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">os</span><span class="o">,</span><span class="nn">sys</span>
+<span class="c1">## Adding NCVX directories. Should be modified by user</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/home/buyun/Documents/GitHub/NCVX&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">ncvx</span> <span class="kn">import</span> <span class="n">ncvx</span>
+<span class="kn">from</span> <span class="nn">ncvxStruct</span> <span class="kn">import</span> <span class="n">Options</span><span class="p">,</span> <span class="n">Data</span><span class="p">,</span> <span class="n">GeneralStruct</span>
+<span class="kn">import</span> <span class="nn">scipy.io</span>
+<span class="kn">from</span> <span class="nn">torch</span> <span class="kn">import</span> <span class="n">linalg</span> <span class="k">as</span> <span class="n">LA</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Data-Generation">
+<h2>Data Generation<a class="headerlink" href="#Data-Generation" title="Permalink to this headline">¶</a></h2>
+<p>Specify torch device, and read the data from a provided file.</p>
+<p>Use GPU for this problem. If no cuda device available, please set <em>device = torch.device(‘cpu’)</em></p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
+
+<span class="c1"># currentdir = os.path.dirname(os.path.realpath(__file__))</span>
+<span class="n">file</span> <span class="o">=</span> <span class="s2">&quot;/home/buyun/Documents/GitHub/NCVX/examples/data/spec_radius_opt_data.mat&quot;</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">io</span><span class="o">.</span><span class="n">loadmat</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+<span class="n">mat_struct</span> <span class="o">=</span> <span class="n">mat</span><span class="p">[</span><span class="s1">&#39;sys&#39;</span><span class="p">]</span>
+<span class="n">mat_struct</span> <span class="o">=</span> <span class="n">mat_struct</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">mat_struct</span><span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">mat_struct</span><span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">mat_struct</span><span class="p">[</span><span class="s1">&#39;C&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="n">p</span> <span class="o">=</span> <span class="n">B</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">m</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">stability_margin</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Problem-Definition">
+<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
+<p>Specify optimization variables, and objective and constraint(s).</p>
+<p>Note: please strictly follow the format of comb_fn, which will be used in the NCVX main algortihm.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># variables and corresponding dimensions.</span>
+<span class="n">var_in</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;X&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="n">m</span><span class="p">]</span> <span class="p">}</span>
+
+<span class="k">def</span> <span class="nf">comb_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">):</span>
+    <span class="c1"># user defined variable, matirx form. torch tensor</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X_struct</span><span class="o">.</span><span class="n">X</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># objective function</span>
+    <span class="n">M</span>           <span class="o">=</span> <span class="n">A</span> <span class="o">+</span> <span class="n">B</span><span class="nd">@X@C</span>
+    <span class="p">[</span><span class="n">D</span><span class="p">,</span><span class="n">_</span><span class="p">]</span>       <span class="o">=</span> <span class="n">LA</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">M</span><span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">imag</span><span class="p">)</span>
+
+    <span class="c1"># inequality constraint, matrix form</span>
+    <span class="n">ci</span> <span class="o">=</span> <span class="n">GeneralStruct</span><span class="p">()</span>
+    <span class="n">ci</span><span class="o">.</span><span class="n">c1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">D</span><span class="o">.</span><span class="n">real</span><span class="p">)</span> <span class="o">+</span> <span class="n">stability_margin</span>
+
+    <span class="c1"># equality constraint</span>
+    <span class="n">ce</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">ci</span><span class="p">,</span><span class="n">ce</span><span class="p">]</span>
+
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="User-Options">
+<h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
+<p>Specify user-defined options for NCVX</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">opts</span> <span class="o">=</span> <span class="n">Options</span><span class="p">()</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">maxit</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">x0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">m</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="c1"># print for every 10 iterations. default: 1</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">print_frequency</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Main-Algorithm">
+<h2>Main Algorithm<a class="headerlink" href="#Main-Algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">ncvx</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Wall Time: </span><span class="si">{}</span><span class="s2">s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+
+<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════╗
+</span><span class="ansi-yellow-fg">║  NCVX requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
+</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.              ║
+</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                               ║
+</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════╝
+</span>═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning                        ║
+Version 1.1.1                                                                                                    ║
+MIT License Copyright (c) 2021 SUN Group @ UMN                                                                   ║
+═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+Problem specifications:                                                                                          ║
+ # of variables                     :   200                                                                      ║
+ # of inequality constraints        :     1                                                                      ║
+ # of equality constraints          :     0                                                                      ║
+═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
+     ║ &lt;--- Penalty Function --&gt; ║                ║ Total Violation ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
+Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  ║ SD │ Evals │     t    ║ Grads │    Value   ║
+═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
+   0 ║ 1.000000 │  16.2063030241 ║  13.7635444107 ║ 2.442759 │   -  ║ -  │     1 │ 0.000000 ║     1 │ 28.28938   ║
+  10 ║ 1.000000 │  14.3591621233 ║  12.9268286638 ║ 1.432333 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.035476   ║
+  20 ║ 1.000000 │  13.7108148212 ║  12.6560766192 ║ 1.054738 │   -  ║ S  │     2 │ 0.500000 ║     1 │ 0.039916   ║
+  30 ║ 1.000000 │  12.9782220942 ║  12.2693137709 ║ 0.708908 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.044720   ║
+  40 ║ 1.000000 │  12.6284908340 ║  12.0379295133 ║ 0.590561 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.022901   ║
+  50 ║ 0.810000 │  10.0837700291 ║  11.9700251005 ║ 0.388050 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.024644   ║
+  60 ║ 0.810000 │  9.88304799345 ║  11.8598401602 ║ 0.276577 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.017742   ║
+  70 ║ 0.810000 │  9.71520767326 ║  11.8128849771 ║ 0.146771 │   -  ║ S  │     6 │ 0.031250 ║     1 │ 0.032203   ║
+  80 ║ 0.810000 │  9.60333585356 ║  11.7396271110 ║ 0.094238 │   -  ║ S  │     9 │ 0.003906 ║     1 │ 0.039540   ║
+  90 ║ 0.810000 │  9.53677311296 ║  11.7203174928 ║ 0.043316 │   -  ║ S  │     3 │ 0.250000 ║     1 │ 0.021097   ║
+ 100 ║ 0.810000 │  9.48591178028 ║  11.6570879205 ║ 0.043671 │   -  ║ S  │     6 │ 0.031250 ║     1 │ 0.018721   ║
+ 110 ║ 0.810000 │  9.42957129746 ║  11.6214487572 ║ 0.016198 │   -  ║ S  │     8 │ 0.007812 ║     1 │ 0.042185   ║
+ 120 ║ 0.810000 │  9.36860016339 ║  11.5609292759 ║ 0.004247 │   -  ║ S  │     3 │ 0.250000 ║     1 │ 0.215605   ║
+ 130 ║ 0.810000 │  9.32720142963 ║  11.5150634934 ║ 0.000000 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.012880   ║
+ 140 ║ 0.810000 │  9.24283660956 ║  11.3974429537 ║ 0.010908 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.016940   ║
+ 150 ║ 0.531441 │  6.04128538239 ║  11.3590100679 ║ 0.004642 │   -  ║ S  │     7 │ 0.015625 ║     1 │ 0.005769   ║
+ 160 ║ 0.531441 │  6.00369357304 ║  11.2970086483 ║ 0.000000 │   -  ║ S  │     3 │ 0.250000 ║     1 │ 0.008521   ║
+ 170 ║ 0.531441 │  5.98469812397 ║  11.2612653596 ║ 0.000000 │   -  ║ S  │     9 │ 0.003906 ║     2 │ 0.005196   ║
+ 180 ║ 0.531441 │  5.97177934679 ║  11.2279888768 ║ 0.004766 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.009571   ║
+ 190 ║ 0.088629 │  0.99196515306 ║  11.1922834129 ║ 0.000000 │   -  ║ S  │     6 │ 0.031250 ║     1 │ 9.35e-04   ║
+═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
+     ║ &lt;--- Penalty Function --&gt; ║                ║ Total Violation ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
+Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  ║ SD │ Evals │     t    ║ Grads │    Value   ║
+═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
+ 200 ║ 0.088629 │  0.98966513519 ║  11.1651880479 ║ 1.01e-04 │   -  ║ S  │     6 │ 0.031250 ║     1 │ 0.004555   ║
+═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
+Optimization results:                                                                                            ║
+F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
+═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
+   F ║          │                ║  11.1651880479 ║ 1.01e-04 │   -  ║    │       │          ║       │            ║
+   B ║          │                ║  11.1682971564 ║ 0.000000 │   -  ║    │       │          ║       │            ║
+  MF ║          │                ║  11.1682971564 ║ 0.000000 │   -  ║    │       │          ║       │            ║
+═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
+Iterations:              200                                                                                     ║
+Function evaluations:    991                                                                                     ║
+NCVX termination code: 4 --- max iterations reached.                                                             ║
+═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+Total Wall Time: 75.74924397468567s
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="LBFGS">
+<h2>LBFGS<a class="headerlink" href="#LBFGS" title="Permalink to this headline">¶</a></h2>
+<p>(Optional) LBFGS and feasibility related options</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">opts</span> <span class="o">=</span> <span class="n">Options</span><span class="p">()</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">maxit</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">x0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">m</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="c1"># print for every 10 iterations. default: 1</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">print_frequency</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="c1"># Limited-memory mode is generally not recommended for nonsmooth</span>
+<span class="c1"># problems, such as this one, but it can nonetheless enabled if</span>
+<span class="c1"># desired/necessary.  opts.limited_mem_size == 0 is off, that is,</span>
+<span class="c1"># limited-memory mode is disabled.</span>
+<span class="c1"># Note that this example has 200 variables.</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">limited_mem_size</span> <span class="o">=</span> <span class="mi">40</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">ncvx</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Wall Time: </span><span class="si">{}</span><span class="s2">s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+
+<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════╗
+</span><span class="ansi-yellow-fg">║  NCVX requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
+</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.              ║
+</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                               ║
+</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════╝
+</span>═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning                        ║
+Version 1.1.1                                                                                                    ║
+MIT License Copyright (c) 2021 SUN Group @ UMN                                                                   ║
+═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+Problem specifications:                                                                                          ║
+ # of variables                     :   200                                                                      ║
+ # of inequality constraints        :     1                                                                      ║
+ # of equality constraints          :     0                                                                      ║
+═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+<span class="ansi-yellow-fg">Limited-memory mode enabled with size = 40.                                                                     </span> ║
+<span class="ansi-yellow-fg">NOTE: limited-memory mode is generally NOT                                                                      </span> ║
+<span class="ansi-yellow-fg">recommended for nonsmooth problems.                                                                             </span> ║
+═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
+     ║ &lt;--- Penalty Function --&gt; ║                ║ Total Violation ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
+Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  ║ SD │ Evals │     t    ║ Grads │    Value   ║
+═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
+   0 ║ 1.000000 │  16.2063030241 ║  13.7635444107 ║ 2.442759 │   -  ║ -  │     1 │ 0.000000 ║     1 │ 28.28938   ║
+  10 ║ 1.000000 │  14.3591621233 ║  12.9268286638 ║ 1.432333 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.035476   ║
+  20 ║ 1.000000 │  13.7108148212 ║  12.6560766192 ║ 1.054738 │   -  ║ S  │     2 │ 0.500000 ║     1 │ 0.039916   ║
+  30 ║ 1.000000 │  12.9781024808 ║  12.2692651748 ║ 0.708837 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.044753   ║
+  40 ║ 1.000000 │  12.7159660799 ║  12.0997226025 ║ 0.616243 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.024262   ║
+  50 ║ 1.000000 │  12.4442878287 ║  11.9156949572 ║ 0.528593 │   -  ║ S  │     6 │ 0.031250 ║     1 │ 0.085052   ║
+  60 ║ 1.000000 │  12.2169768208 ║  11.9336819474 ║ 0.283295 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.048213   ║
+  70 ║ 1.000000 │  11.9829435315 ║  11.8156417233 ║ 0.167302 │   -  ║ S  │    14 │ 3.66e-04 ║     1 │ 0.053810   ║
+  80 ║ 0.656100 │  7.86582717536 ║  11.7264330023 ║ 0.172114 │   -  ║ S  │     9 │ 0.003906 ║     1 │ 1.209730   ║
+  90 ║ 0.656100 │  7.80915840969 ║  11.6599468664 ║ 0.159067 │   -  ║ S  │     8 │ 0.007812 ║     1 │ 0.152102   ║
+ 100 ║ 0.656100 │  7.77271535489 ║  11.6562870552 ║ 0.125025 │   -  ║ S  │     5 │ 0.062500 ║     1 │ 0.197885   ║
+ 110 ║ 0.656100 │  7.69342237797 ║  11.6427615916 ║ 0.054606 │   -  ║ S  │    12 │ 4.88e-04 ║     1 │ 311.5387   ║
+ 120 ║ 0.387420 │  4.55837298598 ║  11.6358838959 ║ 0.050393 │   -  ║ S  │    10 │ 0.001953 ║     1 │ 1.022662   ║
+ 130 ║ 0.387420 │  4.51080201811 ║  11.6333093372 ║ 0.003820 │   -  ║ S  │    13 │ 2.44e-04 ║     1 │ 0.709034   ║
+ 140 ║ 0.387420 │  4.49913089518 ║  11.6130432513 ║ 0.000000 │   -  ║ S  │     9 │ 0.003906 ║     1 │ 4.972743   ║
+ 150 ║ 0.205891 │  2.39020049361 ║  11.6061300925 ║ 6.01e-04 │   -  ║ S  │     9 │ 0.003906 ║     1 │ 1.331003   ║
+ 160 ║ 0.205891 │  2.38900686794 ║  11.6032528630 ║ 0.000000 │   -  ║ S  │    16 │ 2.75e-04 ║     2 │ 0.121111   ║
+ 170 ║ 0.135085 │  1.56617827319 ║  11.5937536295 ║ 3.41e-05 │   -  ║ S  │     9 │ 0.003906 ║     1 │ 2.472018   ║
+ 180 ║ 0.047101 │  0.54593308189 ║  11.5906192161 ║ 0.000000 │   -  ║ S  │    13 │ 2.44e-04 ║     2 │ 0.040618   ║
+ 190 ║ 0.005726 │  0.06634168297 ║  11.5850758798 ║ 7.09e-07 │   -  ║ S  │    23 │ 2.38e-07 ║     2 │ 0.200639   ║
+═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
+     ║ &lt;--- Penalty Function --&gt; ║                ║ Total Violation ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
+Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  ║ SD │ Evals │     t    ║ Grads │    Value   ║
+═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
+ 200 ║ 0.004638 │  0.05371094350 ║  11.5796331252 ║ 0.000000 │   -  ║ S  │    15 │ 6.10e-05 ║     3 │ 0.053191   ║
+═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
+Optimization results:                                                                                            ║
+F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
+═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
+   F ║          │                ║  11.5796331252 ║ 0.000000 │   -  ║    │       │          ║       │            ║
+   B ║          │                ║  11.5796167460 ║ 0.000000 │   -  ║    │       │          ║       │            ║
+  MF ║          │                ║  11.5796167460 ║ 0.000000 │   -  ║    │       │          ║       │            ║
+═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
+Iterations:              200                                                                                     ║
+Function evaluations:    1845                                                                                    ║
+NCVX termination code: 4 --- max iterations reached.                                                             ║
+═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+Total Wall Time: 132.89285254478455s
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># We can also tune NCVX to more aggressively favor satisfying</span>
+<span class="c1"># feasibility over minimizing the objective.  Set feasibility_bias to</span>
+<span class="c1"># true to adjust the following three steering parameters away from</span>
+<span class="c1"># their default values.  For more details on these parameters, type</span>
+<span class="c1"># import ncvxOptionsAdvanced</span>
+<span class="c1"># help(ncvxOptionsAdvanced)</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">opts</span> <span class="o">=</span> <span class="n">Options</span><span class="p">()</span>
+<span class="n">feasibility_bias</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="k">if</span> <span class="n">feasibility_bias</span><span class="p">:</span>
+    <span class="n">opts</span><span class="o">.</span><span class="n">steering_ineq_margin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span>    <span class="c1"># default is 1e-6</span>
+    <span class="n">opts</span><span class="o">.</span><span class="n">steering_c_viol</span> <span class="o">=</span> <span class="mf">0.9</span>         <span class="c1"># default is 0.1</span>
+    <span class="n">opts</span><span class="o">.</span><span class="n">steering_c_mu</span> <span class="o">=</span> <span class="mf">0.1</span>           <span class="c1"># default is 0.9</span>
+
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">opts</span><span class="o">.</span><span class="n">maxit</span> <span class="o">=</span> <span class="mi">200</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">x0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">p</span><span class="o">*</span><span class="n">m</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="c1"># print for every 10 iterations. default: 1</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">print_frequency</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">ncvx</span><span class="p">(</span><span class="n">combinedFunction</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span><span class="n">var_dim_map</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span> <span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span><span class="p">,</span> <span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Wall Time: </span><span class="si">{}</span><span class="s2">s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+
+<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════╗
+</span><span class="ansi-yellow-fg">║  NCVX requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
+</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.              ║
+</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                               ║
+</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════╝
+</span>═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗
+NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning                        ║
+Version 1.1.1                                                                                                    ║
+MIT License Copyright (c) 2021 SUN Group @ UMN                                                                   ║
+═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
+Problem specifications:                                                                                          ║
+ # of variables                     :   200                                                                      ║
+ # of inequality constraints        :     1                                                                      ║
+ # of equality constraints          :     0                                                                      ║
+═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
+     ║ &lt;--- Penalty Function --&gt; ║                ║ Total Violation ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
+Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  ║ SD │ Evals │     t    ║ Grads │    Value   ║
+═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
+   0 ║ 1.000000 │  16.2063030241 ║  13.7635444107 ║ 2.442759 │   -  ║ -  │     1 │ 0.000000 ║     1 │ 28.28938   ║
+  10 ║ 0.100000 │  2.59802946760 ║  13.5350279096 ║ 1.244527 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.021953   ║
+  20 ║ 0.100000 │  2.19206992214 ║  13.1633300318 ║ 0.875737 │   -  ║ S  │     3 │ 0.250000 ║     1 │ 0.022714   ║
+  30 ║ 0.100000 │  1.78022218437 ║  13.1123257659 ║ 0.468990 │   -  ║ S  │     8 │ 0.039062 ║     1 │ 0.002266   ║
+  40 ║ 0.100000 │  1.62760111526 ║  13.0064275307 ║ 0.326958 │   -  ║ S  │     3 │ 0.250000 ║     1 │ 0.009626   ║
+  50 ║ 0.100000 │  1.36861864889 ║  12.9968510787 ║ 0.068934 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.006985   ║
+  60 ║ 0.100000 │  1.27342223176 ║  12.7342223176 ║ 0.000000 │   -  ║ S  │     4 │ 0.125000 ║     1 │ 0.002375   ║
+  70 ║ 0.010000 │  0.12640618287 ║  12.6406182870 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.001510   ║
+  80 ║ 0.010000 │  0.12442418253 ║  12.4424182529 ║ 0.000000 │   -  ║ S  │     2 │ 2.000000 ║     1 │ 0.009707   ║
+  90 ║ 0.010000 │  0.12312547496 ║  12.3125474965 ║ 0.000000 │   -  ║ S  │     2 │ 0.500000 ║     1 │ 0.001033   ║
+ 100 ║ 0.010000 │  0.12207507242 ║  12.2075072422 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.001422   ║
+ 110 ║ 0.010000 │  0.12144909803 ║  12.1449098029 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.001038   ║
+ 120 ║ 0.010000 │  0.12116396292 ║  12.1163962921 ║ 0.000000 │   -  ║ S  │     2 │ 2.000000 ║     1 │ 1.72e-04   ║
+ 130 ║ 1.00e-06 │  1.2110288e-05 ║  12.1102878203 ║ 0.000000 │   -  ║ S  │     2 │ 0.500000 ║     3 │ 1.38e-05   ║
+ 140 ║ 1.00e-06 │  1.2087598e-05 ║  12.0875981539 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 2.00e-04   ║
+ 150 ║ 1.00e-08 │  1.2081605e-07 ║  12.0816047280 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║     8 │ 9.94e-06   ║
+ 160 ║ 1.00e-08 │  1.2081349e-07 ║  12.0813493600 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║    17 │ 1.45e-07   ║
+ 170 ║ 1.00e-08 │  1.2081035e-07 ║  12.0810350753 ║ 0.000000 │   -  ║ S  │     5 │ 16.00000 ║    27 │ 1.61e-04   ║
+ 180 ║ 1.00e-08 │  1.2080558e-07 ║  12.0805583261 ║ 0.000000 │   -  ║ S  │     2 │ 2.000000 ║    11 │ 2.93e-05   ║
+ 190 ║ 1.00e-08 │  1.2080511e-07 ║  12.0805106721 ║ 0.000000 │   -  ║ S  │     1 │ 1.000000 ║    20 │ 9.29e-08   ║
+═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
+Optimization results:                                                                                            ║
+F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
+═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
+   F ║          │                ║  12.0803864397 ║ 9.89e-13 │   -  ║    │       │          ║       │            ║
+   B ║          │                ║  12.0801907858 ║ 5.01e-07 │   -  ║    │       │          ║       │            ║
+  MF ║          │                ║  12.0803994819 ║ 0.000000 │   -  ║    │       │          ║       │            ║
+═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
+Iterations:              195                                                                                     ║
+Function evaluations:    705                                                                                     ║
+NCVX termination code: 0 --- converged to stationarity and feasibility tolerances.                               ║
+═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
+Total Wall Time: 51.662193775177s
+</pre></div></div>
+</div>
+<p>In my testing, with default parameters, NCVX will first obtain a feasible solution at iter ~= 160 and will reduce the objective to 11.60 by the time it attains max iteration count of 200.</p>
+<p>With feasibility_bias = True, in my testing, NCVX will obtain its first feasible solution earlier, at iter ~= 60, but it will ultimately have reduced the objective value less, only to 12.21, by the end of its 200 maximum allowed iterations.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="1.demo_Rosenbrock.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Rosenbrock</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="3.demo_DictLearning.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Dictionary Learning</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Buyun Liang<br/>
+        
+            &copy; Copyright 2021, Buyun Liang.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

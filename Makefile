@@ -5,7 +5,7 @@
 # from the environment for the first two.
 SPHINXOPTS    ?=
 SPHINXBUILD   ?= sphinx-build
-SOURCEDIR     = .
+SOURCEDIR     = ./NCVX-Home
 BUILDDIR      = docs
 
 # Put it first so that "make" without argument is like "make help".
@@ -21,8 +21,8 @@ help:
 %: Makefile
 	@$(SPHINXBUILD) -b html "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-clean:
-	rm -r docs
-	mkdir docs
-	cp .nojekyll docs
-	cp CNAME docs
+# clean:
+# 	rm -r docs
+# 	mkdir docs
+# 	cp .nojekyll docs
+# 	cp CNAME docs

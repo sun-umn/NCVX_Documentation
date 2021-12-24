@@ -1,0 +1,438 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Introduction &#8212; NCVX  documentation</title>
+    
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css" />
+    
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="install.html" />
+    <link rel="prev" title="Home" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/NCVX_logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">NCVX  documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="install.html">
+   Installation
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="settings/index.html">
+   Settings
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="settings/standard_parameters.html">
+     Standard Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="settings/searching_direction.html">
+     Searching Direction Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="settings/steering_strategy.html">
+     Steering Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="settings/qp_parameters.html">
+     QP Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="settings/line_search.html">
+     Line Search Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="settings/new_para.html">
+     NCVX New Options
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="examples/index.html">
+   Examples
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/1.demo_Rosenbrock.html">
+     Rosenbrock
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/2.demo_SpectralRadiusOpt.html">
+     Spectral Radius Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/3.demo_DictLearning.html">
+     Dictionary Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/4.demo_RobustPCA.html">
+     Robust PCA
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/5.demo_GeneralizedLASSO.html">
+     Generalized LASSO
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/6.demo_PerceptualAttack.html">
+     Perceptual Attack
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/7.demo_UnconstrainedDL.html">
+     Unconstrained Deep Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/8.demo_nonlinear_feasiblity.html">
+     Nonlinear Feasibility Problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/9.demo_sphere_manifold.html">
+     Sphere Manifold
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="mistakes.html">
+   Tips
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="jusun.html">
+   NCVX Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="citation.html">
+   Citing NCVX
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/intro.rst.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.rst</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/sun-umn/NCVX"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/sun-umn/NCVX/issues/new?title=Issue%20on%20page%20%2Fintro.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#motivation-and-background">
+   Motivation and Background
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#key-features">
+   Key Features
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#road-map">
+   Road Map
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="motivation-and-background">
+<h2>Motivation and Background<a class="headerlink" href="#motivation-and-background" title="Permalink to this headline">¶</a></h2>
+<p>Optimizing nonconvex (NCVX) problems, especially those nonsmooth and constrained, is an essential part of machine learning and deep learning. But it is hard to reliably solve this type of problems without optimization expertise. Existing general-purpose NCVX optimization packages are powerful, but typically cannot handle nonsmoothness. GRANSO is among the first packages targeting NCVX, nonsmooth, constrained problems. However, it has several limitations such as the lack of auto-differentiation and GPU acceleration, which preclude the potential broad deployment by non-experts. To lower the technical barrier for the machine learning community, we revamp GRANSO into a user-friendly and scalable python package named NCVX, featuring auto-differentiation, GPU acceleration, tensor input, scalable QP solver, and zero dependency on proprietary packages. As a highlight, NCVX can solve general constrained deep learning problems, the first of its kind.</p>
+</div>
+<div class="section" id="key-features">
+<h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
+<p>GRANSO is among the first optimization packages that can handle general NCVX, nonsmooth,
+constrained problems (Curtis et al., 2017):</p>
+<div class="math notranslate nohighlight">
+\[\min_{\mathbf{x} \in \mathbb{R}^n} f(\mathbf{x}), \text{ s.t. } c_i(\mathbf{x}) \leq 0, \forall i \in \mathcal{I};\ c_i(\mathbf{x}) = 0, \forall i \in \mathcal{E}\]</div>
+<p>Here, the objective f and constraint functions ci’s are only required to be almost everywhere continuously differentiable. GRANSO is based on quasi-Newton methods with sequential quadratic programming (BFGS-SQP), and has the following advantages:</p>
+<blockquote>
+<div><p>(1) Unified Treatment of NCVX problems: no need to distinguish CVX vs NCVX and smooth vs
+nonsmooth problems, similar to typical nonlinear programming packages;</p>
+<p>(2) Reliable Step Size Rule: specialized methods for nonsmooth problems, such as subgradient and proximal
+methods, often entail tricky step size tuning and require the expertise to recognize the
+structures. By contrast, GRANSO chooses step sizes adaptively via gold
+standard line search;</p>
+<p>(3) Principled Stopping Criterion: GRANSO stops its iteration by
+checking a theory-grounded stationarity condition for nonsmooth problems, whereas specialized
+methods are usually stopped when reaching ad-hoc iteration caps.</p>
+</div></blockquote>
+<p>However, GRANSO suffers from several practicality limitations. To overcome these and
+facilitate practical usage in machine and deep learning, we revamp GRANSO with crucial
+enhancements and turn it into our NCVX package, which is based on PyTorch. The limitations
+and our corresponding enhancements include:</p>
+<blockquote>
+<div><p>(1) GRANSO requires analytical subgradients, whereas NCVX removes
+this need and performs auto-differentiation;</p>
+<p>(2) GRANSO only supports CPU-based computation, whereas NCVX both CPUs and GPUs to allow massively-parallel
+computation;</p>
+<p>(3) GRANSO defaults variables as vectors, while NCVX allows general tensor
+variables including vectors and matrices;</p>
+<p>(4) GRANSO solves two QP instances per iteration
+and uses MATLAB’s QP solver that hardly scales up. NCVX integrates <a class="reference external" href="https://osqp.org/docs/get_started/python.html">OSQP</a> that outperforms commercial QP solvers in terms of scalability and speed;</p>
+<p>(5) GRANSO is written in MATLAB, which is proprietary software. All the dependencies of NCVX are
+open-source and non-proprietary.</p>
+</div></blockquote>
+<p>All these enhancements are crucial for machine learning researchers and practitioners to solve large-scale problems.</p>
+</div>
+<div class="section" id="road-map">
+<h2>Road Map<a class="headerlink" href="#road-map" title="Permalink to this headline">¶</a></h2>
+<p>Although NCVX already has many powerful features, we plan to further improve it by adding
+several major components:</p>
+<blockquote>
+<div><p>(1) Symmetric Rank One (SR1): SR1, another major type
+of quasi-Newton methods, allows less stringent step size search and tends to help escape
+from saddle points faster by taking advantage of negative curvature directions;</p>
+<p>(2) Stochastic Algorithms: in machine learning, computing with large-scale
+datasets often involves finite sums with huge number of terms, calling for (mini-batch)
+stochastic algorithms for reduced per-iteration cost and better scalability;</p>
+<p>(3) Conic Programming (CP): semidefinite programming and
+second-order cone programming, special cases of CP, are abundant in machine learning, e.g., kernel machines;</p>
+<p>(4) MiniMax Optimization (MMO): MMO is an emerging technique
+in modern machine learning, e.g., generative adversarial networks (GANs) and multi-agent reinforcement learning.</p>
+</div></blockquote>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<p>Buyun Liang, and Ju Sun. “NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning.” arXiv preprint arXiv:2111.13984 (2021).</p>
+<p>Frank E. Curtis, Tim Mitchell, and Michael L. Overton. “A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles.” Optimization Methods and Software 32.1 (2017): 148-181.</p>
+</div>
+</div>
+
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="index.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Home</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="install.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Installation</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Buyun Liang<br/>
+        
+            &copy; Copyright 2021, Buyun Liang.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

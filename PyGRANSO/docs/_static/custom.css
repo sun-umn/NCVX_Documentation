@@ -1,0 +1,94 @@
+/* .wy-side-nav-search, .wy-nav-top {
+    background: white;
+} */
+
+/* Sidebar header (and topbar for mobile) */
+/* .wy-side-nav-search, .wy-nav-top {
+    background: white;
+} */
+
+/* Sidebar */
+/* .wy-nav-side {
+    background: #f4efe4;
+    background: #f3f4f7;
+} */
+
+/* .wy-grid-for-nav {
+    background: white;
+} */
+
+/* .wy-nav-content {
+    background: white; 
+    max-width: none;
+} */
+
+  
+
+body, h1, h2, h3, h4, h5, h6 {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+	 			 Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+				 Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+				 "Segoe UI Symbol";
+	/* padding: 0;
+	margin: 0; */
+}
+
+h1 {
+    color: #7a0019 !important;
+
+}
+
+a:link, .prevnext-title {
+	color: #7a0019 !important;
+    /* background-color: #778899; */
+
+}
+
+a:visited {
+	color: #5b0013 !important;
+    /* background-color: #778899; */
+
+}
+
+a:active {
+	color: #ffb71e !important;
+    /* background-color: #778899; */
+
+}
+
+a:hover{
+    /* background-color: #ffcc33; */
+    color: #ffcc33 !important;
+}
+
+/* div.section a:hover,div.section a:visited,div.section a:link {
+	color: #7a0019;
+    text-decoration: none;
+    background-color: #778899;
+} */
+
+/* div.section a:link, .reference.internal a:visited{
+    color: green;
+    background: green;
+} */
+
+/* a.nav-link :link {
+    color: green;
+  }
+
+a:hover{
+    background-color: #ffcc33;
+    color: #ffcc33;
+}
+
+.pst-color-link-hover, .pst-color-toc-link-hover{
+	color: #ffcc33;
+}
+
+.pst-color-warning{
+    background: green;
+}
+
+.pst-color-h1 {
+    background: green;
+} */

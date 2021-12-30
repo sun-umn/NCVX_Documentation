@@ -132,47 +132,47 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/1.demo_Rosenbrock.html">
+    <a class="reference internal" href="examples/ex1_rosenbrock.html">
      Rosenbrock
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/2.demo_SpectralRadiusOpt.html">
-     Spectral Radius Optimization
+    <a class="reference internal" href="examples/ex2_eigenval_opt.html">
+     Eigenvalue Optimization
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/3.demo_DictLearning.html">
+    <a class="reference internal" href="examples/ex3_dict_learning.html">
      Dictionary Learning
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/4.demo_RobustPCA.html">
+    <a class="reference internal" href="examples/ex4_robustPCA.html">
      Robust PCA
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/5.demo_GeneralizedLASSO.html">
+    <a class="reference internal" href="examples/ex5_generalizedLASSO.html">
      Generalized LASSO
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/6.demo_PerceptualAttack.html">
+    <a class="reference internal" href="examples/ex6_perceptual_attack.html">
      Perceptual Attack
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/7.demo_UnconstrainedDL.html">
+    <a class="reference internal" href="examples/ex7_unconstrainedDL.html">
      Unconstrained Deep Learning
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/8.demo_nonlinear_feasiblity.html">
+    <a class="reference internal" href="examples/ex8_nonlinear_feasiblity.html">
      Nonlinear Feasibility Problem
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/9.demo_sphere_manifold.html">
+    <a class="reference internal" href="examples/ex9_sphere_manifold.html">
      Sphere Manifold
     </a>
    </li>
@@ -320,20 +320,24 @@
 <h1>Home<a class="headerlink" href="#home" title="Permalink to this headline">¶</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>The software is under active development. Use it at your own risk, and please send your feedback to Buyun Liang via <a class="reference external" href="mailto:liang664&#37;&#52;&#48;umn&#46;edu">liang664<span>&#64;</span>umn<span>&#46;</span>edu</a>. We are always looking for contributors and collaborators.</p>
+<p>The software is under active development. Use it at your own risk. For questions or bug reports, please either: raise issues in the PyGRANSO repository (<a class="reference external" href="https://github.com/sun-umn/PyGRANSO/">https://github.com/sun-umn/PyGRANSO/</a>), or send your feedback to Buyun Liang (liang664 an_at_symbol umn a_dot_symbol edu). We are always looking for contributors and collaborators.</p>
 </div>
 <p>NCVX (NonConVeX) is a user-friendly and scalable python package for solving general
-nonconvex, especially nonsmooth and constrained problems. NCVX, <a class="reference external" href="http://www.timmitchell.com/software/GRANSO/">GRANSO</a> translated and revamped, features auto-differentiation, GPU acceleration, tensor input, scalable QP solver, and zero dependency on proprietary packages. As a highlight, NCVX can solve general constrained deep learning problems, the first of its kind. NCVX is being developed by <a class="reference external" href="https://glovex.umn.edu/">GLOVEX</a> at the Department of Computer Science &amp; Engineering, University of Minnesota, Twin Cities.</p>
+nonconvex, especially nonsmooth and constrained problems.  The initial release of NCVX contains the solver PyGRANSO, a PyTorch-enabled port of <a class="reference external" href="http://www.timmitchell.com/software/GRANSO/">GRANSO</a> incorporating auto-differentiation, GPU acceleration, tensor input, and support for new QP solvers. As a highlight, PyGRANSO can solve general constrained deep learning problems, the first of its kind.</p>
 <p>Our paper is available at <a class="reference external" href="https://arxiv.org/abs/2111.13984">https://arxiv.org/abs/2111.13984</a>.</p>
 <div class="section" id="get-the-code">
 <h2>Get the Code<a class="headerlink" href="#get-the-code" title="Permalink to this headline">¶</a></h2>
-<p>The source code is available on <a class="reference external" href="https://github.com/sun-umn/NCVX">our group Github</a>.</p>
+<p>The source code is available in the <a class="reference external" href="https://github.com/sun-umn/PyGRANSO">PyGRANSO Repository</a>.</p>
 </div>
 <div class="section" id="update-logs">
 <h2>Update Logs<a class="headerlink" href="#update-logs" title="Permalink to this headline">¶</a></h2>
-<p>v1.1.1: Multiple examples added: unconstrained DL, feasibility problem, sphere manifold.</p>
-<p>v1.1.0: L-BFGS Added. Notebook tutorials added. Feature complete translation for GRANSO.</p>
-<p>v1.0.0: Initial release of NCVX. Main features: auto-differentiation, GPU acceleration, tensor input, scalable QP solver, and zero dependency on proprietary packages.</p>
+<p><strong>Version: 1.0.0 — 2021-12-27</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Description: initial public release of PyGRANSO.</p></li>
+<li><p>Main features: auto-differentiation, GPU acceleration, tensor input, scalable QP solver, and zero dependency on proprietary packages. Multiple new examples added.</p></li>
+</ul>
+</div></blockquote>
 </div>
 <div class="section" id="contents">
 <h2>Contents<a class="headerlink" href="#contents" title="Permalink to this headline">¶</a></h2>
@@ -351,11 +355,25 @@ nonconvex, especially nonsmooth and constrained problems. NCVX, <a class="refere
 </div>
 <div class="section" id="acknowledgements">
 <h2>Acknowledgements<a class="headerlink" href="#acknowledgements" title="Permalink to this headline">¶</a></h2>
-<p>We would like to thank the <a class="reference external" href="http://www.timmitchell.com/software/GRANSO/">GRANSO</a> developers. This work was supported by <a class="reference external" href="https://research.umn.edu/units/umii">UMII Seed Grant Program</a> and NSF CMMI 2038403.</p>
+<p>We would like to thank <a class="reference external" href="https://coral.ise.lehigh.edu/frankecurtis/">Frank E. Curtis</a>  and <a class="reference external" href="https://cs.nyu.edu/~overton/">Michael L. Overton</a> for their involvement in creating the BFGS-SQP algorithm that is implemented in the software package <a class="reference external" href="http://www.timmitchell.com/software/GRANSO/">GRANSO</a>. This work was supported by UMII Seed Grant Program and NSF CMMI 2038403.</p>
 </div>
 <div class="section" id="contact">
 <h2>Contact<a class="headerlink" href="#contact" title="Permalink to this headline">¶</a></h2>
-<p>NCVX is created by Buyun Liang [<a class="reference external" href="https://buyunliang.org">https://buyunliang.org</a>] - feel free to contact me [<a class="reference external" href="mailto:liang664&#37;&#52;&#48;umn&#46;edu">liang664<span>&#64;</span>umn<span>&#46;</span>edu</a>] if you have any questions!</p>
+<dl>
+<dt>For questions or bug reports, please either:</dt><dd><ul>
+<li><p>raise issues in the <a class="reference external" href="https://github.com/sun-umn/PyGRANSO">PyGRANSO Repository</a> or</p></li>
+<li><p>send an email to:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Buyun Liang (liang664 an_at_symbol umn a_dot_symbol edu)</p></li>
+<li><p>Tim Mitchell (tim an_at_symbol timmitchell a_dot_symbol com)</p></li>
+<li><p>Ju Sun (jusun an_at_symbol umn a_dot_symbol edu)</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
 </div>
 </div>
 

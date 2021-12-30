@@ -135,47 +135,47 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/1.demo_Rosenbrock.html">
+    <a class="reference internal" href="examples/ex1_rosenbrock.html">
      Rosenbrock
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/2.demo_SpectralRadiusOpt.html">
-     Spectral Radius Optimization
+    <a class="reference internal" href="examples/ex2_eigenval_opt.html">
+     Eigenvalue Optimization
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/3.demo_DictLearning.html">
+    <a class="reference internal" href="examples/ex3_dict_learning.html">
      Dictionary Learning
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/4.demo_RobustPCA.html">
+    <a class="reference internal" href="examples/ex4_robustPCA.html">
      Robust PCA
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/5.demo_GeneralizedLASSO.html">
+    <a class="reference internal" href="examples/ex5_generalizedLASSO.html">
      Generalized LASSO
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/6.demo_PerceptualAttack.html">
+    <a class="reference internal" href="examples/ex6_perceptual_attack.html">
      Perceptual Attack
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/7.demo_UnconstrainedDL.html">
+    <a class="reference internal" href="examples/ex7_unconstrainedDL.html">
      Unconstrained Deep Learning
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/8.demo_nonlinear_feasiblity.html">
+    <a class="reference internal" href="examples/ex8_nonlinear_feasiblity.html">
      Nonlinear Feasibility Problem
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/9.demo_sphere_manifold.html">
+    <a class="reference internal" href="examples/ex9_sphere_manifold.html">
      Sphere Manifold
     </a>
    </li>
@@ -318,7 +318,7 @@
 <h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="motivation-and-background">
 <h2>Motivation and Background<a class="headerlink" href="#motivation-and-background" title="Permalink to this headline">¶</a></h2>
-<p>Optimizing nonconvex (NCVX) problems, especially those nonsmooth and constrained, is an essential part of machine learning and deep learning. But it is hard to reliably solve this type of problems without optimization expertise. Existing general-purpose NCVX optimization packages are powerful, but typically cannot handle nonsmoothness. GRANSO is among the first packages targeting NCVX, nonsmooth, constrained problems. However, it has several limitations such as the lack of auto-differentiation and GPU acceleration, which preclude the potential broad deployment by non-experts. To lower the technical barrier for the machine learning community, we revamp GRANSO into a user-friendly and scalable python package named NCVX, featuring auto-differentiation, GPU acceleration, tensor input, scalable QP solver, and zero dependency on proprietary packages. As a highlight, NCVX can solve general constrained deep learning problems, the first of its kind.</p>
+<p>Optimizing nonconvex (NCVX) problems, especially those that are nonsmooth and constrained, is an essential part of machine learning and deep learning. However, it can be hard to reliably solve such problems without optimization expertise. Existing general-purpose NCVX optimization packages are powerful, but typically cannot handle nonsmoothness. GRANSO is among the first optimization solvers targeting nonsmooth NCVX problems with nonsmooth constraints, but, as it is implemented in MATLAB and requires users to provide gradients, GRANSO is often not a convenient choice in machine learning and deep learning applications. To greatly lower the technical barrier for the machine learning community, we introduce a new software package called NCVX, whose initial release contains the solver PyGRANSO, a PyTorch-enabled port of GRANSO incorporating auto-differentiation, GPU acceleration, tensor input, and support for new QP solvers. PyGRANSO is built on freely available and widely used open-source frameworks, and as a highlight, can solve general constrained deep learning problems, the first of its kind.</p>
 </div>
 <div class="section" id="key-features">
 <h2>Key Features<a class="headerlink" href="#key-features" title="Permalink to this headline">¶</a></h2>
@@ -326,57 +326,54 @@
 constrained problems (Curtis et al., 2017):</p>
 <div class="math notranslate nohighlight">
 \[\min_{\mathbf{x} \in \mathbb{R}^n} f(\mathbf{x}), \text{ s.t. } c_i(\mathbf{x}) \leq 0, \forall i \in \mathcal{I};\ c_i(\mathbf{x}) = 0, \forall i \in \mathcal{E}\]</div>
-<p>Here, the objective f and constraint functions ci’s are only required to be almost everywhere continuously differentiable. GRANSO is based on quasi-Newton methods with sequential quadratic programming (BFGS-SQP), and has the following advantages:</p>
+<p>Here, the objective f and constraint functions ci’s are only required to be almost everywhere continuously differentiable. GRANSO is based on quasi-Newton updating with sequential quadratic programming (BFGS-SQP), and has the following advantages:</p>
 <blockquote>
-<div><p>(1) Unified Treatment of NCVX problems: no need to distinguish CVX vs NCVX and smooth vs
-nonsmooth problems, similar to typical nonlinear programming packages;</p>
-<p>(2) Reliable Step Size Rule: specialized methods for nonsmooth problems, such as subgradient and proximal
-methods, often entail tricky step size tuning and require the expertise to recognize the
-structures. By contrast, GRANSO chooses step sizes adaptively via gold
-standard line search;</p>
-<p>(3) Principled Stopping Criterion: GRANSO stops its iteration by
-checking a theory-grounded stationarity condition for nonsmooth problems, whereas specialized
-methods are usually stopped when reaching ad-hoc iteration caps.</p>
+<div><ol class="arabic simple">
+<li><p>Unified Treatment of NCVX problems: no need to distinguish CVX vs NCVX and smooth vs nonsmooth problems, similar to typical nonlinear programming packages;</p></li>
+<li><p>Reliable Step Size Rule: specialized methods for nonsmooth problems, such as subgradient and proximal methods, often entail tricky step-size tuning and require the expertise to recognize the structures. By contrast, GRANSO chooses step sizes adaptively via gold standard line search;</p></li>
+<li><p>Principled Stopping Criterion: GRANSO stops its iteration by checking a theory-grounded stationarity condition for nonsmooth problems, whereas specialized methods are usually stopped when reaching ad-hoc iteration caps.</p></li>
+</ol>
 </div></blockquote>
-<p>However, GRANSO suffers from several practicality limitations. To overcome these and
-facilitate practical usage in machine and deep learning, we revamp GRANSO with crucial
-enhancements and turn it into our NCVX package, which is based on PyTorch. The limitations
-and our corresponding enhancements include:</p>
+<p>However, since GRANSO is implemented in MATLAB and expects users to be able to provide gradients,
+it is often an impractical choice for machine learning applications.
+Typically, GRANSO users must derive gradients analytically and then provide code for these computations,
+a process which may require some expert knowledge, is often error-prone, and
+in machine learning, is generally impractical, e.g., for the training of large neural networks.
+Furthermore, as part of the MATLAB software ecosystem,
+GRANSO is generally harder for practitioners to integrate it with existing popular machine learning frameworks
+and users’ own existing toolchains.
+To overcome these issues and facilitate both high performance and ease of use in machine and deep learning,
+we introduce a new software package called NCVX, whose initial release contains the solver
+PyGRANSO, a PyTorch-enabled port of GRANSO with several new key features:</p>
 <blockquote>
-<div><p>(1) GRANSO requires analytical subgradients, whereas NCVX removes
-this need and performs auto-differentiation;</p>
-<p>(2) GRANSO only supports CPU-based computation, whereas NCVX both CPUs and GPUs to allow massively-parallel
-computation;</p>
-<p>(3) GRANSO defaults variables as vectors, while NCVX allows general tensor
-variables including vectors and matrices;</p>
-<p>(4) GRANSO solves two QP instances per iteration
-and uses MATLAB’s QP solver that hardly scales up. NCVX integrates <a class="reference external" href="https://osqp.org/docs/get_started/python.html">OSQP</a> that outperforms commercial QP solvers in terms of scalability and speed;</p>
-<p>(5) GRANSO is written in MATLAB, which is proprietary software. All the dependencies of NCVX are
-open-source and non-proprietary.</p>
+<div><ol class="arabic simple">
+<li><p>auto-differentiation of all gradients;</p></li>
+<li><p>support for both CPU and GPU computations for improved hardware acceleration and massive parallelism;</p></li>
+<li><p>support for general tensor variables including vectors and matrices (as opposed to the single vector of concatenated optimization variables that GRANSO uses);</p></li>
+<li><p>integrated support for OSQP and other QP solvers to solve the underlying subproblems in the BFGS-SQP algorithm and compute the stationarity measure on each iteration. In terms of scalability and speed, OSQP generally outperforms commercial QP solvers, and thus provides yet another way to improve optimization performance.</p></li>
+</ol>
 </div></blockquote>
-<p>All these enhancements are crucial for machine learning researchers and practitioners to solve large-scale problems.</p>
+<p>All of these enhancements are crucial for machine learning researchers and practitioners to solve large-scale problems.</p>
+<p>PyGRANSO is built entirely on freely available and widely used open-source frameworks,
+and itself is licensed under the AGPL version 3.</p>
 </div>
 <div class="section" id="road-map">
 <h2>Road Map<a class="headerlink" href="#road-map" title="Permalink to this headline">¶</a></h2>
 <p>Although NCVX already has many powerful features, we plan to further improve it by adding
 several major components:</p>
 <blockquote>
-<div><p>(1) Symmetric Rank One (SR1): SR1, another major type
-of quasi-Newton methods, allows less stringent step size search and tends to help escape
-from saddle points faster by taking advantage of negative curvature directions;</p>
-<p>(2) Stochastic Algorithms: in machine learning, computing with large-scale
-datasets often involves finite sums with huge number of terms, calling for (mini-batch)
-stochastic algorithms for reduced per-iteration cost and better scalability;</p>
-<p>(3) Conic Programming (CP): semidefinite programming and
-second-order cone programming, special cases of CP, are abundant in machine learning, e.g., kernel machines;</p>
-<p>(4) MiniMax Optimization (MMO): MMO is an emerging technique
-in modern machine learning, e.g., generative adversarial networks (GANs) and multi-agent reinforcement learning.</p>
+<div><ol class="arabic simple">
+<li><p>Symmetric Rank One (SR1): SR1, another major type of quasi-Newton methods, allows less stringent step size search and tends to help escape from saddle points faster by taking advantage of negative curvature directions;</p></li>
+<li><p>Stochastic Algorithms: in machine learning, computing with large-scale datasets often involves finite sums with huge number of terms, calling for (mini-batch) stochastic algorithms for reduced per-iteration cost and better scalability;</p></li>
+<li><p>Conic Programming (CP): semidefinite programming and second-order cone programming, special cases of CP, are abundant in machine learning, e.g., kernel machines;</p></li>
+<li><p>MiniMax Optimization (MMO): MMO is an emerging technique in modern machine learning, e.g., generative adversarial networks (GANs) and multi-agent reinforcement learning.</p></li>
+</ol>
 </div></blockquote>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
-<p>Buyun Liang, and Ju Sun. “NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning.” arXiv preprint arXiv:2111.13984 (2021).</p>
-<p>Frank E. Curtis, Tim Mitchell, and Michael L. Overton. “A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles.” Optimization Methods and Software 32.1 (2017): 148-181.</p>
+<p><em>[1] Buyun Liang, Tim Mitchell, and Ju Sun, NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning, arXiv preprint arXiv:2111.13984 (2021).</em> Available at <a class="reference external" href="https://arxiv.org/abs/2111.13984">https://arxiv.org/abs/2111.13984</a></p>
+<p><em>[2] Frank E. Curtis, Tim Mitchell, and Michael L. Overton, A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles, Optimization Methods and Software, 32(1):148-181, 2017.</em> Available at <a class="reference external" href="https://dx.doi.org/10.1080/10556788.2016.1208749">https://dx.doi.org/10.1080/10556788.2016.1208749</a></p>
 </div>
 </div>
 

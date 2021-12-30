@@ -133,47 +133,47 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../examples/1.demo_Rosenbrock.html">
+    <a class="reference internal" href="../examples/ex1_rosenbrock.html">
      Rosenbrock
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../examples/2.demo_SpectralRadiusOpt.html">
-     Spectral Radius Optimization
+    <a class="reference internal" href="../examples/ex2_eigenval_opt.html">
+     Eigenvalue Optimization
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../examples/3.demo_DictLearning.html">
+    <a class="reference internal" href="../examples/ex3_dict_learning.html">
      Dictionary Learning
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../examples/4.demo_RobustPCA.html">
+    <a class="reference internal" href="../examples/ex4_robustPCA.html">
      Robust PCA
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../examples/5.demo_GeneralizedLASSO.html">
+    <a class="reference internal" href="../examples/ex5_generalizedLASSO.html">
      Generalized LASSO
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../examples/6.demo_PerceptualAttack.html">
+    <a class="reference internal" href="../examples/ex6_perceptual_attack.html">
      Perceptual Attack
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../examples/7.demo_UnconstrainedDL.html">
+    <a class="reference internal" href="../examples/ex7_unconstrainedDL.html">
      Unconstrained Deep Learning
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../examples/8.demo_nonlinear_feasiblity.html">
+    <a class="reference internal" href="../examples/ex8_nonlinear_feasiblity.html">
      Nonlinear Feasibility Problem
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../examples/9.demo_sphere_manifold.html">
+    <a class="reference internal" href="../examples/ex9_sphere_manifold.html">
      Sphere Manifold
     </a>
    </li>
@@ -311,6 +311,16 @@
    disable_terminationcode_6
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#torch-device">
+   torch_device
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#globalad">
+   globalAD
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -355,6 +365,20 @@ Used only when backtracking line search is enabled.</p>
 <p>Boolean value. Default value: False</p>
 <p>Disable termination code 6 to ensure NCVX can always make a movement even if the line search failed.
 Recommend setting True in deep learning problem. Used only when backtracking line search is enabled.</p>
+</div>
+<div class="section" id="torch-device">
+<h2>torch_device<a class="headerlink" href="#torch-device" title="Permalink to this headline">¶</a></h2>
+<p>torch.device(‘cpu’) OR torch.device(‘cuda’). Default value: torch.device(‘cpu’)</p>
+<p>Choose torch.device used for matrix operation in PyGRANSO.
+opts.torch_device = torch.device(‘cuda’) if one wants to use cuda device.</p>
+</div>
+<div class="section" id="globalad">
+<h2>globalAD<a class="headerlink" href="#globalad" title="Permalink to this headline">¶</a></h2>
+<p>Boolean value. Default value: True</p>
+<p>Compute all gradients of objective and constraint functions via auto-differentiation.
+In the default setting, user should provide [f,ci,ce] = combined_fn(X).
+When globalAD = False, user should provide [f,f_grad,ci,ci_grad,ce,ce_grad] = combined_fn(X)
+Please check the docstring of pygranso.py for more details of setting combined_fn.</p>
 </div>
 </div>
 

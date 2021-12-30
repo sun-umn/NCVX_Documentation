@@ -29,5 +29,4 @@ clean:
 	cp CNAME docs
 	rm -r ../docs/PyGRANSO
 	mkdir ../docs/PyGRANSO
-	cp .nojekyll ../docs/PyGRANSO
-	cp CNAME ../docs/PyGRANSO
+

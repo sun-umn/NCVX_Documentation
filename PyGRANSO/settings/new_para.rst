@@ -45,5 +45,20 @@ Boolean value. Default value: False
 Disable termination code 6 to ensure NCVX can always make a movement even if the line search failed. 
 Recommend setting True in deep learning problem. Used only when backtracking line search is enabled.
 
+torch_device
+--------------------------------
 
+torch.device('cpu') OR torch.device('cuda'). Default value: torch.device('cpu')
 
+Choose torch.device used for matrix operation in PyGRANSO.
+opts.torch_device = torch.device('cuda') if one wants to use cuda device.
+
+globalAD
+--------------------------------
+
+Boolean value. Default value: True
+
+Compute all gradients of objective and constraint functions via auto-differentiation.
+In the default setting, user should provide [f,ci,ce] = combined_fn(X).
+When globalAD = False, user should provide [f,f_grad,ci,ci_grad,ce,ce_grad] = combined_fn(X) 
+Please check the docstring of pygranso.py for more details of setting combined_fn.

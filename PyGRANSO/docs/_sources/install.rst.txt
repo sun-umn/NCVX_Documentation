@@ -9,6 +9,8 @@ Steps
 
 Installing PyGRANSO is simple. Here is a step-by-step instruction:
 
+0. Prerequisite: install Anaconda on your system (recommend: Ubuntu 20.04). Detailed guidance: https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html
+
 1. Download the latest version of PyGRANSO on GitHub (https://github.com/sun-umn/PyGRANSO)
 
 2. Change the *name* and *prefix* in **environment.yml**. 

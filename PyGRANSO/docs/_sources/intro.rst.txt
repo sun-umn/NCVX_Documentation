@@ -10,8 +10,7 @@ Optimizing nonconvex (NCVX) problems, especially those that are nonsmooth and co
 
 Key Features
 ------------------
-GRANSO is among the first optimization packages that can handle general NCVX, nonsmooth,
-constrained problems (Curtis et al., 2017):
+GRANSO is among the first optimization packages that can handle general nonsmooth NCVX problems with nonsmooth constraints (Curtis et al., 2017):
 
 .. math::
 

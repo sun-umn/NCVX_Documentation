@@ -579,7 +579,7 @@ div.rendered_html tbody tr:hover {
 <h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
 <p>Rayleigh quotient problem:</p>
 <div class="math notranslate nohighlight">
-\[\min_{x}x^TAx,\]</div>
+\[\min_{x}-x^TAx,\]</div>
 <div class="math notranslate nohighlight">
 \[\text{s.t. }x^Tx=1,\]</div>
 <p>where <span class="math notranslate nohighlight">\(A\in R^{n\times n}\)</span> is a symmetric matrix.</p>
@@ -614,7 +614,7 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cuda&#39;</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">500</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">300</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 <span class="n">A</span> <span class="o">=</span> <span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="n">A</span><span class="o">+</span><span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 </pre></div>
@@ -638,7 +638,7 @@ div.rendered_html tbody tr:hover {
     <span class="n">x</span> <span class="o">=</span> <span class="n">X_struct</span><span class="o">.</span><span class="n">x</span>
 
     <span class="c1"># objective function</span>
-    <span class="n">f</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="nd">@A@x</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">T</span><span class="nd">@A@x</span>
 
     <span class="c1"># inequality constraint, matrix form</span>
     <span class="n">ci</span> <span class="o">=</span> <span class="kc">None</span>
@@ -703,60 +703,35 @@ Version 1.0.0                                                                   
 Licensed under the AGPLv3, Copyright (C) 2021 Tim Mitchell and Buyun Liang                                       ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣
 Problem specifications:                                                                                          ║
- # of variables                     :   500                                                                      ║
+ # of variables                     :   300                                                                      ║
  # of inequality constraints        :     0                                                                      ║
  # of equality constraints          :     1                                                                      ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
      ║ &lt;--- Penalty Function --&gt; ║                ║ Total Violation ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
 Iter ║    Mu    │      Value     ║    Objective   ║ Ineq │    Eq    ║ SD │ Evals │     t    ║ Grads │    Value   ║
 ═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
-   0 ║ 0.100000 │  478.384855929 ║  239.734202049 ║   -  │ 454.4114 ║ -  │     1 │ 0.000000 ║     1 │ 73.30528   ║
-  10 ║ 0.031381 │  16.1806670301 ║ -6641.92770430 ║   -  │ 224.6114 ║ S  │     1 │ 1.000000 ║     1 │ 0.777491   ║
-  20 ║ 0.031381 │  0.58236199122 ║ -1610.15525675 ║   -  │ 51.11074 ║ S  │     1 │ 1.000000 ║     1 │ 0.174202   ║
-  30 ║ 0.025419 │ -0.74818668310 ║ -30.4506049809 ║   -  │ 0.025827 ║ S  │     1 │ 1.000000 ║     1 │ 0.090876   ║
-  40 ║ 0.025419 │ -0.79792878103 ║ -31.4167836922 ║   -  │ 6.44e-04 ║ S  │     1 │ 1.000000 ║     1 │ 0.016662   ║
-  50 ║ 0.025419 │ -0.79933952970 ║ -31.4488728989 ║   -  │ 4.86e-05 ║ S  │     1 │ 1.000000 ║     1 │ 0.004577   ║
-  60 ║ 0.025419 │ -0.79955254327 ║ -31.4563740807 ║   -  │ 2.63e-05 ║ S  │     1 │ 1.000000 ║     1 │ 0.004087   ║
-  70 ║ 0.025419 │ -0.79964886256 ║ -31.4595787209 ║   -  │ 1.14e-05 ║ S  │     1 │ 1.000000 ║     1 │ 0.002907   ║
-  80 ║ 0.025419 │ -0.79968510705 ║ -31.4607527492 ║   -  │ 5.02e-06 ║ S  │     1 │ 1.000000 ║     1 │ 0.001998   ║
-  90 ║ 0.025419 │ -0.79969928630 ║ -31.4611951908 ║   -  │ 2.08e-06 ║ S  │     1 │ 1.000000 ║     1 │ 0.001324   ║
- 100 ║ 0.025419 │ -0.79970607464 ║ -31.4614232530 ║   -  │ 1.09e-06 ║ S  │     1 │ 1.000000 ║     1 │ 9.69e-04   ║
- 110 ║ 0.025419 │ -0.79970908415 ║ -31.4615153362 ║   -  │ 4.23e-07 ║ S  │     1 │ 1.000000 ║     1 │ 6.07e-04   ║
- 120 ║ 0.025419 │ -0.79971027746 ║ -31.4615522225 ║   -  │ 1.68e-07 ║ S  │     1 │ 1.000000 ║     1 │ 3.82e-04   ║
- 130 ║ 0.025419 │ -0.79971069279 ║ -31.4615639647 ║   -  │ 5.07e-08 ║ S  │     1 │ 1.000000 ║     1 │ 2.10e-04   ║
- 140 ║ 0.025419 │ -0.79971081454 ║ -31.4615673607 ║   -  │ 1.53e-08 ║ S  │     1 │ 1.000000 ║     1 │ 1.16e-04   ║
- 150 ║ 0.025419 │ -0.79971085415 ║ -31.4615685353 ║   -  │ 5.51e-09 ║ S  │     1 │ 1.000000 ║     2 │ 7.20e-05   ║
- 160 ║ 0.025419 │ -0.79971086872 ║ -31.4615689720 ║   -  │ 2.04e-09 ║ S  │     1 │ 1.000000 ║     3 │ 4.52e-05   ║
- 170 ║ 0.025419 │ -0.79971087397 ║ -31.4615691269 ║   -  │ 7.21e-10 ║ S  │     1 │ 1.000000 ║     4 │ 2.77e-05   ║
- 180 ║ 0.025419 │ -0.79971087584 ║ -31.4615691822 ║   -  │ 2.57e-10 ║ S  │     1 │ 1.000000 ║     6 │ 1.75e-05   ║
- 190 ║ 0.025419 │ -0.79971087649 ║ -31.4615692012 ║   -  │ 8.77e-11 ║ S  │     1 │ 1.000000 ║     9 │ 1.12e-05   ║
-═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
-     ║ &lt;--- Penalty Function --&gt; ║                ║ Total Violation ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
-Iter ║    Mu    │      Value     ║    Objective   ║ Ineq │    Eq    ║ SD │ Evals │     t    ║ Grads │    Value   ║
-═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣
- 200 ║ 0.025419 │ -0.79971087672 ║ -31.4615692077 ║   -  │ 3.01e-11 ║ S  │     1 │ 1.000000 ║    13 │ 7.37e-06   ║
- 210 ║ 0.025419 │ -0.79971087679 ║ -31.4615692100 ║   -  │ 1.07e-11 ║ S  │     1 │ 1.000000 ║    19 │ 5.21e-06   ║
- 220 ║ 0.025419 │ -0.79971087682 ║ -31.4615692108 ║   -  │ 3.66e-12 ║ S  │     1 │ 1.000000 ║    26 │ 3.82e-06   ║
- 230 ║ 0.025419 │ -0.79971087683 ║ -31.4615692110 ║   -  │ 1.30e-12 ║ S  │     1 │ 1.000000 ║    34 │ 2.91e-06   ║
- 240 ║ 0.025419 │ -0.79971087683 ║ -31.4615692111 ║   -  │ 4.55e-13 ║ S  │     1 │ 1.000000 ║    42 │ 2.25e-06   ║
- 250 ║ 0.025419 │ -0.79971087683 ║ -31.4615692112 ║   -  │ 1.55e-13 ║ S  │     1 │ 1.000000 ║    51 │ 1.85e-06   ║
- 260 ║ 0.025419 │ -0.79971087683 ║ -31.4615692112 ║   -  │ 5.48e-14 ║ S  │     1 │ 1.000000 ║    61 │ 1.60e-06   ║
- 270 ║ 0.025419 │ -0.79971087684 ║ -31.4615692112 ║   -  │ 2.00e-14 ║ S  │     1 │ 1.000000 ║    71 │ 1.40e-06   ║
- 280 ║ 0.025419 │ -0.79971087684 ║ -31.4615692112 ║   -  │ 7.55e-15 ║ S  │     1 │ 1.000000 ║    80 │ 1.19e-06   ║
- 290 ║ 0.025419 │ -0.79971087684 ║ -31.4615692112 ║   -  │ 3.33e-15 ║ S  │     1 │ 1.000000 ║    90 │ 1.06e-06   ║
+   0 ║ 0.100000 │  233.598444885 ║ -777.138392664 ║   -  │ 311.3123 ║ -  │     1 │ 0.000000 ║     1 │ 45.87915   ║
+  10 ║ 0.038742 │  4.73657610523 ║ -1135.29853488 ║   -  │ 48.72037 ║ S  │     2 │ 2.000000 ║     1 │ 0.704227   ║
+  20 ║ 0.038742 │ -0.90688325527 ║ -23.4396021953 ║   -  │ 0.001215 ║ S  │     5 │ 1.125000 ║     1 │ 0.071368   ║
+  30 ║ 0.038742 │ -0.94016725008 ║ -24.2720353768 ║   -  │ 1.81e-04 ║ S  │     1 │ 1.000000 ║     1 │ 0.005056   ║
+  40 ║ 0.038742 │ -0.94079722542 ║ -24.2856657523 ║   -  │ 7.92e-05 ║ S  │     1 │ 1.000000 ║     1 │ 0.004941   ║
+  50 ║ 0.038742 │ -0.94088146445 ║ -24.2858822238 ║   -  │ 3.37e-06 ║ S  │     1 │ 1.000000 ║     1 │ 8.10e-04   ║
+  60 ║ 0.038742 │ -0.94088589472 ║ -24.2859211796 ║   -  │ 4.51e-07 ║ S  │     1 │ 1.000000 ║     1 │ 3.30e-04   ║
+  70 ║ 0.038742 │ -0.94088637155 ║ -24.2859220141 ║   -  │ 6.70e-09 ║ S  │     1 │ 1.000000 ║     1 │ 2.91e-05   ║
+  80 ║ 0.038742 │ -0.94088637916 ║ -24.2859220393 ║   -  │ 6.54e-11 ║ S  │     1 │ 1.000000 ║     1 │ 2.99e-06   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 Optimization results:                                                                                            ║
+F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
-   F ║          │                ║ -31.4615692112 ║   -  │ 6.66e-16 ║    │       │          ║       │            ║
-   B ║          │                ║ -31.4615692112 ║   -  │ 1.55e-15 ║    │       │          ║       │            ║
-  MF ║          │                ║ -31.4615692112 ║   -  │ 6.66e-16 ║    │       │          ║       │            ║
+   F ║          │                ║ -24.2859220401 ║   -  │ 6.61e-12 ║    │       │          ║       │            ║
+   B ║          │                ║ -24.2859223114 ║   -  │ 2.56e-07 ║    │       │          ║       │            ║
+  MF ║          │                ║ -24.2859220401 ║   -  │ 6.61e-12 ║    │       │          ║       │            ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-Iterations:              296                                                                                     ║
-Function evaluations:    304                                                                                     ║
+Iterations:              85                                                                                      ║
+Function evaluations:    100                                                                                     ║
 PyGRANSO termination code: 0 --- converged to stationarity and feasibility tolerances.                           ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 2.719498872756958s
+Total Wall Time: 1.3408262729644775s
 </pre></div></div>
 </div>
 </div>

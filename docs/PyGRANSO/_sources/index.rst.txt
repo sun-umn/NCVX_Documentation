@@ -1,9 +1,6 @@
 Home
 =======================================
 
-.. warning::
-   The software is under active development. Use it at your own risk. For questions or bug reports, please either: raise issues in the PyGRANSO repository (https://github.com/sun-umn/PyGRANSO/), or send your feedback to Buyun Liang (liang664 an_at_symbol umn a_dot_symbol edu). We are always looking for contributors and collaborators. 
-
 NCVX (NonConVeX) is a user-friendly and scalable python package for solving general 
 nonconvex, especially nonsmooth and constrained problems.  The initial release of NCVX contains the solver PyGRANSO, a PyTorch-enabled port of `GRANSO <http://www.timmitchell.com/software/GRANSO/>`_ incorporating auto-differentiation, GPU acceleration, tensor input, and support for new QP solvers. As a highlight, PyGRANSO can solve general constrained deep learning problems, the first of its kind. 
 
@@ -53,3 +50,5 @@ For questions or bug reports, please either:
         * Buyun Liang (liang664 an_at_symbol umn a_dot_symbol edu)
         * Tim Mitchell (tim an_at_symbol timmitchell a_dot_symbol com)
         * Ju Sun (jusun an_at_symbol umn a_dot_symbol edu)
+
+Also, we are always looking for contributors and collaborators.

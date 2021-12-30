@@ -579,7 +579,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Dictionary-Learning">
 <h1>Dictionary Learning<a class="headerlink" href="#Dictionary-Learning" title="Permalink to this headline">¶</a></h1>
-<p>Solve orthogonal dictionary learning problem taken from: Bai, Yu, Qijia Jiang, and Ju Sun. “Subgradient descent learns orthogonal dictionaries.” arXiv preprint arXiv:1810.10702 (2018).</p>
+<p>Solve orthogonal dictionary learning problem taken from: Yu Bai, Qijia Jiang, and Ju Sun. “Subgradient descent learns orthogonal dictionaries.” arXiv preprint arXiv:1810.10702 (2018).</p>
 <div class="section" id="Problem-Description">
 <h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
 <p>Given data <span class="math notranslate nohighlight">\(\{y_i \}_{i \in[m]}\)</span> generated as <span class="math notranslate nohighlight">\(y_i = A x_i\)</span>, where <span class="math notranslate nohighlight">\(A \in R^{n \times n}\)</span> is a fixed unknown orthogonal matrix and each <span class="math notranslate nohighlight">\(x_i \in R^n\)</span> is an iid Bernoulli-Gaussian random vector with parameter <span class="math notranslate nohighlight">\(\theta \in (0,1)\)</span>, recover <span class="math notranslate nohighlight">\(A\)</span>.</p>
@@ -965,7 +965,7 @@ tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 <span class="c1"># opts.print_use_orange = False</span>
 
 <span class="c1"># opts.init_step_size = 1e-2</span>
-<span class="c1"># opts.searching_direction_rescaling = True</span>
+<span class="c1"># opts.search_direction_rescaling = True</span>
 
 <span class="n">soln</span> <span class="o">=</span> <span class="n">pygranso</span><span class="p">(</span><span class="n">var_spec</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span><span class="n">combined_fn</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span><span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="nb">abs</span><span class="p">(</span><span class="n">soln</span><span class="o">.</span><span class="n">final</span><span class="o">.</span><span class="n">x</span><span class="p">)))</span> <span class="c1"># should be close to 1</span>

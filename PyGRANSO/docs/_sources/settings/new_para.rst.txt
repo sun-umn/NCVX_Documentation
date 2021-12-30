@@ -27,9 +27,9 @@ is_backtrack_linesearch
 
 Boolean value. Default value: False
 
-By default, NCVX will use Weak-Wolfe line search. By enabling this method, the curvature condition will be disabled.
+By default, NCVX will use weak-Wolfe line search. By enabling this method, the curvature condition will be disabled.
 
-searching_direction_rescaling     
+search_direction_rescaling     
 --------------------------------          
 
 Boolean value. Default value: False
@@ -60,5 +60,13 @@ Boolean value. Default value: True
 
 Compute all gradients of objective and constraint functions via auto-differentiation.
 In the default setting, user should provide [f,ci,ce] = combined_fn(X).
-When globalAD = False, user should provide [f,f_grad,ci,ci_grad,ce,ce_grad] = combined_fn(X) 
+When globalAD = False, user should provide [f,f_grad,ci,ci_grad,ce,ce_grad] = combined_fn(X). 
 Please check the docstring of pygranso.py for more details of setting combined_fn.
+
+double_precision
+--------------------------------
+
+Boolean value. Default value: True
+
+Set the floating number formats to be double precision for PyGRANSO solver. If double_precision = False, 
+the floating number formats will be single precision.

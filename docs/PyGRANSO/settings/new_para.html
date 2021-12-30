@@ -302,8 +302,8 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#searching-direction-rescaling">
-   searching_direction_rescaling
+  <a class="reference internal nav-link" href="#search-direction-rescaling">
+   search_direction_rescaling
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -319,6 +319,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#globalad">
    globalAD
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#double-precision">
+   double_precision
   </a>
  </li>
 </ul>
@@ -352,10 +357,10 @@
 <div class="section" id="is-backtrack-linesearch">
 <h2>is_backtrack_linesearch<a class="headerlink" href="#is-backtrack-linesearch" title="Permalink to this headline">¶</a></h2>
 <p>Boolean value. Default value: False</p>
-<p>By default, NCVX will use Weak-Wolfe line search. By enabling this method, the curvature condition will be disabled.</p>
+<p>By default, NCVX will use weak-Wolfe line search. By enabling this method, the curvature condition will be disabled.</p>
 </div>
-<div class="section" id="searching-direction-rescaling">
-<h2>searching_direction_rescaling<a class="headerlink" href="#searching-direction-rescaling" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="search-direction-rescaling">
+<h2>search_direction_rescaling<a class="headerlink" href="#search-direction-rescaling" title="Permalink to this headline">¶</a></h2>
 <p>Boolean value. Default value: False</p>
 <p>Rescale the norm of searching direction to be 1. Recommend setting True in deep learning problem.
 Used only when backtracking line search is enabled.</p>
@@ -377,8 +382,14 @@ opts.torch_device = torch.device(‘cuda’) if one wants to use cuda device.</p
 <p>Boolean value. Default value: True</p>
 <p>Compute all gradients of objective and constraint functions via auto-differentiation.
 In the default setting, user should provide [f,ci,ce] = combined_fn(X).
-When globalAD = False, user should provide [f,f_grad,ci,ci_grad,ce,ce_grad] = combined_fn(X)
+When globalAD = False, user should provide [f,f_grad,ci,ci_grad,ce,ce_grad] = combined_fn(X).
 Please check the docstring of pygranso.py for more details of setting combined_fn.</p>
+</div>
+<div class="section" id="double-precision">
+<h2>double_precision<a class="headerlink" href="#double-precision" title="Permalink to this headline">¶</a></h2>
+<p>Boolean value. Default value: True</p>
+<p>Set the floating number formats to be double precision for PyGRANSO solver. If double_precision = False,
+the floating number formats will be single precision.</p>
 </div>
 </div>
 

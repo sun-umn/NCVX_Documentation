@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NCVX New Options &#8212; NCVX  documentation</title>
+    <title>PyGRANSO New Options &#8212; NCVX  documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -117,7 +117,7 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     NCVX New Options
+     PyGRANSO New Options
     </a>
    </li>
   </ul>
@@ -281,50 +281,64 @@
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#qpsolver">
-   QPsolver
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   PyGRANSO New Options
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#qpsolver">
+     QPsolver
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#torch-device">
+     torch_device
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#globalad">
+     globalAD
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#double-precision">
+     double_precision
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#init-step-size">
-   init_step_size
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experimental-options">
+   Experimental Options
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#linesearch-maxit">
-   linesearch_maxit
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#is-backtrack-linesearch">
-   is_backtrack_linesearch
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#search-direction-rescaling">
-   search_direction_rescaling
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#disable-terminationcode-6">
-   disable_terminationcode_6
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#torch-device">
-   torch_device
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#globalad">
-   globalAD
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#double-precision">
-   double_precision
-  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#init-step-size">
+     init_step_size
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#linesearch-maxit">
+     linesearch_maxit
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#is-backtrack-linesearch">
+     is_backtrack_linesearch
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#search-direction-rescaling">
+     search_direction_rescaling
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#disable-terminationcode-6">
+     disable_terminationcode_6
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -337,12 +351,39 @@
         
               <div>
                 
-  <div class="section" id="ncvx-new-options">
-<h1>NCVX New Options<a class="headerlink" href="#ncvx-new-options" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="pygranso-new-options">
+<h1>PyGRANSO New Options<a class="headerlink" href="#pygranso-new-options" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="qpsolver">
 <h2>QPsolver<a class="headerlink" href="#qpsolver" title="Permalink to this headline">¶</a></h2>
 <p>String in {‘osqp’}. Default value: ‘osqp’</p>
 <p>Select the QP solver used in the steering strategy and termination condition. Currently only OSQP is supported.</p>
+</div>
+<div class="section" id="torch-device">
+<h2>torch_device<a class="headerlink" href="#torch-device" title="Permalink to this headline">¶</a></h2>
+<p>torch.device(‘cpu’) OR torch.device(‘cuda’). Default value: torch.device(‘cpu’)</p>
+<p>Choose torch.device used for matrix operation in PyGRANSO.
+opts.torch_device = torch.device(‘cuda’) if one wants to use cuda device.</p>
+</div>
+<div class="section" id="globalad">
+<h2>globalAD<a class="headerlink" href="#globalad" title="Permalink to this headline">¶</a></h2>
+<p>Boolean value. Default value: True</p>
+<p>Compute all gradients of objective and constraint functions via auto-differentiation.
+In the default setting, user should provide [f,ci,ce] = combined_fn(X).
+When globalAD = False, user should provide [f,f_grad,ci,ci_grad,ce,ce_grad] = combined_fn(X).
+Please check the docstring of pygranso.py for more details of setting combined_fn.</p>
+</div>
+<div class="section" id="double-precision">
+<h2>double_precision<a class="headerlink" href="#double-precision" title="Permalink to this headline">¶</a></h2>
+<p>Boolean value. Default value: True</p>
+<p>Set the floating number formats to be double precision for PyGRANSO solver. If double_precision = False,
+the floating number formats will be single precision.</p>
+</div>
+</div>
+<div class="section" id="experimental-options">
+<h1>Experimental Options<a class="headerlink" href="#experimental-options" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The following options are still in development and may change or be removed in future releases. We don’t recommend users use them in current version.</p>
 </div>
 <div class="section" id="init-step-size">
 <h2>init_step_size<a class="headerlink" href="#init-step-size" title="Permalink to this headline">¶</a></h2>
@@ -370,26 +411,6 @@ Used only when backtracking line search is enabled.</p>
 <p>Boolean value. Default value: False</p>
 <p>Disable termination code 6 to ensure NCVX can always make a movement even if the line search failed.
 Recommend setting True in deep learning problem. Used only when backtracking line search is enabled.</p>
-</div>
-<div class="section" id="torch-device">
-<h2>torch_device<a class="headerlink" href="#torch-device" title="Permalink to this headline">¶</a></h2>
-<p>torch.device(‘cpu’) OR torch.device(‘cuda’). Default value: torch.device(‘cpu’)</p>
-<p>Choose torch.device used for matrix operation in PyGRANSO.
-opts.torch_device = torch.device(‘cuda’) if one wants to use cuda device.</p>
-</div>
-<div class="section" id="globalad">
-<h2>globalAD<a class="headerlink" href="#globalad" title="Permalink to this headline">¶</a></h2>
-<p>Boolean value. Default value: True</p>
-<p>Compute all gradients of objective and constraint functions via auto-differentiation.
-In the default setting, user should provide [f,ci,ce] = combined_fn(X).
-When globalAD = False, user should provide [f,f_grad,ci,ci_grad,ce,ce_grad] = combined_fn(X).
-Please check the docstring of pygranso.py for more details of setting combined_fn.</p>
-</div>
-<div class="section" id="double-precision">
-<h2>double_precision<a class="headerlink" href="#double-precision" title="Permalink to this headline">¶</a></h2>
-<p>Boolean value. Default value: True</p>
-<p>Set the floating number formats to be double precision for PyGRANSO solver. If double_precision = False,
-the floating number formats will be single precision.</p>
 </div>
 </div>
 

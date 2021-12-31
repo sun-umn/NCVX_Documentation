@@ -119,7 +119,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../settings/new_para.html">
-     NCVX New Options
+     PyGRANSO New Options
     </a>
    </li>
   </ul>
@@ -294,13 +294,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Data-Generation">
-   Data Generation
+  <a class="reference internal nav-link" href="#Data-Initialization">
+   Data Initialization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Problem-Definition">
-   Problem Definition
+  <a class="reference internal nav-link" href="#Function-Set-Up">
+   Function Set-Up
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -574,7 +574,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Robust-PCA">
 <h1>Robust PCA<a class="headerlink" href="#Robust-PCA" title="Permalink to this headline">¶</a></h1>
-<p>Solve the robust PCA problem taken from Yi, Xinyang, et al. “Fast algorithms for robust PCA via gradient descent.” Advances in neural information processing systems. 2016.</p>
+<p>Solve the robust PCA problem taken from Xinyang Yi, et al. <a class="reference external" href="https://papers.nips.cc/paper/2016/hash/b5f1e8fb36cd7fbeb7988e8639ac79e9-Abstract.html">“Fast algorithms for robust PCA via gradient descent.”</a> Advances in neural information processing systems. 2016.</p>
 <div class="section" id="Problem-Description">
 <h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
 <div class="math notranslate nohighlight">
@@ -602,8 +602,8 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Data-Generation">
-<h2>Data Generation<a class="headerlink" href="#Data-Generation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Data-Initialization">
+<h2>Data Initialization<a class="headerlink" href="#Data-Initialization" title="Permalink to this headline">¶</a></h2>
 <p>Specify torch device, and generate data.</p>
 <p>Use GPU for this problem. If no cuda device available, please set <em>device = torch.device(‘cpu’)</em></p>
 <div class="nbinput nblast docutils container">
@@ -616,14 +616,17 @@ div.rendered_html tbody tr:hover {
 <span class="n">d2</span> <span class="o">=</span> <span class="mi">4</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">eta</span> <span class="o">=</span> <span class="mf">.05</span>
+<span class="c1"># All the user-provided data (vector/matrix/tensor) must be in torch tensor format.</span>
+<span class="c1"># As PyTorch tensor is single precision by default, one must explicitly set `dtype=torch.double`.</span>
+<span class="c1"># Also, please make sure the device of provided torch tensor is the same as opts.torch_device.</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">d1</span><span class="p">,</span><span class="n">d2</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="Problem-Definition">
-<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
-<p>Specify optimization variables, and objective and constraint(s).</p>
+<div class="section" id="Function-Set-Up">
+<h2>Function Set-Up<a class="headerlink" href="#Function-Set-Up" title="Permalink to this headline">¶</a></h2>
+<p>Encode the optimization variables, and objective and constraint functions.</p>
 <p>Note: please strictly follow the format of comb_fn, which will be used in the PyGRANSO main algortihm.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
@@ -634,7 +637,7 @@ div.rendered_html tbody tr:hover {
 <span class="n">var_in</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;M&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">d1</span><span class="p">,</span><span class="n">d2</span><span class="p">],</span><span class="s2">&quot;S&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">d1</span><span class="p">,</span><span class="n">d2</span><span class="p">]}</span>
 
 
-<span class="k">def</span> <span class="nf">comb_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">user_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">,</span><span class="n">Y</span><span class="p">):</span>
     <span class="n">M</span> <span class="o">=</span> <span class="n">X_struct</span><span class="o">.</span><span class="n">M</span>
     <span class="n">S</span> <span class="o">=</span> <span class="n">X_struct</span><span class="o">.</span><span class="n">S</span>
 
@@ -650,6 +653,7 @@ div.rendered_html tbody tr:hover {
 
     <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">ci</span><span class="p">,</span><span class="n">ce</span><span class="p">]</span>
 
+<span class="n">comb_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">X_struct</span> <span class="p">:</span> <span class="n">user_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">,</span><span class="n">Y</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -718,8 +722,8 @@ Iter ║    Mu    │      Value     ║    Objective   ║ Ineq │    Eq    �
   50 ║ 0.030903 │  0.01031425037 ║  0.33376043889 ║   -  │ 6.94e-16 ║ S  │     4 │ 0.125000 ║     6 │ 3.90e-05   ║
   60 ║ 0.004638 │  0.00154806127 ║  0.33374903361 ║   -  │ 1.14e-10 ║ S  │     1 │ 1.000000 ║    14 │ 9.31e-07   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-Optimization results:                                                                                            ║
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
+Optimization results:                                                                                            ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
    F ║          │                ║  0.33374903361 ║   -  │ 1.14e-10 ║    │       │          ║       │            ║
    B ║          │                ║  0.33374903361 ║   -  │ 1.14e-10 ║    │       │          ║       │            ║
@@ -729,7 +733,7 @@ Iterations:              60                                                     
 Function evaluations:    163                                                                                     ║
 PyGRANSO termination code: 0 --- converged to stationarity and feasibility tolerances.                           ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 2.8363747596740723s
+Total Wall Time: 4.919853925704956s
 </pre></div></div>
 </div>
 </div>

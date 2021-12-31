@@ -119,7 +119,7 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../settings/new_para.html">
-     NCVX New Options
+     PyGRANSO New Options
     </a>
    </li>
   </ul>
@@ -294,13 +294,13 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Data-Generation">
-   Data Generation
+  <a class="reference internal nav-link" href="#Data-Initialization">
+   Data Initialization
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#Problem-Definition">
-   Problem Definition
+  <a class="reference internal nav-link" href="#Function-Set-Up">
+   Function Set-Up
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -579,7 +579,7 @@ div.rendered_html tbody tr:hover {
 </style>
 <div class="section" id="Perceptual-Attack">
 <h1>Perceptual Attack<a class="headerlink" href="#Perceptual-Attack" title="Permalink to this headline">¶</a></h1>
-<p>Apply neural perceptual attack to images taken from: Laidlaw, Cassidy, Sahil Singla, and Soheil Feizi. “Perceptual adversarial robustness: Defense against unseen threat models.” arXiv preprint arXiv:2006.12655 (2020).</p>
+<p>Apply neural perceptual attack to images taken from: Cassidy Laidlaw, Sahil Singla, and Soheil Feizi. <a class="reference external" href="https://arxiv.org/abs/2006.12655">“Perceptual adversarial robustness: Defense against unseen threat models.”</a> arXiv preprint arXiv:2006.12655 (2020).</p>
 <div class="section" id="Problem-Description">
 <h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
 <p>Given a classifier <span class="math notranslate nohighlight">\(f\)</span> which maps any input image <span class="math notranslate nohighlight">\(x \in X\)</span> to its label <span class="math notranslate nohighlight">\(y = f(x) \in Y\)</span>. The goal of neural perceptual attack is to find an input <span class="math notranslate nohighlight">\(\widetilde{x}\)</span> that is perceptually similar to the original input <span class="math notranslate nohighlight">\(x\)</span> but can fool the classifier <span class="math notranslate nohighlight">\(f\)</span>. This can be formulated as:</p>
@@ -631,8 +631,8 @@ div.rendered_html tbody tr:hover {
 </div>
 </div>
 </div>
-<div class="section" id="Data-Generation">
-<h2>Data Generation<a class="headerlink" href="#Data-Generation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="Data-Initialization">
+<h2>Data Initialization<a class="headerlink" href="#Data-Initialization" title="Permalink to this headline">¶</a></h2>
 <p>Specify torch device, neural network architecture, and generate data.</p>
 <p>NOTE: please specify path for downloading data.</p>
 <p>Use GPU for this problem. If no cuda device available, please set <em>device = torch.device(‘cpu’)</em></p>
@@ -654,6 +654,10 @@ div.rendered_html tbody tr:hover {
 <span class="n">_</span><span class="p">,</span> <span class="n">val_loader</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">make_loaders</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">batch_size</span><span class="p">,</span> <span class="n">only_val</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">shuffle_val</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="n">inputs</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">val_loader</span><span class="p">))</span>
+
+<span class="c1"># All the user-provided data (vector/matrix/tensor) must be in torch tensor format.</span>
+<span class="c1"># As PyTorch tensor is single precision by default, one must explicitly set `dtype=torch.double`.</span>
+<span class="c1"># Also, please make sure the device of provided torch tensor is the same as opts.torch_device.</span>
 <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 <span class="n">labels</span> <span class="o">=</span> <span class="n">labels</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
 <span class="n">lpips_model</span> <span class="o">=</span> <span class="n">get_lpips_model</span><span class="p">(</span><span class="s1">&#39;alexnet_cifar&#39;</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
@@ -675,9 +679,9 @@ Files already downloaded and verified
 </pre></div></div>
 </div>
 </div>
-<div class="section" id="Problem-Definition">
-<h2>Problem Definition<a class="headerlink" href="#Problem-Definition" title="Permalink to this headline">¶</a></h2>
-<p>Specify torch device, optimization variables, and objective and constraint(s).</p>
+<div class="section" id="Function-Set-Up">
+<h2>Function Set-Up<a class="headerlink" href="#Function-Set-Up" title="Permalink to this headline">¶</a></h2>
+<p>Encode the optimization variables, and objective and constraint functions.</p>
 <p>Note: please strictly follow the format of comb_fn, which will be used in the PyGRANSO main algortihm.</p>
 <div class="nbinput nblast docutils container">
 <div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
@@ -698,7 +702,7 @@ Files already downloaded and verified
     <span class="n">loss</span> <span class="o">=</span> <span class="o">-</span><span class="p">(</span><span class="n">max_incorrect_logits</span> <span class="o">-</span> <span class="n">correct_logits</span><span class="p">)</span><span class="o">.</span><span class="n">clamp</span><span class="p">(</span><span class="nb">max</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">loss</span>
 
-<span class="k">def</span> <span class="nf">comb_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">user_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">,</span><span class="n">inputs</span><span class="p">,</span><span class="n">labels</span><span class="p">,</span><span class="n">lpips_model</span><span class="p">):</span>
     <span class="n">adv_inputs</span> <span class="o">=</span> <span class="n">X_struct</span><span class="o">.</span><span class="n">x_tilde</span>
 
     <span class="c1"># objective function</span>
@@ -732,6 +736,7 @@ Files already downloaded and verified
 
     <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">ci</span><span class="p">,</span><span class="n">ce</span><span class="p">]</span>
 
+<span class="n">comb_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">X_struct</span> <span class="p">:</span> <span class="n">user_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">,</span><span class="n">inputs</span><span class="p">,</span><span class="n">labels</span><span class="p">,</span><span class="n">lpips_model</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -808,8 +813,8 @@ Iter ║    Mu    │      Value     ║    Objective   ║   Ineq   │  Eq  �
   10 ║ 1.000000 │ -0.50872108700 ║ -0.88639971711 ║ 0.377679 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 0.548706   ║
   20 ║ 1.000000 │ -0.96019197251 ║ -0.98795223931 ║ 0.027760 │   -  ║ S  │     1 │ 1.000000 ║     1 │ 1.182802   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 Optimization results:                                                                                            ║
+F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
    F ║          │                ║ -1.00000000000 ║ 0.000000 │   -  ║    │       │          ║       │            ║
    B ║          │                ║ -1.00000000000 ║ 0.000000 │   -  ║    │       │          ║       │            ║
@@ -819,7 +824,7 @@ Iterations:              23                                                     
 Function evaluations:    32                                                                                      ║
 PyGRANSO termination code: 0 --- converged to stationarity and feasibility tolerances.                           ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 4.315616846084595s
+Total Wall Time: 4.442750930786133s
 </pre></div></div>
 </div>
 </div>
@@ -1054,8 +1059,8 @@ i = 9
 
 Model train acc on the original image = 1.0
 Success rate of attack = 1.0
-Average distance between attacked image and original image = 0.49294989246402915
-Average run time of PyGRANSO = 3.5524306297302246s, mean f_eval = 32.0 iters
+Average distance between attacked image and original image = 0.4929902768209982
+Average run time of PyGRANSO = 3.6717559814453127s, mean f_eval = 32.0 iters
 </pre></div></div>
 </div>
 </div>

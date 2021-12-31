@@ -18,7 +18,7 @@ Available at https://dx.doi.org/10.1080/10556788.2016.1208749
 BibTex::
 
     @article{liang2021ncvx,
-        title={NCVX: A User-Friendly and Scalable Package for Nonconvex 
+        title={{NCVX}: {A} User-Friendly and Scalable Package for Nonconvex 
         Optimization in Machine Learning}, 
         author={Buyun Liang, Tim Mitchell, and Ju Sun},
         year={2021},
@@ -26,9 +26,9 @@ BibTex::
         archivePrefix={arXiv},
         primaryClass={cs.LG}
     }
-
-    @article{curtis2017bfgs,
-        title={A BFGS-SQP method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles},
+    
+    @article{curtis2017bfgssqp,
+        title={A {BFGS-SQP} method for nonsmooth, nonconvex, constrained optimization and its evaluation using relative minimization profiles},
         author={Frank E. Curtis, Tim Mitchell, and Michael L. Overton},
         journal={Optimization Methods and Software},
         volume={32},

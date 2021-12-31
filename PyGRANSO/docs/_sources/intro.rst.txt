@@ -4,7 +4,16 @@ Introduction
 Motivation and Background
 ----------------------------------
 
-Optimizing nonconvex (NCVX) problems, especially those that are nonsmooth and constrained, is an essential part of machine learning and deep learning. However, it can be hard to reliably solve such problems without optimization expertise. Existing general-purpose NCVX optimization packages are powerful, but typically cannot handle nonsmoothness. GRANSO is among the first optimization solvers targeting nonsmooth NCVX problems with nonsmooth constraints, but, as it is implemented in MATLAB and requires users to provide gradients, GRANSO is often not a convenient choice in machine learning and deep learning applications. To greatly lower the technical barrier for the machine learning community, we introduce a new software package called NCVX, whose initial release contains the solver PyGRANSO, a PyTorch-enabled port of GRANSO incorporating auto-differentiation, GPU acceleration, tensor input, and support for new QP solvers. PyGRANSO is built on freely available and widely used open-source frameworks, and as a highlight, can solve general constrained deep learning problems, the first of its kind. 
+Optimizing nonconvex (NCVX) problems, especially nonsmooth and constrained ones, is an
+essential part of machine learning. However, it can be hard to reliably solve such problems
+without optimization expertise. Existing general-purpose NCVX optimization packages are
+powerful but typically cannot handle nonsmoothness. GRANSO is among the first optimization solvers targeting general nonsmooth NCVX problems with nonsmooth constraints,
+but, as it is implemented in MATLAB and requires the user to provide analytical gradients, GRANSO is often not a convenient choice in machine learning (especially deep learning) applications. To greatly lower the technical barrier, we introduce a new software package
+called NCVX, whose initial release contains the solver PyGRANSO, a PyTorch-enabled port of
+GRANSO incorporating auto-differentiation, GPU acceleration, tensor input, and support for
+new QP solvers. NCVX is built on freely available and widely used open-source frameworks,
+and as a highlight, can solve general constrained deep learning problems, the first of its
+kind.
 
 
 
@@ -24,31 +33,26 @@ Here, the objective f and constraint functions ci’s are only required to be al
 	
 	#. Principled Stopping Criterion: GRANSO stops its iteration by	checking a theory-grounded stationarity condition for nonsmooth problems, whereas specialized methods are usually stopped when reaching ad-hoc iteration caps.
 
-However, since GRANSO is implemented in MATLAB and expects users to be able to provide gradients,
-it is often an impractical choice for machine learning applications.
-Typically, GRANSO users must derive gradients analytically and then provide code for these computations,
-a process which may require some expert knowledge, is often error-prone, and 
-in machine learning, is generally impractical, e.g., for the training of large neural networks.
-Furthermore, as part of the MATLAB software ecosystem, 
-GRANSO is generally harder for practitioners to integrate it with existing popular machine learning frameworks
-and users' own existing toolchains.
-To overcome these issues and facilitate both high performance and ease of use in machine and deep learning, 
-we introduce a new software package called NCVX, whose initial release contains the solver
-PyGRANSO, a PyTorch-enabled port of GRANSO with several new key features:
+However, GRANSO users must derive gradients analytically2 and then provide code for
+these computations, a process which may require some expert knowledge, is often error-prone, and in machine learning, is generally impractical, e.g., for the training of large neural networks. Furthermore, as part of the MATLAB software ecosystem, GRANSO is generally
+hard for practitioners to integrate it with existing popular machine learning frameworks—
+mostly in Python and R—and users’ own existing toolchains. To overcome these issues and
+facilitate both high performance and ease of use in machine and deep learning, we introduce
+a new software package called NCVX, whose initial release contains the solver PyGRANSO, a
+PyTorch-enabled port of GRANSO with several new key features: 
 
-	#. auto-differentiation of all gradients;
+	#. auto-differentiation of all gradients, which is a main feature to make PyGRANSO user-friendly, 
 
-	#. support for both CPU and GPU computations for improved hardware acceleration and massive parallelism;
+	#. support for both CPU and GPU computations for improved hardware acceleration and massive parallelism,
 
-	#. support for general tensor variables including vectors and matrices (as opposed to the single vector of concatenated optimization variables that GRANSO uses);
+	#. support for general tensor variables including vectors and matrices, as opposed to the single vector of concatenated optimization variables that GRANSO uses, 
 
-	#. integrated support for OSQP and other QP solvers to solve the underlying subproblems in the BFGS-SQP algorithm and compute the stationarity measure on each iteration. In terms of scalability and speed, OSQP generally outperforms commercial QP solvers, and thus provides yet another way to improve optimization performance. 
+	#. integrated support for OSQP (Stellato et al., 2020) and other QP solvers for respectively computing search directions and the stationarity measure on each iteration. OSQP generally outperforms commercial QP solvers in terms of scalability and speed. 
 
-All of these enhancements are crucial for machine learning researchers and practitioners to solve large-scale problems.
-
-PyGRANSO is built entirely on freely available and widely used open-source frameworks, 
-and itself is licensed under the AGPL version 3.
-
+All of these enhancements are
+crucial for machine learning researchers and practitioners to solve large-scale problems.
+NCVX, licensed under the AGPL version 3, is built entirely on freely available and widely
+used open-source frameworks; see https://ncvx.org for documentation and examples
 
 Road Map
 ----------------------------------

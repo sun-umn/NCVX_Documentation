@@ -12,16 +12,19 @@
 
 The initial release of **NCVX** contains the solver **PyGRANSO**, a PyTorch-enabled port of `GRANSO <http://www.timmitchell.com/software/GRANSO/>`_ incorporating auto-differentiation, GPU acceleration, tensor input, and support for new QP solvers. As a highlight, **PyGRANSO** can solve general constrained deep learning problems, the first of its kind. 
 
+**NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning** `Code <https://github.com/sun-umn/NCVX>`_ | `Paper <https://arxiv.org/abs/2111.13984>`_ 
+
 **Solver/Module**
 ===================
 
 .. raw:: html
 
-      <b>PyGRANSO: A PyTorch-enabled port of GRANSO with auto-differentiation</b> <a class="reference internal" href="PyGRANSO/index.html">
-          Documentation |
-      </a>
+    <b>PyGRANSO: A PyTorch-enabled port of GRANSO with auto-differentiation</b> 
 
-      <a class="reference internal" href="https://github.com/sun-umn/PyGRANSO">
-          Repository
-      </a>
+    <a class="reference internal" href="https://github.com/sun-umn/PyGRANSO">
+        Code |
+    </a>
 
+    <a class="reference internal" href="PyGRANSO/index.html">
+        Documentation 
+    </a>

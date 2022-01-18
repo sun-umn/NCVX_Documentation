@@ -604,11 +604,8 @@ div.rendered_html tbody tr:hover {
 <span class="kn">import</span> <span class="nn">torch</span>
 <span class="kn">import</span> <span class="nn">numpy.linalg</span> <span class="k">as</span> <span class="nn">la</span>
 <span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="c1">## Adding PyGRANSO directories. Should be modified by user</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/home/buyun/Documents/GitHub/PyGRANSO&#39;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">pygranso</span> <span class="kn">import</span> <span class="n">pygranso</span>
-<span class="kn">from</span> <span class="nn">pygransoStruct</span> <span class="kn">import</span> <span class="n">pygransoStruct</span>
+<span class="kn">from</span> <span class="nn">pygranso.pygranso</span> <span class="kn">import</span> <span class="n">pygranso</span>
+<span class="kn">from</span> <span class="nn">pygranso.pygransoStruct</span> <span class="kn">import</span> <span class="n">pygransoStruct</span>
 </pre></div>
 </div>
 </div>
@@ -750,8 +747,8 @@ Iter ║    Mu    │      Value     ║    Objective   ║ Ineq │    Eq    �
  150 ║ 1.000000 │  0.49194211795 ║  0.49194211747 ║   -  │ 4.78e-10 ║ S  │     5 │ 0.062500 ║    40 │ 4.44e-08   ║
  160 ║ 1.000000 │  0.49194211356 ║  0.49194211328 ║   -  │ 2.77e-10 ║ S  │     5 │ 0.062500 ║    40 │ 2.16e-08   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-Optimization results:                                                                                            ║
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
+Optimization results:                                                                                            ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
    F ║          │                ║  0.49194211312 ║   -  │ 2.59e-10 ║    │       │          ║       │            ║
    B ║          │                ║  0.49194211312 ║   -  │ 2.59e-10 ║    │       │          ║       │            ║
@@ -761,7 +758,7 @@ Iterations:              161                                                    
 Function evaluations:    664                                                                                     ║
 PyGRANSO termination code: 0 --- converged to stationarity and feasibility tolerances.                           ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 2.7308900356292725s
+Total Wall Time: 1.991070032119751s
 tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 </pre></div></div>
 </div>
@@ -827,8 +824,8 @@ Iter |    Mu    |      Value     |    Objective   | Ineq |    Eq    | SD | Evals
   60 | 1.000000 |  0.49212731751 |  0.49208854433 |   -  | 3.88e-05 | S  |     4 | 0.125000 |     1 | 0.051779   |
   70 | 1.000000 |  0.49203371691 |  0.49201049130 |   -  | 2.32e-05 | S  |     4 | 0.125000 |     1 | 0.054529   |
 ==================================================================================================================
-Optimization results:                                                                                            |
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   |
+Optimization results:                                                                                            |
 ==================================================================================================================
    F |          |                |  0.49205285240 |   -  | 3.35e-07 |    |       |          |       |            |
    B |          |                |  0.49205285240 |   -  | 3.35e-07 |    |       |          |       |            |
@@ -900,8 +897,8 @@ Iter |    Mu    |      Value     |    Objective   | Ineq |    Eq    | SD | Evals
   70 | 1.000000 |  0.49203371691 |  0.49201049130 |   -  | 2.32e-05 | S  |     4 | 0.125000 |     1 | 0.054529   |
   80 | 1.000000 |  0.49197689465 |  0.49197679422 |   -  | 1.00e-07 | S  |     2 | 0.500000 |     1 | 0.001300   |
 ==================================================================================================================
-Optimization results:                                                                                            |
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   |
+Optimization results:                                                                                            |
 ==================================================================================================================
    F |          |                |  0.49194839416 |   -  | 3.46e-08 |    |       |          |       |            |
    B |          |                |  0.49194839416 |   -  | 3.46e-08 |    |       |          |       |            |
@@ -1019,8 +1016,8 @@ Iter ║    Mu    │      Value     ║    Objective   ║ Ineq │    Eq    �
  150 ║ 1.000000 │  0.49194211795 ║  0.49194211747 ║   -  │ 4.78e-10 ║ S  │     5 │ 0.062500 ║    40 │ 4.44e-08   ║
  160 ║ 1.000000 │  0.49194211356 ║  0.49194211328 ║   -  │ 2.77e-10 ║ S  │     5 │ 0.062500 ║    40 │ 2.16e-08   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-Optimization results:                                                                                            ║
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
+Optimization results:                                                                                            ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
    F ║          │                ║  0.49194211312 ║   -  │ 2.59e-10 ║    │       │          ║       │            ║
    B ║          │                ║  0.49194211312 ║   -  │ 2.59e-10 ║    │       │          ║       │            ║
@@ -1119,8 +1116,8 @@ Iter ║    Mu    │      Value     ║    Objective   ║ Ineq │    Eq    �
  150 ║ 1.000000 │  0.49194211795 ║  0.49194211747 ║   -  │ 4.78e-10 ║ S  │     5 │ 0.062500 ║    40 │ 4.44e-08   ║
  160 ║ 1.000000 │  0.49194211356 ║  0.49194211328 ║   -  │ 2.77e-10 ║ S  │     5 │ 0.062500 ║    40 │ 2.16e-08   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-Optimization results:                                                                                            ║
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
+Optimization results:                                                                                            ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
    F ║          │                ║  0.49194211312 ║   -  │ 2.59e-10 ║    │       │          ║       │            ║
    B ║          │                ║  0.49194211312 ║   -  │ 2.59e-10 ║    │       │          ║       │            ║
@@ -1130,7 +1127,7 @@ Iterations:              161                                                    
 Function evaluations:    664                                                                                     ║
 PyGRANSO termination code: 0 --- converged to stationarity and feasibility tolerances.                           ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 1.3469734191894531s
+Total Wall Time: 1.2909674644470215s
 tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 </pre></div></div>
 </div>
@@ -1141,7 +1138,7 @@ tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 </div>
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="c1"># import the AD function</span>
-<span class="kn">from</span> <span class="nn">private.tensor2vec</span> <span class="kn">import</span> <span class="n">getCiGradVec</span>
+<span class="kn">from</span> <span class="nn">pygranso.private.tensor2vec</span> <span class="kn">import</span> <span class="n">getCiGradVec</span>
 
 <span class="c1"># partial AD</span>
 <span class="k">def</span> <span class="nf">comb_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">):</span>
@@ -1230,8 +1227,8 @@ Iter ║    Mu    │      Value     ║    Objective   ║ Ineq │    Eq    �
  150 ║ 1.000000 │  0.49194211795 ║  0.49194211747 ║   -  │ 4.78e-10 ║ S  │     5 │ 0.062500 ║    40 │ 4.44e-08   ║
  160 ║ 1.000000 │  0.49194211356 ║  0.49194211328 ║   -  │ 2.77e-10 ║ S  │     5 │ 0.062500 ║    40 │ 2.16e-08   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-Optimization results:                                                                                            ║
 F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
+Optimization results:                                                                                            ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
    F ║          │                ║  0.49194211312 ║   -  │ 2.59e-10 ║    │       │          ║       │            ║
    B ║          │                ║  0.49194211312 ║   -  │ 2.59e-10 ║    │       │          ║       │            ║
@@ -1241,7 +1238,7 @@ Iterations:              161                                                    
 Function evaluations:    664                                                                                     ║
 PyGRANSO termination code: 0 --- converged to stationarity and feasibility tolerances.                           ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 1.9200191497802734s
+Total Wall Time: 1.628951072692871s
 tensor([1.0000], device=&#39;cuda:0&#39;, dtype=torch.float64)
 </pre></div></div>
 </div>

@@ -593,11 +593,8 @@ div.rendered_html tbody tr:hover {
 <div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
 <span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">torch</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="c1">## Adding PyGRANSO directories. Should be modified by user</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;/home/buyun/Documents/GitHub/PyGRANSO&#39;</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">pygranso</span> <span class="kn">import</span> <span class="n">pygranso</span>
-<span class="kn">from</span> <span class="nn">pygransoStruct</span> <span class="kn">import</span> <span class="n">pygransoStruct</span>
+<span class="kn">from</span> <span class="nn">pygranso.pygranso</span> <span class="kn">import</span> <span class="n">pygranso</span>
+<span class="kn">from</span> <span class="nn">pygranso.pygransoStruct</span> <span class="kn">import</span> <span class="n">pygransoStruct</span>
 </pre></div>
 </div>
 </div>
@@ -722,8 +719,8 @@ Iter ║    Mu    │      Value     ║    Objective   ║ Ineq │    Eq    �
   50 ║ 0.030903 │  0.01031425037 ║  0.33376043889 ║   -  │ 6.94e-16 ║ S  │     4 │ 0.125000 ║     6 │ 3.90e-05   ║
   60 ║ 0.004638 │  0.00154806127 ║  0.33374903361 ║   -  │ 1.14e-10 ║ S  │     1 │ 1.000000 ║    14 │ 9.31e-07   ║
 ═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣
-F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 Optimization results:                                                                                            ║
+F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║
 ═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣
    F ║          │                ║  0.33374903361 ║   -  │ 1.14e-10 ║    │       │          ║       │            ║
    B ║          │                ║  0.33374903361 ║   -  │ 1.14e-10 ║    │       │          ║       │            ║
@@ -733,7 +730,7 @@ Iterations:              60                                                     
 Function evaluations:    163                                                                                     ║
 PyGRANSO termination code: 0 --- converged to stationarity and feasibility tolerances.                           ║
 ═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝
-Total Wall Time: 4.919853925704956s
+Total Wall Time: 1.6486585140228271s
 </pre></div></div>
 </div>
 </div>

@@ -1,40 +1,44 @@
 Installation
-============
+========================
 
 Steps
 -----------------
 
-.. note::
-    Setting: Ubuntu 20.04, PyGRANSO v1.0.0
+1. Install `Python >= 3.9 <https://www.python.org/>`_
 
-Installing PyGRANSO is simple. Here is a step-by-step instruction:
+2. Get the most recent PyGRANSO package (including examples and requirements file)::
 
-0. Prerequisite: install Anaconda on your system (recommend: Ubuntu 20.04). Detailed guidance: https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html
+        git clone https://github.com/sun-umn/PyGRANSO.git
+        cd PyGRANSO
 
-1. Download the latest version of PyGRANSO on GitHub (https://github.com/sun-umn/PyGRANSO)
+3.  Install PyGRANSO solver from PyPI::
 
-2. Change the *name* and *prefix* in **environment.yml**. 
-   
-   (GPU and CPU) Simply run::
+        pip install pygranso==1.0.0.dev2
 
-    conda env create -f environment_cuda.yml
-    conda activate pygranso_cuda_env
+4.  Install Dependencies from PyPI: 
 
-   (CPU only) Simply run::
+    OS: **Linux** OR **Windows**; Compute Platform: **CUDA**::
 
-     conda env create -f environment_cpu.yml
-     conda activate pygranso_cpu_env
+            pip install -r requirements.txt -f https://download.pytorch.org/whl/cu111/torch_stable.html
 
-3. (GPU and CPU) Run test to make sure the dependency installation is correct::
+    OS: **Linux**; Compute Platform: **CPU**::
 
-      python test_cuda.py
+            pip install -r requirements_linux_cpu.txt -f https://download.pytorch.org/whl/cpu/torch_stable.html
 
-   (CPU only) Run test to make sure the dependency installation is correct::
+    OS: **Mac** OR **Windows**; Compute Platform: **CPU**::
+
+            pip install -r requirements_cpu.txt
     
-      python test_cpu.py
+5.  (CUDA) Run test to make sure the dependency installation is correct::
 
-4. Check the :ref:`Examples<examples>` section in the documentation to get started.
-    
+           python test_cuda.py
+
+    (CPU) Run test to make sure the dependency installation is correct::
+
+            python test_cpu.py
+
+6. Check the :ref:`Examples<examples>` section in the documentation website to get started.
+
 Dependencies
 -----------------
 

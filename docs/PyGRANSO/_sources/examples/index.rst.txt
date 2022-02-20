@@ -17,5 +17,6 @@ Several quick tutorials to help users get started with PyGRANSO.
 	ex7_unconstrainedDL.ipynb
 	ex8_nonlinear_feasiblity.ipynb
 	ex9_sphere_manifold.ipynb
-
+	ex10_dict_learning_torch_nn.ipynb
+	ex11_orthogonal_rnn.ipynb
     

@@ -13,7 +13,7 @@ Steps
 
 3.  Install PyGRANSO solver from PyPI::
 
-        pip install pygranso==1.0.0.dev2
+        pip install pygranso
 
 4.  Install Dependencies from PyPI: 
 

@@ -54,6 +54,7 @@ Contents
    mistakes
    jusun
    citation
+   forum
 
 Acknowledgements
 ----------------------

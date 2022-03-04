@@ -29,4 +29,5 @@ clean:
 	cp CNAME docs
 	rm -r ../docs/PyGRANSO
 	mkdir ../docs/PyGRANSO
+	cp -r ../docs/_images ../docs/PyGRANSO
 

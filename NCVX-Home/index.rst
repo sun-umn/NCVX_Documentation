@@ -3,7 +3,7 @@
 
 .. raw:: html
 
-    <a class="reference internal image-reference" href="https://ncvx.org/"><img alt="_images/NCVX_logo.png" src="_images/NCVX_logo.png" style="width: 800px;" /></a><br> <br> 
+    <img alt="_images/NCVX_logo.png" src="_images/NCVX_logo.png" style="width: 200px;" /><br> <br> 
 
 **Introduction**
 ==========================
@@ -14,8 +14,13 @@ The initial release of **NCVX** contains the solver **PyGRANSO**, a PyTorch-enab
 
 **NCVX: A User-Friendly and Scalable Package for Nonconvex Optimization in Machine Learning** `Code <https://github.com/sun-umn/NCVX>`_ | `Paper <https://arxiv.org/abs/2111.13984>`_ 
 
-**Solver/Module**
-===================
+**Solver/Module (Click the logo for more info)**
+============================================================================
+
+.. raw:: html
+
+    <a class="reference internal image-reference" href="PyGRANSO/index.html"><img alt="_images/PyGRANSO_logo_banner.png" src="_images/PyGRANSO_logo_banner.png" style="width: 800px;" /></a><br> <br> 
+
 
 .. raw:: html
 

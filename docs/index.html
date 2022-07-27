@@ -134,78 +134,63 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/ex1_rosenbrock.html">
+    <a class="reference internal" href="examples/A1_rosenbrock.html">
      Rosenbrock
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/ex2_eigenval_opt.html">
+    <a class="reference internal" href="examples/A2_eigenval_opt.html">
      Eigenvalue Optimization
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/ex3_dict_learning.html">
+    <a class="reference internal" href="examples/A3_dict_learning.html">
      Dictionary Learning
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/ex4_robustPCA.html">
-     Robust PCA
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="examples/ex5_generalizedLASSO.html">
-     Generalized LASSO
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="examples/ex6_perceptual_attack.html">
-     Perceptual Attack
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="examples/ex7_unconstrainedDL.html">
-     Unconstrained Deep Learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="examples/ex8_nonlinear_feasiblity.html">
+    <a class="reference internal" href="examples/B1_nonlinear_feasiblity.html">
      Nonlinear Feasibility Problem
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/ex9_sphere_manifold.html">
+    <a class="reference internal" href="examples/B2_sphere_manifold.html">
      Sphere Manifold
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/ex10_dict_learning_torch_nn.html">
-     Dictionary Learning
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="examples/ex11_orthogonal_rnn.html">
-     Orthogonal RNN
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="examples/ex12_perceptual_attack_ImageNet.html">
-     Perceptual Attack (ImageNet)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="examples/ex13_trace_optimization.html">
+    <a class="reference internal" href="examples/B3_trace_optimization.html">
      Trace Optimization
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/ex14_LeNet5.html">
+    <a class="reference internal" href="examples/C1_robustPCA.html">
+     Robust PCA
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/C2_generalizedLASSO.html">
+     Generalized LASSO
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/C3_logistic_regression.html">
+     Logistic Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/D1_LeNet5.html">
      LeNet5
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="examples/ex15_logistic_regression.html">
-     Logistic Regression
+    <a class="reference internal" href="examples/D2_perceptual_attack.html">
+     Perceptual Attack
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="examples/D3_orthogonal_rnn.html">
+     Orthogonal RNN
     </a>
    </li>
   </ul>
@@ -216,7 +201,7 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="jusun.html">
+  <a class="reference external" href="https://sunju.org/research/nonconvex/">
    NCVX Methods
   </a>
  </li>
@@ -226,8 +211,8 @@
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="forum.html">
-   Forum
+  <a class="reference external" href="https://groups.google.com/a/umn.edu/g/ncvx">
+   NCVX PyGRANSO Forum
   </a>
  </li>
 </ul>
@@ -373,13 +358,12 @@
 </div>
 <div class="section" id="update-logs">
 <h2>Update Logs<a class="headerlink" href="#update-logs" title="Permalink to this headline">¶</a></h2>
-<p><strong>Version: 1.2.0 — 2022-03-XX (In development)</strong></p>
+<p><strong>Version: 1.2.0 — 2022-07-26</strong></p>
 <blockquote>
 <div><ul class="simple">
 <li><p>Description: major fixes and improvements on LBFGS and Steering Strategy.</p></li>
-<li><p>Fixed: Reducing memory usage for LBFGS. Now PyGRANSO can solve problem with ~15k parameters by using 8GB Memory. Improving steering stategy to deal with many constraints.</p></li>
-<li><p>Improved: improve the performance of ex11 orthogonal constraints on RNN; New suggestion about stationarity and feasibility tolerance, as it depends on problem scaling.</p></li>
-<li><p>Added: ex 12 perceptual attack on ImageNet images; ex 13 trace optimization with orthogonal constraints; ex 14 unconstrained deep learning with LeNet5; ex 15 logistic regression; ex 16 generic dictionary learning</p></li>
+<li><p>Fixed: Reducing memory usage for LBFGS. Now PyGRANSO can solve problem with ~15k parameters by using 14 GB memory; Update example: ortho RNN with max folding and orthonormal initialization; Allow high precision for QP solver; Allow part of optimization variables not showing up in objective (see SVM example); Fixed Code 12: terminated with steering failure; Fixed stationary failure: try different stationarity calculation, or set stationarity measure to be inf if encounter numerical issue</p></li>
+<li><p>Added: Reorganize and add examples: perceptual/lp norm attack on ImageNet images. trace optimization with orthogonal constraints; unconstrained deep learning with LeNet5; logistic regression.</p></li>
 </ul>
 </div></blockquote>
 <p><strong>Version: 1.1.0 — 2022-02-20</strong></p>
@@ -409,9 +393,9 @@
 <li class="toctree-l1"><a class="reference internal" href="settings/index.html">Settings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples/index.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="mistakes.html">Tips</a></li>
-<li class="toctree-l1"><a class="reference internal" href="jusun.html">NCVX Methods</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://sunju.org/research/nonconvex/">NCVX Methods</a></li>
 <li class="toctree-l1"><a class="reference internal" href="citation.html">Citing PyGRANSO</a></li>
-<li class="toctree-l1"><a class="reference internal" href="forum.html">Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://groups.google.com/a/umn.edu/g/ncvx">NCVX PyGRANSO Forum</a></li>
 </ul>
 </div>
 </div>

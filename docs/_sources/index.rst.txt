@@ -35,15 +35,13 @@ The source code of PyGRANSO Solver is available in the `PyGRANSO Repository <htt
 Update Logs
 -----------------
 
-**Version: 1.2.0 --- 2022-03-XX (In development)**
+**Version: 1.2.0 --- 2022-07-26**
 
    * Description: major fixes and improvements on LBFGS and Steering Strategy.
 
-   * Fixed: Reducing memory usage for LBFGS. Now PyGRANSO can solve problem with ~15k parameters by using 8GB Memory. Improving steering stategy to deal with many constraints. 
+   * Fixed: Reducing memory usage for LBFGS. Now PyGRANSO can solve problem with ~15k parameters by using 14 GB memory; Update example: ortho RNN with max folding and orthonormal initialization; Allow high precision for QP solver; Allow part of optimization variables not showing up in objective (see SVM example); Fixed Code 12: terminated with steering failure; Fixed stationary failure: try different stationarity calculation, or set stationarity measure to be inf if encounter numerical issue
 
-   * Improved: improve the performance of ex11 orthogonal constraints on RNN; New suggestion about stationarity and feasibility tolerance, as it depends on problem scaling. 
-
-   * Added: ex 12 perceptual attack on ImageNet images; ex 13 trace optimization with orthogonal constraints; ex 14 unconstrained deep learning with LeNet5; ex 15 logistic regression; ex 16 generic dictionary learning 
+   * Added: Reorganize and add examples: perceptual/lp norm attack on ImageNet images. trace optimization with orthogonal constraints; unconstrained deep learning with LeNet5; logistic regression.
 
 **Version: 1.1.0 --- 2022-02-20**
 
@@ -75,9 +73,9 @@ Contents
    settings/index
    examples/index
    mistakes
-   jusun
+   NCVX Methods <https://sunju.org/research/nonconvex/>
    citation
-   forum
+   NCVX PyGRANSO Forum <https://groups.google.com/a/umn.edu/g/ncvx>
 
 Acknowledgements
 ----------------------

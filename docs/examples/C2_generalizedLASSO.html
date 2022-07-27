@@ -1,0 +1,873 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generalized LASSO &#8212; NCVX PyGRANSO Documentation</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Logistic Regression" href="C3_logistic_regression.html" />
+    <link rel="prev" title="Robust PCA" href="C1_robustPCA.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/PyGRANSO_logo_banner.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">NCVX PyGRANSO Documentation</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../intro.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../install.html">
+   Installation
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../settings/index.html">
+   Settings
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/standard_parameters.html">
+     Standard Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/searching_direction.html">
+     Searching Direction Strategies
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/steering_strategy.html">
+     Steering Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/qp_parameters.html">
+     QP Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/line_search.html">
+     Line Search Parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/new_para.html">
+     PyGRANSO New Options
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   Examples
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="A1_rosenbrock.html">
+     Rosenbrock
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="A2_eigenval_opt.html">
+     Eigenvalue Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="A3_dict_learning.html">
+     Dictionary Learning
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="B1_nonlinear_feasiblity.html">
+     Nonlinear Feasibility Problem
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="B2_sphere_manifold.html">
+     Sphere Manifold
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="B3_trace_optimization.html">
+     Trace Optimization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="C1_robustPCA.html">
+     Robust PCA
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Generalized LASSO
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="C3_logistic_regression.html">
+     Logistic Regression
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="D1_LeNet5.html">
+     LeNet5
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="D2_perceptual_attack.html">
+     Perceptual Attack
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="D3_orthogonal_rnn.html">
+     Orthogonal RNN
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../mistakes.html">
+   Tips
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://sunju.org/research/nonconvex/">
+   NCVX Methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../citation.html">
+   Citing PyGRANSO
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://groups.google.com/a/umn.edu/g/ncvx">
+   NCVX PyGRANSO Forum
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Theme by the <a href="https://ebp.jupyterbook.org">Executable Book Project</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/examples/C2_generalizedLASSO.ipynb.txt"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/sun-umn/PyGRANSO"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/sun-umn/PyGRANSO/issues/new?title=Issue%20on%20page%20%2Fexamples/C2_generalizedLASSO.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Problem-Description">
+   Problem Description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Modules-Importing">
+   Modules Importing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Data-Initialization">
+   Data Initialization
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Function-Set-Up">
+   Function Set-Up
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#User-Options">
+   User Options
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#Main-Algorithm">
+   Main Algorithm
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+</style>
+<div class="section" id="Generalized-LASSO">
+<h1>Generalized LASSO<a class="headerlink" href="#Generalized-LASSO" title="Permalink to this headline">¶</a></h1>
+<p>Solve the total variation denoising problem based on Stephen Boyd, et al. <a class="reference external" href="https://dl.acm.org/doi/abs/10.1561/2200000016">“Distributed optimization and statistical learning via the alternating direction method of multipliers”.</a> Now Publishers Inc, 2011.</p>
+<div class="section" id="Problem-Description">
+<h2>Problem Description<a class="headerlink" href="#Problem-Description" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\min \frac{1}{2} ||Ax-b||_2^2+\lambda||Fx||_1\]</div>
+<p>Here we consider special case when <span class="math notranslate nohighlight">\(A\)</span> is an indentity matrix and <span class="math notranslate nohighlight">\(F\)</span> is the difference matrix, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\min_x \frac{1}{2}||x-b||_2^2+\lambda\sum_{i=1}^{n-1}|x_{i+1}-x_i|\]</div>
+</div>
+<div class="section" id="Modules-Importing">
+<h2>Modules Importing<a class="headerlink" href="#Modules-Importing" title="Permalink to this headline">¶</a></h2>
+<p>Import all necessary modules and add PyGRANSO src folder to system path.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">time</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">from</span> <span class="nn">pygranso.pygranso</span> <span class="kn">import</span> <span class="n">pygranso</span>
+<span class="kn">from</span> <span class="nn">pygranso.pygransoStruct</span> <span class="kn">import</span> <span class="n">pygransoStruct</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Data-Initialization">
+<h2>Data Initialization<a class="headerlink" href="#Data-Initialization" title="Permalink to this headline">¶</a></h2>
+<p>Specify torch device, and generate data</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s1">&#39;cpu&#39;</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">80</span>
+<span class="n">eta</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="c1"># parameter for penalty term</span>
+<span class="n">torch</span><span class="o">.</span><span class="n">manual_seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">pos_one</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">neg_one</span> <span class="o">=</span> <span class="o">-</span><span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="n">F</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+=</span> <span class="n">torch</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">neg_one</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">F</span><span class="p">[:,</span><span class="mi">1</span><span class="p">:</span><span class="n">n</span><span class="p">]</span> <span class="o">+=</span> <span class="n">torch</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">pos_one</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># All the user-provided data (vector/matrix/tensor) must be in torch tensor format.</span>
+<span class="c1"># As PyTorch tensor is single precision by default, one must explicitly set `dtype=torch.double`.</span>
+<span class="c1"># Also, please make sure the device of provided torch tensor is the same as opts.torch_device.</span>
+<span class="n">F</span> <span class="o">=</span> <span class="n">F</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>  <span class="c1"># double precision requireed in torch operations</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Function-Set-Up">
+<h2>Function Set-Up<a class="headerlink" href="#Function-Set-Up" title="Permalink to this headline">¶</a></h2>
+<p>Encode the optimization variables, and objective and constraint functions.</p>
+<p>Note: please strictly follow the format of comb_fn, which will be used in the PyGRANSO main algortihm.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># variables and corresponding dimensions.</span>
+<span class="n">var_in</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;x&quot;</span><span class="p">:</span> <span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">]}</span>
+
+<span class="k">def</span> <span class="nf">user_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">b</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">X_struct</span><span class="o">.</span><span class="n">x</span>
+
+    <span class="c1"># objective function</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">b</span><span class="p">)</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="n">b</span><span class="p">)</span>  <span class="o">+</span> <span class="n">eta</span> <span class="o">*</span> <span class="n">torch</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span> <span class="n">F</span><span class="nd">@x</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+
+    <span class="c1"># inequality constraint, matrix form</span>
+    <span class="n">ci</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="c1"># equality constraint</span>
+    <span class="n">ce</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">return</span> <span class="p">[</span><span class="n">f</span><span class="p">,</span><span class="n">ci</span><span class="p">,</span><span class="n">ce</span><span class="p">]</span>
+
+<span class="n">comb_fn</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">X_struct</span> <span class="p">:</span> <span class="n">user_fn</span><span class="p">(</span><span class="n">X_struct</span><span class="p">,</span><span class="n">F</span><span class="p">,</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="User-Options">
+<h2>User Options<a class="headerlink" href="#User-Options" title="Permalink to this headline">¶</a></h2>
+<p>Specify user-defined options for PyGRANSO</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">opts</span> <span class="o">=</span> <span class="n">pygransoStruct</span><span class="p">()</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">torch_device</span> <span class="o">=</span> <span class="n">device</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">x0</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">print_level</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">opts</span><span class="o">.</span><span class="n">print_frequency</span> <span class="o">=</span> <span class="mi">10</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="Main-Algorithm">
+<h2>Main Algorithm<a class="headerlink" href="#Main-Algorithm" title="Permalink to this headline">¶</a></h2>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">soln</span> <span class="o">=</span> <span class="n">pygranso</span><span class="p">(</span><span class="n">var_spec</span> <span class="o">=</span> <span class="n">var_in</span><span class="p">,</span><span class="n">combined_fn</span> <span class="o">=</span> <span class="n">comb_fn</span><span class="p">,</span><span class="n">user_opts</span> <span class="o">=</span> <span class="n">opts</span><span class="p">)</span>
+<span class="n">end</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Wall Time: </span><span class="si">{}</span><span class="s2">s&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">end</span> <span class="o">-</span> <span class="n">start</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+
+
+<span class="ansi-yellow-fg">╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════════╗
+</span><span class="ansi-yellow-fg">║  PyGRANSO requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║
+</span><span class="ansi-yellow-fg">║  the default is osqp. Users may provide their own wrapper for the QP solver.                  ║
+</span><span class="ansi-yellow-fg">║  To disable this notice, set opts.quadprog_info_msg = False                                   ║
+</span><span class="ansi-yellow-fg">╚═══════════════════════════════════════════════════════════════════════════════════════════════╝
+</span>══════════════════════════════════════════════════════════════════════════════════════════════╗
+PyGRANSO: A PyTorch-enabled port of GRANSO with auto-differentiation                          ║
+Version 1.2.0                                                                                 ║
+Licensed under the AGPLv3, Copyright (C) 2021-2022 Tim Mitchell and Buyun Liang               ║
+══════════════════════════════════════════════════════════════════════════════════════════════╣
+Problem specifications:                                                                       ║
+ # of variables                     :   80                                                    ║
+ # of inequality constraints        :    0                                                    ║
+ # of equality constraints          :    0                                                    ║
+═════╦════════════╦════════════════╦═════════════╦═══════════════════════╦════════════════════╣
+     ║ Penalty Fn ║                ║  Violation  ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
+Iter ║ Mu │ Value ║    Objective   ║ Ineq │  Eq  ║ SD │ Evals │     t    ║ Grads │    Value   ║
+═════╬════════════╬════════════════╬═════════════╬═══════════════════════╬════════════════════╣
+   0 ║  - │   -   ║  23.9720755177 ║   -  │   -  ║ -  │     1 │ 0.000000 ║     1 │ 9.792257   ║
+  10 ║  - │   -   ║  6.11242762691 ║   -  │   -  ║ QN │     4 │ 0.125000 ║     1 │ 1.886202   ║
+  20 ║  - │   -   ║  5.55928361973 ║   -  │   -  ║ QN │     5 │ 0.062500 ║     1 │ 0.992414   ║
+  30 ║  - │   -   ║  5.31815576231 ║   -  │   -  ║ QN │     5 │ 0.062500 ║     1 │ 1.091197   ║
+  40 ║  - │   -   ║  5.20063323032 ║   -  │   -  ║ QN │     6 │ 0.031250 ║     1 │ 0.859940   ║
+  50 ║  - │   -   ║  5.15831247662 ║   -  │   -  ║ QN │     6 │ 0.031250 ║     1 │ 0.953927   ║
+  60 ║  - │   -   ║  5.13076954691 ║   -  │   -  ║ QN │     6 │ 0.031250 ║     1 │ 0.287711   ║
+  70 ║  - │   -   ║  5.11261199123 ║   -  │   -  ║ QN │     6 │ 0.031250 ║     1 │ 0.315218   ║
+  80 ║  - │   -   ║  5.09731135000 ║   -  │   -  ║ QN │     3 │ 0.250000 ║     1 │ 0.135741   ║
+  90 ║  - │   -   ║  5.08764960138 ║   -  │   -  ║ QN │     5 │ 0.062500 ║     1 │ 0.059596   ║
+ 100 ║  - │   -   ║  5.08307079504 ║   -  │   -  ║ QN │     5 │ 0.062500 ║     1 │ 0.021728   ║
+ 110 ║  - │   -   ║  5.08033270693 ║   -  │   -  ║ QN │     5 │ 0.062500 ║     1 │ 0.019296   ║
+ 120 ║  - │   -   ║  5.07942940005 ║   -  │   -  ║ QN │     6 │ 0.031250 ║     1 │ 0.003682   ║
+ 130 ║  - │   -   ║  5.07875782846 ║   -  │   -  ║ QN │     5 │ 0.062500 ║     1 │ 0.008897   ║
+ 140 ║  - │   -   ║  5.07840647141 ║   -  │   -  ║ QN │     6 │ 0.031250 ║     1 │ 0.002367   ║
+ 150 ║  - │   -   ║  5.07822900856 ║   -  │   -  ║ QN │     5 │ 0.062500 ║     1 │ 0.003504   ║
+ 160 ║  - │   -   ║  5.07812046646 ║   -  │   -  ║ QN │     5 │ 0.062500 ║     2 │ 6.63e-04   ║
+ 170 ║  - │   -   ║  5.07805479861 ║   -  │   -  ║ QN │     7 │ 0.015625 ║     2 │ 0.001014   ║
+ 180 ║  - │   -   ║  5.07801875464 ║   -  │   -  ║ QN │     7 │ 0.015625 ║     3 │ 5.21e-04   ║
+ 190 ║  - │   -   ║  5.07799560661 ║   -  │   -  ║ QN │     5 │ 0.062500 ║     4 │ 3.36e-04   ║
+═════╬════════════╬════════════════╬═════════════╬═══════════════════════╬════════════════════╣
+     ║ Penalty Fn ║                ║  Violation  ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
+Iter ║ Mu │ Value ║    Objective   ║ Ineq │  Eq  ║ SD │ Evals │     t    ║ Grads │    Value   ║
+═════╬════════════╬════════════════╬═════════════╬═══════════════════════╬════════════════════╣
+ 200 ║  - │   -   ║  5.07798294167 ║   -  │   -  ║ QN │     5 │ 0.062500 ║     3 │ 3.07e-04   ║
+ 210 ║  - │   -   ║  5.07797328047 ║   -  │   -  ║ QN │     4 │ 0.125000 ║     2 │ 2.42e-04   ║
+ 220 ║  - │   -   ║  5.07796701771 ║   -  │   -  ║ QN │     4 │ 0.125000 ║     2 │ 2.53e-04   ║
+ 230 ║  - │   -   ║  5.07796178749 ║   -  │   -  ║ QN │     3 │ 0.250000 ║     2 │ 2.02e-04   ║
+ 240 ║  - │   -   ║  5.07795849453 ║   -  │   -  ║ QN │     5 │ 0.062500 ║     3 │ 4.33e-04   ║
+ 250 ║  - │   -   ║  5.07795727020 ║   -  │   -  ║ QN │     4 │ 0.125000 ║     3 │ 1.02e-04   ║
+ 260 ║  - │   -   ║  5.07795615914 ║   -  │   -  ║ QN │     5 │ 0.062500 ║     6 │ 8.15e-05   ║
+ 270 ║  - │   -   ║  5.07795585543 ║   -  │   -  ║ QN │     4 │ 0.125000 ║    12 │ 5.60e-05   ║
+ 280 ║  - │   -   ║  5.07795568966 ║   -  │   -  ║ QN │     6 │ 0.031250 ║    15 │ 3.50e-05   ║
+ 290 ║  - │   -   ║  5.07795558861 ║   -  │   -  ║ QN │     5 │ 0.062500 ║    22 │ 1.64e-05   ║
+ 300 ║  - │   -   ║  5.07795552833 ║   -  │   -  ║ QN │     5 │ 0.062500 ║    30 │ 1.32e-05   ║
+ 310 ║  - │   -   ║  5.07795548293 ║   -  │   -  ║ QN │     7 │ 0.015625 ║    36 │ 1.30e-05   ║
+ 320 ║  - │   -   ║  5.07795545267 ║   -  │   -  ║ QN │     4 │ 0.125000 ║    41 │ 1.59e-05   ║
+ 330 ║  - │   -   ║  5.07795539919 ║   -  │   -  ║ QN │     3 │ 0.250000 ║    27 │ 2.61e-05   ║
+ 340 ║  - │   -   ║  5.07795531984 ║   -  │   -  ║ QN │     2 │ 0.500000 ║     7 │ 7.33e-06   ║
+ 350 ║  - │   -   ║  5.07795529483 ║   -  │   -  ║ QN │     3 │ 0.250000 ║    16 │ 1.38e-05   ║
+ 360 ║  - │   -   ║  5.07795527117 ║   -  │   -  ║ QN │     3 │ 0.250000 ║    17 │ 2.24e-05   ║
+ 370 ║  - │   -   ║  5.07795526252 ║   -  │   -  ║ QN │     4 │ 0.125000 ║    19 │ 1.86e-05   ║
+ 380 ║  - │   -   ║  5.07795525902 ║   -  │   -  ║ QN │     5 │ 0.062500 ║    27 │ 1.40e-05   ║
+ 390 ║  - │   -   ║  5.07795525772 ║   -  │   -  ║ QN │     5 │ 0.062500 ║    35 │ 1.04e-05   ║
+═════╬════════════╬════════════════╬═════════════╬═══════════════════════╬════════════════════╣
+     ║ Penalty Fn ║                ║  Violation  ║ &lt;--- Line Search ---&gt; ║ &lt;- Stationarity -&gt; ║
+Iter ║ Mu │ Value ║    Objective   ║ Ineq │  Eq  ║ SD │ Evals │     t    ║ Grads │    Value   ║
+═════╬════════════╬════════════════╬═════════════╬═══════════════════════╬════════════════════╣
+ 400 ║  - │   -   ║  5.07795525717 ║   -  │   -  ║ QN │     5 │ 0.062500 ║    45 │ 6.25e-06   ║
+ 410 ║  - │   -   ║  5.07795525684 ║   -  │   -  ║ QN │     3 │ 0.250000 ║    54 │ 3.75e-06   ║
+ 420 ║  - │   -   ║  5.07795525661 ║   -  │   -  ║ QN │     8 │ 0.007812 ║    64 │ 3.88e-06   ║
+ 430 ║  - │   -   ║  5.07795525647 ║   -  │   -  ║ QN │     5 │ 0.062500 ║    74 │ 3.47e-06   ║
+ 440 ║  - │   -   ║  5.07795525636 ║   -  │   -  ║ QN │     4 │ 0.125000 ║    84 │ 2.74e-06   ║
+ 450 ║  - │   -   ║  5.07795525628 ║   -  │   -  ║ QN │     5 │ 0.062500 ║    90 │ 2.55e-06   ║
+ 460 ║  - │   -   ║  5.07795525623 ║   -  │   -  ║ QN │     6 │ 0.031250 ║    90 │ 1.50e-06   ║
+ 470 ║  - │   -   ║  5.07795525620 ║   -  │   -  ║ QN │     4 │ 0.125000 ║    90 │ 5.22e-07   ║
+ 480 ║  - │   -   ║  5.07795525619 ║   -  │   -  ║ QN │     5 │ 0.062500 ║    90 │ 3.24e-07   ║
+ 490 ║  - │   -   ║  5.07795525618 ║   -  │   -  ║ QN │     5 │ 0.062500 ║    90 │ 2.32e-07   ║
+ 500 ║  - │   -   ║  5.07795525618 ║   -  │   -  ║ QN │     6 │ 0.031250 ║    90 │ 1.52e-07   ║
+ 510 ║  - │   -   ║  5.07795525617 ║   -  │   -  ║ QN │     6 │ 0.031250 ║    90 │ 9.47e-08   ║
+ 520 ║  - │   -   ║  5.07795525617 ║   -  │   -  ║ QN │     5 │ 0.062500 ║    90 │ 6.51e-08   ║
+ 530 ║  - │   -   ║  5.07795525617 ║   -  │   -  ║ QN │     6 │ 0.031250 ║    90 │ 4.95e-08   ║
+ 540 ║  - │   -   ║  5.07795525617 ║   -  │   -  ║ QN │     6 │ 0.031250 ║    90 │ 4.09e-08   ║
+ 550 ║  - │   -   ║  5.07795525617 ║   -  │   -  ║ QN │     4 │ 0.125000 ║    90 │ 3.47e-08   ║
+ 560 ║  - │   -   ║  5.07795525617 ║   -  │   -  ║ QN │     4 │ 0.125000 ║    90 │ 2.82e-08   ║
+ 570 ║  - │   -   ║  5.07795525617 ║   -  │   -  ║ QN │     4 │ 0.125000 ║    90 │ 1.35e-08   ║
+═════╩════════════╩════════════════╩═════════════╩═══════════════════════╩════════════════════╣
+F = final iterate, B = Best (to tolerance), MF = Most Feasible                                ║
+Optimization results:                                                                         ║
+═════╦════════════╦════════════════╦═════════════╦═══════════════════════╦════════════════════╣
+   F ║    │       ║  5.07795525617 ║   -  │   -  ║    │       │          ║       │            ║
+   B ║    │       ║  5.07795525617 ║   -  │   -  ║    │       │          ║       │            ║
+═════╩════════════╩════════════════╩═════════════╩═══════════════════════╩════════════════════╣
+Iterations:              578                                                                  ║
+Function evaluations:    2802                                                                 ║
+PyGRANSO termination code: 0 --- converged to stationarity tolerance.                         ║
+══════════════════════════════════════════════════════════════════════════════════════════════╝
+Total Wall Time: 7.897493124008179s
+</pre></div></div>
+</div>
+</div>
+</div>
+
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="C1_robustPCA.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Robust PCA</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="C3_logistic_regression.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Logistic Regression</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Buyun Liang<br/>
+        
+            &copy; Copyright 2021-2022, Buyun Liang.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

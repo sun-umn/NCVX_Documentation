@@ -8,18 +8,16 @@ Several quick tutorials to help users get started with PyGRANSO.
 .. toctree::
 	:maxdepth: 1
  
-	ex1_rosenbrock.ipynb	
-	ex2_eigenval_opt.ipynb
-	ex3_dict_learning.ipynb
-	ex4_robustPCA.ipynb
-	ex5_generalizedLASSO.ipynb
-	ex6_perceptual_attack.ipynb
-	ex7_unconstrainedDL.ipynb
-	ex8_nonlinear_feasiblity.ipynb
-	ex9_sphere_manifold.ipynb
-	ex10_dict_learning_torch_nn.ipynb
-	ex11_orthogonal_rnn.ipynb
-	ex12_perceptual_attack_ImageNet.ipynb
-	ex13_trace_optimization.ipynb
-	ex14_LeNet5.ipynb
-	ex15_logistic_regression.ipynb
+	A1_rosenbrock.ipynb	
+	A2_eigenval_opt.ipynb
+	A3_dict_learning.ipynb
+	B1_nonlinear_feasiblity.ipynb
+	B2_sphere_manifold.ipynb
+	B3_trace_optimization.ipynb
+	C1_robustPCA.ipynb
+	C2_generalizedLASSO.ipynb
+	C3_logistic_regression.ipynb
+	D1_LeNet5.ipynb
+	D2_perceptual_attack.ipynb
+	D3_orthogonal_rnn.ipynb
+

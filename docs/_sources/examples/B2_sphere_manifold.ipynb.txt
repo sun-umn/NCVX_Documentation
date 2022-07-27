@@ -1,0 +1,237 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "id": "5257bb27",
+   "metadata": {},
+   "source": [
+    "# Sphere Manifold\n",
+    "\n",
+    "Optimization on a sphere manifold, taken from [this Manopt example](https://www.manopt.org/manifold_documentation_sphere.html)\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "a2ca043d",
+   "metadata": {},
+   "source": [
+    "## Problem Description"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "5ae4094e",
+   "metadata": {},
+   "source": [
+    "Rayleigh quotient problem:\n",
+    "$$\\min_{x}-x^TAx,$$\n",
+    "$$\\text{s.t. }x^Tx=1,$$\n",
+    "where $A\\in R^{n\\times n}$ is a symmetric matrix. "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "08dfdd50",
+   "metadata": {},
+   "source": [
+    "## Modules Importing\n",
+    "Import all necessary modules and add PyGRANSO src folder to system path."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "90ed32f9",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import time\n",
+    "import torch\n",
+    "from pygranso.pygranso import pygranso\n",
+    "from pygranso.pygransoStruct import pygransoStruct"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "17a1b7fe",
+   "metadata": {},
+   "source": [
+    "## Data Initialization \n",
+    "Specify torch device, and generate data"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "id": "8b4842e1",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "device = torch.device('cpu')\n",
+    "torch.manual_seed(0)\n",
+    "n = 300\n",
+    "# All the user-provided data (vector/matrix/tensor) must be in torch tensor format. \n",
+    "# As PyTorch tensor is single precision by default, one must explicitly set `dtype=torch.double`.\n",
+    "# Also, please make sure the device of provided torch tensor is the same as opts.torch_device.\n",
+    "A = torch.randn((n,n)).to(device=device, dtype=torch.double)\n",
+    "A = .5*(A+A.T)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "ec80716b",
+   "metadata": {},
+   "source": [
+    "## Function Set-Up\n",
+    "\n",
+    "Encode the optimization variables, and objective and constraint functions.\n",
+    "\n",
+    "Note: please strictly follow the format of comb_fn, which will be used in the PyGRANSO main algortihm."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "id": "fb360e75",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# variables and corresponding dimensions.\n",
+    "var_in = {\"x\": [n,1]}\n",
+    "\n",
+    "\n",
+    "def user_fn(X_struct,A):\n",
+    "    x = X_struct.x\n",
+    "    \n",
+    "    # objective function\n",
+    "    f = -x.T@A@x\n",
+    "\n",
+    "    # inequality constraint, matrix form\n",
+    "    ci = None\n",
+    "    \n",
+    "    # equality constraint \n",
+    "    ce = pygransoStruct()\n",
+    "    ce.c1 = x.T@x-1\n",
+    "\n",
+    "    return [f,ci,ce]\n",
+    "\n",
+    "comb_fn = lambda X_struct : user_fn(X_struct,A)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "f0f55ace",
+   "metadata": {},
+   "source": [
+    "## User Options\n",
+    "Specify user-defined options for PyGRANSO"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "id": "f3a65b57",
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "opts = pygransoStruct()\n",
+    "opts.torch_device = device\n",
+    "opts.print_frequency = 10\n",
+    "opts.x0 = torch.randn((n,1)).to(device=device, dtype=torch.double)\n",
+    "opts.mu0 = 0.1 # increase penalty contribution\n",
+    "opts.opt_tol = 1e-6"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "id": "8bca18c7",
+   "metadata": {},
+   "source": [
+    "## Main Algorithm"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "id": "632976b3",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "\n",
+      "\n",
+      "\u001b[33m╔═════ QP SOLVER NOTICE ════════════════════════════════════════════════════════════════════════╗\n",
+      "\u001b[0m\u001b[33m║  PyGRANSO requires a quadratic program (QP) solver that has a quadprog-compatible interface,  ║\n",
+      "\u001b[0m\u001b[33m║  the default is osqp. Users may provide their own wrapper for the QP solver.                  ║\n",
+      "\u001b[0m\u001b[33m║  To disable this notice, set opts.quadprog_info_msg = False                                   ║\n",
+      "\u001b[0m\u001b[33m╚═══════════════════════════════════════════════════════════════════════════════════════════════╝\n",
+      "\u001b[0m═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╗\n",
+      "PyGRANSO: A PyTorch-enabled port of GRANSO with auto-differentiation                                             ║ \n",
+      "Version 1.2.0                                                                                                    ║ \n",
+      "Licensed under the AGPLv3, Copyright (C) 2021-2022 Tim Mitchell and Buyun Liang                                  ║ \n",
+      "═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╣\n",
+      "Problem specifications:                                                                                          ║ \n",
+      " # of variables                     :   300                                                                      ║ \n",
+      " # of inequality constraints        :     0                                                                      ║ \n",
+      " # of equality constraints          :     1                                                                      ║ \n",
+      "═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣\n",
+      "     ║ <--- Penalty Function --> ║                ║ Total Violation ║ <--- Line Search ---> ║ <- Stationarity -> ║ \n",
+      "Iter ║    Mu    │      Value     ║    Objective   ║ Ineq │    Eq    ║ SD │ Evals │     t    ║ Grads │    Value   ║ \n",
+      "═════╬═══════════════════════════╬════════════════╬═════════════════╬═══════════════════════╬════════════════════╣\n",
+      "   0 ║ 0.100000 │  233.598444885 ║ -777.138392664 ║   -  │ 311.3123 ║ -  │     1 │ 0.000000 ║     1 │ 45.87915   ║ \n",
+      "  10 ║ 0.038742 │  4.73697237561 ║ -1135.54118646 ║   -  │ 48.73016 ║ S  │     2 │ 2.000000 ║     1 │ 0.703910   ║ \n",
+      "  20 ║ 0.038742 │ -0.90394750818 ║ -24.2316527975 ║   -  │ 0.034836 ║ S  │     1 │ 1.000000 ║     1 │ 0.063645   ║ \n",
+      "  30 ║ 0.038742 │ -0.94016470001 ║ -24.2720808397 ║   -  │ 1.85e-04 ║ S  │     1 │ 1.000000 ║     1 │ 0.005112   ║ \n",
+      "  40 ║ 0.038742 │ -0.94079615436 ║ -24.2856228608 ║   -  │ 7.86e-05 ║ S  │     1 │ 1.000000 ║     1 │ 0.004916   ║ \n",
+      "  50 ║ 0.038742 │ -0.94088141602 ║ -24.2858835595 ║   -  │ 3.47e-06 ║ S  │     1 │ 1.000000 ║     1 │ 8.26e-04   ║ \n",
+      "  60 ║ 0.038742 │ -0.94088588797 ║ -24.2859210930 ║   -  │ 4.55e-07 ║ S  │     1 │ 1.000000 ║     1 │ 3.31e-04   ║ \n",
+      "  70 ║ 0.038742 │ -0.94088637134 ║ -24.2859220156 ║   -  │ 6.97e-09 ║ S  │     1 │ 1.000000 ║     1 │ 2.97e-05   ║ \n",
+      "  80 ║ 0.038742 │ -0.94088637916 ║ -24.2859220393 ║   -  │ 6.69e-11 ║ S  │     1 │ 1.000000 ║     1 │ 3.02e-06   ║ \n",
+      "═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣\n",
+      "Optimization results:                                                                                            ║ \n",
+      "F = final iterate, B = Best (to tolerance), MF = Most Feasible                                                   ║ \n",
+      "═════╦═══════════════════════════╦════════════════╦═════════════════╦═══════════════════════╦════════════════════╣\n",
+      "   F ║          │                ║ -24.2859220401 ║   -  │ 6.78e-12 ║    │       │          ║       │            ║ \n",
+      "   B ║          │                ║ -24.2859222959 ║   -  │ 2.60e-07 ║    │       │          ║       │            ║ \n",
+      "  MF ║          │                ║ -24.2859220401 ║   -  │ 6.78e-12 ║    │       │          ║       │            ║ \n",
+      "═════╩═══════════════════════════╩════════════════╩═════════════════╩═══════════════════════╩════════════════════╣\n",
+      "Iterations:              85                                                                                      ║ \n",
+      "Function evaluations:    96                                                                                      ║ \n",
+      "PyGRANSO termination code: 0 --- converged to stationarity and feasibility tolerances.                           ║ \n",
+      "═════════════════════════════════════════════════════════════════════════════════════════════════════════════════╝\n",
+      "Total Wall Time: 0.6032183170318604s\n"
+     ]
+    }
+   ],
+   "source": [
+    "start = time.time()\n",
+    "soln = pygranso(var_spec = var_in,combined_fn = comb_fn,user_opts = opts)\n",
+    "end = time.time()\n",
+    "print(\"Total Wall Time: {}s\".format(end - start))"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.9.7"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}

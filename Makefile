@@ -25,6 +25,8 @@ clean:
 	rm -r docs
 	mkdir docs
 	mkdir docs/_images
+	mkdir docs/_files
 	cp .nojekyll docs
 	cp CNAME docs
 	cp *.png docs/_images 
+	cp *.pdf docs/_files

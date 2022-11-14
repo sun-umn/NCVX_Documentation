@@ -5,9 +5,9 @@ If you publish work that uses or refers to PyGRANSO, please cite the following t
 which respectively introduced PyGRANSO and GRANSO:
 
 *[1] Buyun Liang, Tim Mitchell, and Ju Sun,
-NCVX: A User-Friendly and Scalable Package for Nonconvex
-Optimization in Machine Learning, arXiv preprint arXiv:2111.13984 (2021).*
-Available at https://arxiv.org/abs/2111.13984
+NCVX: A General-Purpose Optimization Solver for Constrained Machine and Deep Learning, 
+arXiv preprint arXiv:2210.00973 (2022).*
+Available at https://arxiv.org/abs/2210.00973
 
 *[2] Frank E. Curtis, Tim Mitchell, and Michael L. Overton,
 A BFGS-SQP method for nonsmooth, nonconvex, constrained
@@ -17,12 +17,11 @@ Available at https://dx.doi.org/10.1080/10556788.2016.1208749
 
 BibTex::
 
-    @article{liang2021ncvx,
-        title={{NCVX}: {A} User-Friendly and Scalable Package for Nonconvex 
-        Optimization in Machine Learning}, 
+    @article{liang2022ncvx,
+        title={{NCVX}: {A} General-Purpose Optimization Solver for Constrained Machine and Deep Learning}, 
         author={Buyun Liang, Tim Mitchell, and Ju Sun},
-        year={2021},
-        eprint={2111.13984},
+        year={2022},
+        eprint={2210.00973},
         archivePrefix={arXiv},
         primaryClass={cs.LG}
     }
@@ -37,3 +36,23 @@ BibTex::
         year={2017},
         publisher={Taylor \& Francis}
     }
+
+If you publish work that uses or refers to PyGRANSO as a universal DL-robustness evaluation solver, please cite the following paper:
+
+*[3] Hengyue Liang, Buyun Liang, Ying Cui, Tim Mitchell, and Ju Sun,
+Optimization for Robustness Evaluation beyond* :math:`\ell_p` *Metrics, arXiv preprint arXiv:2210.00621 (2022).*
+Available at https://arxiv.org/abs/2210.00621
+
+BibTex::
+
+    @article{liang2022optimization,
+        title={Optimization for Robustness Evaluation beyond $\ell_p$ Metrics}, 
+        author={Hengyue Liang, Buyun Liang, Ying Cui, Tim Mitchell, and Ju Sun},
+        year={2022},
+        eprint={2210.00621},
+        archivePrefix={arXiv},
+        primaryClass={cs.LG}
+    }
+
+
+    

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>QP Parameters &#8212; NCVX PyGRANSO Documentation</title>
+    <title>Deep Learning with Nontrivial Constraints &#8212; NCVX PyGRANSO Documentation</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -36,8 +36,7 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Line Search Parameters" href="line_search.html" />
-    <link rel="prev" title="Steering Parameters" href="steering_strategy.html" />
+    <link rel="prev" title="Tutorial Sessions" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -82,43 +81,43 @@
    Installation
   </a>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="index.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../settings/index.html">
    Settings
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="standard_parameters.html">
+    <a class="reference internal" href="../settings/standard_parameters.html">
      Standard Parameters
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="searching_direction.html">
+    <a class="reference internal" href="../settings/searching_direction.html">
      Searching Direction Strategies
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="steering_strategy.html">
+    <a class="reference internal" href="../settings/steering_strategy.html">
      Steering Parameters
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../settings/qp_parameters.html">
      QP Parameters
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="line_search.html">
+    <a class="reference internal" href="../settings/line_search.html">
      Line Search Parameters
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="new_para.html">
+    <a class="reference internal" href="../settings/new_para.html">
      PyGRANSO New Options
     </a>
    </li>
@@ -211,18 +210,18 @@
    Citing PyGRANSO
   </a>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../tutorials/index.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
    Tutorial Sessions
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../tutorials/SDM23.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Deep Learning with Nontrivial Constraints
     </a>
    </li>
@@ -274,7 +273,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/settings/qp_parameters.rst.txt"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/tutorials/SDM23.rst.txt"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.rst</button></a>
         <!-- Download PDF via print -->
@@ -294,7 +293,7 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/sun-umn/PyGRANSO/issues/new?title=Issue%20on%20page%20%2Fsettings/qp_parameters.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/sun-umn/PyGRANSO/issues/new?title=Issue%20on%20page%20%2Ftutorials/SDM23.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -321,13 +320,18 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regularize-threshold">
-   regularize_threshold
+  <a class="reference internal nav-link" href="#abstract">
+   Abstract
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#regularize-max-eigenvalues">
-   regularize_max_eigenvalues
+  <a class="reference internal nav-link" href="#tutorial-structure">
+   Tutorial Structure
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#presenters">
+   Presenters
   </a>
  </li>
 </ul>
@@ -341,39 +345,89 @@
         
               <div>
                 
-  <div class="section" id="qp-parameters">
-<h1>QP Parameters<a class="headerlink" href="#qp-parameters" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="regularize-threshold">
-<h2>regularize_threshold<a class="headerlink" href="#regularize-threshold" title="Permalink to this headline">¶</a></h2>
-<p>Real value &gt;= 1. Default value: -Inf</p>
-<p>Ill-conditioning of the BFGS inverse Hessian approximations H may
-cause QP solver to have difficulty in solving either the steering or
-termination QPs.  The BFGS inverse Hessian approximations H can be
-optionally regularized by limiting their condition numbers to
-regularize_threshold.  Note that this regularization is only
-applied to the H matrices appearing in the QPs; the evolving BFGS
-inverse Hessian approximation itself is never regularized.
-NOTE: setting opts.regularize_threshold to inf disables any
-regularization (and thus disables even computing the condition
-number of H).</p>
+  <div class="section" id="deep-learning-with-nontrivial-constraints">
+<h1>Deep Learning with Nontrivial Constraints<a class="headerlink" href="#deep-learning-with-nontrivial-constraints" title="Permalink to this headline">¶</a></h1>
+<p><strong>Buyun Liang, Ryan de Vera, Tim Mitchell, and Ju Sun &#64;SDM 23 Tutorial</strong></p>
+<div class="section" id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial focuses on practical ways to handle constraints in deep learning and its applications. We will start with constraints that can be absorbed into deep neural networks, then move to simple constraints that allow projected-gradient style algorithms. For nontrivial constraints, we will discuss standard numerical methods such as penalty methods and augmented Lagrangian methods. Our tutorial will culminate with the introduction of NCVX, a general-purpose optimization package we have built to solve generic constrained deep learning problems. We will draw concrete examples from various scientific and engineering domains such as computer vision, structure design, physicsaware machine learning, and imbalanced learning, to help the audience to understand and apply these practical numerical methods.</p>
+<p>More details can be found in the tutorial <a class="reference external" href="_files/2023_SDM_PyGRANSO_Tutorial.pdf">proposal</a>.</p>
 </div>
-<div class="section" id="regularize-max-eigenvalues">
-<h2>regularize_max_eigenvalues<a class="headerlink" href="#regularize-max-eigenvalues" title="Permalink to this headline">¶</a></h2>
-<p>Boolean value. Default value: False</p>
-<p>If opts.regularize_threshold &lt; inf, then NCVX’s default strategy
-to regularize the BFGS inverse Hessian approximation H is done by
-raising the smallest magnitude eigenvalues such that the condition
-number of the regularized version of H never exceeds
-opts.regularize_threshold.  This default regularization should also
-help ensure that regularized version of H is numerically positive
-definite, since H may have tiny eigenvalues and in practice, these
-may have the wrong sign numerically (negative), particularly on
-nonsmooth problems.  Alternatively, by setting this option to true,
-NCVX will instead apply regularization by lowering the largest
-eigenvalues of H but note that this mode does not attempt to
-maintain numerical positive definiteness.  Also, if an eigenvalue
-of H is exactly zero, this mode will instead resort to raising the
-smallest eigenvalues of H on that particular iteration of NCVX.</p>
+<div class="section" id="tutorial-structure">
+<h2>Tutorial Structure<a class="headerlink" href="#tutorial-structure" title="Permalink to this headline">¶</a></h2>
+<p>We will introduce both scientific and engineering applications leading to constrained deep learning problems with nontrivial constraints, and practical numerical methods to solve them. We will start with the background and motivation of deep learning with nontrivial constraints, followed by the current challenges about solving this type of problems. Next, we will introduce the recent works in constrained deep learning, which is necessary in robust vision recognition and AI for science, but is not easy to solve. After that, we will focus on a general-purpose software package targeted at constrained deep learning. Last, we
+will discuss some open problems and the future directions to go.</p>
+<p><strong>Background and Motivation (20 min)</strong></p>
+<ul class="simple">
+<li><p>Motivating examples: Robustness in vision recognition, AI for science (10 min)</p></li>
+<li><p>Challenges: Reliably solving them requires optimization expertise (10 min)</p></li>
+</ul>
+<p><strong>Concrete Examples of Constrained Deep Learning &amp; Tailored Numerical Methods for Solving Them (40 min)</strong></p>
+<ul class="simple">
+<li><p>Robustness in vision recognition (10 min)</p></li>
+<li><p>Knowledge-aware machine learning (10 min)</p></li>
+<li><p>Neural structural optimization (10 min)</p></li>
+<li><p>Orthogonal recurrent neural networks (10 min)</p></li>
+</ul>
+<p><strong>Break (5 min)</strong></p>
+<p><strong>NCVX: A General-Purpose Software Package for Constrained Deep Learning (50 min)</strong></p>
+<ul class="simple">
+<li><p>Algorithms of NCVX (15 min)</p></li>
+<li><p>Constrained DL examples in NCVX (15 min)</p></li>
+<li><p>Practical tricks to speed up convergence (20 min)</p></li>
+</ul>
+<p><strong>Open Problems and Frontiers (10 min)</strong></p>
+<ul class="simple">
+<li><p>Challenges (5 min)</p></li>
+<li><p>Future work (5 min)</p></li>
+</ul>
+</div>
+<div class="section" id="presenters">
+<h2>Presenters<a class="headerlink" href="#presenters" title="Permalink to this headline">¶</a></h2>
+<table class="table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><div class="figure align-default" id="id1">
+<a class="reference internal image-reference" href="../_images/buyunliang.jpg"><img alt="../_images/buyunliang.jpg" src="../_images/buyunliang.jpg" style="width: 200px; height: 200px;" /></a>
+<p class="caption"><span class="caption-text"><a class="reference external" href="https://buyunliang.org/">Buyun Liang</a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<p>University of Minnesota, Twin Cities</p>
+</div>
+</div>
+</td>
+<td><div class="figure align-default" id="id2">
+<a class="reference internal image-reference" href="../_images/Ryan.png"><img alt="../_images/Ryan.png" src="../_images/Ryan.png" style="width: 200px; height: 200px;" /></a>
+<p class="caption"><span class="caption-text"><a class="reference external" href="https://github.com/rydevera3">Ryan de Vera</a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<p>University of Minnesota, Twin Cities</p>
+</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><div class="figure align-default" id="id3">
+<a class="reference internal image-reference" href="../_images/tim.jpg"><img alt="../_images/tim.jpg" src="../_images/tim.jpg" style="width: 200px; height: 200px;" /></a>
+<p class="caption"><span class="caption-text"><a class="reference external" href="http://www.timmitchell.com/">Tim Mitchell</a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<p>Assistant Professor</p>
+<p>Queens College, City University of New York</p>
+</div>
+</div>
+</td>
+<td><div class="figure align-default" id="id4">
+<a class="reference internal image-reference" href="../_images/sunju_2016.jpg"><img alt="../_images/sunju_2016.jpg" src="../_images/sunju_2016.jpg" style="height: 200px;" /></a>
+<p class="caption"><span class="caption-text"><a class="reference external" href="https://sunju.org/">Ju Sun</a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<div class="legend">
+<p>Assistant Professor</p>
+<p>University of Minnesota, Twin Cities</p>
+</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 
@@ -388,23 +442,14 @@ smallest eigenvalues of H on that particular iteration of NCVX.</p>
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="steering_strategy.html" title="previous page">
+        <a class="left-prev" href="index.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Steering Parameters</p>
+                <p class="prevnext-title">Tutorial Sessions</p>
             </div>
         </a>
     </div>
-     <div id="next">
-        <a class="right-next" href="line_search.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Line Search Parameters</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
 
 </div>
         

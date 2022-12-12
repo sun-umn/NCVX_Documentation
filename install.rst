@@ -53,3 +53,5 @@ scipy-1.7.1
 pytorch-1.9.0
 
 Jupyter Notebook-6.4.5
+
+gurobipy

@@ -26,7 +26,10 @@ clean:
 	mkdir docs
 	mkdir docs/_images
 	mkdir docs/_files
+	mkdir docs/tutorials
+	mkdir docs/tutorials/_files
 	cp .nojekyll docs
 	cp CNAME docs
 	cp *.png docs/_images 
 	cp *.pdf docs/_files
+	cp *.pdf docs/tutorials/_files

@@ -77,7 +77,7 @@ Contents
    mistakes
    NCVX Methods <https://sunju.org/research/nonconvex/>
    citation
-   tutorial
+   tutorials/index
    NCVX PyGRANSO Forum <https://groups.google.com/a/umn.edu/g/ncvx>
 
 Acknowledgements

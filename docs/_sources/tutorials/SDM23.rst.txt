@@ -7,7 +7,7 @@ Abstract
 --------------------------------
 This tutorial focuses on practical ways to handle constraints in deep learning and its applications. We will start with constraints that can be absorbed into deep neural networks, then move to simple constraints that allow projected-gradient style algorithms. For nontrivial constraints, we will discuss standard numerical methods such as penalty methods and augmented Lagrangian methods. Our tutorial will culminate with the introduction of NCVX, a general-purpose optimization package we have built to solve generic constrained deep learning problems. We will draw concrete examples from various scientific and engineering domains such as computer vision, structure design, physicsaware machine learning, and imbalanced learning, to help the audience to understand and apply these practical numerical methods.
 
-More details can be found in the tutorial `proposal <_files/2023_SDM_PyGRANSO_Tutorial.pdf>`_.
+More details can be found in the `SDM23 proposal <_files/2023_SDM_PyGRANSO_Tutorial.pdf>`_ and `SDM23 tutorial slides <_files/SDM23_Deep_Learning_with_Nontrivial_Constraints.pdf>`_.
 
 Tutorial Structure
 ---------------------------------

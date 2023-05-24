@@ -36,7 +36,6 @@
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="Tutorial Sessions" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -70,7 +69,7 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="current nav bd-sidenav">
+        <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../intro.html">
    Introduction
@@ -195,37 +194,32 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../highlight/index.html">
+   Highlights
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../highlight/SDM23.html">
+     Deep Learning with Nontrivial Constraints
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../mistakes.html">
    Tips
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference external" href="https://sunju.org/research/nonconvex/">
-   NCVX Methods
-  </a>
- </li>
- <li class="toctree-l1">
   <a class="reference internal" href="../citation.html">
    Citing PyGRANSO
   </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="index.html">
-   Tutorial Sessions
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Deep Learning with Nontrivial Constraints
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference external" href="https://groups.google.com/a/umn.edu/g/ncvx">
@@ -351,7 +345,7 @@
 <div class="section" id="abstract">
 <h2>Abstract<a class="headerlink" href="#abstract" title="Permalink to this headline">¶</a></h2>
 <p>This tutorial focuses on practical ways to handle constraints in deep learning and its applications. We will start with constraints that can be absorbed into deep neural networks, then move to simple constraints that allow projected-gradient style algorithms. For nontrivial constraints, we will discuss standard numerical methods such as penalty methods and augmented Lagrangian methods. Our tutorial will culminate with the introduction of NCVX, a general-purpose optimization package we have built to solve generic constrained deep learning problems. We will draw concrete examples from various scientific and engineering domains such as computer vision, structure design, physicsaware machine learning, and imbalanced learning, to help the audience to understand and apply these practical numerical methods.</p>
-<p>More details can be found in the tutorial <a class="reference external" href="_files/2023_SDM_PyGRANSO_Tutorial.pdf">proposal</a>.</p>
+<p>More details can be found in the <a class="reference external" href="_files/2023_SDM_PyGRANSO_Tutorial.pdf">SDM23 proposal</a> and <a class="reference external" href="_files/SDM23_Deep_Learning_with_Nontrivial_Constraints.pdf">SDM23 tutorial slides</a>.</p>
 </div>
 <div class="section" id="tutorial-structure">
 <h2>Tutorial Structure<a class="headerlink" href="#tutorial-structure" title="Permalink to this headline">¶</a></h2>
@@ -391,7 +385,7 @@ will discuss some open problems and the future directions to go.</p>
 </colgroup>
 <tbody>
 <tr class="row-odd"><td><div class="figure align-default" id="id1">
-<a class="reference internal image-reference" href="../_images/buyunliang.jpg"><img alt="../_images/buyunliang.jpg" src="../_images/buyunliang.jpg" style="width: 200px; height: 200px;" /></a>
+<a class="reference internal image-reference" href="../_images/buyunliang1.jpg"><img alt="../_images/buyunliang1.jpg" src="../_images/buyunliang1.jpg" style="width: 200px; height: 200px;" /></a>
 <p class="caption"><span class="caption-text"><a class="reference external" href="https://buyunliang.org/">Buyun Liang</a></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <p>University of Minnesota, Twin Cities</p>
@@ -399,7 +393,7 @@ will discuss some open problems and the future directions to go.</p>
 </div>
 </td>
 <td><div class="figure align-default" id="id2">
-<a class="reference internal image-reference" href="../_images/Ryan.png"><img alt="../_images/Ryan.png" src="../_images/Ryan.png" style="width: 200px; height: 200px;" /></a>
+<a class="reference internal image-reference" href="../_images/Ryan1.png"><img alt="../_images/Ryan1.png" src="../_images/Ryan1.png" style="width: 200px; height: 200px;" /></a>
 <p class="caption"><span class="caption-text"><a class="reference external" href="https://github.com/rydevera3">Ryan de Vera</a></span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <p>University of Minnesota, Twin Cities</p>
@@ -408,7 +402,7 @@ will discuss some open problems and the future directions to go.</p>
 </td>
 </tr>
 <tr class="row-even"><td><div class="figure align-default" id="id3">
-<a class="reference internal image-reference" href="../_images/tim.jpg"><img alt="../_images/tim.jpg" src="../_images/tim.jpg" style="width: 200px; height: 200px;" /></a>
+<a class="reference internal image-reference" href="../_images/tim1.jpg"><img alt="../_images/tim1.jpg" src="../_images/tim1.jpg" style="width: 200px; height: 200px;" /></a>
 <p class="caption"><span class="caption-text"><a class="reference external" href="http://www.timmitchell.com/">Tim Mitchell</a></span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <p>Assistant Professor</p>
@@ -417,7 +411,7 @@ will discuss some open problems and the future directions to go.</p>
 </div>
 </td>
 <td><div class="figure align-default" id="id4">
-<a class="reference internal image-reference" href="../_images/sunju_2016.jpg"><img alt="../_images/sunju_2016.jpg" src="../_images/sunju_2016.jpg" style="height: 200px;" /></a>
+<a class="reference internal image-reference" href="../_images/sunju_20161.jpg"><img alt="../_images/sunju_20161.jpg" src="../_images/sunju_20161.jpg" style="height: 200px;" /></a>
 <p class="caption"><span class="caption-text"><a class="reference external" href="https://sunju.org/">Ju Sun</a></span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
 <div class="legend">
 <p>Assistant Professor</p>
@@ -441,15 +435,6 @@ will discuss some open problems and the future directions to go.</p>
 
 <div class='prev-next-bottom'>
     
-    <div id="prev">
-        <a class="left-prev" href="index.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Tutorial Sessions</p>
-            </div>
-        </a>
-    </div>
 
 </div>
         

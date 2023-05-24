@@ -28,8 +28,11 @@ clean:
 	mkdir docs/_files
 	mkdir docs/tutorials
 	mkdir docs/tutorials/_files
+	mkdir docs/highlight
+	mkdir docs/highlight/_files
 	cp .nojekyll docs
 	cp CNAME docs
 	cp *.png docs/_images 
 	cp *.pdf docs/_files
 	cp *.pdf docs/tutorials/_files
+	cp *.pdf docs/highlight/_files

@@ -10,10 +10,6 @@ NCVX Package
 
 **NCVX (NonConVeX)** is a user-friendly and scalable python software package targeting general nonsmooth NCVX problems with nonsmooth constraints. **NCVX** is being developed by `GLOVEX <https://glovex.umn.edu/>`_ at the Department of Computer Science & Engineering, University of Minnesota, Twin Cities. 
 
-Our software announcement paper is available at https://arxiv.org/abs/2210.00973. This paper is accepted by the NeurIPS Workshop on Optimization for Machine Learning (OPT 2022). See our `poster <https://neurips.cc/media/PosterPDFs/NeurIPS%202022/57153.png>`_ for more details.
-
-Our universal Deep Learning robustness evaluation paper is available at https://arxiv.org/abs/2210.00621. This paper is accepted by the NeurIPS Workshop on Optimization for Machine Learning (OPT 2022). See our `poster <https://neurips.cc/media/PosterPDFs/NeurIPS%202022/57139.png>`_ for more details.
-
 The initial release of **NCVX** contains the solver **PyGRANSO**, a PyTorch-enabled port of `GRANSO <http://www.timmitchell.com/software/GRANSO/>`_ incorporating auto-differentiation, GPU acceleration, tensor input, and support for new QP solvers. As a highlight, **PyGRANSO** can solve general constrained deep learning problems, the first of its kind. 
 
 .. raw:: html
@@ -74,10 +70,9 @@ Contents
    install
    settings/index
    examples/index
+   highlight/index
    mistakes
-   NCVX Methods <https://sunju.org/research/nonconvex/>
    citation
-   tutorials/index
    NCVX PyGRANSO Forum <https://groups.google.com/a/umn.edu/g/ncvx>
 
 Acknowledgements

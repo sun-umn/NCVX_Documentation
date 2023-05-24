@@ -39,17 +39,18 @@ BibTex::
 
 If you publish work that uses or refers to PyGRANSO as a universal DL-robustness evaluation solver, please cite the following paper:
 
-*[3] Hengyue Liang, Buyun Liang, Ying Cui, Tim Mitchell, and Ju Sun,
-Optimization for Robustness Evaluation beyond* :math:`\ell_p` *Metrics, arXiv preprint arXiv:2210.00621 (2022).*
-Available at https://arxiv.org/abs/2210.00621
+*[3] Hengyue Liang, Buyun Liang, Le Peng, Ying Cui, Tim Mitchell, and Ju Sun, Optimization for Adversarial Robustness Evaluations and Implications from the Solution Patterns. arXiv preprint arXiv: 2303.13401 (2023).*
+Available at https://arxiv.org/pdf/2303.13401
+
+
 
 BibTex::
 
-    @article{liang2022optimization,
-        title={Optimization for Robustness Evaluation beyond $\ell_p$ Metrics}, 
-        author={Hengyue Liang, Buyun Liang, Ying Cui, Tim Mitchell, and Ju Sun},
-        year={2022},
-        eprint={2210.00621},
+    @article{liang2023optimization,
+        title={Optimization and optimizers for adversarial robustness}, 
+        author={Hengyue Liang, Buyun Liang, Le Peng, Ying Cui, Tim Mitchell, and Ju Sun},
+        year={2023},
+        eprint={2303.13401},
         archivePrefix={arXiv},
         primaryClass={cs.LG}
     }

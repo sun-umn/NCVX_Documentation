@@ -65,7 +65,7 @@ Contents
 
 .. toctree::
    :maxdepth: 1
-   
+
    intro
    install
    settings/index
@@ -85,11 +85,17 @@ Contact
 
 For questions or bug reports, please either:
     * raise issues in the `PyGRANSO Repository <https://github.com/sun-umn/PyGRANSO>`_ or
-    
-    * send an email to:
-  
-        * Buyun Liang (liang664 an_at_symbol umn a_dot_symbol edu)
+
+    * send an email to our `NCVX PyGRANSO forum <https://groups.google.com/a/umn.edu/g/ncvx>`_: ncvx@umn.edu
+
+Main authors:
+        * Buyun Liang (byliang an_at_symbol seas a_dot_symbol upenn a_dot_symbol edu)
         * Tim Mitchell (tim an_at_symbol timmitchell a_dot_symbol com)
         * Ju Sun (jusun an_at_symbol umn a_dot_symbol edu)
 
 Also, we are always looking for contributors and collaborators.
+
+
+.. raw:: html
+
+    <center><a href='https://clustrmaps.com/site/1buvz'  title='Visit tracker'><img src='//clustrmaps.com/map_v2.png?cl=ffffff&w=284&t=n&d=0dVX-NDd5VdZhjxgSpLRJ7NYKGM60A7_yy-QSSMfk4I'/></a></center><br><br>

@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'NCVX'
-copyright = '2021-2022, Buyun Liang'
+copyright = '2021-2023, Buyun Liang'
 author = 'Buyun Liang'
 
 
